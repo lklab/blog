@@ -1,11 +1,11 @@
 - title: Home
   link: '/'
   
-- title: About
-  link: '/about/'
+# - title: About
+#   link: '/about/'
 
-- title: Contact
-  link: '/contact/'
+# - title: Contact
+#   link: '/contact/'
   
 - title: Blog
   link: '/blog/'
@@ -14,11 +14,12 @@
   link: '/categories/'
 
 - title: Portfolio
-  dropdown:
-    - title: Testimonials
-      link: /testimonials/
-    - title: Item
-      link: /portfolio/
-    - title: Another Item
-      link: /portfolio/
+  link: '/portfolio/'
+  # dropdown:
+  #   - title: Testimonials
+  #     link: /testimonials/
+  #   - title: Item
+  #     link: /portfolio/
+  #   - title: Another Item
+  #     link: /portfolio/
 

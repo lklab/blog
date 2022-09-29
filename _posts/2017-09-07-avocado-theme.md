@@ -15,7 +15,7 @@ Avocado is a bootstrap based, clean, minimal Jekyll theme.
 
 <a href="#buy-avocado-jekyll-theme" class="btn btn-success">Buy <strike>$25</strike> $19</a>
 
-## Features
+## 특징들 Features
 
 The theme is suitable for personal, blog, portfolio or a company website. The highlight of this theme is the [blog]({{site.baseurl}}/blog/){: target="\_blank"} section.
 
