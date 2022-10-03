@@ -19,9 +19,11 @@
       </div>
       <div class="col-md-3">
         <h3>Latest Posts</h3>
-        {% for post in site.posts limit: 4 %}
-        <li><a href="{{post.url | relative_url}}">{{post.title}}</a></li>
-        {% endfor %}
+        <ul>
+          {% for post in site.posts limit: 4 %}
+          <li><a href="{{post.url | relative_url}}">{{post.title}}</a></li>
+          {% endfor %}
+        </ul>
       </div>
       <div class="col-md-3">
         <h3>Contact</h3>
