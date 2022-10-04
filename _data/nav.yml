@@ -13,8 +13,8 @@
 - title: Categories
   link: '/categories/'
 
-- title: Portfolio
-  link: '/portfolio/'
+# - title: Portfolio
+#   link: '/portfolio/'
   # dropdown:
   #   - title: Testimonials
   #     link: /testimonials/

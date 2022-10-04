@@ -3,7 +3,7 @@ title: Avocado Theme
 image: /assets/images/thought-catalog-620865-unsplash.jpg
 description: Avocado is a bootstrap based, clean, minimal Jekyll theme.
 buy-link: https://rzp.io/l/avocado-theme
-author: john
+author: khlee
 categories:
   - work
 layout: post
