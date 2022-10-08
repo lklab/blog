@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-08T21:34:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</title><link href="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" rel="alternate" type="text/html" title="SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기" /><published>2017-07-17T00:00:00+09:00</published><updated>2017-07-17T00:00:00+09:00</updated><id>http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"><![CDATA[<p>라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-08T21:58:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</title><link href="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" rel="alternate" type="text/html" title="SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기" /><published>2017-07-17T00:00:00+09:00</published><updated>2017-07-17T00:00:00+09:00</updated><id>http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"><![CDATA[<p>라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.
 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.</p>
 
 <h2 id="준비하기">준비하기</h2>
@@ -36,7 +36,7 @@
 <p>EtherCAT 슬레이브로 사용할 장치는 Beckhoff사의 EL9800 보드로 하였다.
 EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있다.</p>
 
-<p><img src="/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" alt="Beckhoff EL9800" /></p>
+<p><img src="/blog/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" alt="Beckhoff EL9800" /></p>
 
 <p>이제 예제 프로그램을 실행한다.</p>
 
@@ -45,7 +45,7 @@ EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있
 
 <p>실행시키면 다음 그림과 같이 PDO 값에 대해 모니터링해 준다.</p>
 
-<p><img src="/assets/post/17-07-17-EtherCAT/pdo.png" alt="pdo" /></p>
+<p><img src="/blog/assets/post/17-07-17-EtherCAT/pdo.png" alt="pdo" /></p>
 
 <p><code class="highlighter-rouge">O:</code> 뒤에 첫 1바이트가 LED를 의미하고, <code class="highlighter-rouge">I:</code> 뒤의 첫 1바이트가 스위치를 의미한다.</p>
 
@@ -91,7 +91,7 @@ EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./slaveinfo eth0 <span class="nt">-map</span></code></pre></figure>
 
-<p><img src="/assets/post/17-07-17-EtherCAT/slaveinfo.png" alt="pdo" /></p>
+<p><img src="/blog/assets/post/17-07-17-EtherCAT/slaveinfo.png" alt="pdo" /></p>
 
 <p>슬레이브의 SII에 저장된 PDO 매핑 정보가 출력되어 나온다.</p>
 
