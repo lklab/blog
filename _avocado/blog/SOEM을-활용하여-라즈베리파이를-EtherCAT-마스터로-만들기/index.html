@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" class="position-relative">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Prefetch DNS for faster page speed -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//google-analytics.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com" />
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    
+    <!-- Prefetch disqus DNS for faster page speed -->
+    <link rel="dns-prefetch" href="https://lklab-github-io-blog.disqus.com/" />
+      <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기 | lklab</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기" />
+<meta name="author" content="khlee" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다." />
+<meta property="og:description" content="라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다." />
+<link rel="canonical" href="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" />
+<meta property="og:url" content="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" />
+<meta property="og:site_name" content="lklab" />
+<meta property="og:image" content="http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-07-17T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" />
+<meta property="twitter:title" content="SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-07-17T00:00:00+09:00","datePublished":"2017-07-17T00:00:00+09:00","description":"라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.","headline":"SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기","image":"http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"},"url":"http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"}</script>
+<!-- End Jekyll SEO tag -->
+ 
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+    <!-- Fontawesome Icons CSS -->
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Replace these icons with your own. -->
+
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/assets/img/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/assets/img/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/assets/img/apple-icon-152x152.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/img/android-icon-192x192.png"
+    />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+
+    
+
+    <!-- Google Analytics code. <head> tag is the right place for analytics code as directed by Google. This is unofficial light version which loads blazing fast! Implemented for faster page load.  -->
+    <script src="https://cdn.jsdelivr.net/npm/ga-lite@1/dist/ga-lite.min.js" async></script>
+<script>
+var galite = galite || {};
+galite.UA = 'G-LYHC56N0SX'; 
+</script>  
+    <script
+      async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
+    ></script>
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    
+    <noscript>
+      <style>
+        .loader {
+          display: none;
+        }
+        .dropdown-menu {
+          display: block;
+        }
+        .rev {
+          visibility: visible;
+        }
+        .owl-carousel {
+          display: flex;
+        }
+        .owl-carousel.carousel-1 {
+          display: block;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body>
+    <noscript
+      ><div
+        class="bg-danger text-white text-center position-absolute"
+        style="z-index: 9999999; left: 0; right: 0; top: 0"
+      >
+        Please enable JavaScript for full functionality.
+      </div></noscript
+    >
+    <div class="loader">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div id="top" class="wrapper">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img
+        src="/assets/img/apple-icon-60x60.png"
+        class="d-inline-block align-top logo"
+        alt="lklab"
+      />
+      LKLAB
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+         
+        <a
+          class="nav-item nav-link "
+          href="/"
+          >Home</a
+        >
+          
+        <a
+          class="nav-item nav-link "
+          href="/blog/"
+          >Blog</a
+        >
+          
+        <a
+          class="nav-item nav-link "
+          href="/categories/"
+          >Categories</a
+        >
+         
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+      <div class="content-wrapper"><!--                            
+This layout is used for posts. Changing anything here will affect all posts(not pages)
+ -->
+
+<div class="post">
+  <main>
+    <header class="position-relative text-center rev">
+      <div class="header-image" style="background-image: url(/assets/post/17-07-17-EtherCAT/20170529_143851.jpg)"></div>
+      <h1 class="post-title position-absolute">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</h1>
+    </header>
+    <div class="container">
+      <div class="blog-content pd">
+        <div class="row">
+          <div class="col-md-12">
+            
+<ul class="breadcrumbs rev">
+	<li><a href="/">Home</a></li>
+	
+	
+	<li><a href="/blog/">Blog</a></li>
+	
+	
+	
+	<li><a href="#">SOEM을 활용하여 라즈베리파이...</a></li>
+	
+	
+</ul>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 meta">
+            <p><small>
+                <span>
+                  <i class="fa fa-calendar" aria-hidden="true"></i> 17 Jul 2017&nbsp;
+                </span>
+                <span>
+                  <i class="fa fa-user" aria-hidden="true"></i> Khlee&nbsp;
+                </span>
+                <span>
+                  <i class="fa fa-clock-o" aria-hidden="true"></i> 3 mins read.
+                </span>
+              </small></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <article>
+              
+<ul class="toc rev clearfix">
+  <li><a href="#준비하기">준비하기</a></li>
+  <li><a href="#제어-프로그램-만들기">제어 프로그램 만들기</a></li>
+</ul>
+
+
+              <p>라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.
+라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.</p>
+
+<h2 id="준비하기">준비하기</h2>
+
+<p>먼저 최신 버전의 SOEM을 다운로드 받는다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone https://github.com/OpenEtherCATsociety/SOEM</code></pre></figure>
+
+<p><a href="http://openethercatsociety.github.io/">http://openethercatsociety.github.io/</a> 에서 받을 수 있는 1.3.1 버전에서는 make 기반으로 빌드가 가능했었는데, git에서 받은 버전은 cmake 기반으로 빌드를 한다.</p>
+
+<p>사용하는 라즈베리파이에는 cmake가 설치되어있지 않으니 현재 최신 릴리즈 버전인 3.8.2 버전으로 설치했다. [<a href="https://cmake.org/install/">참고</a>]</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wget https://cmake.org/files/v3.8/cmake-3.8.2.tar.gz
+<span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvzf</span> cmake-3.8.2.tar.gz
+<span class="nv">$ </span><span class="nb">cd </span>cmake-3.8.2/
+<span class="nv">$ </span>./bootstrap
+<span class="nv">$ </span>make
+<span class="nv">$ </span>make <span class="nb">install</span></code></pre></figure>
+
+<p>라즈베리파이가 구닥다리라 엄청 오래 걸렸다..</p>
+
+<p>이제 <a href="https://github.com/OpenEtherCATsociety/SOEM">README.md</a>에 나와있는 방법대로 SOEM 빌드를 한다!</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd </span>SOEM
+<span class="nv">$ </span><span class="nb">mkdir </span>build
+<span class="nv">$ </span><span class="nb">cd </span>build
+<span class="nv">$ </span>cmake ..
+<span class="nv">$ </span>make</code></pre></figure>
+
+<p>빌드하고 나면 몇 가지 예제 프로그램이 생성되는데 그 중 SOEM/build/test/linux/simple_test/ 경로에 있는 simple_test라는 프로그램을 실행할 것이다.</p>
+
+<p>그 전에 하드웨어 세팅을 시작하자.
+구닥다리 라즈베리파이 B+에는 wifi가 기본 내장되어있지 않아서 ssh를 쓰기 위해 wifi 동글을 사용했다. 따라서 네트워크 인터페이스가 wlan0, eth0 두 개가 되는데, wlan0은 ssh를 포함한 인터넷을, eth0은 EtherCAT 포트로 사용한다.</p>
+
+<p>EtherCAT 슬레이브로 사용할 장치는 Beckhoff사의 EL9800 보드로 하였다.
+EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있다.</p>
+
+<p><img src="/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" alt="Beckhoff EL9800" /></p>
+
+<p>이제 예제 프로그램을 실행한다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd test</span>/linux/simple_test/
+<span class="nv">$ </span>./simple_test eth0</code></pre></figure>
+
+<p>실행시키면 다음 그림과 같이 PDO 값에 대해 모니터링해 준다.</p>
+
+<p><img src="/assets/post/17-07-17-EtherCAT/pdo.png" alt="pdo" /></p>
+
+<p><code class="highlighter-rouge">O:</code> 뒤에 첫 1바이트가 LED를 의미하고, <code class="highlighter-rouge">I:</code> 뒤의 첫 1바이트가 스위치를 의미한다.</p>
+
+<h2 id="제어-프로그램-만들기">제어 프로그램 만들기</h2>
+
+<p>그냥 실행만 시키면 재미없으니 LED에 불을 켜 보자!</p>
+
+<p>SOEM/test/linux/simple_test/simple_test.c 파일을 열어서 PDO 교환을 수행하는 다음 코드를 보면</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cm">/* cyclic loop */</span>
+<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ec_send_processdata</span><span class="p">();</span>
+    <span class="n">wkc</span> <span class="o">=</span> <span class="n">ec_receive_processdata</span><span class="p">(</span><span class="n">EC_TIMEOUTRET</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">wkc</span> <span class="o">&gt;=</span> <span class="n">expectedWKC</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Processdata cycle %4d, WKC %d , O:"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">wkc</span><span class="p">);</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">oloop</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">" %2.2x"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">ec_slave</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">outputs</span> <span class="o">+</span> <span class="n">j</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="n">printf</span><span class="p">(</span><span class="s">" I:"</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">iloop</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">" %2.2x"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">ec_slave</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">inputs</span> <span class="o">+</span> <span class="n">j</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" T:%"</span><span class="n">PRId64</span><span class="s">"</span><span class="se">\r</span><span class="s">"</span><span class="p">,</span><span class="n">ec_DCtime</span><span class="p">);</span>
+        <span class="n">needlf</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">osal_usleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">ec_slave[0].outputs + offset</code>이 출력(마스터 -&gt; 슬레이브) PDO, 그러니까 RxPDO를 의미하고 <code class="highlighter-rouge">ec_slave[0].inputs + offset</code>이 TxPDO를 의미한다.</p>
+
+<p>LED는 RxPDO의 첫 번째 바이트로 다음 변수를 통해 접근할 수 있다.</p>
+
+<p><code class="highlighter-rouge">ec_slave[0].outputs + 0</code></p>
+
+<p>정확한 내 장치의 SII에 저장된 PDO 목록을 보고싶다면 같이 빌드되는 예제 프로그램인 slaveinfo를 실행해보면 안다. 다음 명령어를 실행하면</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./slaveinfo eth0 <span class="nt">-map</span></code></pre></figure>
+
+<p><img src="/assets/post/17-07-17-EtherCAT/slaveinfo.png" alt="pdo" /></p>
+
+<p>슬레이브의 SII에 저장된 PDO 매핑 정보가 출력되어 나온다.</p>
+
+<p>다시 LED를 제어하는 것으로 돌아와서!
+위 코드의 <code class="highlighter-rouge">for</code> 블록문 첫 번째에 다음 코드를 넣었다.
+물론 함수의 첫 부분에 int형 <code class="highlighter-rouge">ledval</code>(초기값 0x1)과 <code class="highlighter-rouge">tick</code> 변수(초기값 0x0)를 선언하였다.</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cm">/* cyclic loop */</span>
+<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* for LED output test */</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">++</span><span class="n">tick</span> <span class="o">%</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">ledval</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ledval</span> <span class="o">&gt;=</span> <span class="mh">0x100</span><span class="p">)</span>
+            <span class="n">ledval</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
+        <span class="o">*</span><span class="p">(</span><span class="n">ec_slave</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">outputs</span><span class="p">)</span> <span class="o">=</span> <span class="n">ledval</span><span class="p">;</span>
+        <span class="n">tick</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cm">/* for LED output test */</span>
+    <span class="n">ec_send_processdata</span><span class="p">();</span>
+    <span class="n">wkc</span> <span class="o">=</span> <span class="n">ec_receive_processdata</span><span class="p">(</span><span class="n">EC_TIMEOUTRET</span><span class="p">);</span></code></pre></figure>
+
+<p>이제 다시 build 디렉토리로 돌아와서 빌드한다.
+다시 빌드할 때에는 make만 하면 된다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> ../../../build/
+<span class="nv">$ </span>make</code></pre></figure>
+
+<p>이제 실행시켜보면 된다.</p>
+
+<iframe class="video" src="https://www.youtube.com/embed/CrT6T_HWt78" allowfullscreen="" frameborder="0"></iframe>
+
+            </article>
+            
+            <div class="row rev">
+	<div class="col-md-12">
+		<div class="share-box">
+			<i class="fa fa-share-alt" aria-hidden="true"></i>
+			<a class="f nostyle" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"
+				onclick="window.open(this.href, 'mywin',
+            'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
+					class="fa fa-facebook-official fa"></i></a>
+			<a class="t nostyle" href="https://twitter.com/intent/tweet?text=&url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"
+				onclick="window.open(this.href, 'mywin',
+            'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
+					class="fa fa-twitter fa"></i></a>
+			<a class="g nostyle" href="https://plus.google.com/share?url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" onclick="window.open(this.href, 'mywin',
+            'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
+					class="fa fa-google-plus fa"></i></a>
+			<a class="r nostyle" href="http://www.reddit.com/submit?url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" onclick="window.open(this.href, 'mywin',
+            'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i
+					class="fa fa-reddit fa"></i></a>
+			<a class="l nostyle"
+				href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/&title=&summary=&source=webjeda"
+				onclick="window.open(this.href, 'mywin',
+            'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
+					class="fa fa-linkedin fa"></i></a>
+			<a class="e nostyle"
+				href="mailto:?subject=&amp;body=Check&amp;out&amp;this&amp;site&amp;http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"><i
+					class="fa fa-envelope fa"></i></a>
+		</div>
+	</div>
+</div>
+            
+
+            
+            <div class="row">
+  <div class="col-md-12">
+    <p class="categories rev"> <span><a
+          href="/categories/#ethercat">Ethercat</a></span></p>
+  </div>
+</div>
+            
+
+
+            
+            
+<div class="author rev">
+	<div class="row">
+		<div class="col-md-3">
+			<img class="author-image" src="/assets/images/avocado-cover.png" alt="khlee">
+		</div>
+		<div class="col-md-9">
+			<h5>khlee</h5>
+			<p></p>
+			<ul>
+				
+				<li><a target="_blank" href="https://github.com/lklab"><i class="fa fa-github"
+							aria-hidden="true"></i></a></li>
+				
+				
+				<li><a target="_blank" href="https://www.linkedin.com/in/kyeonghyeon-lee-6a3330132"><i class="fa fa-linkedin-square"
+							aria-hidden="true"></i></a></li>
+				
+				
+				
+				
+			</ul>
+		</div>
+	</div>
+</div>
+
+            
+
+            
+            <div id="disqus_thread"></div>
+<script defer>
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = '//lklab-github-io-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the comments</noscript>
+            
+
+            <div class="recent">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Recent Articles</h3>
+		</div>
+	</div>
+	<div class="row">
+		
+	</div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></div>
+
+      <a href="#top" class="scrollup"
+        ><i class="fa fa-long-arrow-up" aria-hidden="true"></i
+      ></a>
+      <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="logo-box">
+          <img width="30" src="/assets/images/avocado-transparent-small.png"
+            alt="lklab" />
+          <h3>lklab</h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h3>Pages</h3>
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/categories/">Categories</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>Latest Posts</h3>
+        <ul>
+          
+          <li><a href="/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>Contact</h3>
+        <p>Email:<a href="mailto:khlee.avo@gmail.com"> khlee.avo@gmail.com</a></p>
+        <!-- <p>Phone:<a href="tel:"> </a></p> -->
+        <!--Start of Tidio.to Script-->
+        <!-- <script src="//code.tidio.co/atcbwe5jq0ftiidebmmfwybic3nagfnf.js" async></script> -->
+        <!--End of Tidio.to Script-->
+      </div>
+    </div>
+  </div>
+</footer>
+    </div>
+
+    <!-- JQuery  -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/assets/js/owl.carousel.min.js"></script>
+
+    <!-- Navbar shrink on scroll -->
+    <script>
+      $(window).scroll(function () {
+        if ($(document).scrollTop() > 50) {
+          $(".navbar").addClass("shrink");
+        } else {
+          $(".navbar").removeClass("shrink");
+        }
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {
+            $(".scrollup").fadeIn();
+          } else {
+            $(".scrollup").fadeOut();
+          }
+        });
+
+        $(".scrollup").click(function () {
+          $("html, body").animate(
+            {
+              scrollTop: 0,
+            },
+            600
+          );
+          return false;
+        });
+      });
+    </script>
+
+    <!-- SlideDown on click -->
+    <script>
+      $(document).ready(function () {
+        $(".doshow").click(function () {
+          var that = $(this).next(".noshow");
+          $(that).slideToggle("slow");
+          $(".noshow").not(that).slideUp("slow");
+        });
+      });
+    </script>
+
+    <!-- Hide Loader on load -->
+    <script>
+      $(document).ready(function () {
+        $(".loader").hide();
+      });
+    </script>
+
+    <!-- Reveal items on scroll -->
+    <script
+      type="text/javascript"
+      src="/assets/js/scrollreveal.min.js"
+    ></script>
+    <script>
+      window.sr = ScrollReveal();
+      sr.reveal(".rev", {
+        duration: 1000,
+      });
+    </script>
+
+    
+  </body>
+</html>

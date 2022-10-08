@@ -1,462 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-08T19:16:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">Avocado Theme</title><link href="http://localhost:4000/blog/avocado-theme/" rel="alternate" type="text/html" title="Avocado Theme" /><published>2017-09-07T00:00:00+09:00</published><updated>2017-09-07T00:00:00+09:00</updated><id>http://localhost:4000/blog/avocado-theme</id><content type="html" xml:base="http://localhost:4000/blog/avocado-theme/"><![CDATA[<p>Bored of the same old website designs? <a href="/">Avocado theme</a> presents a unique way to show off your skills on the web.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-08T21:34:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</title><link href="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" rel="alternate" type="text/html" title="SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기" /><published>2017-07-17T00:00:00+09:00</published><updated>2017-07-17T00:00:00+09:00</updated><id>http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"><![CDATA[<p>라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.
+라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.</p>
 
-<p>Avocado is a bootstrap based, clean, minimal Jekyll theme.</p>
+<h2 id="준비하기">준비하기</h2>
 
-<p><a href="#buy-avocado-jekyll-theme" class="btn btn-success">Buy <strike>$25</strike> $19</a></p>
+<p>먼저 최신 버전의 SOEM을 다운로드 받는다.</p>
 
-<h2 id="특징들-features">특징들 Features</h2>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone https://github.com/OpenEtherCATsociety/SOEM</code></pre></figure>
 
-<p>The theme is suitable for personal, blog, portfolio or a company website. The highlight of this theme is the <a href="/blog/" target="\_blank">blog</a> section.</p>
+<p><a href="http://openethercatsociety.github.io/">http://openethercatsociety.github.io/</a> 에서 받을 수 있는 1.3.1 버전에서는 make 기반으로 빌드가 가능했었는데, git에서 받은 버전은 cmake 기반으로 빌드를 한다.</p>
 
-<h3 id="bootsrap-4-based">Bootsrap 4 Based</h3>
+<p>사용하는 라즈베리파이에는 cmake가 설치되어있지 않으니 현재 최신 릴리즈 버전인 3.8.2 버전으로 설치했다. [<a href="https://cmake.org/install/">참고</a>]</p>
 
-<p>Avocado is built on the latest Bootstrap 4 Framework. The theme can be easily customized.</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wget https://cmake.org/files/v3.8/cmake-3.8.2.tar.gz
+<span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvzf</span> cmake-3.8.2.tar.gz
+<span class="nv">$ </span><span class="nb">cd </span>cmake-3.8.2/
+<span class="nv">$ </span>./bootstrap
+<span class="nv">$ </span>make
+<span class="nv">$ </span>make <span class="nb">install</span></code></pre></figure>
 
-<h3 id="addictive-typography">Addictive typography</h3>
+<p>라즈베리파이가 구닥다리라 엄청 오래 걸렸다..</p>
 
-<p>We have selected fonts that go with the design and highly legible. The focus is on the content.</p>
+<p>이제 <a href="https://github.com/OpenEtherCATsociety/SOEM">README.md</a>에 나와있는 방법대로 SOEM 빌드를 한다!</p>
 
-<p><img src="/assets/images/avocado-theme.png" alt="Avocado minimal responsive jekyll theme" /></p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd </span>SOEM
+<span class="nv">$ </span><span class="nb">mkdir </span>build
+<span class="nv">$ </span><span class="nb">cd </span>build
+<span class="nv">$ </span>cmake ..
+<span class="nv">$ </span>make</code></pre></figure>
 
-<p><img src="/assets/images/avocado-jekyll-theme-screenshot-2.png" alt="Avocado minimal responsive jekyll theme" /></p>
+<p>빌드하고 나면 몇 가지 예제 프로그램이 생성되는데 그 중 SOEM/build/test/linux/simple_test/ 경로에 있는 simple_test라는 프로그램을 실행할 것이다.</p>
 
-<h3 id="responsive-videos">Responsive videos</h3>
+<p>그 전에 하드웨어 세팅을 시작하자.
+구닥다리 라즈베리파이 B+에는 wifi가 기본 내장되어있지 않아서 ssh를 쓰기 위해 wifi 동글을 사용했다. 따라서 네트워크 인터페이스가 wlan0, eth0 두 개가 되는데, wlan0은 ssh를 포함한 인터넷을, eth0은 EtherCAT 포트로 사용한다.</p>
 
-<p>Just add a class to your video iframe to make it responsive. For example</p>
+<p>EtherCAT 슬레이브로 사용할 장치는 Beckhoff사의 EL9800 보드로 하였다.
+EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있다.</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;iframe</span> <span class="na">class=</span><span class="s">"video"</span> <span class="na">src=</span><span class="s">"https://www.youtube.com/embed/YE7VzlLtp-4"</span><span class="nt">&gt;&lt;/iframe&gt;</span></code></pre></figure>
+<p><img src="/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" alt="Beckhoff EL9800" /></p>
 
-<p>Adding <code class="highlighter-rouge">video</code> class to any iframe makes it responsive in Avocado.</p>
+<p>이제 예제 프로그램을 실행한다.</p>
 
-<iframe class="video" src="https://www.youtube.com/embed/YE7VzlLtp-4?start=53&amp;rel=0" allowfullscreen="" frameborder="0"></iframe>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd test</span>/linux/simple_test/
+<span class="nv">$ </span>./simple_test eth0</code></pre></figure>
 
-<h3 id="paginated-posts">Paginated posts</h3>
+<p>실행시키면 다음 그림과 같이 PDO 값에 대해 모니터링해 준다.</p>
 
-<p>Only 4 posts are shown in one page. Older posts are paginated. <a href="/blog" target="\_blank">Check it out</a>. You can change the number of posts in configuration.</p>
+<p><img src="/assets/post/17-07-17-EtherCAT/pdo.png" alt="pdo" /></p>
 
-<p><code class="highlighter-rouge">paginate: 4</code></p>
+<p><code class="highlighter-rouge">O:</code> 뒤에 첫 1바이트가 LED를 의미하고, <code class="highlighter-rouge">I:</code> 뒤의 첫 1바이트가 스위치를 의미한다.</p>
 
-<h3 id="automatic-breadcrumbs">Automatic Breadcrumbs</h3>
+<h2 id="제어-프로그램-만들기">제어 프로그램 만들기</h2>
 
-<p>Breadcrumbs are generated for every page and post automatically. The default one looks like this.</p>
+<p>그냥 실행만 시키면 재미없으니 LED에 불을 켜 보자!</p>
 
-<ul class="breadcrumbs rev">
-	<li><a href="/">Home</a></li>
-	
-	
-	<li><a href="/blog/">Blog</a></li>
-	
-	
-	
-	<li><a href="#">Avocado theme</a></li>
-	
-	
-</ul>
+<p>SOEM/test/linux/simple_test/simple_test.c 파일을 열어서 PDO 교환을 수행하는 다음 코드를 보면</p>
 
-<p>The color changes with the color scheme.</p>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cm">/* cyclic loop */</span>
+<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ec_send_processdata</span><span class="p">();</span>
+    <span class="n">wkc</span> <span class="o">=</span> <span class="n">ec_receive_processdata</span><span class="p">(</span><span class="n">EC_TIMEOUTRET</span><span class="p">);</span>
 
-<h3 id="auto-generated-toc">Auto generated TOC</h3>
+    <span class="k">if</span><span class="p">(</span><span class="n">wkc</span> <span class="o">&gt;=</span> <span class="n">expectedWKC</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Processdata cycle %4d, WKC %d , O:"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">wkc</span><span class="p">);</span>
 
-<p>Table of contents is automatically generated for each post.</p>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">oloop</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">" %2.2x"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">ec_slave</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">outputs</span> <span class="o">+</span> <span class="n">j</span><span class="p">));</span>
+        <span class="p">}</span>
 
-<h3 id="get-comments">Get comments</h3>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" I:"</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">iloop</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">" %2.2x"</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">ec_slave</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">inputs</span> <span class="o">+</span> <span class="n">j</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">" T:%"</span><span class="n">PRId64</span><span class="s">"</span><span class="se">\r</span><span class="s">"</span><span class="p">,</span><span class="n">ec_DCtime</span><span class="p">);</span>
+        <span class="n">needlf</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">osal_usleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
-<p>Disqus comments is pre-installed. Just sign-up, get a shortname and update the variable <code class="highlighter-rouge">disqus</code> in the configuration.</p>
+<p><code class="highlighter-rouge">ec_slave[0].outputs + offset</code>이 출력(마스터 -&gt; 슬레이브) PDO, 그러니까 RxPDO를 의미하고 <code class="highlighter-rouge">ec_slave[0].inputs + offset</code>이 TxPDO를 의미한다.</p>
 
-<p>If you do not mention the <code class="highlighter-rouge">disqus:</code> value in configuration then the disqus comments code will not be included in the website.</p>
+<p>LED는 RxPDO의 첫 번째 바이트로 다음 변수를 통해 접근할 수 있다.</p>
 
-<h3 id="track-visitors">Track visitors</h3>
+<p><code class="highlighter-rouge">ec_slave[0].outputs + 0</code></p>
 
-<p>The website uses Google Analytics for tracking visitors. Use your own UA code in the configuration. Analytics code will not be used in the website if you do not mention UA code.</p>
+<p>정확한 내 장치의 SII에 저장된 PDO 목록을 보고싶다면 같이 빌드되는 예제 프로그램인 slaveinfo를 실행해보면 안다. 다음 명령어를 실행하면</p>
 
-<h3 id="instant-search">Instant search</h3>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./slaveinfo eth0 <span class="nt">-map</span></code></pre></figure>
 
-<p><a href="/search/" target="\_blank">Search</a> anything from your articles in an instant.</p>
+<p><img src="/assets/post/17-07-17-EtherCAT/slaveinfo.png" alt="pdo" /></p>
 
-<h3 id="auto-generated-feed-and-sitemap">Auto generated feed and sitemap</h3>
+<p>슬레이브의 SII에 저장된 PDO 매핑 정보가 출력되어 나온다.</p>
 
-<p>We have given much importance to SEO and made sure you have the <a href="/sitemap.xml" target="\_blank">sitemap</a> ready to submit to search engines. A well formatted <a href="/feed.xml" target="\_blank">feed</a> is readily available for RSS.</p>
+<p>다시 LED를 제어하는 것으로 돌아와서!
+위 코드의 <code class="highlighter-rouge">for</code> 블록문 첫 번째에 다음 코드를 넣었다.
+물론 함수의 첫 부분에 int형 <code class="highlighter-rouge">ledval</code>(초기값 0x1)과 <code class="highlighter-rouge">tick</code> 변수(초기값 0x0)를 선언하였다.</p>
 
-<h3 id="mathjax-support">MathJax Support</h3>
-
-<p>Now render beautiful math formulas by enabling MathJax in the configuration (enabled by default).</p>
-
-<script type="math/tex; mode=display">\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}</script>
-
-<h3 id="subtle-animations">Subtle animations</h3>
-
-<p>While scrolling through the page, you may observe some important elements fade in slowly. These elements will attract user attention.</p>
-
-<h3 id="fully-responsive">Fully responsive</h3>
-
-<p>It will be a pleasure reading content on avocado through a smartphone. Try it to know it.</p>
-
-<h3 id="clean-code">Clean code</h3>
-
-<p>The website is w3c compliant. We have tried to keep it without any errors.</p>
-
-<h3 id="chartjs-support">Chart.js Support</h3>
-
-<p>Use amazing charts using Chart.js. Enable Chart.js in the configuration(enabled by default)</p>
-
-<canvas id="myChart" width="400" height="200"></canvas>
-
-<script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: 'Colors',
-            data: [6, 5, 4, 3, 2, 1],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-</script>
-
-<h3 id="other-simple-stuff">Other simple stuff</h3>
-
-<p>We have given special importance in designing things like reading time, tags, share buttons, recent articles etc…</p>
-
-<h2 id="style-guide">Style Guide</h2>
-
-<h3 id="typography">Typography</h3>
-
-<p>This is how the headlines will look like on this website.</p>
-
-<h1>This is a H1</h1>
-<h2>This is a H2</h2>
-<h3>This is a H3</h3>
-<h4>This is H4, H5 and H6</h4>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>This is a H1<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;h2&gt;</span>This is a H2<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;h3&gt;</span>This is a H3<span class="nt">&lt;/h3&gt;</span>
-<span class="nt">&lt;h4&gt;</span>This is H4, H5 and H6<span class="nt">&lt;/h4&gt;</span></code></pre></figure>
-
-<p></p>
-
-<p>These are sample paragraphs showing <em>italics</em>, <strong>bold</strong> and <code class="highlighter-rouge">code</code> text style. Fonts are carefully choosen for longer user retention. The text is optimized for legibility. Viewers will get a good experience reading through the blog.</p>
-
-<p>Here is an unordered list</p>
-
-<ul>
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-</ul>
-
-<p>and an ordered list</p>
-
-<ol>
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-</ol>
-
-<h3 id="buttons">Buttons</h3>
-
-<p><button class="btn btn-default">Default</button>
-<button class="btn btn-primary">Primary</button>
-<button class="btn btn-success">Success</button>
-<button class="btn btn-warning">Warning</button>
-<button class="btn btn-danger">Danger</button></p>
-
-<p><br /></p>
-
-<h3 id="syntax-hihglighting">Syntax Hihglighting</h3>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/button&gt;</span>
-
-<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
-
-<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-success"</span><span class="nt">&gt;</span>Success<span class="nt">&lt;/button&gt;</span>
-
-<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-warning"</span><span class="nt">&gt;</span>Warning<span class="nt">&lt;/button&gt;</span>
-
-<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span></code></pre></figure>
-
-<h3 id="blockquote">Blockquote</h3>
-
-<blockquote>
-  <p>This is an important sentence from the paragraph.</p>
-</blockquote>
-
-<blockquote>
-  <p>Another blockquote.</p>
-
-  <p>With multiple lines!</p>
-</blockquote>
-
-<h3 id="table">Table</h3>
-
-<p>This is a simple markdown table</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Tables</th>
-      <th style="text-align: center">Are</th>
-      <th style="text-align: right">Cool</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>col 3 is</td>
-      <td style="text-align: center">right-aligned</td>
-      <td style="text-align: right">$1600</td>
-    </tr>
-    <tr>
-      <td>col 2 is</td>
-      <td style="text-align: center">centered</td>
-      <td style="text-align: right">$12</td>
-    </tr>
-    <tr>
-      <td>zebra stripes</td>
-      <td style="text-align: center">are neat</td>
-      <td style="text-align: right">$1</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br /></p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">| Tables | Are | Cool |
-| ------------- |:-------------:| -----:|
-| col 3 is | right-aligned | $1600 |
-| col 2 is | centered | $12 |
-| zebra stripes | are neat | $1 |</code></pre></figure>
-
-<h2 id="installation-guide">Installation Guide</h2>
-
-<p>Right after the purchase, you will get a zip folder with the following files.</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html">.
-.
-├── \_data
-| ├── settings.yml
-| ├── services.yml
-| └── testimonials.html
-|
-├── \_includes
-| ├── author.html
-| └── header.html
-| └── footer.html
-| .
-| .
-|
-├── \_layouts
-| ├── default.html
-| └── post.html
-|
-├── \_posts
-| ├── 2017-09-07-avocado-theme.md
-| └── 2009-04-26-title-of-post.md
-|
-├── \_pages
-| ├── about.md
-| └── contact.md
-| .
-| .
-|
-├── assets\css\_sass
-| └── \_auhtor.scss
-| └── \_google-fonts.scss
-| .
-| .
-|
-├── \_config.yml
-├── blog
-└── index.html</code></pre></figure>
-
-<p>You can serve this locally using the command <code class="highlighter-rouge">bundle exec jekyll serve</code>.</p>
-
-<p>Make necessary changes in the <strong>_config.yml</strong>, <strong>_data/main.yml</strong> files.</p>
-
-<p>All these files can be put in a repository(GitHub, GitLab etc) or hosting service where Jekyll is supported.</p>
-
-<p>If Jekyll is not supported, then use the <strong>_site/</strong> folder which is actually a complete rendered website in itself.</p>
-
-<p>Do contact us for any help - <code class="highlighter-rouge">hello@webjeda.com</code>.</p>
-
-<h2 id="buy-avocado-jekyll-theme">Buy Avocado Jekyll Theme</h2>
-
-<div class="py-3">
-  <form>
-    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_GFIaOcywlEf0UT"></script>
-  </form>
-</div>
-
-<p><strong>We provide 6 months support.</strong></p>
-
-<p><span class="right"><strong>✓</strong></span> Get your questions answered within 24 hours.</p>
-
-<p><span class="right"><strong>✓</strong></span> Get assistance with reported bugs and issues.</p>
-
-<p><span class="right"><strong>✓</strong></span> Help with included 3rd party assets.</p>
-
-<p>You can always leave us an email at <code class="highlighter-rouge">hello@webjeda.com</code>.</p>]]></content><author><name>khlee</name></author><category term="work" /><summary type="html"><![CDATA[Avocado is a bootstrap based, clean, minimal Jekyll theme.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/thought-catalog-620865-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/thought-catalog-620865-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Be what you want to be!</title><link href="http://localhost:4000/blog/be-what-you-want-to-be/" rel="alternate" type="text/html" title="Be what you want to be!" /><published>2017-09-06T00:00:00+09:00</published><updated>2017-09-06T00:00:00+09:00</updated><id>http://localhost:4000/blog/be-what-you-want-to-be</id><content type="html" xml:base="http://localhost:4000/blog/be-what-you-want-to-be/"><![CDATA[<p>As in other arts, the definitions of amateur and professional are not entirely categorical. A professional photographer is likely to take photographs to make money, by salary or through the display, sale or use of those photographs.</p>
-
-<p>An amateur photographer may take photographs for pleasure and to record an event, emotion, place, as a person without a monetary motivation. A professional photographer may be an employee, for example of a newspaper, or may contract to cover a particular planned event such as a wedding or graduation, or to illustrate an advertisement.</p>
-
-<p><a href="/about/">Learn more about this theme</a></p>
-
-<h2 id="selling-photographs">Selling photographs</h2>
-<p>The exclusive right of photographers to copy and use their products is protected by copyright. Countless industries purchase photographs for use in publications and on products.</p>
-
-<p>The photographs seen on magazine covers, in television advertising, on greeting cards or calendars, on websites, or on products and packages, have generally been purchased for this use, either directly from the photographer or through an agency that represents the photographer.</p>
-
-<p><img src="/assets/images/hipster-865295_1280.jpg" alt="Best Jekyll Theme" /></p>
-
-<p>A photographer uses a contract to sell the “license” or use of his or her photograph with exact controls regarding how often the photograph will be used, in what territory it will be used (for example U.S. or U.K. or other), and exactly for which products.</p>
-
-<p>This is usually referred to as usage fee and is used to distinguish from production fees (payment for the actual creation of a photograph or photographs). An additional contract and royalty would apply for each additional use of the photograph.</p>
-
-<h2 id="photo-sharing">Photo sharing</h2>
-<p>Many people upload their photographs to social networking websites and other websites, in order to share them with a particular group or with the general public. Those interested in legal precision may explicitly release them to the public domain or under a free content license. Some sites, including Wikimedia Commons, are punctilious about licenses and only accept pictures with clear information about permitted use.</p>
-
-<p>Source: <a href="https://en.wikipedia.org/wiki/Photographer" target="_blank">Wikipedia</a></p>
-
-<p>Image Credits: <a href="https://pixabay.com">Pixabay</a></p>]]></content><author><name>john</name></author><category term="life" /><category term="experience" /><summary type="html"><![CDATA[As in other arts, the definitions of amateur and professional are not entirely categorical. A professional photographer is likely to take photographs to make money, by salary or through the display, sale or use of those photographs. An amateur photographer may take photographs for pleasure and to record an event, emotion, place, as a person without a monetary motivation. A professional photographer may be an employee, for example of a newspaper, or may contract to cover a particular planned event such as a wedding or graduation, or to illustrate an advertisement. Learn more about this theme Selling photographs The exclusive right of photographers to copy and use their products is protected by copyright. Countless industries purchase photographs for use in publications and on products. The photographs seen on magazine covers, in television advertising, on greeting cards or calendars, on websites, or on products and packages, have generally been purchased for this use, either directly from the photographer or through an agency that represents the photographer. A photographer uses a contract to sell the “license” or use of his or her photograph with exact controls regarding how often the photograph will be used, in what territory it will be used (for example U.S. or U.K. or other), and exactly for which products. This is usually referred to as usage fee and is used to distinguish from production fees (payment for the actual creation of a photograph or photographs). An additional contract and royalty would apply for each additional use of the photograph. Photo sharing Many people upload their photographs to social networking websites and other websites, in order to share them with a particular group or with the general public. Those interested in legal precision may explicitly release them to the public domain or under a free content license. Some sites, including Wikimedia Commons, are punctilious about licenses and only accept pictures with clear information about permitted use. Source: Wikipedia Image Credits: Pixabay]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/beautiful-2150881_1280.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/beautiful-2150881_1280.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Love whatever you like!</title><link href="http://localhost:4000/blog/love-what-you-like/" rel="alternate" type="text/html" title="Love whatever you like!" /><published>2017-09-05T00:00:00+09:00</published><updated>2017-09-05T00:00:00+09:00</updated><id>http://localhost:4000/blog/love-what-you-like</id><content type="html" xml:base="http://localhost:4000/blog/love-what-you-like/"><![CDATA[<p>Campanula is one of several genera in the family Campanulaceae with the common name bellflower. It takes both its common and its scientific name from its bell-shaped flowers—campanula is Latin for “little bell”.</p>
-
-<p>The genus includes over 500 species and several subspecies, distributed across the temperate and subtropical regions of the Northern Hemisphere, with the highest diversity in the Mediterranean region east to the Caucasus. The range also extends into mountains in tropical regions of Asia and Africa.</p>
-
-<p><a href="/about/">Learn more about this theme</a></p>
-
-<p>The species include annual, biennial and perennial plants, and vary in habit from dwarf arctic and alpine species under 5 cm high, to large temperate grassland and woodland species growing to 2 metres (6 ft 7 in) tall.</p>
-
-<h2 id="description">Description</h2>
-<p>The leaves are alternate and often vary in shape on a single plant, with larger, broader leaves at the base of the stem and smaller, narrower leaves higher up; the leaf margin may be either entire or serrated (sometimes both on the same plant). Many species contain white latex in the leaves and stems.</p>
-
-<blockquote>
-  <p>Some species have a small additional leaf-like growth termed an “appendage” between each sepal.</p>
-</blockquote>
-
-<p>The flowers are produced in panicles (sometimes solitary), and have a five-lobed corolla, typically large (2–5 cm or more long), mostly blue to purple, sometimes white or pink. Below the corolla, 5 leaf-like sepals form the calyx. Some species have a small additional leaf-like growth termed an “appendage” between each sepal, and the presence or absence, relative size, and attitude of the appendage is often used to distinguish between closely related species.</p>
-
-<p><img src="/assets/images/800px-Campanula_flower_parts_text.jpg" alt="Best Jekyll Theme" /></p>
-
-<p>Campanula species are used as food plants by the larvae of some Lepidoptera species including Common Pug (recorded on Harebell), Dot Moth, Ingrailed Clay (recorded on Harebell), Lime-speck Pug and Mouse Moth.</p>
-
-<h2 id="cultivation-and-uses">Cultivation and uses</h2>
-<p>Well-known species include the northern temperate Campanula rotundifolia, commonly known as harebell in England and bluebell in Scotland and Ireland (though it is not closely related to the true bluebells), and the southern European Campanula medium, commonly known as Canterbury bells (a popular garden plant in the United Kingdom). As well as several species occurring naturally in the wild in northern Europe, there are many cultivated garden species.</p>
-
-<p>The cultivars <strong>Burghaltii</strong> and <strong>Kent Belle</strong> have gained the Royal Horticultural Society’s Award of Garden Merit.</p>
-
-<p>The species Campanula rapunculus, commonly known as rampion bellflower, rampion, or rover bellflower, is a biennial vegetable which was once widely grown in Europe for its spinach-like leaves and radish-like roots. The Brothers Grimm’s tale Rapunzel took its name from this plant.</p>
-
-<p>In the UK the National Collection of campanulas is held at Burton Agnes Hall in East Yorkshire and the National Collection of Alpine Campanulas at Langham Hall in Suffolk.</p>
-
-<p>Source: <a href="https://en.wikipedia.org/wiki/Campanula" target="_blank">Wikipedia</a></p>
-
-<p>Image Credits: <a href="https://pixabay.com">Pixabay</a></p>]]></content><author><name>john</name></author><category term="life" /><category term="adventure" /><summary type="html"><![CDATA[Campanula is one of several genera in the family Campanulaceae with the common name bellflower. It takes both its common and its scientific name from its bell-shaped flowers—campanula is Latin for “little bell”. The genus includes over 500 species and several subspecies, distributed across the temperate and subtropical regions of the Northern Hemisphere, with the highest diversity in the Mediterranean region east to the Caucasus. The range also extends into mountains in tropical regions of Asia and Africa. Learn more about this theme The species include annual, biennial and perennial plants, and vary in habit from dwarf arctic and alpine species under 5 cm high, to large temperate grassland and woodland species growing to 2 metres (6 ft 7 in) tall. Description The leaves are alternate and often vary in shape on a single plant, with larger, broader leaves at the base of the stem and smaller, narrower leaves higher up; the leaf margin may be either entire or serrated (sometimes both on the same plant). Many species contain white latex in the leaves and stems. Some species have a small additional leaf-like growth termed an “appendage” between each sepal. The flowers are produced in panicles (sometimes solitary), and have a five-lobed corolla, typically large (2–5 cm or more long), mostly blue to purple, sometimes white or pink. Below the corolla, 5 leaf-like sepals form the calyx. Some species have a small additional leaf-like growth termed an “appendage” between each sepal, and the presence or absence, relative size, and attitude of the appendage is often used to distinguish between closely related species. Campanula species are used as food plants by the larvae of some Lepidoptera species including Common Pug (recorded on Harebell), Dot Moth, Ingrailed Clay (recorded on Harebell), Lime-speck Pug and Mouse Moth. Cultivation and uses Well-known species include the northern temperate Campanula rotundifolia, commonly known as harebell in England and bluebell in Scotland and Ireland (though it is not closely related to the true bluebells), and the southern European Campanula medium, commonly known as Canterbury bells (a popular garden plant in the United Kingdom). As well as several species occurring naturally in the wild in northern Europe, there are many cultivated garden species. The cultivars Burghaltii and Kent Belle have gained the Royal Horticultural Society’s Award of Garden Merit. The species Campanula rapunculus, commonly known as rampion bellflower, rampion, or rover bellflower, is a biennial vegetable which was once widely grown in Europe for its spinach-like leaves and radish-like roots. The Brothers Grimm’s tale Rapunzel took its name from this plant. In the UK the National Collection of campanulas is held at Burton Agnes Hall in East Yorkshire and the National Collection of Alpine Campanulas at Langham Hall in Suffolk. Source: Wikipedia Image Credits: Pixabay]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/round-leaved-bellflower-1576086_1280.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/round-leaved-bellflower-1576086_1280.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Do what you like!</title><link href="http://localhost:4000/blog/do-what-you-like/" rel="alternate" type="text/html" title="Do what you like!" /><published>2017-09-04T00:00:00+09:00</published><updated>2017-09-04T00:00:00+09:00</updated><id>http://localhost:4000/blog/do-what-you-like</id><content type="html" xml:base="http://localhost:4000/blog/do-what-you-like/"><![CDATA[<p>Yoga is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India. There is a broad variety of yoga schools, practices, and goals in Hinduism, Buddhism, and Jainism. Among the most well-known types of yoga are Hatha yoga and Rāja yoga.</p>
-
-<p>The origins of yoga have been speculated to date back to pre-Vedic Indian traditions; it is mentioned in the Rigveda,[note 1] but most likely developed around the sixth and fifth centuries BCE, in ancient India’s ascetic and śramaṇa movements.</p>
-
-<p><a href="/about/">Learn more about this theme</a></p>
-
-<p>The chronology of earliest texts describing yoga-practices is unclear, varyingly credited to Hindu Upanishads. The Yoga Sutras of Patanjali date from the first half of the 1st millennium CE, but only gained prominence in the West in the 20th century. Hatha yoga texts emerged around the 11th century with origins in tantra.</p>
-
-<p><img src="/assets/images/meditation-2717462_1280.jpg" alt="Best Jekyll Theme" /></p>
-
-<p>Yoga gurus from India later introduced yoga to the west, following the success of Swami Vivekananda in the late 19th and early 20th century. In the 1980s, yoga became popular as a system of physical exercise across the Western world.</p>
-
-<h2 id="etymology">Etymology</h2>
-<p>In Sanskrit, the word yoga comes from the root yuj which means “to add”, “to join”, “to unite”, or “to attach” in its most common senses. By figurative extension from the yoking or harnessing of oxen or horses, the word took on broader meanings such as “employment, use, application, performance” (compare the figurative uses of “to harness” as in “to put something to some use”).</p>
-
-<p>All further developments of the sense of this word are post-Vedic. More prosaic moods such as “exertion”, “endeavour”, “zeal”, and “diligence” are also found in Indian epic poetry.</p>
-
-<h2 id="goals">Goals</h2>
-<p>The ultimate goal of Yoga is moksha (liberation), although the exact definition of what form this takes depends on the philosophical or theological system with which it is conjugated.</p>
-
-<p>According to Jacobsen, “Yoga has five principal meanings:</p>
-
-<ul>
-  <li>Yoga, as a disciplined method for attaining a goal;</li>
-  <li>Yoga, as techniques of controlling the body and the mind;</li>
-  <li>Yoga, as a name of one of the schools or systems of philosophy (darśana);</li>
-  <li>Yoga, in connection with other words, such as “hatha-, mantra-, and laya-,” referring to traditions specialising in particular techniques of yoga;</li>
-  <li>Yoga, as the goal of Yoga practice.</li>
-</ul>
-
-<p>Source: <a href="https://en.wikipedia.org/wiki/Yoga" target="_blank">Wikipedia</a></p>
-
-<p>Image Credits: <a href="https://pixabay.com">Pixabay</a></p>]]></content><author><name>john</name></author><category term="life" /><category term="work" /><summary type="html"><![CDATA[Yoga is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India. There is a broad variety of yoga schools, practices, and goals in Hinduism, Buddhism, and Jainism. Among the most well-known types of yoga are Hatha yoga and Rāja yoga. The origins of yoga have been speculated to date back to pre-Vedic Indian traditions; it is mentioned in the Rigveda,[note 1] but most likely developed around the sixth and fifth centuries BCE, in ancient India’s ascetic and śramaṇa movements. Learn more about this theme The chronology of earliest texts describing yoga-practices is unclear, varyingly credited to Hindu Upanishads. The Yoga Sutras of Patanjali date from the first half of the 1st millennium CE, but only gained prominence in the West in the 20th century. Hatha yoga texts emerged around the 11th century with origins in tantra. Yoga gurus from India later introduced yoga to the west, following the success of Swami Vivekananda in the late 19th and early 20th century. In the 1980s, yoga became popular as a system of physical exercise across the Western world. Etymology In Sanskrit, the word yoga comes from the root yuj which means “to add”, “to join”, “to unite”, or “to attach” in its most common senses. By figurative extension from the yoking or harnessing of oxen or horses, the word took on broader meanings such as “employment, use, application, performance” (compare the figurative uses of “to harness” as in “to put something to some use”). All further developments of the sense of this word are post-Vedic. More prosaic moods such as “exertion”, “endeavour”, “zeal”, and “diligence” are also found in Indian epic poetry. Goals The ultimate goal of Yoga is moksha (liberation), although the exact definition of what form this takes depends on the philosophical or theological system with which it is conjugated. According to Jacobsen, “Yoga has five principal meanings: Yoga, as a disciplined method for attaining a goal; Yoga, as techniques of controlling the body and the mind; Yoga, as a name of one of the schools or systems of philosophy (darśana); Yoga, in connection with other words, such as “hatha-, mantra-, and laya-,” referring to traditions specialising in particular techniques of yoga; Yoga, as the goal of Yoga practice. Source: Wikipedia Image Credits: Pixabay]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/julia-caesar-15080-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/julia-caesar-15080-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Go wherever you like!</title><link href="http://localhost:4000/blog/go-wherever-you-like/" rel="alternate" type="text/html" title="Go wherever you like!" /><published>2017-09-03T00:00:00+09:00</published><updated>2017-09-03T00:00:00+09:00</updated><id>http://localhost:4000/blog/go-wherever-you-like</id><content type="html" xml:base="http://localhost:4000/blog/go-wherever-you-like/"><![CDATA[<p>Goa is a state in India within the coastal region known as the Konkan in India. It is bounded by Maharashtra to the north and Karnataka to the east and south, with the Arabian Sea forming its Western coast. It is India’s smallest state by area and the fourth smallest by population.</p>
-
-<p>Goa has the highest GDP per capita among all Indian states, that is two and a half times that of the country. It was ranked the best placed state by the “Eleventh Finance Commission” for its infrastructure and ranked on top for the best quality of life in India by the National Commission on Population based on the 12 Indicators</p>
-
-<p><a href="/about/">Learn more about this theme</a></p>
-
-<h2 id="history">History</h2>
-
-<p>Rock art engravings found in Goa exhibit the earliest traces of human life in India.[8] Goa, situated within the Shimoga-Goa Greenstone Belt in the Western Ghats (an area composed of metavolcanics, iron formations and ferruginous quartzite), yields evidence for Acheulean occupation.</p>
-
-<h2 id="flora-and-fauna">Flora and fauna</h2>
-
-<p>Equatorial forest cover in Goa stands at 1,424 km2 (549.81 sq mi), most of which is owned by the government. Government owned forest is estimated at 1,224.38 km2 (472.74 sq mi) whilst private is given as 200 km2 (77.22 sq mi).</p>
-
-<p>Most of the forests in the state are located in the interior eastern regions of the state. The Western Ghats, which form most of eastern Goa, have been internationally recognised as one of the biodiversity hotspots of the world. In the February 1999 issue of National Geographic Magazine, Goa was compared with the Amazon and the Congo basins for its rich tropical biodiversity.</p>
-
-<h2 id="tourism">Tourism</h2>
-<p>Tourism is generally focused on the coastal areas of Goa, with decreased tourist activity inland. In 2010, there were more than two million tourists reported to have visited Goa, about 1.2 million of whom were from abroad. As of 2013 Goa was a destination of choice for Indian and foreign tourists, particularly Britons and Russians, with limited means who wanted to party.</p>
-
-<p><img src="/assets/images/travel-2614857_1280.jpg" alt="Best Jekyll Theme" /></p>
-
-<p>The state was hopeful that changes could be made which would attract a more upscale demographic. Goa also stands 6th in the Top 10 Nightlife cities in the world in a National Geographic Book. One of the biggest tourist attractions in Goa is water sports. Beaches like Baga and Calangute offer jet-skiing, parasailing, banana boat rides, water scooter rides and more.</p>
-
-<p>Source: <a href="https://en.wikipedia.org/wiki/Goa" target="_blank">Wikipedia</a></p>
-
-<p>Image Credits: <a href="https://pixabay.com">Pixabay</a></p>]]></content><author><name>john</name></author><category term="life" /><category term="travel" /><summary type="html"><![CDATA[Goa is a state in India within the coastal region known as the Konkan in India. It is bounded by Maharashtra to the north and Karnataka to the east and south, with the Arabian Sea forming its Western coast. It is India’s smallest state by area and the fourth smallest by population. Goa has the highest GDP per capita among all Indian states, that is two and a half times that of the country. It was ranked the best placed state by the “Eleventh Finance Commission” for its infrastructure and ranked on top for the best quality of life in India by the National Commission on Population based on the 12 Indicators Learn more about this theme History Rock art engravings found in Goa exhibit the earliest traces of human life in India.[8] Goa, situated within the Shimoga-Goa Greenstone Belt in the Western Ghats (an area composed of metavolcanics, iron formations and ferruginous quartzite), yields evidence for Acheulean occupation. Flora and fauna Equatorial forest cover in Goa stands at 1,424 km2 (549.81 sq mi), most of which is owned by the government. Government owned forest is estimated at 1,224.38 km2 (472.74 sq mi) whilst private is given as 200 km2 (77.22 sq mi). Most of the forests in the state are located in the interior eastern regions of the state. The Western Ghats, which form most of eastern Goa, have been internationally recognised as one of the biodiversity hotspots of the world. In the February 1999 issue of National Geographic Magazine, Goa was compared with the Amazon and the Congo basins for its rich tropical biodiversity. Tourism Tourism is generally focused on the coastal areas of Goa, with decreased tourist activity inland. In 2010, there were more than two million tourists reported to have visited Goa, about 1.2 million of whom were from abroad. As of 2013 Goa was a destination of choice for Indian and foreign tourists, particularly Britons and Russians, with limited means who wanted to party. The state was hopeful that changes could be made which would attract a more upscale demographic. Goa also stands 6th in the Top 10 Nightlife cities in the world in a National Geographic Book. One of the biggest tourist attractions in Goa is water sports. Beaches like Baga and Calangute offer jet-skiing, parasailing, banana boat rides, water scooter rides and more. Source: Wikipedia Image Credits: Pixabay]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ishan-seefromthesky-403804-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/ishan-seefromthesky-403804-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Learn whatever you want!</title><link href="http://localhost:4000/blog/learn-whatever-you-want/" rel="alternate" type="text/html" title="Learn whatever you want!" /><published>2017-09-02T00:00:00+09:00</published><updated>2017-09-02T00:00:00+09:00</updated><id>http://localhost:4000/blog/learn-whatever-you-want</id><content type="html" xml:base="http://localhost:4000/blog/learn-whatever-you-want/"><![CDATA[<p>Learning is the act of acquiring new or modifying and reinforcing existing knowledge, behaviors, skills, values, or preferences which may lead to a potential change in synthesizing information, depth of the knowledge, attitude or behavior relative to the type and range of experience.</p>
-
-<p>The ability to learn is possessed by humans, animals, plants and some machines. Progress over time tends to follow a learning curve.</p>
-
-<p><a href="/about/">Learn more about this theme</a></p>
-
-<p>Learning does not happen all at once, but it builds upon and is shaped by previous knowledge. To that end, learning may be viewed as a process, rather than a collection of factual and procedural knowledge. Learning produces changes in the organism and the changes produced are relatively permanent.</p>
-
-<h2 id="types">Types</h2>
-
-<h3 id="non-associative-learning">Non-associative learning</h3>
-<p>Non-associative learning refers to “a relatively permanent change in the strength of response to a single stimulus due to repeated exposure to that stimulus. Changes due to such factors as sensory adaptation, fatigue, or injury do not qualify as non-associative learning</p>
-
-<h3 id="active-learning">Active learning</h3>
-<p>Active learning occurs when a person takes control of his/her learning experience. Since understanding information is the key aspect of learning, it is important for learners to recognize what they understand and what they do not. By doing so, they can monitor their own mastery of subjects.</p>
-
-<p><img src="/assets/images/boys-1782427_1280.jpg" alt="Best Jekyll Theme" /></p>
-
-<p>Active learning encourages learners to have an internal dialogue in which they verbalize understandings. This and other meta-cognitive strategies can be taught to a child over time.</p>
-
-<p>Studies within metacognition have proven the value in active learning, claiming that the learning is usually at a stronger level as a result. In addition, learners have more incentive to learn when they have control over not only how they learn but also what they learn.</p>
-
-<p>Active learning is a key characteristic of student-centered learning. Conversely, passive learning and direct instruction are characteristics of teacher-centered learning (or traditional education).</p>
-
-<p>Source: <a href="https://en.wikipedia.org/wiki/Learning" target="_blank">Wikipedia</a></p>
-
-<p>Image Credits: <a href="https://pixabay.com">Pixabay</a></p>]]></content><author><name>john</name></author><category term="work" /><category term="projects" /><summary type="html"><![CDATA[Learning is the act of acquiring new or modifying and reinforcing existing knowledge, behaviors, skills, values, or preferences which may lead to a potential change in synthesizing information, depth of the knowledge, attitude or behavior relative to the type and range of experience. The ability to learn is possessed by humans, animals, plants and some machines. Progress over time tends to follow a learning curve. Learn more about this theme Learning does not happen all at once, but it builds upon and is shaped by previous knowledge. To that end, learning may be viewed as a process, rather than a collection of factual and procedural knowledge. Learning produces changes in the organism and the changes produced are relatively permanent. Types Non-associative learning Non-associative learning refers to “a relatively permanent change in the strength of response to a single stimulus due to repeated exposure to that stimulus. Changes due to such factors as sensory adaptation, fatigue, or injury do not qualify as non-associative learning Active learning Active learning occurs when a person takes control of his/her learning experience. Since understanding information is the key aspect of learning, it is important for learners to recognize what they understand and what they do not. By doing so, they can monitor their own mastery of subjects. Active learning encourages learners to have an internal dialogue in which they verbalize understandings. This and other meta-cognitive strategies can be taught to a child over time. Studies within metacognition have proven the value in active learning, claiming that the learning is usually at a stronger level as a result. In addition, learners have more incentive to learn when they have control over not only how they learn but also what they learn. Active learning is a key characteristic of student-centered learning. Conversely, passive learning and direct instruction are characteristics of teacher-centered learning (or traditional education). Source: Wikipedia Image Credits: Pixabay]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/perfecto-capucine-758998-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/perfecto-capucine-758998-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cm">/* cyclic loop */</span>
+<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* for LED output test */</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="o">++</span><span class="n">tick</span> <span class="o">%</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">ledval</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ledval</span> <span class="o">&gt;=</span> <span class="mh">0x100</span><span class="p">)</span>
+            <span class="n">ledval</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">;</span>
+        <span class="o">*</span><span class="p">(</span><span class="n">ec_slave</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">outputs</span><span class="p">)</span> <span class="o">=</span> <span class="n">ledval</span><span class="p">;</span>
+        <span class="n">tick</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cm">/* for LED output test */</span>
+    <span class="n">ec_send_processdata</span><span class="p">();</span>
+    <span class="n">wkc</span> <span class="o">=</span> <span class="n">ec_receive_processdata</span><span class="p">(</span><span class="n">EC_TIMEOUTRET</span><span class="p">);</span></code></pre></figure>
+
+<p>이제 다시 build 디렉토리로 돌아와서 빌드한다.
+다시 빌드할 때에는 make만 하면 된다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd</span> ../../../build/
+<span class="nv">$ </span>make</code></pre></figure>
+
+<p>이제 실행시켜보면 된다.</p>
+
+<iframe class="video" src="https://www.youtube.com/embed/CrT6T_HWt78" allowfullscreen="" frameborder="0"></iframe>]]></content><author><name>khlee</name></author><category term="EtherCAT" /><summary type="html"><![CDATA[라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" /><media:content medium="image" url="http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
