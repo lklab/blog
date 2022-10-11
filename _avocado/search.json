@@ -1,10 +1,10 @@
 [
   
     {
-      "category" : "EtherCAT",
+      "category" : "MDD",
       "title"    : "Automated PLC Application Generation Solution from UPPAAL Model : UPPAAL2PLC",
-      "description": "개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다..(repo : https://github.com/lkla...",
-      "content": "개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다..(repo : https://github.com/lkla...",
+      "description": "소개개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다.(repo : https://github.com/lkl...",
+      "content": "소개개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다.(repo : https://github.com/lkl...",
       "url"      : "/blog/UPPAAL2PLC/",
       "image"    : "/assets/post/17-07-24-UPPAAL2PLC/system_model.png",
       "author"   : "khlee"
