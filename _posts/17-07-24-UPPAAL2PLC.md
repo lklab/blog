@@ -9,7 +9,8 @@ layout: post
 
 ## 소개
 
-개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다..
+개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다.
+
 (repo : [https://github.com/lklab/Uppaal2PLC](https://github.com/lklab/Uppaal2PLC))
 
 UPPAAL2PLC는 작년에 수업 프로젝트로 시작해서 개인적으로 계속 진행하고 있던 프로젝트로, 소프트웨어 모델링 및 검증 툴인 [UPPAAL](https://uppaal.org/)을 통해 개발된 타임드 오토마타 모델을 PLC(Programmable Logic Controller)에서 동작하는 프로그램으로 자동 변환해주는 기능을 한다.
