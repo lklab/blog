@@ -3,7 +3,7 @@ title: SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들�
 image: /assets/post/17-07-17-EtherCAT/20170529_143851.jpg
 author: khlee
 categories:
-  - EtherCAT
+    - EtherCAT
 layout: post
 ---
 

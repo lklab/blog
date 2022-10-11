@@ -2,6 +2,17 @@
   
     {
       "category" : "EtherCAT",
+      "title"    : "Automated PLC Application Generation Solution from UPPAAL Model : UPPAAL2PLC",
+      "description": "개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다..(repo : https://github.com/lkla...",
+      "content": "개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다..(repo : https://github.com/lkla...",
+      "url"      : "/blog/UPPAAL2PLC/",
+      "image"    : "/assets/post/17-07-24-UPPAAL2PLC/system_model.png",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
+      "category" : "EtherCAT",
       "title"    : "SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기",
       "description": "라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 ...",
       "content": "라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 ...",
