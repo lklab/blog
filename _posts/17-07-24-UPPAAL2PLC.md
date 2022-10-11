@@ -3,7 +3,7 @@ title: "Automated PLC Application Generation Solution from UPPAAL Model : UPPAAL
 image: /assets/post/17-07-24-UPPAAL2PLC/system_model.png
 author: khlee
 categories:
-    - EtherCAT
+    - MDD
 layout: post
 ---
 
