@@ -26,8 +26,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다." />
 <meta property="og:description" content="라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다." />
-<link rel="canonical" href="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" />
-<meta property="og:url" content="http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" />
+<link rel="canonical" href="http://localhost:4000/blog/Raspberry-Pi-EtherCAT/" />
+<meta property="og:url" content="http://localhost:4000/blog/Raspberry-Pi-EtherCAT/" />
 <meta property="og:site_name" content="lklab" />
 <meta property="og:image" content="http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" />
 <meta property="og:type" content="article" />
@@ -36,7 +36,7 @@
 <meta property="twitter:image" content="http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg" />
 <meta property="twitter:title" content="SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-07-17T00:00:00+09:00","datePublished":"2017-07-17T00:00:00+09:00","description":"라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.","headline":"SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기","image":"http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"},"url":"http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-07-17T00:00:00+09:00","datePublished":"2017-07-17T00:00:00+09:00","description":"라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다. 라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.","headline":"SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기","image":"http://localhost:4000/assets/post/17-07-17-EtherCAT/20170529_143851.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/Raspberry-Pi-EtherCAT/"},"url":"http://localhost:4000/blog/Raspberry-Pi-EtherCAT/"}</script>
 <!-- End Jekyll SEO tag -->
  
 
@@ -378,27 +378,27 @@ EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있
 	<div class="col-md-12">
 		<div class="share-box">
 			<i class="fa fa-share-alt" aria-hidden="true"></i>
-			<a class="f nostyle" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"
+			<a class="f nostyle" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/Raspberry-Pi-EtherCAT/"
 				onclick="window.open(this.href, 'mywin',
             'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
 					class="fa fa-facebook-official fa"></i></a>
-			<a class="t nostyle" href="https://twitter.com/intent/tweet?text=&url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"
+			<a class="t nostyle" href="https://twitter.com/intent/tweet?text=&url=http://localhost:4000/blog/Raspberry-Pi-EtherCAT/"
 				onclick="window.open(this.href, 'mywin',
             'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
 					class="fa fa-twitter fa"></i></a>
-			<a class="g nostyle" href="https://plus.google.com/share?url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" onclick="window.open(this.href, 'mywin',
+			<a class="g nostyle" href="https://plus.google.com/share?url=http://localhost:4000/blog/Raspberry-Pi-EtherCAT/" onclick="window.open(this.href, 'mywin',
             'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
 					class="fa fa-google-plus fa"></i></a>
-			<a class="r nostyle" href="http://www.reddit.com/submit?url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/" onclick="window.open(this.href, 'mywin',
+			<a class="r nostyle" href="http://www.reddit.com/submit?url=http://localhost:4000/blog/Raspberry-Pi-EtherCAT/" onclick="window.open(this.href, 'mywin',
             'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i
 					class="fa fa-reddit fa"></i></a>
 			<a class="l nostyle"
-				href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/&title=&summary=&source=webjeda"
+				href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/blog/Raspberry-Pi-EtherCAT/&title=&summary=&source=webjeda"
 				onclick="window.open(this.href, 'mywin',
             'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i
 					class="fa fa-linkedin fa"></i></a>
 			<a class="e nostyle"
-				href="mailto:?subject=&amp;body=Check&amp;out&amp;this&amp;site&amp;http://localhost:4000/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/"><i
+				href="mailto:?subject=&amp;body=Check&amp;out&amp;this&amp;site&amp;http://localhost:4000/blog/Raspberry-Pi-EtherCAT/"><i
 					class="fa fa-envelope fa"></i></a>
 		</div>
 	</div>
@@ -504,7 +504,7 @@ EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있
         <h3>Latest Posts</h3>
         <ul>
           
-          <li><a href="/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</a></li>
+          <li><a href="/blog/Raspberry-Pi-EtherCAT/">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</a></li>
           
         </ul>
       </div>

@@ -5,7 +5,7 @@
       "title"    : "SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기",
       "description": "라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 ...",
       "content": "라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 ...",
-      "url"      : "/blog/SOEM%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%EB%A5%BC-EtherCAT-%EB%A7%88%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/",
+      "url"      : "/blog/Raspberry-Pi-EtherCAT/",
       "image"    : "/assets/post/17-07-17-EtherCAT/20170529_143851.jpg",
       "author"   : "khlee"
     } 

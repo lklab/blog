@@ -12,6 +12,7 @@ email: khlee.avo@gmail.com # The contact form submission will be done to this em
 phone: 
 url: https://lklab.github.io/blog/
 suburl: /blog
+#suburl: 
 default-image: /assets/images/avocado-cover.png # This image will be shown on sharing any page on social media. For example: Homepage, about page etc. This image should be bigger than 200x200px. This image is not used for posts. Posts use their own image mentioned in individual posts.
 
 # Author details shows up at the end of every article
