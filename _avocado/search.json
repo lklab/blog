@@ -1,6 +1,17 @@
 [
   
     {
+      "category" : "Machine Learning",
+      "title"    : "mldivide ('\')를 활용한 linear regression",
+      "description": "정의행렬 왼쪽 나눗셈(mldivide, \)은 행렬 , , 로 이루어진 다음 시스템에 대해다음과 같이 정의된다.A가 역행렬이 존재하는 정사...",
+      "content": "정의행렬 왼쪽 나눗셈(mldivide, \)은 행렬 , , 로 이루어진 다음 시스템에 대해다음과 같이 정의된다.A가 역행렬이 존재하는 정사...",
+      "url"      : "/blog/mldivide/",
+      "image"    : "/assets/post/17-10-17-mldivide/mldivide.jpeg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
       "category" : "Build system",
       "title"    : "cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기",
       "description": "개요이번 글에서는 제목과 같이 cmake 툴을 활용해서 Windows와 Linux 모두에서 빌드할 수 있는 프로젝트를 만들어 볼 것이다. ...",
