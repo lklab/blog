@@ -62,8 +62,8 @@
 				text-transform: uppercase;
 			}
 
-			img, iframe {
-				margin: 1em 0;
+			img:not(.custom-align-center-img), iframe {
+				margin: 1em auto;
 			}
 
 			> p {
