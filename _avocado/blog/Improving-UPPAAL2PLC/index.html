@@ -355,8 +355,8 @@ invariant가 없다면 전이 조건 tickClock &gt;= PERIOD가 참이 되었다�
 
 <p>location에도 채널처럼 타입이 존재한다. 일반 location은 별도의 제약이 없는 일반적인 location이며 의미론에서는 조건이 만족하면 이 상태에서 계속 머무를 수 있다. urgent location은 이 location에 들어온 시점부터 나가는 시점까지 시간이 흐르지 않아야 하는 것을 의미한다. 차이점은 urgent location은 단지 시간이 흐르지만 않으면 될 뿐이지만 committed location은 다른 태스크의 전이보다 반드시 해당 location에서 빠져나가는 전이가 먼저 수행되어야 한다는 것이다.</p>
 
-<p><img src="/blog/assets/post/17-07-26-UPPAAL2PLC/committed_location.png" alt="committed location" class="custom-align-center-img" />
-<img src="/blog/assets/post/17-07-26-UPPAAL2PLC/urgent_location.png" alt="urgent location" class="custom-align-center-img" />
+<p><img src="/blog/assets/post/17-07-26-UPPAAL2PLC/urgent_location.png" alt="urgent location" class="custom-align-center-img" />
+<img src="/blog/assets/post/17-07-26-UPPAAL2PLC/committed_location.png" alt="committed location" class="custom-align-center-img" />
 <em class="custom-caption">&lt;urgent location과 committed location&gt;</em></p>
 
 <p>위 그림의 경우 가능한 트레이스는 다음과 같다.</p>
