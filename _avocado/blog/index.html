@@ -30,6 +30,7 @@
 <meta property="og:url" content="http://localhost:4000/blog/" />
 <meta property="og:site_name" content="lklab" />
 <meta property="og:type" content="website" />
+<link rel="next" href="http://localhost:4000/blog/page2/" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Articles" />
 <script type="application/ld+json">
@@ -215,29 +216,40 @@ Making any change will effect all the pages(not posts) -->
   <div class="row">
     <div class="col-lg-8">
       
+      <a class="nostyle" href="/blog/Unity-Bluetooth-Controller/">
+        <div class="row cards blog-list rev">
+          <div class="col-md-4 image" style="background-image: url(/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg);">
+          </div>
+          <div class="col-md-8 content">
+            <h3 class="blog-index-title">Unity에서 Bluetooth Controller 제어</h3>
+            
+            <p class="description">VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.
+
+
+
+집에 도착한 모습
+
+
+
+
+Xbox 컨트롤러와 유사한 구조를 갖고 있다.
+
+Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이 어떻게 매핑되어 있는지 알아야 한다. 직접 테스트해본 결과 다음 그림과 같이 매핑되어 있었...</p>
+            
+          </div>
+        </div>
+      </a>
+
+      
       <a class="nostyle" href="/blog/mldivide/">
         <div class="row cards blog-list rev">
           <div class="col-md-4 image" style="background-image: url(/assets/post/17-10-17-mldivide/mldivide.jpeg);">
           </div>
           <div class="col-md-8 content">
             <h3 class="blog-index-title">mldivide ('\')를 활용한 linear regression</h3>
-            <p class="description">정의
-
-행렬 왼쪽 나눗셈(mldivide, \)은 행렬 , , 로 이루어진 다음 시스템에 대해
-
-
-
-다음과 같이 정의된다.
-
-
-
-
-
-A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계산할 수 있다.
-
-
-
-그러나 mldivide는 A의 역행렬이 존재하지 않거나 심지어 정사각 행렬이 아닐 경우에도 정의되는데, 이를 계산하기 위해 ...</p>
+            
+            <p class="description">행렬 왼쪽 나눗셈이 linear regression으로 동작하는 원리에 대해 서술한다.</p>
+            
           </div>
         </div>
       </a>
@@ -249,12 +261,14 @@ A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계�
           </div>
           <div class="col-md-8 content">
             <h3 class="blog-index-title">cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</h3>
+            
             <p class="description">개요
 
 이번 글에서는 제목과 같이 cmake 툴을 활용해서 Windows와 Linux 모두에서 빌드할 수 있는 프로젝트를 만들어 볼 것이다. 우선 cmake는 소스코드들과 그 결과물인 바이너리, 라이브러리의 구조를 추상화해서 빌드 플랫폼에 의존적인 Makefile(이나 등등)을 생성해내는 도구이다. 자세한건 여기를 참고하자.
 
 설치
 ...</p>
+            
           </div>
         </div>
       </a>
@@ -266,8 +280,10 @@ A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계�
           </div>
           <div class="col-md-8 content">
             <h3 class="blog-index-title">UPPAAL2PLC 개선작업</h3>
+            
             <p class="description">지난 글에서 소개한 UPPAAL2PLC는 아직 개선해야 할 점이 남아있다. 현재 UPPAAL2PLC는 UPPAAL에서 모델링 가능한 모든 모델을 지원하지 못하고 제한적으로 지원한다. 예를 들어 태스크는 하나만 있어야 하고, 비결정적 전이를 올바르게 구현하지 않는다는 제한사항이 있다.
 이번 글에서는 UPPAAL2PLC의 추후 개선 방향...</p>
+            
           </div>
         </div>
       </a>
@@ -279,6 +295,7 @@ A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계�
           </div>
           <div class="col-md-8 content">
             <h3 class="blog-index-title">UPPAAL2PLC</h3>
+            
             <p class="description">소개
 
 개인적으로 개발 중인 UPPAAL2PLC의 1차 버전을 github에 릴리즈했다.
@@ -286,25 +303,7 @@ A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계�
 (repo : https://github.com/lklab/Uppaal2PLC)
 
 UPPAAL2PLC는 작년에 수업 프로젝트로 시작해서 개인적으로 계속 진행하고 있던 프로젝트로, 소프트웨어 모델링 및 검증 툴인 UPPAAL을 통해 개발된 타임드...</p>
-          </div>
-        </div>
-      </a>
-
-      
-      <a class="nostyle" href="/blog/Raspberry-Pi-EtherCAT/">
-        <div class="row cards blog-list rev">
-          <div class="col-md-4 image" style="background-image: url(/assets/post/17-07-17-EtherCAT/20170529_143851.jpg);">
-          </div>
-          <div class="col-md-8 content">
-            <h3 class="blog-index-title">SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</h3>
-            <p class="description">라즈베리파이에 SOEM을 설치하여 EtherCAT 마스터로 동작하도록 할 것이다.
-라즈베리파이는 B+ 모델을 사용했으며, OS로 2017년 03월 02일 버전 raspbian-jessie를 사용했다.
-
-준비하기
-
-먼저 최신 버전의 SOEM을 다운로드 받는다.
-
-$ git clone https://github.com/OpenEtherC...</p>
+            
           </div>
         </div>
       </a>
@@ -313,6 +312,26 @@ $ git clone https://github.com/OpenEtherC...</p>
     </div>
   </div>
   
+<div class="wj-pagination">
+	
+	<span>&laquo; Prev</span>
+	
+
+	
+	
+	<span class="active">1</span>
+	
+	
+	
+	<a href="/blog/page2/">2</a>
+	
+	
+
+	
+	<a href="/blog/page2/">Next &raquo;</a>
+	
+</div>
+
 </div>
         </article>
       </div>
@@ -350,13 +369,13 @@ $ git clone https://github.com/OpenEtherC...</p>
         <h3>Latest Posts</h3>
         <ul>
           
+          <li><a href="/blog/Unity-Bluetooth-Controller/">Unity에서 Bluetooth Controller 제어</a></li>
+          
           <li><a href="/blog/mldivide/">mldivide ('\')를 활용한 linear regression</a></li>
           
           <li><a href="/blog/cmake/">cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</a></li>
           
           <li><a href="/blog/Improving-UPPAAL2PLC/">UPPAAL2PLC 개선작업</a></li>
-          
-          <li><a href="/blog/UPPAAL2PLC/">UPPAAL2PLC</a></li>
           
         </ul>
       </div>

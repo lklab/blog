@@ -1,10 +1,21 @@
 [
   
     {
+      "category" : "Unity",
+      "title"    : "Unity에서 Bluetooth Controller 제어",
+      "description": "VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox 컨트롤러와 ...",
+      "content": "VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox 컨트롤러와 ...",
+      "url"      : "/blog/Unity-Bluetooth-Controller/",
+      "image"    : "/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
       "category" : "Machine Learning",
       "title"    : "mldivide ('\')를 활용한 linear regression",
-      "description": "정의행렬 왼쪽 나눗셈(mldivide, \)은 행렬 , , 로 이루어진 다음 시스템에 대해다음과 같이 정의된다.A가 역행렬이 존재하는 정사...",
-      "content": "정의행렬 왼쪽 나눗셈(mldivide, \)은 행렬 , , 로 이루어진 다음 시스템에 대해다음과 같이 정의된다.A가 역행렬이 존재하는 정사...",
+      "description": "정의행렬 왼쪽 나눗셈(mldivide, \)은 행렬 , , 로 이루어진 다음 시스템에 대해다음과 같이 정의된다.가 역행렬이 존재하는 정사각...",
+      "content": "정의행렬 왼쪽 나눗셈(mldivide, \)은 행렬 , , 로 이루어진 다음 시스템에 대해다음과 같이 정의된다.가 역행렬이 존재하는 정사각...",
       "url"      : "/blog/mldivide/",
       "image"    : "/assets/post/17-10-17-mldivide/mldivide.jpeg",
       "author"   : "khlee"

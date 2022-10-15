@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-15T16:27:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">mldivide (‘\‘)를 활용한 linear regression</title><link href="http://localhost:4000/blog/mldivide/" rel="alternate" type="text/html" title="mldivide (‘\‘)를 활용한 linear regression" /><published>2017-10-17T00:00:00+09:00</published><updated>2017-10-17T00:00:00+09:00</updated><id>http://localhost:4000/blog/mldivide</id><content type="html" xml:base="http://localhost:4000/blog/mldivide/"><![CDATA[<h2 id="정의">정의</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-16T00:00:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">Unity에서 Bluetooth Controller 제어</title><link href="http://localhost:4000/blog/Unity-Bluetooth-Controller/" rel="alternate" type="text/html" title="Unity에서 Bluetooth Controller 제어" /><published>2017-10-18T00:00:00+09:00</published><updated>2017-10-18T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unity-Bluetooth-Controller</id><content type="html" xml:base="http://localhost:4000/blog/Unity-Bluetooth-Controller/"><![CDATA[<p>VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.</p>
+
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_01.jpeg" alt="controller" class="custom-align-center-img" /></p>
+
+<p>집에 도착한 모습</p>
+
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" alt="controller" class="custom-align-center-img" />
+<img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_03.jpeg" alt="controller" class="custom-align-center-img" /></p>
+
+<p>Xbox 컨트롤러와 유사한 구조를 갖고 있다.</p>
+
+<p>Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이 어떻게 매핑되어 있는지 알아야 한다. 직접 테스트해본 결과 다음 그림과 같이 매핑되어 있었다.</p>
+
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/mapping.png" alt="mapping" /></p>
+
+<p>OS와 컨트롤러에 따라 매핑 정보는 달라질 수 있다. 따라서 출시되는 VR 앱에는 이를 잘 파악하여 동적으로 매핑 정보를 파악할 수 있도록 해야 한다.</p>
+
+<p>그림에서 “JoystickButton*” 로 매핑되는 버튼은 Digital 값이고, “*th axis”로 매핑되는 조이스틱이나 버튼은 Analog 값이다. Digital인가 Analog인가에 따라 Unity에서 값을 읽어오는 방식이 다르다.
+(LT, RT 버튼은 Digital과 Analog 방식 모두 동작한다.)</p>
+
+<p>먼저 Digital 값은 스크립트에서 다음과 같이 쉽게 읽어올 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">bool</span> <span class="n">key_value</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">JoystickButton0</span><span class="p">);</span></code></pre></figure>
+
+<p><a href="https://docs.unity3d.com/kr/current/ScriptReference/KeyCode.html">Unity reference</a>를 확인해 보면 <code class="highlighter-rouge">KeyCode</code>의 다양한 값을 볼 수 있다. 최대 8개까지의 조이스틱(컨트롤러)를 구분할 수 있으며 각 컨트롤러마다 최대 20개의 버튼을 구분할 수 있다. 이 값을 <code class="highlighter-rouge">Input.GetKey()</code> 함수의 인자로 주면 버튼 값을 <code class="highlighter-rouge">True</code>나 <code class="highlighter-rouge">False</code>로 돌려 준다. 물론 <code class="highlighter-rouge">Input.GetKeyDown()</code> 이나 <code class="highlighter-rouge">Input.GetKeyUp()</code> 등의 다른 함수도 사용할 수 있다.</p>
+
+<p>Analog 값은 조금 복잡한데, 우선 스크립트에서 읽는 방법은 다음과 같다. -1.0 ~ 1.0 범위의 값을 얻을 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">float</span> <span class="n">key_value</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetAxis</span><span class="p">(</span><span class="s">"Horizontal"</span><span class="p">);</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">Input.GetAxis()</code> 함수를 사용하는데, 인자로 주는 string은 읽으려는 axis의 이름이다. Unity는 기본적으로 컨트롤러의 첫 번째 조이스틱에 <code class="highlighter-rouge">"Horizontal"</code>, <code class="highlighter-rouge">"Vertical"</code> axis가 매핑되어 있다. 이러한 정보는 Edit -&gt; Project Settings -&gt; Input에서 설정 가능하다.</p>
+
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/input_settings.png" alt="input settings" /></p>
+
+<p>설정 창을 열게 되면 Inspector에 다음과 같이 InputManager가 보일 것이다.</p>
+
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/input_manager.png" alt="input manager" /></p>
+
+<p>다양한 Axis 이름들이 정의되어 있는데, 그 중에서 <code class="highlighter-rouge">"Horizontal"</code>, <code class="highlighter-rouge">"Vertical"</code> axis가 미리 정의되어 있는 것을 볼 수 있다. 또 다른 Analog 입력을 추가하고 싶다면 InputManager의 가장 위에 있는 속성인 <code class="highlighter-rouge">Size</code> 값을 늘린 후에 추가된 항목에 값을 채워넣으면 된다.</p>
+
+<p>여기서는 다음과 같이 오른쪽 조이스틱을 입력으로 추가했다.</p>
+
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/joystick_settings.png" alt="joystick settings" /></p>
+
+<p>각 속성에 대한 상세한 내용은 <a href="https://docs.unity3d.com/kr/2018.4/Manual/ConventionalGameInput.html">여기</a> 참조</p>
+
+<p>가장 위에 있는 Name 속성에 입력하는 string을 스크립트에서 <code class="highlighter-rouge">Input.GetAxis()</code> 등의 함수에 인자로 사용하여 해당 Analog 입력 값을 받아올 수 있다. Axis 속성에는 앞서 언급했던, 버튼과 조이스틱이 매핑된 axis를 선택하면 된다. 오른쪽 조이스틱은 X 축이 3rd axis에, Y 축이 4th axis에 매핑되어 있다고 했으므로 그에 맞게 설정하였다.</p>]]></content><author><name>khlee</name></author><category term="Unity" /><summary type="html"><![CDATA[VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">mldivide (‘\‘)를 활용한 linear regression</title><link href="http://localhost:4000/blog/mldivide/" rel="alternate" type="text/html" title="mldivide (‘\‘)를 활용한 linear regression" /><published>2017-10-17T00:00:00+09:00</published><updated>2017-10-17T00:00:00+09:00</updated><id>http://localhost:4000/blog/mldivide</id><content type="html" xml:base="http://localhost:4000/blog/mldivide/"><![CDATA[<h2 id="정의">정의</h2>
 
 <p>행렬 왼쪽 나눗셈(mldivide, \)은 행렬 <script type="math/tex">A</script>, <script type="math/tex">X</script>, <script type="math/tex">Y</script>로 이루어진 다음 시스템에 대해</p>
 
@@ -10,11 +56,11 @@
 
 <script type="math/tex; mode=display">A \times (A \setminus Y) = Y</script>
 
-<p>A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계산할 수 있다.</p>
+<p><script type="math/tex">A</script>가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계산할 수 있다.</p>
 
 <script type="math/tex; mode=display">A \setminus Y = A^{-1} \times Y = X</script>
 
-<p>그러나 mldivide는 A의 역행렬이 존재하지 않거나 심지어 정사각 행렬이 아닐 경우에도 정의되는데, 이를 계산하기 위해 다음 링크에 있는 MATLAB 문서는 다음과 같이 그 알고리즘을 설명하고 있다.</p>
+<p>그러나 mldivide는 <script type="math/tex">A</script>의 역행렬이 존재하지 않거나 심지어 정사각 행렬이 아닐 경우에도 정의되는데, 이를 계산하기 위해 다음 링크에 있는 MATLAB 문서는 다음과 같이 그 알고리즘을 설명하고 있다.</p>
 
 <p><a href="https://kr.mathworks.com/help/matlab/ref/mldivide.html#bt4jslc-6">https://kr.mathworks.com/help/matlab/ref/mldivide.html#bt4jslc-6</a></p>
 
@@ -264,7 +310,7 @@ X=
   </tbody>
 </table>
 
-<p>경우에 따라 다른 방법의 성능이 더 좋을 수 있으며, 데이터의 특성에 따라 적절한 방법을 선택해야 한다.</p>]]></content><author><name>khlee</name></author><category term="Machine Learning" /><summary type="html"><![CDATA[정의]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/post/17-10-17-mldivide/mldivide.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/post/17-10-17-mldivide/mldivide.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</title><link href="http://localhost:4000/blog/cmake/" rel="alternate" type="text/html" title="cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기" /><published>2017-07-31T00:00:00+09:00</published><updated>2017-07-31T00:00:00+09:00</updated><id>http://localhost:4000/blog/cmake</id><content type="html" xml:base="http://localhost:4000/blog/cmake/"><![CDATA[<h2 id="개요">개요</h2>
+<p>경우에 따라 다른 방법의 성능이 더 좋을 수 있으며, 데이터의 특성에 따라 적절한 방법을 선택해야 한다.</p>]]></content><author><name>khlee</name></author><category term="Machine Learning" /><summary type="html"><![CDATA[행렬 왼쪽 나눗셈이 linear regression으로 동작하는 원리에 대해 서술한다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/post/17-10-17-mldivide/mldivide.jpeg" /><media:content medium="image" url="http://localhost:4000/assets/post/17-10-17-mldivide/mldivide.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</title><link href="http://localhost:4000/blog/cmake/" rel="alternate" type="text/html" title="cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기" /><published>2017-07-31T00:00:00+09:00</published><updated>2017-07-31T00:00:00+09:00</updated><id>http://localhost:4000/blog/cmake</id><content type="html" xml:base="http://localhost:4000/blog/cmake/"><![CDATA[<h2 id="개요">개요</h2>
 
 <p>이번 글에서는 제목과 같이 cmake 툴을 활용해서 Windows와 Linux 모두에서 빌드할 수 있는 프로젝트를 만들어 볼 것이다. 우선 cmake는 소스코드들과 그 결과물인 바이너리, 라이브러리의 구조를 추상화해서 빌드 플랫폼에 의존적인 Makefile(이나 등등)을 생성해내는 도구이다. 자세한건 <a href="https://www.tuwlab.com/ece/27234">여기</a>를 참고하자.</p>
 

@@ -19,24 +19,24 @@
     <!-- Prefetch disqus DNS for faster page speed -->
     <link rel="dns-prefetch" href="https://lklab-github-io-blog.disqus.com/" />
       <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기 | lklab</title>
+<title>Unity에서 Bluetooth Controller 제어 | lklab</title>
 <meta name="generator" content="Jekyll v3.8.4" />
-<meta property="og:title" content="cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기" />
+<meta property="og:title" content="Unity에서 Bluetooth Controller 제어" />
 <meta name="author" content="khlee" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="개요" />
-<meta property="og:description" content="개요" />
-<link rel="canonical" href="http://localhost:4000/blog/cmake/" />
-<meta property="og:url" content="http://localhost:4000/blog/cmake/" />
+<meta name="description" content="VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다." />
+<meta property="og:description" content="VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다." />
+<link rel="canonical" href="http://localhost:4000/blog/Unity-Bluetooth-Controller/" />
+<meta property="og:url" content="http://localhost:4000/blog/Unity-Bluetooth-Controller/" />
 <meta property="og:site_name" content="lklab" />
-<meta property="og:image" content="http://localhost:4000/assets/post/17-07-31-cmake/cmake_logo.png" />
+<meta property="og:image" content="http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-07-31T00:00:00+09:00" />
+<meta property="article:published_time" content="2017-10-18T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/post/17-07-31-cmake/cmake_logo.png" />
-<meta property="twitter:title" content="cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기" />
+<meta property="twitter:image" content="http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" />
+<meta property="twitter:title" content="Unity에서 Bluetooth Controller 제어" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-07-31T00:00:00+09:00","datePublished":"2017-07-31T00:00:00+09:00","description":"개요","headline":"cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기","image":"http://localhost:4000/assets/post/17-07-31-cmake/cmake_logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/cmake/"},"url":"http://localhost:4000/blog/cmake/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-10-18T00:00:00+09:00","datePublished":"2017-10-18T00:00:00+09:00","description":"VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.","headline":"Unity에서 Bluetooth Controller 제어","image":"http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/Unity-Bluetooth-Controller/"},"url":"http://localhost:4000/blog/Unity-Bluetooth-Controller/"}</script>
 <!-- End Jekyll SEO tag -->
  
 
@@ -194,8 +194,8 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 <div class="post">
   <main>
     <header class="position-relative text-center rev">
-      <div class="header-image" style="background-image: url(/assets/post/17-07-31-cmake/cmake_logo.png)"></div>
-      <h1 class="post-title position-absolute">cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</h1>
+      <div class="header-image" style="background-image: url(/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg)"></div>
+      <h1 class="post-title position-absolute">Unity에서 Bluetooth Controller 제어</h1>
     </header>
     <div class="container">
       <div class="blog-content pd">
@@ -210,7 +210,7 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 	
 	
 	
-	<li><a href="#">cmake를 활용하여 windo...</a></li>
+	<li><a href="#">Unity에서 Bluetooth...</a></li>
 	
 	
 </ul>
@@ -222,7 +222,7 @@ This layout is used for posts. Changing anything here will affect all posts(not 
           <div class="col-md-12 meta">
             <p><small>
                 <span>
-                  <i class="fa fa-calendar" aria-hidden="true"></i> 31 Jul 2017&nbsp;
+                  <i class="fa fa-calendar" aria-hidden="true"></i> 18 Oct 2017&nbsp;
                 </span>
                 <span>
                   <i class="fa fa-user" aria-hidden="true"></i> Khlee&nbsp;
@@ -239,90 +239,62 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 
             <article>
               
-<ul class="toc rev clearfix">
-  <li><a href="#개요">개요</a></li>
-  <li><a href="#설치">설치</a></li>
-  <li><a href="#플랫폼별-분기">플랫폼별 분기</a></li>
-  <li><a href="#빌드">빌드</a></li>
-</ul>
 
 
-              <h2 id="개요">개요</h2>
+              <p>VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.</p>
 
-<p>이번 글에서는 제목과 같이 cmake 툴을 활용해서 Windows와 Linux 모두에서 빌드할 수 있는 프로젝트를 만들어 볼 것이다. 우선 cmake는 소스코드들과 그 결과물인 바이너리, 라이브러리의 구조를 추상화해서 빌드 플랫폼에 의존적인 Makefile(이나 등등)을 생성해내는 도구이다. 자세한건 <a href="https://www.tuwlab.com/ece/27234">여기</a>를 참고하자.</p>
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_01.jpeg" alt="controller" class="custom-align-center-img" /></p>
 
-<h2 id="설치">설치</h2>
+<p>집에 도착한 모습</p>
 
-<p>먼저 cmake를 설치한다. <a href="https://cmake.org/download/">https://cmake.org/download/</a> 이 사이트에서 플랫폼에 맞는 바이너리를 받을 수도 있고 아니면 <a href="https://lklab.github.io/blog/blog/Raspberry-Pi-EtherCAT/">https://lklab.github.io/blog/blog/Raspberry-Pi-EtherCAT/</a> 처럼 소스코드를 받아서 직접 빌드할 수도 있다.</p>
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" alt="controller" class="custom-align-center-img" />
+<img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_03.jpeg" alt="controller" class="custom-align-center-img" /></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>apt-get <span class="nb">install </span>cmake</code></pre></figure>
+<p>Xbox 컨트롤러와 유사한 구조를 갖고 있다.</p>
 
-<p>이렇게 해도 된다.</p>
+<p>Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이 어떻게 매핑되어 있는지 알아야 한다. 직접 테스트해본 결과 다음 그림과 같이 매핑되어 있었다.</p>
 
-<h2 id="플랫폼별-분기">플랫폼별 분기</h2>
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/mapping.png" alt="mapping" /></p>
 
-<p><a href="https://github.com/lklab/cmake_test">예제</a>를 기준으로 Windows와 Linux 각각 플랫폼에 대해 다른 빌드 구조나 소스코드를 선택하는 법과, 실제 빌드를 어떻게 수행하는지 알아볼 것이다.</p>
+<p>OS와 컨트롤러에 따라 매핑 정보는 달라질 수 있다. 따라서 출시되는 VR 앱에는 이를 잘 파악하여 동적으로 매핑 정보를 파악할 수 있도록 해야 한다.</p>
 
-<p>먼저 cmake의 빌드 구조를 정의한 CMakeLists.txt 파일에서는 현재 빌드 플랫폼이 무엇인지 다음과 같이 확인할 수 있다.</p>
+<p>그림에서 “JoystickButton*” 로 매핑되는 버튼은 Digital 값이고, “*th axis”로 매핑되는 조이스틱이나 버튼은 Analog 값이다. Digital인가 Analog인가에 따라 Unity에서 값을 읽어오는 방식이 다르다.
+(LT, RT 버튼은 Digital과 Analog 방식 모두 동작한다.)</p>
 
-<figure class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nb">if</span><span class="p">(</span>WIN32<span class="p">)</span>
-    <span class="nb">message</span><span class="p">(</span><span class="s2">"win 32 build!"</span><span class="p">)</span>
-<span class="nb">elseif</span><span class="p">(</span>UNIX<span class="p">)</span>
-    <span class="nb">message</span><span class="p">(</span><span class="s2">"linux build!"</span><span class="p">)</span>
-<span class="nb">endif</span><span class="p">()</span></code></pre></figure>
+<p>먼저 Digital 값은 스크립트에서 다음과 같이 쉽게 읽어올 수 있다.</p>
 
-<p><code class="highlighter-rouge">if</code>문과 <code class="highlighter-rouge">WIN32</code>, <code class="highlighter-rouge">UNIX</code> 키워드를 통해서 확인이 가능하다. Windows 64 타겟으로 빌드할 때에도 <code class="highlighter-rouge">WIN32</code> 키워드가 활성화된다. 이 분기문을 통해 각 빌드 플랫폼에 따라 서로 다른 소스코드나 라이브러리를 선택하는 등의 빌드 구조를 정의할 수 있다.</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">bool</span> <span class="n">key_value</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">JoystickButton0</span><span class="p">);</span></code></pre></figure>
 
-<p>타겟 플랫폼에 따라 소스코드 파일을 따로 작성할 수도 있지만 그 양이 많지 않다면 한 소스파일 내에서 전처리기 매크로로 구분하는 방법도 좋다.</p>
+<p><a href="https://docs.unity3d.com/kr/current/ScriptReference/KeyCode.html">Unity reference</a>를 확인해 보면 <code class="highlighter-rouge">KeyCode</code>의 다양한 값을 볼 수 있다. 최대 8개까지의 조이스틱(컨트롤러)를 구분할 수 있으며 각 컨트롤러마다 최대 20개의 버튼을 구분할 수 있다. 이 값을 <code class="highlighter-rouge">Input.GetKey()</code> 함수의 인자로 주면 버튼 값을 <code class="highlighter-rouge">True</code>나 <code class="highlighter-rouge">False</code>로 돌려 준다. 물론 <code class="highlighter-rouge">Input.GetKeyDown()</code> 이나 <code class="highlighter-rouge">Input.GetKeyUp()</code> 등의 다른 함수도 사용할 수 있다.</p>
 
-<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#if defined(_WIN64)
-</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"_WIN64!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cp">#elif defined(_WIN32)
-</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"_WIN32!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-<span class="cp">#elif defined(__linux__)
-</span>    <span class="n">printf</span><span class="p">(</span><span class="s">"__linux__"</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"64!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">"32!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="cp">#endif</span></code></pre></figure>
+<p>Analog 값은 조금 복잡한데, 우선 스크립트에서 읽는 방법은 다음과 같다. -1.0 ~ 1.0 범위의 값을 얻을 수 있다.</p>
 
-<h2 id="빌드">빌드</h2>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">float</span> <span class="n">key_value</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetAxis</span><span class="p">(</span><span class="s">"Horizontal"</span><span class="p">);</span></code></pre></figure>
 
-<p>마지막으로 각 플랫폼에서의 빌드 방법이다. 먼저 Linux에서는</p>
+<p><code class="highlighter-rouge">Input.GetAxis()</code> 함수를 사용하는데, 인자로 주는 string은 읽으려는 axis의 이름이다. Unity는 기본적으로 컨트롤러의 첫 번째 조이스틱에 <code class="highlighter-rouge">"Horizontal"</code>, <code class="highlighter-rouge">"Vertical"</code> axis가 매핑되어 있다. 이러한 정보는 Edit -&gt; Project Settings -&gt; Input에서 설정 가능하다.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">mkdir </span>build
-<span class="nv">$ </span><span class="nb">cd </span>build
-<span class="nv">$ </span>cmake ..
-<span class="nv">$ </span>make</code></pre></figure>
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/input_settings.png" alt="input settings" /></p>
 
-<p>이렇게 하면 된다.</p>
+<p>설정 창을 열게 되면 Inspector에 다음과 같이 InputManager가 보일 것이다.</p>
 
-<p>Windows에서는 조금 더 복잡하다. 우선 Visual Studio를 설치해야 한다. cmd.exe나 Visual Studio 명령 프롬프트를 열어서 다음과 같이 명령어를 입력한다.</p>
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/input_manager.png" alt="input manager" /></p>
 
-<figure class="highlight"><pre><code class="language-batch" data-lang="batch"><span class="o">&gt;</span> <span class="nb">mkdir</span> <span class="kd">build</span>
-<span class="o">&gt;</span> <span class="nb">cd</span> <span class="kd">build</span>
-<span class="o">&gt;</span> <span class="s2">"C:\Program Files\CMake\bin\cmake.exe"</span> .. <span class="na">-G </span><span class="s2">"Visual Studio 15 2017 Win64"</span>
-<span class="o">&gt;</span> <span class="s2">"C:\Program Files\CMake\bin\cmake.exe"</span> <span class="na">--build </span>. <span class="na">--config </span><span class="kd">Release</span></code></pre></figure>
+<p>다양한 Axis 이름들이 정의되어 있는데, 그 중에서 <code class="highlighter-rouge">"Horizontal"</code>, <code class="highlighter-rouge">"Vertical"</code> axis가 미리 정의되어 있는 것을 볼 수 있다. 또 다른 Analog 입력을 추가하고 싶다면 InputManager의 가장 위에 있는 속성인 <code class="highlighter-rouge">Size</code> 값을 늘린 후에 추가된 항목에 값을 채워넣으면 된다.</p>
 
-<p>cmake.exe의 경로는 자신의 환경에 맞게 바꾸면 되고, 자신이 설치한 Visual Studio 버전에 따라 3번째 명령어를 다르게 하면 된다. <code class="highlighter-rouge">cmake.exe -G</code> 명령어를 실행하면 큰 따옴표 사이에 넣을 수 있는 내용이 쭉 나온다. 여기서 알맞은 것을 선택하면 된다.</p>
+<p>여기서는 다음과 같이 오른쪽 조이스틱을 입력으로 추가했다.</p>
 
-<p><img src="/blog/assets/post/17-07-31-cmake/20170731_182546.png" alt="cmake targets" /></p>
+<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/joystick_settings.png" alt="joystick settings" /></p>
 
-<p>엄청 많이 나온다. Makefile뿐만 아니라 각 IDE의 프로젝트를 그냥 생성해준다.</p>
+<p>각 속성에 대한 상세한 내용은 <a href="https://docs.unity3d.com/kr/2018.4/Manual/ConventionalGameInput.html">여기</a> 참조</p>
 
-<p>Visual Studio에 있는 [arch] 부분에는 32비트 타겟으로 빌드할 경우 생략, 64비트 타겟으로 빌드할 경우 <code class="highlighter-rouge">WIN64</code>라고 입력해주면 된다.</p>
+<p>가장 위에 있는 Name 속성에 입력하는 string을 스크립트에서 <code class="highlighter-rouge">Input.GetAxis()</code> 등의 함수에 인자로 사용하여 해당 Analog 입력 값을 받아올 수 있다. Axis 속성에는 앞서 언급했던, 버튼과 조이스틱이 매핑된 axis를 선택하면 된다. 오른쪽 조이스틱은 X 축이 3rd axis에, Y 축이 4th axis에 매핑되어 있다고 했으므로 그에 맞게 설정하였다.</p>
 
             </article>
             
             <div class="row">
   <div class="col-md-12">
     <p class="categories rev"> <span><a
-          href="/categories/#build-system">Build system</a></span></p>
+          href="/categories/#unity">Unity</a></span></p>
   </div>
 </div>
             
@@ -380,10 +352,10 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 		
 		
 		<div class="col-md-3 rev">
-			<a class="nostyle item" href="/blog/Unity-Bluetooth-Controller/">
+			<a class="nostyle item" href="/blog/mldivide/">
 				<div class="cards">
-					<div class="image" style="background-image: url(/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg)"></div>
-					<p class="title"><small>Unity에서 Bluetooth Controller 제어</small></p>
+					<div class="image" style="background-image: url(/assets/post/17-10-17-mldivide/mldivide.jpeg)"></div>
+					<p class="title"><small>mldivide ('\')를 활용한 linear regression</small></p>
 				</div>
 			</a>
 		</div>
@@ -391,10 +363,10 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 		
 		
 		<div class="col-md-3 rev">
-			<a class="nostyle item" href="/blog/mldivide/">
+			<a class="nostyle item" href="/blog/cmake/">
 				<div class="cards">
-					<div class="image" style="background-image: url(/assets/post/17-10-17-mldivide/mldivide.jpeg)"></div>
-					<p class="title"><small>mldivide ('\')를 활용한 linear regression</small></p>
+					<div class="image" style="background-image: url(/assets/post/17-07-31-cmake/cmake_logo.png)"></div>
+					<p class="title"><small>cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</small></p>
 				</div>
 			</a>
 		</div>

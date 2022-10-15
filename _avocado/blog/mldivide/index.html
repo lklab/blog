@@ -24,8 +24,8 @@
 <meta property="og:title" content="mldivide (‘&#39;)를 활용한 linear regression" />
 <meta name="author" content="khlee" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="정의" />
-<meta property="og:description" content="정의" />
+<meta name="description" content="행렬 왼쪽 나눗셈이 linear regression으로 동작하는 원리에 대해 서술한다." />
+<meta property="og:description" content="행렬 왼쪽 나눗셈이 linear regression으로 동작하는 원리에 대해 서술한다." />
 <link rel="canonical" href="http://localhost:4000/blog/mldivide/" />
 <meta property="og:url" content="http://localhost:4000/blog/mldivide/" />
 <meta property="og:site_name" content="lklab" />
@@ -36,7 +36,7 @@
 <meta property="twitter:image" content="http://localhost:4000/assets/post/17-10-17-mldivide/mldivide.jpeg" />
 <meta property="twitter:title" content="mldivide (‘&#39;)를 활용한 linear regression" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-10-17T00:00:00+09:00","datePublished":"2017-10-17T00:00:00+09:00","description":"정의","headline":"mldivide (‘&#39;)를 활용한 linear regression","image":"http://localhost:4000/assets/post/17-10-17-mldivide/mldivide.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/mldivide/"},"url":"http://localhost:4000/blog/mldivide/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-10-17T00:00:00+09:00","datePublished":"2017-10-17T00:00:00+09:00","description":"행렬 왼쪽 나눗셈이 linear regression으로 동작하는 원리에 대해 서술한다.","headline":"mldivide (‘&#39;)를 활용한 linear regression","image":"http://localhost:4000/assets/post/17-10-17-mldivide/mldivide.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/mldivide/"},"url":"http://localhost:4000/blog/mldivide/"}</script>
 <!-- End Jekyll SEO tag -->
  
 
@@ -228,7 +228,7 @@ This layout is used for posts. Changing anything here will affect all posts(not 
                   <i class="fa fa-user" aria-hidden="true"></i> Khlee&nbsp;
                 </span>
                 <span>
-                  <i class="fa fa-clock-o" aria-hidden="true"></i> 5 mins read.
+                  <i class="fa fa-clock-o" aria-hidden="true"></i> 6 mins read.
                 </span>
               </small></p>
           </div>
@@ -259,11 +259,11 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 
 <script type="math/tex; mode=display">A \times (A \setminus Y) = Y</script>
 
-<p>A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계산할 수 있다.</p>
+<p><script type="math/tex">A</script>가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계산할 수 있다.</p>
 
 <script type="math/tex; mode=display">A \setminus Y = A^{-1} \times Y = X</script>
 
-<p>그러나 mldivide는 A의 역행렬이 존재하지 않거나 심지어 정사각 행렬이 아닐 경우에도 정의되는데, 이를 계산하기 위해 다음 링크에 있는 MATLAB 문서는 다음과 같이 그 알고리즘을 설명하고 있다.</p>
+<p>그러나 mldivide는 <script type="math/tex">A</script>의 역행렬이 존재하지 않거나 심지어 정사각 행렬이 아닐 경우에도 정의되는데, 이를 계산하기 위해 다음 링크에 있는 MATLAB 문서는 다음과 같이 그 알고리즘을 설명하고 있다.</p>
 
 <p><a href="https://kr.mathworks.com/help/matlab/ref/mldivide.html#bt4jslc-6">https://kr.mathworks.com/help/matlab/ref/mldivide.html#bt4jslc-6</a></p>
 
@@ -578,6 +578,17 @@ X=
 		
 		
 		<div class="col-md-3 rev">
+			<a class="nostyle item" href="/blog/Unity-Bluetooth-Controller/">
+				<div class="cards">
+					<div class="image" style="background-image: url(/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg)"></div>
+					<p class="title"><small>Unity에서 Bluetooth Controller 제어</small></p>
+				</div>
+			</a>
+		</div>
+		
+		
+		
+		<div class="col-md-3 rev">
 			<a class="nostyle item" href="/blog/cmake/">
 				<div class="cards">
 					<div class="image" style="background-image: url(/assets/post/17-07-31-cmake/cmake_logo.png)"></div>
@@ -604,17 +615,6 @@ X=
 				<div class="cards">
 					<div class="image" style="background-image: url(/assets/post/17-07-24-UPPAAL2PLC/system_model.png)"></div>
 					<p class="title"><small>UPPAAL2PLC</small></p>
-				</div>
-			</a>
-		</div>
-		
-		
-		
-		<div class="col-md-3 rev">
-			<a class="nostyle item" href="/blog/Raspberry-Pi-EtherCAT/">
-				<div class="cards">
-					<div class="image" style="background-image: url(/assets/post/17-07-17-EtherCAT/20170529_143851.jpg)"></div>
-					<p class="title"><small>SOEM을 활용하여 라즈베리파이를 EtherCAT 마스터로 만들기</small></p>
 				</div>
 			</a>
 		</div>
@@ -659,13 +659,13 @@ X=
         <h3>Latest Posts</h3>
         <ul>
           
+          <li><a href="/blog/Unity-Bluetooth-Controller/">Unity에서 Bluetooth Controller 제어</a></li>
+          
           <li><a href="/blog/mldivide/">mldivide ('\')를 활용한 linear regression</a></li>
           
           <li><a href="/blog/cmake/">cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</a></li>
           
           <li><a href="/blog/Improving-UPPAAL2PLC/">UPPAAL2PLC 개선작업</a></li>
-          
-          <li><a href="/blog/UPPAAL2PLC/">UPPAAL2PLC</a></li>
           
         </ul>
       </div>

@@ -15,7 +15,11 @@ description: Find all about avocado jekyll theme posts here.
           </div>
           <div class="col-md-8 content">
             <h3 class="blog-index-title">{{post.title}}</h3>
+            {% if post.description %}
+            <p class="description">{{post.description | strip_html | truncate: 190 }}</p>
+            {% else %}
             <p class="description">{{post.content | strip_html | truncate: 190 }}</p>
+            {% endif %}
           </div>
         </div>
       </a>

@@ -1,5 +1,6 @@
 ---
 title: "mldivide ('\\')를 활용한 linear regression"
+description: 행렬 왼쪽 나눗셈이 linear regression으로 동작하는 원리에 대해 서술한다.
 image: /assets/post/17-10-17-mldivide/mldivide.jpeg
 author: khlee
 categories:
@@ -19,11 +20,11 @@ $$A \setminus Y = X $$
 
 $$A \times (A \setminus Y) = Y$$
 
-A가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계산할 수 있다.
+$$A$$가 역행렬이 존재하는 정사각 행렬일 경우 다음과 같이 계산할 수 있다.
 
 $$A \setminus Y = A^{-1} \times Y = X$$
 
-그러나 mldivide는 A의 역행렬이 존재하지 않거나 심지어 정사각 행렬이 아닐 경우에도 정의되는데, 이를 계산하기 위해 다음 링크에 있는 MATLAB 문서는 다음과 같이 그 알고리즘을 설명하고 있다.
+그러나 mldivide는 $$A$$의 역행렬이 존재하지 않거나 심지어 정사각 행렬이 아닐 경우에도 정의되는데, 이를 계산하기 위해 다음 링크에 있는 MATLAB 문서는 다음과 같이 그 알고리즘을 설명하고 있다.
 
 [https://kr.mathworks.com/help/matlab/ref/mldivide.html#bt4jslc-6](https://kr.mathworks.com/help/matlab/ref/mldivide.html#bt4jslc-6)
 
