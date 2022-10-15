@@ -1,5 +1,5 @@
 ---
-title: "Automated PLC Application Generation Solution from UPPAAL Model : UPPAAL2PLC"
+title: "UPPAAL2PLC"
 image: /assets/post/17-07-24-UPPAAL2PLC/system_model.png
 author: khlee
 categories:
