@@ -2,6 +2,28 @@
   
     {
       "category" : "Unity",
+      "title"    : "Unity로 VR 캐릭터 컨트롤하는 앱 개발하기",
+      "description": "소개이번엔 지난 글과 저번 글의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들...",
+      "content": "소개이번엔 지난 글과 저번 글의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들...",
+      "url"      : "/blog/Unity-VR-Controller/",
+      "image"    : "/assets/post/17-10-25-Unity-VR-Controller/unity_vr_controller.jpg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
+      "category" : "Unity",
+      "title"    : "Unity VR Support",
+      "description": "화면 출력 관점에서 모바일에서 동작하는 VR 앱을 개발하기 위해서는 화면을 반으로 나누고, 각 화면의 시점(카메라)을 다르게 해서 3D로 ...",
+      "content": "화면 출력 관점에서 모바일에서 동작하는 VR 앱을 개발하기 위해서는 화면을 반으로 나누고, 각 화면의 시점(카메라)을 다르게 해서 3D로 ...",
+      "url"      : "/blog/Unity-VR-Support/",
+      "image"    : "/assets/post/17-10-24-Unity-VR-Support/Screenshot_20171023-235321.png",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
+      "category" : "Unity",
       "title"    : "Unity에서 Bluetooth Controller 제어",
       "description": "VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox 컨트롤러와 ...",
       "content": "VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox 컨트롤러와 ...",

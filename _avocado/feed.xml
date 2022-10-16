@@ -1,4 +1,166 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-16T00:04:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">Unity에서 Bluetooth Controller 제어</title><link href="http://localhost:4000/blog/Unity-Bluetooth-Controller/" rel="alternate" type="text/html" title="Unity에서 Bluetooth Controller 제어" /><published>2017-10-18T00:00:00+09:00</published><updated>2017-10-18T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unity-Bluetooth-Controller</id><content type="html" xml:base="http://localhost:4000/blog/Unity-Bluetooth-Controller/"><![CDATA[<p>VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-16T22:21:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">lklab</title><subtitle>Reality and Theory</subtitle><author><name>khlee</name></author><entry><title type="html">Unity로 VR 캐릭터 컨트롤하는 앱 개발하기</title><link href="http://localhost:4000/blog/Unity-VR-Controller/" rel="alternate" type="text/html" title="Unity로 VR 캐릭터 컨트롤하는 앱 개발하기" /><published>2017-10-25T00:00:00+09:00</published><updated>2017-10-25T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unity-VR-Controller</id><content type="html" xml:base="http://localhost:4000/blog/Unity-VR-Controller/"><![CDATA[<h2 id="소개">소개</h2>
+
+<p>이번엔 <a href="https://lklab.github.io/blog/blog/Unity-VR-Support/">지난 글</a>과 <a href="https://lklab.github.io/blog/blog/Unity-Bluetooth-Controller/">저번 글</a>의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들 것이다.</p>
+
+<h2 id="준비">준비</h2>
+
+<p>Assets Store에서 <a href="https://www.assetstore.unity3d.com/kr/#!/content/15">괜찮은 프로젝트</a>를 받아온다.<br />
+- 2018년 11월 현재 위 프로젝트는 서비스되지 않아서 받아올 수 없다.</p>
+
+<p><img src="/blog/assets/post/17-10-25-Unity-VR-Controller/20171024_224745.png" alt="sample project" /></p>
+
+<h2 id="씬-수정">씬 수정</h2>
+
+<p>필요없는 부분은 다 지우고 먼저 1인칭 캐릭터 역할을 할 GameObject를 적당한 위치에 적당한 크기로 하나 만든다.</p>
+
+<p><img src="/blog/assets/post/17-10-25-Unity-VR-Controller/20171026_001652.png" alt="scene view" /></p>
+
+<p><img src="/blog/assets/post/17-10-25-Unity-VR-Controller/20171026_001706.png" alt="inspector" /></p>
+
+<p>벽과 바닥을 뚫고 다니면 안 되니까 Capsule Collider를 추가하고 물리엔진과 상호작용(중력이라던가 다른 물체와 충돌이라던가)을 할 수 있도록 Rigidbody를 추가한다. 중요한게 Rigidbody에서 Constraints안에 Freeze Rotation의 모든 축을 체크해야 한다. 물리엔진에 의해 캐릭터가 회전하지 않도록 제약을 걸어 두는 것으로, 이렇게 하지 않으면 Capsule Collider의 곡면 때문에 캐릭터가 자기 맘대로 막 굴러다닌다.</p>
+
+<p>그 다음엔 캐릭터 GameObject의 하위 Object로 포함되도록 Camera를 추가한다.</p>
+
+<p><img src="/blog/assets/post/17-10-25-Unity-VR-Controller/20171026_003124.png" alt="scene view" /></p>
+
+<p><img src="/blog/assets/post/17-10-25-Unity-VR-Controller/20171026_003150.png" alt="inspector" /></p>
+
+<p>카메라의 위치는 적당히 잡아주면 된다. 단, X와 Z 좌표는 0으로 해 두는 것이 좋다.</p>
+
+<h2 id="스크립트-작성">스크립트 작성</h2>
+
+<p>이제 스크립트를 하나 추가한다.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="p">[</span><span class="nf">RequireComponent</span> <span class="p">(</span><span class="k">typeof</span> <span class="p">(</span><span class="n">Rigidbody</span><span class="p">))]</span>
+<span class="p">[</span><span class="nf">RequireComponent</span> <span class="p">(</span><span class="k">typeof</span> <span class="p">(</span><span class="n">CapsuleCollider</span><span class="p">))]</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">BlueControlManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">GameObject</span> <span class="n">cameraObject</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">Rigidbody</span> <span class="n">CharacterRigidbody</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">jumpPushed</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="c1">// contants</span>
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">speed</span> <span class="p">=</span> <span class="m">2.2f</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">gravity</span> <span class="p">=</span> <span class="m">10.0f</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">grounded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">maxVelocityChange</span> <span class="p">=</span> <span class="m">1.5f</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">jumpHeight</span> <span class="p">=</span> <span class="m">0.5f</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">Vector3</span> <span class="n">jumpVelocity</span><span class="p">;</span>
+
+    <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">cameraObject</span> <span class="p">=</span> <span class="n">GameObject</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="s">"Camera"</span><span class="p">);</span>
+        <span class="n">CharacterRigidbody</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Rigidbody</span><span class="p">&gt;();</span>
+
+        <span class="c1">// From the jump height and gravity we deduce the upwards speed </span>
+        <span class="c1">// for the character to reach at the apex.</span>
+        <span class="n">jumpVelocity</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Sqrt</span><span class="p">(</span><span class="m">2</span> <span class="p">*</span> <span class="n">jumpHeight</span> <span class="p">*</span> <span class="n">gravity</span><span class="p">),</span> <span class="m">0</span><span class="p">);</span>
+    <span class="p">}</span>
+ 
+    <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKeyDown</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">JoystickButton0</span><span class="p">))</span>
+            <span class="n">jumpPushed</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="nf">FixedUpdate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">grounded</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// get joystick data</span>
+            <span class="n">Vector2</span> <span class="n">joystickPosition</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector2</span><span class="p">();</span>
+            <span class="n">joystickPosition</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetAxis</span><span class="p">(</span><span class="s">"Horizontal"</span><span class="p">);</span>
+            <span class="n">joystickPosition</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetAxis</span><span class="p">(</span><span class="s">"Vertical"</span><span class="p">);</span>
+            <span class="n">joystickPosition</span> <span class="p">=</span> <span class="n">joystickPosition</span><span class="p">.</span><span class="n">normalized</span><span class="p">;</span>
+
+            <span class="c1">// Calculate how fast we should be moving</span>
+            <span class="n">Vector3</span> <span class="n">targetVelocity</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+            <span class="n">Vector3</span> <span class="n">forward</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+            <span class="n">Vector3</span> <span class="n">right</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+
+            <span class="n">forward</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">cameraObject</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">forward</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="n">forward</span><span class="p">.</span><span class="n">z</span> <span class="p">=</span> <span class="n">cameraObject</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">forward</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+            <span class="n">right</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">cameraObject</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="n">right</span><span class="p">.</span><span class="n">z</span> <span class="p">=</span> <span class="n">cameraObject</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">right</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+            <span class="n">forward</span> <span class="p">=</span> <span class="n">forward</span><span class="p">.</span><span class="n">normalized</span><span class="p">;</span>
+            <span class="n">right</span> <span class="p">=</span> <span class="n">right</span><span class="p">.</span><span class="n">normalized</span><span class="p">;</span>
+            <span class="n">targetVelocity</span> <span class="p">=</span> <span class="n">forward</span> <span class="p">*</span> <span class="n">joystickPosition</span><span class="p">.</span><span class="n">y</span> <span class="p">+</span> <span class="n">right</span> <span class="p">*</span> <span class="n">joystickPosition</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+            <span class="n">targetVelocity</span> <span class="p">*=</span> <span class="n">speed</span><span class="p">;</span>
+
+            <span class="c1">// Apply a force that attempts to reach our target velocity</span>
+            <span class="n">Vector3</span> <span class="n">velocity</span> <span class="p">=</span> <span class="n">CharacterRigidbody</span><span class="p">.</span><span class="n">velocity</span><span class="p">;</span>
+            <span class="n">Vector3</span> <span class="n">velocityChange</span> <span class="p">=</span> <span class="p">(</span><span class="n">targetVelocity</span> <span class="p">-</span> <span class="n">velocity</span><span class="p">);</span>
+            <span class="n">velocityChange</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Clamp</span><span class="p">(</span><span class="n">velocityChange</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+                <span class="p">-</span><span class="n">maxVelocityChange</span><span class="p">,</span> <span class="n">maxVelocityChange</span><span class="p">);</span>
+            <span class="n">velocityChange</span><span class="p">.</span><span class="n">z</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Clamp</span><span class="p">(</span><span class="n">velocityChange</span><span class="p">.</span><span class="n">z</span><span class="p">,</span>
+                <span class="p">-</span><span class="n">maxVelocityChange</span><span class="p">,</span> <span class="n">maxVelocityChange</span><span class="p">);</span>
+            <span class="n">velocityChange</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="n">CharacterRigidbody</span><span class="p">.</span><span class="nf">AddForce</span><span class="p">(</span><span class="n">velocityChange</span><span class="p">,</span> <span class="n">ForceMode</span><span class="p">.</span><span class="n">VelocityChange</span><span class="p">);</span>
+
+            <span class="c1">// Jump</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">jumpPushed</span><span class="p">)</span>
+                <span class="n">CharacterRigidbody</span><span class="p">.</span><span class="nf">AddForce</span><span class="p">(</span><span class="n">jumpVelocity</span><span class="p">,</span> <span class="n">ForceMode</span><span class="p">.</span><span class="n">VelocityChange</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">grounded</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="n">jumpPushed</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+ 
+    <span class="k">void</span> <span class="nf">OnCollisionStay</span><span class="p">(</span><span class="n">Collision</span> <span class="n">collisionInfo</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">foreach</span><span class="p">(</span><span class="n">ContactPoint</span> <span class="n">contact</span> <span class="k">in</span> <span class="n">collisionInfo</span><span class="p">.</span><span class="n">contacts</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">contact</span><span class="p">.</span><span class="n">normal</span><span class="p">.</span><span class="n">y</span> <span class="p">&gt;</span> <span class="m">0.7f</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">grounded</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>주요 특징</p>
+
+<ol>
+  <li>
+    <p>UI 처리는 <code class="highlighter-rouge">Update()</code> 함수에서, 물리적 처리는 <code class="highlighter-rouge">FixedUpdate()</code> 함수에서 한다.<br />
+<code class="highlighter-rouge">Update()</code> 함수는 프레임마다 한 번 호출되며, 초당 프레임의 변화에 따라 호출 주기가 달라지는 반면 <code class="highlighter-rouge">FixedUpdate()</code> 함수는 호출 주기가 일정하다. <code class="highlighter-rouge">Input.GetKeyDown()</code> 함수는 버튼이 눌린 시점의 프레임에서만 true를 반환한다. 따라서 <code class="highlighter-rouge">FixedUpdate()</code> 함수에서 <code class="highlighter-rouge">Input.GetKeyDown()</code> 함수로 값을 읽어오는 경우 프레임 타이밍에 따라 버튼을 눌러도 <code class="highlighter-rouge">true</code>값을 읽지 못할 수도 있다. 반면에 물리적 처리는 호출 주기가 일정한 <code class="highlighter-rouge">FixedUpdate()</code> 함수에서 처리해야 자연스럽게 동작하며 그렇지 않고 <code class="highlighter-rouge">Update()</code> 함수에서 처리할 경우 초당 프레임 변화에 따라 다르게 동작할 것이다.</p>
+  </li>
+  <li>
+    <p>캐릭터를 움직일 때는 <code class="highlighter-rouge">rigidbody</code>의 <code class="highlighter-rouge">AddForce()</code> 함수 사용<br />
+캐릭터를 움직이는 방법, 즉 캐릭터의 위치를 바꾸는 방법은 위치 자체를 바꾸는 방법, 속도를 바꾸는 방법, 힘(가속도)를 주는 방법의 세 가지가 있다. 위치 자체를 바꾸는 것은 캐릭터가 순간이동하는 것으로 구현될 것이며, 속도를 바꾸거나 힘을 주어야 위치가 연속적으로 변할 것이다. 힘을 주는 방법이 위치와 속도가 연속적으로 변하는 것이므로 가장 자연스럽게 동작할 것이다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">grounded</code> (캐릭터가 땅을 밟고 서 있는지) 판단 조건<br />
+캐릭터의 Collider가 다른 Collider와 접촉할 때 호출되는 <code class="highlighter-rouge">OnCollisionStay()</code> 함수에서 항상 <code class="highlighter-rouge">grounded</code>를 <code class="highlighter-rouge">true</code>로 바꾸도록 하면 벽과 접촉할 때에도 땅을 밟고 있다고 판단하여 벽타기가 가능하다. 따라서 <code class="highlighter-rouge">OnCollisionStay()</code> 함수의 인자로 주어지는 Collision 정보 내에서 다른 Collider와 접촉한 방향이 옆쪽이 아닌 아래쪽 방향이 있는 경우에만 땅을 밟고 있다고 판단하게 한다.</p>
+  </li>
+</ol>
+
+<h2 id="플레이-영상">플레이 영상</h2>
+
+<iframe class="video" src="https://www.youtube.com/embed/6hyWDXpkXFM" allowfullscreen="" frameborder="0"></iframe>]]></content><author><name>khlee</name></author><category term="Unity" /><summary type="html"><![CDATA[소개]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/post/17-10-25-Unity-VR-Controller/unity_vr_controller.jpg" /><media:content medium="image" url="http://localhost:4000/assets/post/17-10-25-Unity-VR-Controller/unity_vr_controller.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Unity VR Support</title><link href="http://localhost:4000/blog/Unity-VR-Support/" rel="alternate" type="text/html" title="Unity VR Support" /><published>2017-10-24T00:00:00+09:00</published><updated>2017-10-24T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unity-VR-Support</id><content type="html" xml:base="http://localhost:4000/blog/Unity-VR-Support/"><![CDATA[<p>화면 출력 관점에서 모바일에서 동작하는 VR 앱을 개발하기 위해서는 화면을 반으로 나누고, 각 화면의 시점(카메라)을 다르게 해서 3D로 보이도록 만들며, 기기의 센서 정보를 이용해 그에 맞게 시점을 회전하는 head tracking 등등이 필요하다.</p>
+
+<p>예전에 처음 Unity를 사용해 VR 앱을 개발할 때에는 센서 값을 읽어오는 플러그인을 넣고, 카메라를 두 개 만든 다음 센서 값에 따라 카메라를 회전하는걸 직접 구현했었는데, 지금은 Unity에서 자동으로 해 준다. 카드보드, 데이드림, 오큘러스 등등의 VR 플랫폼 지원까지 해준다. 관련 내용은 <a href="https://docs.unity3d.com/Manual/VROverview.html">문서</a>에 잘 나와 있다.</p>
+
+<p>이번 글은 Unity에서 다 해주므로. 분량이 없다. Edit -&gt; Project Settings -&gt; Player에 들어가서 원하는 플랫폼에 대해 Virtual Reality Supported에 체크한방 날리고 카드보드인지 아니면 다른 플랫폼인지 선택하면 끝이다.</p>
+
+<p><img src="/blog/assets/post/17-10-24-Unity-VR-Support/20171023_234700.png" alt="player settings" /></p>
+
+<p><img src="/blog/assets/post/17-10-24-Unity-VR-Support/20171023_234901.png" alt="player settings" /></p>
+
+<p>알아서 화면도 나눠주고 렌즈를 통해 보기 편하도록 화면 왜곡도 해 주며 head tracking도 된다.</p>
+
+<p><img src="/blog/assets/post/17-10-24-Unity-VR-Support/Screenshot_20171023-235321.png" alt="demo" /></p>
+
+<p>카드보드를 선택하면 안드로이드 4.4 Kit Kat (API level 19) 부터, 데이드림을 선택하면 안드로이드 7.0 Nougat (API level 24) 부터 앱을 실행할 수 있다.</p>]]></content><author><name>khlee</name></author><category term="Unity" /><summary type="html"><![CDATA[화면 출력 관점에서 모바일에서 동작하는 VR 앱을 개발하기 위해서는 화면을 반으로 나누고, 각 화면의 시점(카메라)을 다르게 해서 3D로 보이도록 만들며, 기기의 센서 정보를 이용해 그에 맞게 시점을 회전하는 head tracking 등등이 필요하다.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/post/17-10-24-Unity-VR-Support/Screenshot_20171023-235321.png" /><media:content medium="image" url="http://localhost:4000/assets/post/17-10-24-Unity-VR-Support/Screenshot_20171023-235321.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Unity에서 Bluetooth Controller 제어</title><link href="http://localhost:4000/blog/Unity-Bluetooth-Controller/" rel="alternate" type="text/html" title="Unity에서 Bluetooth Controller 제어" /><published>2017-10-18T00:00:00+09:00</published><updated>2017-10-18T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unity-Bluetooth-Controller</id><content type="html" xml:base="http://localhost:4000/blog/Unity-Bluetooth-Controller/"><![CDATA[<p>VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.</p>
 
 <p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_01.jpeg" alt="controller" class="custom-align-center-img" /></p>
 
