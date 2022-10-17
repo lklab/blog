@@ -19,24 +19,24 @@
     <!-- Prefetch disqus DNS for faster page speed -->
     <link rel="dns-prefetch" href="https://lklab-github-io-blog.disqus.com/" />
       <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Unity에서 Bluetooth Controller 제어 | lklab</title>
+<title>Windows에서 ARM Linux 크로스 컴파일 환경 구성하기 | lklab</title>
 <meta name="generator" content="Jekyll v3.8.4" />
-<meta property="og:title" content="Unity에서 Bluetooth Controller 제어" />
+<meta property="og:title" content="Windows에서 ARM Linux 크로스 컴파일 환경 구성하기" />
 <meta name="author" content="khlee" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="컨트롤러 소개" />
-<meta property="og:description" content="컨트롤러 소개" />
-<link rel="canonical" href="http://localhost:4000/blog/Unity-Bluetooth-Controller/" />
-<meta property="og:url" content="http://localhost:4000/blog/Unity-Bluetooth-Controller/" />
+<meta name="description" content="IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다." />
+<meta property="og:description" content="IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다." />
+<link rel="canonical" href="http://localhost:4000/blog/ARM-Linux-Cross-Compile/" />
+<meta property="og:url" content="http://localhost:4000/blog/ARM-Linux-Cross-Compile/" />
 <meta property="og:site_name" content="lklab" />
-<meta property="og:image" content="http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" />
+<meta property="og:image" content="http://localhost:4000/assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-10-18T00:00:00+09:00" />
+<meta property="article:published_time" content="2017-10-27T00:00:00+09:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" />
-<meta property="twitter:title" content="Unity에서 Bluetooth Controller 제어" />
+<meta property="twitter:image" content="http://localhost:4000/assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg" />
+<meta property="twitter:title" content="Windows에서 ARM Linux 크로스 컴파일 환경 구성하기" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-10-18T00:00:00+09:00","datePublished":"2017-10-18T00:00:00+09:00","description":"컨트롤러 소개","headline":"Unity에서 Bluetooth Controller 제어","image":"http://localhost:4000/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/Unity-Bluetooth-Controller/"},"url":"http://localhost:4000/blog/Unity-Bluetooth-Controller/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2017-10-27T00:00:00+09:00","datePublished":"2017-10-27T00:00:00+09:00","description":"IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다.","headline":"Windows에서 ARM Linux 크로스 컴파일 환경 구성하기","image":"http://localhost:4000/assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/ARM-Linux-Cross-Compile/"},"url":"http://localhost:4000/blog/ARM-Linux-Cross-Compile/"}</script>
 <!-- End Jekyll SEO tag -->
  
 
@@ -194,8 +194,8 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 <div class="post">
   <main>
     <header class="position-relative text-center rev">
-      <div class="header-image" style="background-image: url(/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg)"></div>
-      <h1 class="post-title position-absolute">Unity에서 Bluetooth Controller 제어</h1>
+      <div class="header-image" style="background-image: url(/assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg)"></div>
+      <h1 class="post-title position-absolute">Windows에서 ARM Linux 크로스 컴파일 환경 구성하기</h1>
     </header>
     <div class="container">
       <div class="blog-content pd">
@@ -210,7 +210,7 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 	
 	
 	
-	<li><a href="#">Unity에서 Bluetooth...</a></li>
+	<li><a href="#">Windows에서 ARM Lin...</a></li>
 	
 	
 </ul>
@@ -222,7 +222,7 @@ This layout is used for posts. Changing anything here will affect all posts(not 
           <div class="col-md-12 meta">
             <p><small>
                 <span>
-                  <i class="fa fa-calendar" aria-hidden="true"></i> 18 Oct 2017&nbsp;
+                  <i class="fa fa-calendar" aria-hidden="true"></i> 27 Oct 2017&nbsp;
                 </span>
                 <span>
                   <i class="fa fa-user" aria-hidden="true"></i> Khlee&nbsp;
@@ -240,75 +240,139 @@ This layout is used for posts. Changing anything here will affect all posts(not 
             <article>
               
 <ul class="toc rev clearfix">
-  <li><a href="#컨트롤러-소개">컨트롤러 소개</a></li>
-  <li><a href="#unity에서-컨트롤러-입력값을-읽어오기">Unity에서 컨트롤러 입력값을 읽어오기</a></li>
-  <li><a href="#digital-입력">Digital 입력</a></li>
-  <li><a href="#analog-입력">Analog 입력</a></li>
+  <li><a href="#준비하기">준비하기</a></li>
+  <li><a href="#빌드-형상-정의하기">빌드 형상 정의하기</a></li>
+  <li><a href="#예제-코드-작성하기">예제 코드 작성하기</a></li>
+  <li><a href="#빌드하고-실행하기">빌드하고 실행하기</a></li>
 </ul>
 
 
-              <h2 id="컨트롤러-소개">컨트롤러 소개</h2>
+              <p>IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다.</p>
 
-<p>VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.</p>
+<h2 id="준비하기">준비하기</h2>
 
-<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_01.jpeg" alt="controller" class="custom-align-center-img" /></p>
+<p>준비물 : mingw32 arm linux toolchain, cmake, mingw32-make</p>
 
-<p>집에 도착한 모습</p>
+<p>우선 작업을 위한 폴더를 만든다. 나는 D: 바로 아래에 arm이라는 폴더를 만들었다.
+그 폴더 안에 다음 링크를 통해 받은 파일을 저장한다.</p>
 
-<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg" alt="controller" class="custom-align-center-img" />
-<img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_03.jpeg" alt="controller" class="custom-align-center-img" /></p>
+<p>mingw32 arm liunux 툴체인 : <a href="https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/">https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/</a><br />
+이 사이트에서 “gcc-linaro-[버전]-[날짜]-i686-mingw32_arm-linux-gnueabihf.tar.xz” 파일을 다운받는다.<br />
+(다른 버전은 <a href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">여기</a> 참조)</p>
 
-<p>Xbox 컨트롤러와 유사한 구조를 갖고 있다.</p>
+<p>cmake : <a href="https://cmake.org/files/v3.10/cmake-3.10.0-rc3-win64-x64.zip">https://cmake.org/files/v3.10/cmake-3.10.0-rc3-win64-x64.zip</a><br />
+(역시 다른 버전을 원하면 <a href="https://cmake.org/download/">여기</a> 참조)</p>
 
-<h2 id="unity에서-컨트롤러-입력값을-읽어오기">Unity에서 컨트롤러 입력값을 읽어오기</h2>
+<p>Standalone으로 구성하기 위해 cmake는 zip 파일로 내려받는다.</p>
 
-<p>Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이 어떻게 매핑되어 있는지 알아야 한다. 직접 테스트해본 결과 다음 그림과 같이 매핑되어 있었다.</p>
+<p>위 파일들을 받고 압축을 해제한다.</p>
 
-<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/mapping.png" alt="mapping" /></p>
+<p>mingw32-make는 정식 경로에서 Standalone으로 받는 방법은 찾지 못했다. 대신에 다음 사이트에서 mingw-get을 받아 설치한 후 mingw32-make.exe를 가져오는 방법을 사용하였다.<br />
+<a href="https://sourceforge.net/projects/mingw/">https://sourceforge.net/projects/mingw/</a></p>
 
-<p>OS와 컨트롤러에 따라 매핑 정보는 달라질 수 있다. 따라서 출시되는 VR 앱에는 이를 잘 파악하여 동적으로 매핑 정보를 파악할 수 있도록 해야 한다.</p>
+<p>설치 후 mingw-get GUI에서 다음과 같이 mingw32-make를 선택해서 설치하거나</p>
 
-<p>그림에서 “JoystickButton*” 로 매핑되는 버튼은 Digital 값이고, “*th axis”로 매핑되는 조이스틱이나 버튼은 Analog 값이다. Digital인가 Analog인가에 따라 Unity에서 값을 읽어오는 방식이 다르다.
-(LT, RT 버튼은 Digital과 Analog 방식 모두 동작한다.)</p>
+<p><img src="/blog/assets/post/17-10-27-ARM-Linux-Cross-Compile/install_mingw_gui.png" alt="install mingw gui" /></p>
 
-<h2 id="digital-입력">Digital 입력</h2>
+<p>명령 프롬프트에서 설치할 수 있다.</p>
 
-<p>먼저 Digital 값은 스크립트에서 다음과 같이 쉽게 읽어올 수 있다.</p>
+<figure class="highlight"><pre><code class="language-batch" data-lang="batch"><span class="o">&gt;</span> <span class="kd">C</span>:\MinGW\bin\mingw<span class="na">-get</span>.exe <span class="kd">install</span> <span class="kd">mingw32</span><span class="na">-make</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">bool</span> <span class="n">key_value</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">JoystickButton0</span><span class="p">);</span></code></pre></figure>
+<p>어떤 방법으로든 설치하고 나면 MinGW 설치 폴더 아래 bin 폴더에 다음과 같은 파일이 생길 것이다.</p>
 
-<p><a href="https://docs.unity3d.com/kr/current/ScriptReference/KeyCode.html">Unity reference</a>를 확인해 보면 <code class="highlighter-rouge">KeyCode</code>의 다양한 값을 볼 수 있다. 최대 8개까지의 조이스틱(컨트롤러)를 구분할 수 있으며 각 컨트롤러마다 최대 20개의 버튼을 구분할 수 있다. 이 값을 <code class="highlighter-rouge">Input.GetKey()</code> 함수의 인자로 주면 버튼 값을 <code class="highlighter-rouge">True</code>나 <code class="highlighter-rouge">False</code>로 돌려 준다. 물론 <code class="highlighter-rouge">Input.GetKeyDown()</code> 이나 <code class="highlighter-rouge">Input.GetKeyUp()</code> 등의 다른 함수도 사용할 수 있다.</p>
+<p><img src="/blog/assets/post/17-10-27-ARM-Linux-Cross-Compile/mingw_files.png" alt="mingw files" /></p>
 
-<h2 id="analog-입력">Analog 입력</h2>
+<p>이 파일들 중 mingw-get.exe를 제외한 5개 파일을 작업 폴더에 mingw32-make라는 폴더를 만들고 그 아래에 복사한다.</p>
 
-<p>Analog 값은 조금 복잡한데, 우선 스크립트에서 읽는 방법은 다음과 같다. -1.0 ~ 1.0 범위의 값을 얻을 수 있다.</p>
+<p>준비물을 모두 챙기고 나면 작업 폴더는 다음과 같이 될 것이다.</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">float</span> <span class="n">key_value</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetAxis</span><span class="p">(</span><span class="s">"Horizontal"</span><span class="p">);</span></code></pre></figure>
+<p><img src="/blog/assets/post/17-10-27-ARM-Linux-Cross-Compile/working_directory.png" alt="working directory" /></p>
 
-<p><code class="highlighter-rouge">Input.GetAxis()</code> 함수를 사용하는데, 인자로 주는 string은 읽으려는 axis의 이름이다. Unity는 기본적으로 컨트롤러의 첫 번째 조이스틱에 <code class="highlighter-rouge">"Horizontal"</code>, <code class="highlighter-rouge">"Vertical"</code> axis가 매핑되어 있다. 이러한 정보는 Edit -&gt; Project Settings -&gt; Input에서 설정 가능하다.</p>
+<h2 id="빌드-형상-정의하기">빌드 형상 정의하기</h2>
 
-<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/input_settings.png" alt="input settings" /></p>
+<p>이제 툴체인을 명시한 toolchain.arm.cmake 파일을 작성한다.</p>
 
-<p>설정 창을 열게 되면 Inspector에 다음과 같이 InputManager가 보일 것이다.</p>
+<figure class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">SET</span><span class="p">(</span>CMAKE_SYSTEM_NAME Linux<span class="p">)</span>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_SYSTEM_PROCESSOR arm<span class="p">)</span>
 
-<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/input_manager.png" alt="input manager" /></p>
+<span class="nf">SET</span><span class="p">(</span>COMPILER_ROOT <span class="s2">"D:/arm/gcc-linaro-7.1.1-2017.08-i686-mingw32_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"</span><span class="p">)</span>
 
-<p>다양한 Axis 이름들이 정의되어 있는데, 그 중에서 <code class="highlighter-rouge">"Horizontal"</code>, <code class="highlighter-rouge">"Vertical"</code> axis가 미리 정의되어 있는 것을 볼 수 있다. 또 다른 Analog 입력을 추가하고 싶다면 InputManager의 가장 위에 있는 속성인 <code class="highlighter-rouge">Size</code> 값을 늘린 후에 추가된 항목에 값을 채워넣으면 된다.</p>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_C_COMPILER <span class="si">${</span><span class="nv">COMPILER_ROOT</span><span class="si">}</span>gcc.exe<span class="p">)</span>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_CXX_COMPILER <span class="si">${</span><span class="nv">COMPILER_ROOT</span><span class="si">}</span>g++.exe<span class="p">)</span>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_LINKER <span class="si">${</span><span class="nv">COMPILER_ROOT</span><span class="si">}</span>ld.exe<span class="p">)</span>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_NM <span class="si">${</span><span class="nv">COMPILER_ROOT</span><span class="si">}</span>nm.exe<span class="p">)</span>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_OBJCOPY <span class="si">${</span><span class="nv">COMPILER_ROOT</span><span class="si">}</span>objcopy.exe<span class="p">)</span>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_OBJDUMP <span class="si">${</span><span class="nv">COMPILER_ROOT</span><span class="si">}</span>objdump.exe<span class="p">)</span>
+<span class="nf">SET</span><span class="p">(</span>CMAKE_RANLIB <span class="si">${</span><span class="nv">COMPILER_ROOT</span><span class="si">}</span>ranlib.exe<span class="p">)</span></code></pre></figure>
 
-<p>여기서는 다음과 같이 오른쪽 조이스틱을 입력으로 추가했다.</p>
+<p>경로는 각자 환경에 맞게 수정하면 된다.
+파일 구분자를 백슬래시(\)로 입력하면 cmake가 escape character로 처리해서 오류가 생기기 때문에 슬래시(/)로 입력했다.</p>
 
-<p><img src="/blog/assets/post/17-10-18-Unity-Bluetooth-Controller/joystick_settings.png" alt="joystick settings" /></p>
+<h2 id="예제-코드-작성하기">예제 코드 작성하기</h2>
 
-<p>각 속성에 대한 상세한 내용은 <a href="https://docs.unity3d.com/kr/2018.4/Manual/ConventionalGameInput.html">여기</a> 참조</p>
+<p>다음과 같이 간단한 예제 소스코드를 작성했다.</p>
 
-<p>가장 위에 있는 Name 속성에 입력하는 string을 스크립트에서 <code class="highlighter-rouge">Input.GetAxis()</code> 등의 함수에 인자로 사용하여 해당 Analog 입력 값을 받아올 수 있다. Axis 속성에는 앞서 언급했던, 버튼과 조이스틱이 매핑된 axis를 선택하면 된다. 오른쪽 조이스틱은 X 축이 3rd axis에, Y 축이 4th axis에 매핑되어 있다고 했으므로 그에 맞게 설정하였다.</p>
+<p>main.c</p>
+
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"hello arm!!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>CMakeLists.txt</p>
+
+<figure class="highlight"><pre><code class="language-cmake" data-lang="cmake"><span class="nf">ADD_EXECUTABLE</span><span class="p">(</span>App main.c<span class="p">)</span></code></pre></figure>
+
+<h2 id="빌드하고-실행하기">빌드하고 실행하기</h2>
+
+<p>이제 준비는 모두 끝났으니 빌드하면 된다.</p>
+
+<p>빌드를 편하게 하기 위해 배치 파일을 만들었다.</p>
+
+<p>build.bat</p>
+
+<figure class="highlight"><pre><code class="language-batch" data-lang="batch"><span class="nb">mkdir</span> <span class="kd">build</span>
+<span class="nb">cd</span> <span class="kd">build</span>
+
+<span class="s2">"../cmake-3.10.0-rc3-win64-x64/bin/cmake.exe"</span> <span class="na">-DCMAKE</span>_MAKE_PROGRAM<span class="o">=</span><span class="s2">"D:/arm/mingw32-make/mingw32-make.exe"</span> <span class="na">-DCMAKE</span>_TOOLCHAIN_FILE<span class="o">=</span>../toolchain.arm.cmake <span class="na">-G </span><span class="s2">"MinGW Makefiles"</span> ..
+
+<span class="s2">"../cmake-3.10.0-rc3-win64-x64/bin/cmake.exe"</span>  <span class="na">--build </span>.
+
+@echo <span class="na">off</span>
+<span class="kd">set</span> <span class="na">/p </span><span class="kd">str</span><span class="o">=</span><span class="kd">completed</span></code></pre></figure>
+
+<p>준비물들이랑 빌드 결과물이 섞이면 곤란하니 build 폴더를 생성하고 그 아래에 빌드 결과물이 생성되도록 하였다.</p>
+
+<p>세 번째 명령어가 매우 긴데, 다음과 같은 일을 한다.</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">-DCMAKE_MAKE_PROGRAM</code>: mingw32-make.exe의 경로를 지정한다.(절대경로)<br />
+mingw-get을 설치하고 나서는 이 옵션이 없어도 cmake가 알아서 mingw32-make의 경로를 찾아내는데, mingw-get 없이 Standalone으로 실행하려면 이 옵션이 반드시 필요하다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">-DCMAKE_TOOLCHAIN_FILE</code>: 툴체인을 명시한 toolchain.arm.cmake 파일의 경로를 지정한다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">-G "MinGW Makefiles"</code>: mingw32-make.exe가 이해할 수 있는 Makefile을 생성한다.</p>
+  </li>
+</ul>
+
+<p>build.bat 파일을 실행하고 나면 build 폴더 안에 App이라는 파일이 생성되었을 것이다.</p>
+
+<p>이것을 ARM Linux 플랫폼에 옮기고 실행한다.</p>
+
+<p><img src="/blog/assets/post/17-10-27-ARM-Linux-Cross-Compile/execute.png" alt="execute" /></p>
 
             </article>
             
             <div class="row">
   <div class="col-md-12">
     <p class="categories rev"> <span><a
-          href="/categories/#unity">Unity</a></span></p>
+          href="/categories/#build-system">Build system</a></span></p>
   </div>
 </div>
             
@@ -366,17 +430,6 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 		
 		
 		<div class="col-md-3 rev">
-			<a class="nostyle item" href="/blog/ARM-Linux-Cross-Compile/">
-				<div class="cards">
-					<div class="image" style="background-image: url(/assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg)"></div>
-					<p class="title"><small>Windows에서 ARM Linux 크로스 컴파일 환경 구성하기</small></p>
-				</div>
-			</a>
-		</div>
-		
-		
-		
-		<div class="col-md-3 rev">
 			<a class="nostyle item" href="/blog/CMake-Toolchain/">
 				<div class="cards">
 					<div class="image" style="background-image: url(/assets/post/17-10-26-CMake-Toolchain/chain.jpg)"></div>
@@ -403,6 +456,17 @@ This layout is used for posts. Changing anything here will affect all posts(not 
 				<div class="cards">
 					<div class="image" style="background-image: url(/assets/post/17-10-24-Unity-VR-Support/Screenshot_20171023-235321.png)"></div>
 					<p class="title"><small>Unity VR Support</small></p>
+				</div>
+			</a>
+		</div>
+		
+		
+		
+		<div class="col-md-3 rev">
+			<a class="nostyle item" href="/blog/Unity-Bluetooth-Controller/">
+				<div class="cards">
+					<div class="image" style="background-image: url(/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg)"></div>
+					<p class="title"><small>Unity에서 Bluetooth Controller 제어</small></p>
 				</div>
 			</a>
 		</div>

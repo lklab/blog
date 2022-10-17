@@ -216,6 +216,45 @@ Making any change will effect all the pages(not posts) -->
   <div class="row">
     <div class="col-lg-8">
       
+      <a class="nostyle" href="/blog/ARM-Linux-Cross-Compile/">
+        <div class="row cards blog-list rev">
+          <div class="col-md-4 image" style="background-image: url(/assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg);">
+          </div>
+          <div class="col-md-8 content">
+            <h3 class="blog-index-title">Windows에서 ARM Linux 크로스 컴파일 환경 구성하기</h3>
+            
+            <p class="description">IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다.
+
+준비하기
+
+준비물 : mingw32 arm linux toolchain, cmake, mingw32-make
+
+우선 작업을 위한 폴더를 만든다. 나는 D: 바로 아래에 arm이라는 폴더를 만들었다.
+그 폴더 안...</p>
+            
+          </div>
+        </div>
+      </a>
+
+      
+      <a class="nostyle" href="/blog/CMake-Toolchain/">
+        <div class="row cards blog-list rev">
+          <div class="col-md-4 image" style="background-image: url(/assets/post/17-10-26-CMake-Toolchain/chain.jpg);">
+          </div>
+          <div class="col-md-8 content">
+            <h3 class="blog-index-title">cmake에서 툴체인 사용하기</h3>
+            
+            <p class="description">지난 번에는 cmake를 사용하여 서로 다른 플랫폼에서 빌드하는 방법을 알아보았는데, 이번엔 한 플랫폼에서 다른 플랫폼 실행 파일을 크로스 컴파일하는 방법을 알아볼 것이다.
+
+예제로, 데스크탑 PC(x86_64 Ubuntu 16.04)에서 ARM Linux 실행 파일을 크로스 컴파일해 볼 것이다.
+
+먼저 툴체인을 받아와서 압축을 해제...</p>
+            
+          </div>
+        </div>
+      </a>
+
+      
       <a class="nostyle" href="/blog/Unity-VR-Controller/">
         <div class="row cards blog-list rev">
           <div class="col-md-4 image" style="background-image: url(/assets/post/17-10-25-Unity-VR-Controller/unity_vr_controller.jpg);">
@@ -266,7 +305,9 @@ Assets Store에서 괜찮은 프로젝트를 받아온다.
           <div class="col-md-8 content">
             <h3 class="blog-index-title">Unity에서 Bluetooth Controller 제어</h3>
             
-            <p class="description">VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.
+            <p class="description">컨트롤러 소개
+
+VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.
 
 
 
@@ -277,40 +318,9 @@ Assets Store에서 괜찮은 프로젝트를 받아온다.
 
 Xbox 컨트롤러와 유사한 구조를 갖고 있다.
 
-Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이 어떻게 매핑되어 있는지 알아야 한다. 직접 테스트해본 결과 다음 그림과 같이 매핑되어 있었...</p>
-            
-          </div>
-        </div>
-      </a>
+Unity에서 컨트롤러 입력값을 읽어오기
 
-      
-      <a class="nostyle" href="/blog/mldivide/">
-        <div class="row cards blog-list rev">
-          <div class="col-md-4 image" style="background-image: url(/assets/post/17-10-17-mldivide/mldivide.jpeg);">
-          </div>
-          <div class="col-md-8 content">
-            <h3 class="blog-index-title">mldivide ('\')를 활용한 linear regression</h3>
-            
-            <p class="description">행렬 왼쪽 나눗셈이 linear regression으로 동작하는 원리에 대해 서술한다.</p>
-            
-          </div>
-        </div>
-      </a>
-
-      
-      <a class="nostyle" href="/blog/cmake/">
-        <div class="row cards blog-list rev">
-          <div class="col-md-4 image" style="background-image: url(/assets/post/17-07-31-cmake/cmake_logo.png);">
-          </div>
-          <div class="col-md-8 content">
-            <h3 class="blog-index-title">cmake를 활용하여 windows와 linux 모두에서 빌드 가능한 프로젝트 만들기</h3>
-            
-            <p class="description">개요
-
-이번 글에서는 제목과 같이 cmake 툴을 활용해서 Windows와 Linux 모두에서 빌드할 수 있는 프로젝트를 만들어 볼 것이다. 우선 cmake는 소스코드들과 그 결과물인 바이너리, 라이브러리의 구조를 추상화해서 빌드 플랫폼에 의존적인 Makefile(이나 등등)을 생성해내는 도구이다. 자세한건 여기를 참고하자.
-
-설치
-...</p>
+Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이 어떻게 매핑되어 있는지 알아야 ...</p>
             
           </div>
         </div>
@@ -377,13 +387,13 @@ Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이
         <h3>Latest Posts</h3>
         <ul>
           
+          <li><a href="/blog/ARM-Linux-Cross-Compile/">Windows에서 ARM Linux 크로스 컴파일 환경 구성하기</a></li>
+          
+          <li><a href="/blog/CMake-Toolchain/">cmake에서 툴체인 사용하기</a></li>
+          
           <li><a href="/blog/Unity-VR-Controller/">Unity로 VR 캐릭터 컨트롤하는 앱 개발하기</a></li>
           
           <li><a href="/blog/Unity-VR-Support/">Unity VR Support</a></li>
-          
-          <li><a href="/blog/Unity-Bluetooth-Controller/">Unity에서 Bluetooth Controller 제어</a></li>
-          
-          <li><a href="/blog/mldivide/">mldivide ('\')를 활용한 linear regression</a></li>
           
         </ul>
       </div>

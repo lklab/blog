@@ -7,6 +7,8 @@ categories:
 layout: post
 ---
 
+## 컨트롤러 소개
+
 VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.
 
 ![controller]({{site.suburl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_01.jpeg){: .custom-align-center-img}
@@ -18,6 +20,8 @@ VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투�
 
 Xbox 컨트롤러와 유사한 구조를 갖고 있다.
 
+## Unity에서 컨트롤러 입력값을 읽어오기
+
 Unity에서 컨트롤러의 입력값을 읽어오기 위해서는 각 버튼이 어떻게 매핑되어 있는지 알아야 한다. 직접 테스트해본 결과 다음 그림과 같이 매핑되어 있었다.
 
 ![mapping]({{site.suburl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/mapping.png)
@@ -27,6 +31,8 @@ OS와 컨트롤러에 따라 매핑 정보는 달라질 수 있다. 따라서 �
 그림에서 "JoystickButton\*" 로 매핑되는 버튼은 Digital 값이고, "\*th axis"로 매핑되는 조이스틱이나 버튼은 Analog 값이다. Digital인가 Analog인가에 따라 Unity에서 값을 읽어오는 방식이 다르다.
 (LT, RT 버튼은 Digital과 Analog 방식 모두 동작한다.)
 
+## Digital 입력
+
 먼저 Digital 값은 스크립트에서 다음과 같이 쉽게 읽어올 수 있다.
 
 {% highlight csharp %}
@@ -34,6 +40,8 @@ bool key_value = Input.GetKey(KeyCode.JoystickButton0);
 {% endhighlight %}
 
 [Unity reference](https://docs.unity3d.com/kr/current/ScriptReference/KeyCode.html)를 확인해 보면 `KeyCode`의 다양한 값을 볼 수 있다. 최대 8개까지의 조이스틱(컨트롤러)를 구분할 수 있으며 각 컨트롤러마다 최대 20개의 버튼을 구분할 수 있다. 이 값을 `Input.GetKey()` 함수의 인자로 주면 버튼 값을 `True`나 `False`로 돌려 준다. 물론 `Input.GetKeyDown()` 이나 `Input.GetKeyUp()` 등의 다른 함수도 사용할 수 있다.
+
+## Analog 입력
 
 Analog 값은 조금 복잡한데, 우선 스크립트에서 읽는 방법은 다음과 같다. -1.0 \~ 1.0 범위의 값을 얻을 수 있다.
 

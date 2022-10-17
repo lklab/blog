@@ -1,6 +1,28 @@
 [
   
     {
+      "category" : "Build system",
+      "title"    : "Windows에서 ARM Linux 크로스 컴파일 환경 구성하기",
+      "description": "IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다.준비하기준비물 :...",
+      "content": "IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다.준비하기준비물 :...",
+      "url"      : "/blog/ARM-Linux-Cross-Compile/",
+      "image"    : "/assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
+      "category" : "Build system",
+      "title"    : "cmake에서 툴체인 사용하기",
+      "description": "지난 번에는 cmake를 사용하여 서로 다른 플랫폼에서 빌드하는 방법을 알아보았는데, 이번엔 한 플랫폼에서 다른 플랫폼 실행 파일을 크로스...",
+      "content": "지난 번에는 cmake를 사용하여 서로 다른 플랫폼에서 빌드하는 방법을 알아보았는데, 이번엔 한 플랫폼에서 다른 플랫폼 실행 파일을 크로스...",
+      "url"      : "/blog/CMake-Toolchain/",
+      "image"    : "/assets/post/17-10-26-CMake-Toolchain/chain.jpg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
       "category" : "Unity",
       "title"    : "Unity로 VR 캐릭터 컨트롤하는 앱 개발하기",
       "description": "소개이번엔 지난 글과 저번 글의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들...",
@@ -25,8 +47,8 @@
     {
       "category" : "Unity",
       "title"    : "Unity에서 Bluetooth Controller 제어",
-      "description": "VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox 컨트롤러와 ...",
-      "content": "VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox 컨트롤러와 ...",
+      "description": "컨트롤러 소개VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox...",
+      "content": "컨트롤러 소개VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.집에 도착한 모습Xbox...",
       "url"      : "/blog/Unity-Bluetooth-Controller/",
       "image"    : "/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg",
       "author"   : "khlee"
