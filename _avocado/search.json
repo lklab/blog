@@ -1,6 +1,28 @@
 [
   
     {
+      "category" : "Embedded",
+      "title"    : "임베디드 환경에서 폰트 출력하기",
+      "description": "디스플레이에 문자열을 픽셀 단위로 처리하여 출력하는 알고리즘을 개발하기 위해 먼저 각 문자별로 비트맵이 정의된 C 배열이 필요하다.C 배열...",
+      "content": "디스플레이에 문자열을 픽셀 단위로 처리하여 출력하는 알고리즘을 개발하기 위해 먼저 각 문자별로 비트맵이 정의된 C 배열이 필요하다.C 배열...",
+      "url"      : "/blog/Font-Display/",
+      "image"    : "/assets/post/18-05-03-Font-Display/oled.jpg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
+      "category" : "EtherCAT",
+      "title"    : "IgH EtherCAT Master Stack API 분석",
+      "description": "준비물  IgH EtherCAT Master Stack 1.5.2와 Xenomai OS가 설치된 제어기  위 플랫폼에 대한 개발환경 (툴체...",
+      "content": "준비물  IgH EtherCAT Master Stack 1.5.2와 Xenomai OS가 설치된 제어기  위 플랫폼에 대한 개발환경 (툴체...",
+      "url"      : "/blog/IgH-EtherCAT/",
+      "image"    : "/assets/post/18-02-14-IgH-EtherCAT/ethercat.jpg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
       "category" : "Build system",
       "title"    : "Windows에서 ARM Linux 크로스 컴파일 환경 구성하기",
       "description": "IDE 등으로 배포하기 위해 Windows 플랫폼에서 ARM 크로스 컴파일 환경을 Standalone으로 구성하려고 한다.준비하기준비물 :...",
