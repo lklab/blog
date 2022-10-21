@@ -2,6 +2,17 @@
   
     {
       "category" : "JNI",
+      "title"    : "JNI 객체 사용과 메모리 관리",
+      "description": "개요JNI를 통해 C에서 Java의 객체에 접근할 수 있고 자유롭게 생성할 수 있다. 그러나 C에서 접근했거나 생성한 객체가 여전히 C에서...",
+      "content": "개요JNI를 통해 C에서 Java의 객체에 접근할 수 있고 자유롭게 생성할 수 있다. 그러나 C에서 접근했거나 생성한 객체가 여전히 C에서...",
+      "url"      : "/blog/Object_and_memory/",
+      "image"    : "/assets/post/18-07-04-Object_and_memory/title.jpeg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
+      "category" : "JNI",
       "title"    : "JNI로 C와 Java 연동하기",
       "description": "개요Java를 사용하면 하드웨어나 OS의 대부분 기능을 제한 없이 사용할 수 있지만 그래도 C와 같은 저수준의 언어보다 섬세할 수는 없다....",
       "content": "개요Java를 사용하면 하드웨어나 OS의 대부분 기능을 제한 없이 사용할 수 있지만 그래도 C와 같은 저수준의 언어보다 섬세할 수는 없다....",
