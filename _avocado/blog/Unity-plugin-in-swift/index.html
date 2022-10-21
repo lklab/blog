@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en" class="position-relative">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Prefetch DNS for faster page speed -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//google-analytics.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com" />
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    
+    <!-- Prefetch disqus DNS for faster page speed -->
+    <link rel="dns-prefetch" href="https://lklab-github-io-blog.disqus.com/" />
+      <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Unity 2019.3 이상에서 Swift로 플러그인 개발하기 | Avopado</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Unity 2019.3 이상에서 Swift로 플러그인 개발하기" />
+<meta name="author" content="khlee" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="개요" />
+<meta property="og:description" content="개요" />
+<link rel="canonical" href="http://localhost:4000/blog/Unity-plugin-in-swift/" />
+<meta property="og:url" content="http://localhost:4000/blog/Unity-plugin-in-swift/" />
+<meta property="og:site_name" content="Avopado" />
+<meta property="og:image" content="http://localhost:4000/assets/post/21-12-12-Unity-plugin-in-swift/title.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-12T00:00:00+09:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/post/21-12-12-Unity-plugin-in-swift/title.jpeg" />
+<meta property="twitter:title" content="Unity 2019.3 이상에서 Swift로 플러그인 개발하기" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"khlee"},"dateModified":"2021-12-12T00:00:00+09:00","datePublished":"2021-12-12T00:00:00+09:00","description":"개요","headline":"Unity 2019.3 이상에서 Swift로 플러그인 개발하기","image":"http://localhost:4000/assets/post/21-12-12-Unity-plugin-in-swift/title.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/Unity-plugin-in-swift/"},"url":"http://localhost:4000/blog/Unity-plugin-in-swift/"}</script>
+<!-- End Jekyll SEO tag -->
+ 
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+    <!-- Fontawesome Icons CSS -->
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Replace these icons with your own. -->
+
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/assets/img/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/assets/img/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/assets/img/apple-icon-152x152.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/img/android-icon-192x192.png"
+    />
+    <link
+      rel="shortcut icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+
+    
+
+    <!-- Google Analytics code. <head> tag is the right place for analytics code as directed by Google. This is unofficial light version which loads blazing fast! Implemented for faster page load.  -->
+    <script src="https://cdn.jsdelivr.net/npm/ga-lite@1/dist/ga-lite.min.js" async></script>
+<script>
+var galite = galite || {};
+galite.UA = 'G-LYHC56N0SX'; 
+</script>  
+    <script
+      async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
+    ></script>
+     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    
+    <noscript>
+      <style>
+        .loader {
+          display: none;
+        }
+        .dropdown-menu {
+          display: block;
+        }
+        .rev {
+          visibility: visible;
+        }
+        .owl-carousel {
+          display: flex;
+        }
+        .owl-carousel.carousel-1 {
+          display: block;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body>
+    <noscript
+      ><div
+        class="bg-danger text-white text-center position-absolute"
+        style="z-index: 9999999; left: 0; right: 0; top: 0"
+      >
+        Please enable JavaScript for full functionality.
+      </div></noscript
+    >
+    <div class="loader">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div id="top" class="wrapper">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img
+        src="/assets/img/apple-icon-60x60.png"
+        class="d-inline-block align-top logo"
+        alt="Avopado"
+      />
+      Avopado
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+         
+        <a
+          class="nav-item nav-link "
+          href="/"
+          >Home</a
+        >
+          
+        <a
+          class="nav-item nav-link "
+          href="/blog/"
+          >Blog</a
+        >
+          
+        <a
+          class="nav-item nav-link "
+          href="/categories/"
+          >Categories</a
+        >
+         
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+      <div class="content-wrapper"><!--                            
+This layout is used for posts. Changing anything here will affect all posts(not pages)
+ -->
+
+<div class="post">
+  <main>
+    <header class="position-relative text-center rev">
+      <div class="header-image" style="background-image: url(/assets/post/21-12-12-Unity-plugin-in-swift/title.jpeg)"></div>
+      <h1 class="post-title position-absolute">Unity 2019.3 이상에서 Swift로 플러그인 개발하기</h1>
+    </header>
+    <div class="container">
+      <div class="blog-content pd">
+        <div class="row">
+          <div class="col-md-12">
+            
+<ul class="breadcrumbs rev">
+	<li><a href="/">Home</a></li>
+	
+	
+	<li><a href="/blog/">Blog</a></li>
+	
+	
+	
+	<li><a href="#">Unity 2019.3 이상에서...</a></li>
+	
+	
+</ul>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 meta">
+            <p><small>
+                <span>
+                  <i class="fa fa-calendar" aria-hidden="true"></i> 12 Dec 2021&nbsp;
+                </span>
+                <span>
+                  <i class="fa fa-user" aria-hidden="true"></i> Khlee&nbsp;
+                </span>
+                <span>
+                  <i class="fa fa-clock-o" aria-hidden="true"></i> 8 mins read.
+                </span>
+              </small></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <article>
+              
+<ul class="toc rev clearfix">
+  <li><a href="#개요">개요</a></li>
+  <li><a href="#참고-자료">참고 자료</a></li>
+  <li><a href="#개발환경">개발환경</a></li>
+  <li><a href="#예제-프로그램">예제 프로그램</a></li>
+  <li><a href="#unity에서-네이티브-인터페이스-스크립트-작성">Unity에서 네이티브 인터페이스 스크립트 작성</a></li>
+  <li><a href="#네이티브-플러그인-작성---objective-c">네이티브 플러그인 작성 - Objective-C</a></li>
+  <li><a href="#네이티브-플러그인-작성---swift">네이티브 플러그인 작성 - Swift</a></li>
+  <li><a href="#테스트용-스크립트-작성-및-테스트">테스트용 스크립트 작성 및 테스트</a></li>
+  <li><a href="#빌드-스크립트">빌드 스크립트</a></li>
+</ul>
+
+
+              <h2 id="개요">개요</h2>
+
+<p>Unity에서는 iOS 네이티브와의 인터페이스를 Objective-C로만 제공한다. 따라서 Swift로 플러그인을 제작하려면 Objective-C가 Unity와 Swift를 연결해 주어야 한다. Unity 2019.2 버전까지는 Bridge Header를 활용해서 Objective-C와 Swift를 연동할 수 있었다.<br />
+그러나 Unity 2019.3 버전에서 Unity as a Library가 도입되면서 플러그인이 Xcode 상에서 기존의 Unity-iPhone 타겟이 아닌 UnityFramework 타겟에 포함되는 것으로 바뀌었다.<br />
+문제는 Bridge Header를 Framework 타겟에서 사용할 수 없다는 것이다. 따라서 Swift로 플러그인을 제작하려면 Bridge Header 외의 방법을 활용해야 한다.</p>
+
+<h2 id="참고-자료">참고 자료</h2>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/24875745/xcode-6-beta-4-using-bridging-headers-with-framework-targets-is-unsupported">https://stackoverflow.com/questions/24875745/xcode-6-beta-4-using-bridging-headers-with-framework-targets-is-unsupported</a></li>
+  <li><a href="https://github.com/jwtan/SwiftToUnityExample">https://github.com/jwtan/SwiftToUnityExample</a></li>
+</ul>
+
+<h2 id="개발환경">개발환경</h2>
+
+<ul>
+  <li>OS: macOS Monterey 12.0.1</li>
+  <li>Unity: 2020.3.19</li>
+  <li>이 글에서 활용한 프로젝트: <a href="https://github.com/lklab/Swift-plugin-for-Unity-iOS">https://github.com/lklab/Swift-plugin-for-Unity-iOS</a></li>
+</ul>
+
+<h2 id="예제-프로그램">예제 프로그램</h2>
+
+<ul>
+  <li>UI 버튼이 눌리면 유니티는 네이티브 함수를 호출하여 Swift 함수를 실행한다.</li>
+  <li>Swift 함수는 호출될 때마다 숫자를 1씩 더한 후 해당 숫자를 포함한 문자열을 유니티에 전달한다.</li>
+  <li>유니티에서는 해당 문자열을 받아서 UI 텍스트를 업데이트한다.</li>
+</ul>
+
+<h2 id="unity에서-네이티브-인터페이스-스크립트-작성">Unity에서 네이티브 인터페이스 스크립트 작성</h2>
+
+<p>NativeInterface.cs</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NativeInterface</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">event</span> <span class="n">System</span><span class="p">.</span><span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">OnNativeCall</span><span class="p">;</span>
+
+<span class="cp">#if !UNITY_EDITOR &amp;&amp; UNITY_IOS
+</span>    <span class="p">[</span><span class="nf">DllImport</span><span class="p">(</span><span class="s">"__Internal"</span><span class="p">)]</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">string</span> <span class="nf">CallPluginIOS</span><span class="p">();</span>
+<span class="cp">#endif
+</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">CallPlugin</span><span class="p">()</span>
+    <span class="p">{</span>
+<span class="cp">#if UNITY_EDITOR
+</span>        <span class="k">return</span> <span class="s">""</span><span class="p">;</span>
+<span class="cp">#elif UNITY_IOS
+</span>        <span class="k">return</span> <span class="nf">CallPluginIOS</span><span class="p">();</span>
+<span class="cp">#else
+</span>        <span class="k">return</span> <span class="s">""</span><span class="p">;</span>
+<span class="cp">#endif
+</span>    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">CallUnity</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">OnNativeCall</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>유니티 -&gt; 네이티브 호출</p>
+
+<ul>
+  <li><code class="highlighter-rouge">[DllImport("__Internal")]</code>를 사용해서 호출할 네이티브 함수를 선언한다. 이 때 함수명은 나중에 Objective-C에 선언할 함수명과 동일해야 한다.</li>
+  <li>플랫폼에 독립적인 함수 <code class="highlighter-rouge">CallPlugin()</code>를 구현한다. Define symbol로 플랫폼을 구분한다. 여기서는 iOS 플랫폼에서 네이티브 함수인 <code class="highlighter-rouge">CallPluginIOS()</code>를 호출한다.</li>
+  <li>여러 플랫폼을 지원하는 소프트웨어를 개발할 때 이 함수와 같이 플랫폼 의존적인 부분을 추상화하는 함수를 만들어 사용하는 것이 좋다.</li>
+</ul>
+
+<p>네이티브 -&gt; 유니티 호출</p>
+
+<ul>
+  <li>마지막으로 네이티브에서 호출될 함수로 <code class="highlighter-rouge">CallUnity()</code>를 구현한다. 네이티브에서 호출되는 함수이므로, <code class="highlighter-rouge">OnNativeCall</code>이라는 이벤트를 통해 다른 스크립트에 제공하도록 한다.</li>
+  <li>네이티브에서 유니티의 함수를 호출하려면 <code class="highlighter-rouge">UnitySendMessage()</code>를 사용하는데, 여기에 게임오브젝트 이름과 함수명이 필요하다. 따라서 이  스크립트를 포함하는 게임오브젝트와 함수명을 기억해 두었다가 Objective-C에 작성해야 한다.</li>
+</ul>
+
+<h2 id="네이티브-플러그인-작성---objective-c">네이티브 플러그인 작성 - Objective-C</h2>
+
+<p>objc_bridge.h</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">@interface</span> <span class="nc">ObjcBridge</span> <span class="p">:</span> <span class="nc">NSObject</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">sendMessage</span><span class="p">:</span> <span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">message</span><span class="p">;</span>
+
+<span class="k">@end</span></code></pre></figure>
+
+<p>objc_bridge.mm</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="cp">#import "objc_bridge.h"
+#import "UnityFramework/UnityFramework-Swift.h"
+</span>
+<span class="k">extern</span> <span class="s">"C"</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">CallPluginIOS</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">ret</span> <span class="o">=</span> <span class="p">[</span><span class="n">SwiftPlugin</span> <span class="nf">callPlugin</span><span class="p">];</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">nsStringUtf8</span> <span class="o">=</span> <span class="p">[</span><span class="n">ret</span> <span class="nf">UTF8String</span><span class="p">];</span>
+        <span class="kt">char</span><span class="o">*</span> <span class="n">cString</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">nsStringUtf8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">cString</span><span class="p">,</span> <span class="n">nsStringUtf8</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">cString</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">unitySendMessage</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">UnitySendMessage</span><span class="p">(</span><span class="s">"NativeInterface"</span><span class="p">,</span> <span class="s">"CallUnity"</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@implementation</span> <span class="nc">ObjcBridge</span>
+    
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">sendMessage</span><span class="p">:</span> <span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">message</span>
+<span class="p">{</span>
+    <span class="n">unitySendMessage</span><span class="p">([</span><span class="n">message</span> <span class="nf">UTF8String</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span></code></pre></figure>
+
+<p>유니티 -&gt; Objective-C -&gt; Swift</p>
+
+<ul>
+  <li>유니티와의 인터페이스 역할을 할 함수들은 <code class="highlighter-rouge">extern "C"</code> 안에 선언한다.</li>
+  <li>유니티에서 호출될 함수는 함수명, 리턴타입, 파라미터를 맞춰서 선언한다. 여기서는 유니티에서 <code class="highlighter-rouge">string CallPluginIOS();</code>로 선언하였으므로 리턴 타입을 <code class="highlighter-rouge">string</code>에 대응하는 <code class="highlighter-rouge">const char*</code>로 한다.</li>
+  <li>다음으로 Swift 함수를 호출한다. Swift에 선언된 심볼들을 참조하기 위해서는 UnityFramework/UnityFramework-Swift.h를 import해야 한다.</li>
+  <li>Swift 함수에서 리턴된 <code class="highlighter-rouge">NSString</code>을 <code class="highlighter-rouge">const char*</code> 로 바꾸기 위해 <code class="highlighter-rouge">UTF8String</code> 함수를 사용한다.</li>
+  <li>이 문자열을 그대로 리턴하면 제대로 동작하지 않으므로 새로운 메모리를 할당한 후 거기에 문자열을 복사하여 리턴한다.<br />
+참고: <a href="https://stackoverflow.com/questions/37047781/how-to-return-string-from-native-ios-plugin-to-unity">https://stackoverflow.com/questions/37047781/how-to-return-string-from-native-ios-plugin-to-unity</a></li>
+</ul>
+
+<p>Swift -&gt; Objective-C -&gt; 유니티</p>
+
+<ul>
+  <li>Swift에서 호출할 <code class="highlighter-rouge">sendMessage()</code> 함수를 헤더파일과 mm 파일에 선언한다.</li>
+  <li>이 함수는 <code class="highlighter-rouge">extern "C"</code> 안에 선언된 <code class="highlighter-rouge">unitySendMessage()</code>를 호출한다.</li>
+  <li><code class="highlighter-rouge">unitySendMessage()</code>는 <code class="highlighter-rouge">UnitySendMessage()</code>를 사용하여 유니티의 함수를 호출한다.
+    <ul>
+      <li>이 때 첫 번째 인자로 호출할 함수가 선언된 스크립트가 컴포넌트로 들어있는 게임오브젝트 이름을 전달한다.</li>
+      <li>두 번째 인자는 호출할 함수 이름을 전달한다.</li>
+      <li>마지막으로 유니티에 전달하고 싶은 문자열을 전달한다. 이 문자열을 전달하기 위해 <code class="highlighter-rouge">sendMessage()</code>, <code class="highlighter-rouge">unitySendMessage()</code> 함수는 각각 <code class="highlighter-rouge">NSString*</code>과 <code class="highlighter-rouge">const char*</code>를 파라미터로 받는다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="네이티브-플러그인-작성---swift">네이티브 플러그인 작성 - Swift</h2>
+
+<p>SwiftPlugin.swift</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">SwiftPlugin</span><span class="p">:</span> <span class="kt">NSObject</span>
+<span class="p">{</span>
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="kd">@objc</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">callPlugin</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span>
+    <span class="p">{</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">ObjcBridge</span><span class="o">.</span><span class="nf">sendMessage</span><span class="p">(</span><span class="s">"count is "</span> <span class="o">+</span> <span class="kt">String</span><span class="p">(</span><span class="n">count</span><span class="p">));</span>
+        <span class="k">return</span> <span class="s">"Hello, I'm swift."</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Objective-C -&gt; Swift</p>
+
+<ul>
+  <li>Objective-C에서 참조할 심볼들은 모두 <code class="highlighter-rouge">@objc</code> 및 <code class="highlighter-rouge">public</code>으로 해야 한다.</li>
+</ul>
+
+<p>Swift -&gt; Objective-C</p>
+
+<ul>
+  <li>Swift에서 Objective-C를 참조하려면 Bridge Header를 쓰지 못하기 때문에 약간 복잡하다. 여기서는 Bridge Header 대신 <a href="https://stackoverflow.com/questions/31238761/what-is-an-umbrella-header/31238936">Umbrella header</a>를  사용할 것이다.</li>
+  <li>Xcode에서 /UnityFramework/UnityFramework.h 파일을 열고 가장 아랫줄에 앞서 작성했던 objc_bridge.h 헤더파일을 import한다.</li>
+</ul>
+
+<p><img src="/blog/assets/post/21-12-12-Unity-plugin-in-swift/import_header.png" alt="import header" /></p>
+
+<ul>
+  <li>다음으로 UnityFramework 타겟의 Build Phases 섹션에서 Headers 카테고리의 Public에 objc_bridge.h 헤더파일을 추가한다.</li>
+</ul>
+
+<p><img src="/blog/assets/post/21-12-12-Unity-plugin-in-swift/build_phases.png" alt="build phases" /></p>
+
+<ul>
+  <li>그 다음에는 ObjcBridge 클래스의 sendMessage() 함수를 호출하여 최종적으로 유니티의 함수를 호출한다.</li>
+</ul>
+
+<h2 id="테스트용-스크립트-작성-및-테스트">테스트용 스크립트 작성 및 테스트</h2>
+
+<p>SampleScript.cs</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.UI</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SampleScript</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">Button</span> <span class="n">_button</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">Text</span> <span class="n">_test</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_button</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="nf">AddListener</span><span class="p">(</span><span class="k">delegate</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">ret</span> <span class="p">=</span> <span class="n">NativeInterface</span><span class="p">.</span><span class="nf">CallPlugin</span><span class="p">();</span>
+            <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"Call plugin returns: "</span> <span class="p">+</span> <span class="n">ret</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="n">NativeInterface</span><span class="p">.</span><span class="n">OnNativeCall</span> <span class="p">+=</span> <span class="n">message</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="n">_test</span><span class="p">.</span><span class="n">text</span> <span class="p">=</span> <span class="n">message</span><span class="p">;</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li>UI 버튼의 <code class="highlighter-rouge">onClick</code> 이벤트가 발생하면 네이티브 함수 <code class="highlighter-rouge">CallPlugin()</code> 함수를 호출한 후, 그 함수의 리턴값을 로깅한다.</li>
+  <li>네이티브에서 <code class="highlighter-rouge">UnitySendMessage()</code>를 사용하여 <code class="highlighter-rouge">NativeInterface.CallUnity()</code> 함수가 호출될 때의 이벤트(<code class="highlighter-rouge">NativeInterface.OnNativeCall</code>)로 메시지를 받으면 UI 텍스트에서 해당 메시지를 출력한다.</li>
+</ul>
+
+<p>테스트 영상</p>
+
+<iframe class="video" src="https://www.youtube.com/embed/fGLlCfHZARA" allowfullscreen="" frameborder="0"></iframe>
+
+<p>로그를 통해 Swift에서 리턴한 메시지도 잘 출력되는 것을 확인할 수 있다.</p>
+
+<p><img src="/blog/assets/post/21-12-12-Unity-plugin-in-swift/result.png" alt="result" /></p>
+
+<h2 id="빌드-스크립트">빌드 스크립트</h2>
+
+<p>앞서 진행했던 Umbrella header 관련 작업을 아래와 같은 빌드 스크립트를 통해 자동화할 수 있다.</p>
+
+<p>BuildScript.cs</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEditor</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEditor.Callbacks</span><span class="p">;</span>
+<span class="cp">#if UNITY_IOS
+</span><span class="k">using</span> <span class="nn">UnityEditor.iOS.Xcode</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">BuildScript</span>
+<span class="p">{</span>
+<span class="cp">#if UNITY_IOS
+</span>    <span class="k">private</span> <span class="k">static</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">publicHeaderPaths</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span>
+    <span class="p">{</span>
+        <span class="s">"Libraries/Plugins/iOS/objc_bridge.h"</span><span class="p">,</span>
+    <span class="p">};</span>
+
+    <span class="p">[</span><span class="n">PostProcessBuild</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">OnPostProcessBuild</span><span class="p">(</span><span class="n">BuildTarget</span> <span class="n">buildTarget</span><span class="p">,</span> <span class="kt">string</span> <span class="n">buildPath</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">string</span> <span class="n">projPath</span> <span class="p">=</span> <span class="n">buildPath</span> <span class="p">+</span> <span class="s">"/Unity-iPhone.xcodeproj/project.pbxproj"</span><span class="p">;</span>
+        <span class="n">PBXProject</span> <span class="n">proj</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PBXProject</span><span class="p">();</span>
+        <span class="n">proj</span><span class="p">.</span><span class="nf">ReadFromFile</span><span class="p">(</span><span class="n">projPath</span><span class="p">);</span>
+
+        <span class="kt">string</span> <span class="n">frameworkTarget</span> <span class="p">=</span> <span class="n">proj</span><span class="p">.</span><span class="nf">GetUnityFrameworkTargetGuid</span><span class="p">();</span>
+
+        <span class="kt">string</span> <span class="n">unityFrameworkHeaderText</span> <span class="p">=</span> <span class="n">File</span><span class="p">.</span><span class="nf">ReadAllText</span><span class="p">(</span><span class="n">buildPath</span> <span class="p">+</span> <span class="s">"/UnityFramework/UnityFramework.h"</span><span class="p">);</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">headerPath</span> <span class="k">in</span> <span class="n">publicHeaderPaths</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">headerGuid</span> <span class="p">=</span> <span class="n">proj</span><span class="p">.</span><span class="nf">FindFileGuidByProjectPath</span><span class="p">(</span><span class="n">headerPath</span><span class="p">);</span>
+            <span class="n">proj</span><span class="p">.</span><span class="nf">AddPublicHeaderToBuild</span><span class="p">(</span><span class="n">frameworkTarget</span><span class="p">,</span> <span class="n">headerGuid</span><span class="p">);</span>
+
+            <span class="kt">string</span> <span class="n">importStatement</span> <span class="p">=</span> <span class="s">"#import \""</span> <span class="p">+</span> <span class="n">Path</span><span class="p">.</span><span class="nf">GetFileName</span><span class="p">(</span><span class="n">headerPath</span><span class="p">)</span> <span class="p">+</span> <span class="s">"\""</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(!</span><span class="n">unityFrameworkHeaderText</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">importStatement</span><span class="p">))</span>
+                <span class="n">unityFrameworkHeaderText</span> <span class="p">+=</span> <span class="s">"\n"</span> <span class="p">+</span> <span class="n">importStatement</span> <span class="p">+</span> <span class="s">"\n"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">File</span><span class="p">.</span><span class="nf">WriteAllText</span><span class="p">(</span><span class="n">buildPath</span> <span class="p">+</span> <span class="s">"/UnityFramework/UnityFramework.h"</span><span class="p">,</span> <span class="n">unityFrameworkHeaderText</span><span class="p">);</span>
+
+        <span class="n">proj</span><span class="p">.</span><span class="nf">WriteToFile</span><span class="p">(</span><span class="n">projPath</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="cp">#endif
+</span><span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">proj.ReadFromFile(projPath);</code>: Xcode 프로젝트 파일을 읽어온다.</li>
+  <li><code class="highlighter-rouge">File.ReadAllText(buildPath + "/UnityFramework/UnityFramework.h");</code>: /UnityFramework/UnityFramework.h 파일을 열어서 텍스트를 읽어온다.</li>
+  <li><code class="highlighter-rouge">proj.AddPublicHeaderToBuild(frameworkTarget, headerGuid);</code>: 헤더파일을 Build Phases에 public으로 등록한다.</li>
+  <li><code class="highlighter-rouge">unityFrameworkHeaderText += "\n" + importStatement + "\n";</code>: /UnityFramework/UnityFramework.h 파일에 헤더파일을 import한다.</li>
+  <li><code class="highlighter-rouge">proj.WriteToFile(projPath);</code>: 프로젝트 파일에 데이터를 쓴다.</li>
+</ul>
+
+<p>활용법</p>
+
+<ul>
+  <li>이제 빌드 시마다 추가로 해야 하는 작업은 없다.</li>
+  <li>Swift에서 참조할 헤더파일이 추가될 경우 <code class="highlighter-rouge">publicHeaderPaths</code> 배열에 헤더파일의 경로를 추가하기만 하면 된다.</li>
+</ul>
+
+            </article>
+            
+            <div class="row">
+  <div class="col-md-12">
+    <p class="categories rev"> <span><a
+          href="/categories/#unity">Unity</a></span></p>
+  </div>
+</div>
+            
+
+
+            
+            
+<div class="author rev">
+	<div class="row">
+		<div class="col-md-3">
+			<img class="author-image" src="/assets/images/avocado-cover.png" alt="khlee">
+		</div>
+		<div class="col-md-9">
+			<h5>khlee</h5>
+			<p></p>
+			<ul>
+				
+				<li><a target="_blank" href="https://github.com/lklab"><i class="fa fa-github"
+							aria-hidden="true"></i></a></li>
+				
+				
+				<li><a target="_blank" href="https://www.linkedin.com/in/kyeonghyeon-lee-6a3330132"><i class="fa fa-linkedin-square"
+							aria-hidden="true"></i></a></li>
+				
+				
+				
+				
+			</ul>
+		</div>
+	</div>
+</div>
+
+            
+
+            
+            <div id="disqus_thread"></div>
+<script defer>
+  (function () {
+    var d = document, s = d.createElement('script');
+    s.src = '//lklab-github-io-blog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the comments</noscript>
+            
+
+            <div class="recent">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Recent Articles</h3>
+		</div>
+	</div>
+	<div class="row">
+		
+		
+		<div class="col-md-3 rev">
+			<a class="nostyle item" href="/blog/Object_and_memory/">
+				<div class="cards">
+					<div class="image" style="background-image: url(/assets/post/18-07-04-Object_and_memory/title.jpeg)"></div>
+					<p class="title"><small>JNI 객체 사용과 메모리 관리</small></p>
+				</div>
+			</a>
+		</div>
+		
+		
+		
+		<div class="col-md-3 rev">
+			<a class="nostyle item" href="/blog/JNI/">
+				<div class="cards">
+					<div class="image" style="background-image: url(/assets/post/18-06-22-JNI/title.jpeg)"></div>
+					<p class="title"><small>JNI로 C와 Java 연동하기</small></p>
+				</div>
+			</a>
+		</div>
+		
+		
+		
+		<div class="col-md-3 rev">
+			<a class="nostyle item" href="/blog/Font-Display/">
+				<div class="cards">
+					<div class="image" style="background-image: url(/assets/post/18-05-03-Font-Display/oled.jpg)"></div>
+					<p class="title"><small>임베디드 환경에서 폰트 출력하기</small></p>
+				</div>
+			</a>
+		</div>
+		
+		
+		
+		<div class="col-md-3 rev">
+			<a class="nostyle item" href="/blog/IgH-EtherCAT/">
+				<div class="cards">
+					<div class="image" style="background-image: url(/assets/post/18-02-14-IgH-EtherCAT/ethercat.jpg)"></div>
+					<p class="title"><small>IgH EtherCAT Master Stack API 분석</small></p>
+				</div>
+			</a>
+		</div>
+		
+		
+	</div>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div></div>
+
+      <a href="#top" class="scrollup"
+        ><i class="fa fa-long-arrow-up" aria-hidden="true"></i
+      ></a>
+      <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="logo-box">
+          <img width="30" src="/assets/images/avocado-transparent-small.png"
+            alt="Avopado" />
+          <h3>Avopado</h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h3>Pages</h3>
+        <ul>
+          
+          <li><a href="/">Home</a></li>
+          
+          <li><a href="/blog/">Blog</a></li>
+          
+          <li><a href="/categories/">Categories</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>Latest Posts</h3>
+        <ul>
+          
+          <li><a href="/blog/Unity-plugin-in-swift/">Unity 2019.3 이상에서 Swift로 플러그인 개발하기</a></li>
+          
+          <li><a href="/blog/Object_and_memory/">JNI 객체 사용과 메모리 관리</a></li>
+          
+          <li><a href="/blog/JNI/">JNI로 C와 Java 연동하기</a></li>
+          
+          <li><a href="/blog/Font-Display/">임베디드 환경에서 폰트 출력하기</a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>Contact</h3>
+        <p>Email:<a href="mailto:khlee.avo@gmail.com"> khlee.avo@gmail.com</a></p>
+        <!-- <p>Phone:<a href="tel:"> </a></p> -->
+        <!--Start of Tidio.to Script-->
+        <!-- <script src="//code.tidio.co/atcbwe5jq0ftiidebmmfwybic3nagfnf.js" async></script> -->
+        <!--End of Tidio.to Script-->
+      </div>
+    </div>
+  </div>
+</footer>
+    </div>
+
+    <!-- JQuery  -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/assets/js/owl.carousel.min.js"></script>
+
+    <!-- Navbar shrink on scroll -->
+    <script>
+      $(window).scroll(function () {
+        if ($(document).scrollTop() > 50) {
+          $(".navbar").addClass("shrink");
+        } else {
+          $(".navbar").removeClass("shrink");
+        }
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {
+            $(".scrollup").fadeIn();
+          } else {
+            $(".scrollup").fadeOut();
+          }
+        });
+
+        $(".scrollup").click(function () {
+          $("html, body").animate(
+            {
+              scrollTop: 0,
+            },
+            600
+          );
+          return false;
+        });
+      });
+    </script>
+
+    <!-- SlideDown on click -->
+    <script>
+      $(document).ready(function () {
+        $(".doshow").click(function () {
+          var that = $(this).next(".noshow");
+          $(that).slideToggle("slow");
+          $(".noshow").not(that).slideUp("slow");
+        });
+      });
+    </script>
+
+    <!-- Hide Loader on load -->
+    <script>
+      $(document).ready(function () {
+        $(".loader").hide();
+      });
+    </script>
+
+    <!-- Reveal items on scroll -->
+    <script
+      type="text/javascript"
+      src="/assets/js/scrollreveal.min.js"
+    ></script>
+    <script>
+      window.sr = ScrollReveal();
+      sr.reveal(".rev", {
+        duration: 1000,
+      });
+    </script>
+
+    
+  </body>
+</html>

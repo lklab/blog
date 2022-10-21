@@ -1,6 +1,17 @@
 [
   
     {
+      "category" : "Unity",
+      "title"    : "Unity 2019.3 이상에서 Swift로 플러그인 개발하기",
+      "description": "개요Unity에서는 iOS 네이티브와의 인터페이스를 Objective-C로만 제공한다. 따라서 Swift로 플러그인을 제작하려면 Objec...",
+      "content": "개요Unity에서는 iOS 네이티브와의 인터페이스를 Objective-C로만 제공한다. 따라서 Swift로 플러그인을 제작하려면 Objec...",
+      "url"      : "/blog/Unity-plugin-in-swift/",
+      "image"    : "/assets/post/21-12-12-Unity-plugin-in-swift/title.jpeg",
+      "author"   : "khlee"
+    } 
+    ,
+  
+    {
       "category" : "JNI",
       "title"    : "JNI 객체 사용과 메모리 관리",
       "description": "개요JNI를 통해 C에서 Java의 객체에 접근할 수 있고 자유롭게 생성할 수 있다. 그러나 C에서 접근했거나 생성한 객체가 여전히 C에서...",
