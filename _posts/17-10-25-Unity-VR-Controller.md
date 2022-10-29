@@ -9,7 +9,7 @@ layout: post
 
 ## 소개
 
-이번엔 [지난 글](https://lklab.github.io/blog/blog/Unity-VR-Support/)과 [저번 글](https://lklab.github.io/blog/blog/Unity-Bluetooth-Controller/)의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들 것이다.
+이번엔 [지난 글]({% post_url 17-10-24-Unity-VR-Support %})과 [저번 글]({% post_url 17-10-18-Unity-Bluetooth-Controller %})의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들 것이다.
 
 ## 준비
 

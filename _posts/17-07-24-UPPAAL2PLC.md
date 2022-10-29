@@ -118,6 +118,6 @@ $ ./Uppaal2PLC.py examples/TrafficLightControl/TrafficLightControl.xml examples/
 {% endhighlight %}
 
 이제 생성된 응용 "PlcApp"을 실행해 볼 차례다.
-[지난 번 글](https://lklab.github.io/blog/blog/Raspberry-Pi-EtherCAT/)에서처럼 라즈베리파이를 EtherCAT 마스터로, EL9800을 EtherCAT 슬레이브로 채택하였다.
+[지난 번 글]({% post_url 17-07-17-Raspberry-Pi-EtherCAT %})에서처럼 라즈베리파이를 EtherCAT 마스터로, EL9800을 EtherCAT 슬레이브로 채택하였다.
 
 <iframe class="video" src="https://www.youtube.com/embed/4VELOOvaF1w" allowfullscreen frameborder="0"></iframe>
