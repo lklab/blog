@@ -21,7 +21,7 @@ JNI를 통해 C에서 Java의 객체에 접근할 수 있고 자유롭게 생성
 
 C에서 String을 처리할 수 있는 함수는 다음과 같다.
 
-![string functions]({{site.suburl}}/assets/post/18-07-04-Object_and_memory/string.png)
+![string functions]({{site.baseurl}}/assets/post/18-07-04-Object_and_memory/string.png)
 
 다음과 같이 사용할 수 있다.
 
@@ -138,7 +138,7 @@ String[] ccc(int[] c, MyClass d) -> ([ILmyPackage/MyClass;)[Ljava/lang/String;
 
 다음은 배열을 처리하는 함수들이다.
 
-![array functions]({{site.suburl}}/assets/post/18-07-04-Object_and_memory/array.png)
+![array functions]({{site.baseurl}}/assets/post/18-07-04-Object_and_memory/array.png)
 
 `<Type>`에 원하는 배열 타입을 입력하면 된다. 예를 들어 int 배열을 생성하고 싶은 경우 `NewIntArray()` 함수를 사용한다.
 

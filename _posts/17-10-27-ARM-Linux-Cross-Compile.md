@@ -32,7 +32,7 @@ mingw32-make는 정식 경로에서 Standalone으로 받는 방법은 찾지 못
 
 설치 후 mingw-get GUI에서 다음과 같이 mingw32-make를 선택해서 설치하거나
 
-![install mingw gui]({{site.suburl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/install_mingw_gui.png)
+![install mingw gui]({{site.baseurl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/install_mingw_gui.png)
 
 명령 프롬프트에서 설치할 수 있다.
 
@@ -42,13 +42,13 @@ mingw32-make는 정식 경로에서 Standalone으로 받는 방법은 찾지 못
 
 어떤 방법으로든 설치하고 나면 MinGW 설치 폴더 아래 bin 폴더에 다음과 같은 파일이 생길 것이다.
 
-![mingw files]({{site.suburl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/mingw_files.png)
+![mingw files]({{site.baseurl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/mingw_files.png)
 
 이 파일들 중 mingw-get.exe를 제외한 5개 파일을 작업 폴더에 mingw32-make라는 폴더를 만들고 그 아래에 복사한다.
 
 준비물을 모두 챙기고 나면 작업 폴더는 다음과 같이 될 것이다.
 
-![working directory]({{site.suburl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/working_directory.png)
+![working directory]({{site.baseurl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/working_directory.png)
 
 ## 빌드 형상 정의하기
 
@@ -129,4 +129,4 @@ build.bat 파일을 실행하고 나면 build 폴더 안에 App이라는 파일�
 
 이것을 ARM Linux 플랫폼에 옮기고 실행한다.
 
-![execute]({{site.suburl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/execute.png)
+![execute]({{site.baseurl}}/assets/post/17-10-27-ARM-Linux-Cross-Compile/execute.png)

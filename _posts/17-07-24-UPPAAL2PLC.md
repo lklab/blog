@@ -41,13 +41,13 @@ UPPAAL2PLC는 타겟 시스템이 PLC로 한정되어 있는데, 이 때문에 �
 
 먼저 UPPAAL을 사용해서 타겟 시스템을 모델링해야 한다. UPPAAL에서는 각 타임드 오토마타의 구조를 정의한 것을 템플릿이라고 하는데, 총 3종류의 템플릿으로 나누어서 모델링해야 한다. 그 종류는 시스템 모델, 환경 모델, 프로그램 모델이다. 시스템 모델은 PLC의 동작 방식을 모델링한 것으로 모든 응용에 대해 반드시 동일하게 포함해야 한다. 다음 그림은 시스템 모델을 나타낸다.
 
-![System model]({{site.suburl}}/assets/post/17-07-24-UPPAAL2PLC/system_model.png)
+![System model]({{site.baseurl}}/assets/post/17-07-24-UPPAAL2PLC/system_model.png)
 
 PLC는 주기적으로 동일한 로직을 반복 실행한다. 각 로직은 세 가지로 구분된다. 입력, 출력, 계산. 입력은 외부 장치로부터 값을 읽어서 메모리에 저장하는 것이고 출력은 메모리에 저장된 값을 외부 장치에 출력하는 것이다. 계산은 메모리에 저장된 입력 데이터로부터 응용마다 다르게 정의된 로직에 따라 계산된 출력 데이터를 메모리에 저장하는 것이다. 이러한 동작을 모델링한 것이 위의 시스템 모델이다. `tickClock`은 주기적인 실행을 모델링하기 위해 도입한 Clock 변수이고, `exchangeData()` 함수는 입력과 출력 기능을 수행하는 함수이다. `dataExchanged` 채널은 시스템 전체의 모델들에게 입출력 교환이 완료되었음을 알려서 계산을 수행하도록 신호를 주는 역할을 한다.
 
 `exchangeData()` 함수의 내용을 작성할 때에도 지켜야 할 규칙이 있다. 먼저 다음 그림을 보자.
 
-![Exchange data]({{site.suburl}}/assets/post/17-07-24-UPPAAL2PLC/exchange_data.png)
+![Exchange data]({{site.baseurl}}/assets/post/17-07-24-UPPAAL2PLC/exchange_data.png)
 
 함수 내에서는 앞 글자만 다른 두 변수의 값을 복사하는 것으로 이루어진다. 설명하자면, `p`로 시작하는 변수는 프로그램 모델쪽, `e`로 시작하는 변수는 환경 모델쪽 변수이다. 이렇게 같은 기능의 변수를 전역 변수 하나로 두어 공유하지 않고 분리하는 이유는 PLC의 동작 특성에 있다. 프로그램 모델은 PLC에서 동작하는 응용을 모델링한 것이고, 환경 모델은 외부 장치들을 모델링한 것이다. 이 예에서는 환경 모델에 신호등, 버튼, 보행자 등이 포함될 수 있을 것이다. PLC 시스템에서는 PLC와 외부 장치가 언제나 통신하여 데이터를 교환하는 것이 아니고 주기적인 시점에서만 데이터 교환이 일어난다. 따라서 전역 변수 하나를 공유하게 되면 이러한 특성이 드러나지 않게 되어, 모델과 실제 프로그램간 차이가 발생하며, 모델에서 검증된 속성이 실제 프로그램에서도 만족함을 보장할 수 없게 된다.
 
@@ -55,9 +55,9 @@ PLC는 주기적으로 동일한 로직을 반복 실행한다. 각 로직은 �
 
 다음 그림들은 환경 모델이다.
 
-![Environment model 1]({{site.suburl}}/assets/post/17-07-24-UPPAAL2PLC/env_model_1.png)
-![Environment model 2]({{site.suburl}}/assets/post/17-07-24-UPPAAL2PLC/env_model_2.png)
-![Environment model 3]({{site.suburl}}/assets/post/17-07-24-UPPAAL2PLC/env_model_3.png)
+![Environment model 1]({{site.baseurl}}/assets/post/17-07-24-UPPAAL2PLC/env_model_1.png)
+![Environment model 2]({{site.baseurl}}/assets/post/17-07-24-UPPAAL2PLC/env_model_2.png)
+![Environment model 3]({{site.baseurl}}/assets/post/17-07-24-UPPAAL2PLC/env_model_3.png)
 
 순서대로 보행자(Pedestrian), 신호등(Light), 버튼(Button) 모델인데, 자세한 내용은 설명하지 않고 동작 방식만 설명하려고 한다. 먼저 보행자 모델은 `push` 채널을 통해 버튼 모델에 신호를 보낼 수 있고 그 신호를 받으면 보튼 모델에서는 `eButton`, 즉 환경 모델 쪽 버튼 변수의 값을 `true`로 바꾼다. 이 값은 주기적인 시점, 즉 `exchangeData()` 함수가 호출될 때 프로그램 모델에 넘어갈 것이다. 신호등 모델은 주기적으로 `eLight`의 값을 확인하여 `true`이면 `Green`으로, `false`이면 `Red`로 상태를 변경한다.
 
@@ -65,7 +65,7 @@ PLC는 주기적으로 동일한 로직을 반복 실행한다. 각 로직은 �
 
 이제 프로그램 모델이다.
 
-![Program model]({{site.suburl}}/assets/post/17-07-24-UPPAAL2PLC/program_model.png)
+![Program model]({{site.baseurl}}/assets/post/17-07-24-UPPAAL2PLC/program_model.png)
 
 프로그램 모델은 좀 복잡해 보이지만 간단히 말해서 아까 명세한 신호등의 기능을 모델링한 것이라고 보면 된다. 초기의 `LightRed` 상태에서 버튼 입력을 확인하고 `true`이면 `WAIT_TIME` 시간 동안 기다리다가 신호등 초록 불을 켜고(`pLight = true`), `GREEN_TIME` 시간 동안 기다리다가 다시 빨간 불로 돌아온다.(`pLight = false`)
 
@@ -79,7 +79,7 @@ PLC는 주기적으로 동일한 로직을 반복 실행한다. 각 로직은 �
 
 다음은 이번 예시에서의 검증 항목들이다.
 
-![Verification]({{site.suburl}}/assets/post/17-07-24-UPPAAL2PLC/verification.png)
+![Verification]({{site.baseurl}}/assets/post/17-07-24-UPPAAL2PLC/verification.png)
 
 첫 번째는 일반적으로 데드락을 검증하는 것이다.
 두 번째는 보행자의 응답성을 검증한 것인데 보행자 모델을 보면 `push` 채널을 통해 버튼 누름을 인지하면 `Waiting` 상태로 전이하면서 Clock `waiting_green_light`의 값을 `0`으로 초기화한다. 이후 신호등으로부터 초록 불 신호를 받으면 `Waiting` 상태를 벗어난다. 즉, `Waiting` 상태에서의 Clock `waiting_green_light`의 최댓값은 보행자 응답 시간의 최대를 나타내며 이 값이 `WAIT_TIME`에 2번의 주기 시간을 더한 값을 넘지 않음을 보인다.
@@ -118,6 +118,6 @@ $ ./Uppaal2PLC.py examples/TrafficLightControl/TrafficLightControl.xml examples/
 {% endhighlight %}
 
 이제 생성된 응용 "PlcApp"을 실행해 볼 차례다.
-[지난 번 글]({% post_url 17-07-17-Raspberry-Pi-EtherCAT %})에서처럼 라즈베리파이를 EtherCAT 마스터로, EL9800을 EtherCAT 슬레이브로 채택하였다.
+[지난 번 글]({{ site.baseurl }}{% post_url 17-07-17-Raspberry-Pi-EtherCAT %})에서처럼 라즈베리파이를 EtherCAT 마스터로, EL9800을 EtherCAT 슬레이브로 채택하였다.
 
 <iframe class="video" src="https://www.youtube.com/embed/4VELOOvaF1w" allowfullscreen frameborder="0"></iframe>

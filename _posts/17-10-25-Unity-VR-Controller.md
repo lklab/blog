@@ -9,30 +9,30 @@ layout: post
 
 ## 소개
 
-이번엔 [지난 글]({% post_url 17-10-24-Unity-VR-Support %})과 [저번 글]({% post_url 17-10-18-Unity-Bluetooth-Controller %})의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들 것이다.
+이번엔 [지난 글]({{ site.baseurl }}{% post_url 17-10-24-Unity-VR-Support %})과 [저번 글]({{ site.baseurl }}{% post_url 17-10-18-Unity-Bluetooth-Controller %})의 내용을 합쳐서 Bluetooth Controller를 통해 1인칭 캐릭터를 컨트롤할 수 있는 VR앱을 만들 것이다.
 
 ## 준비
 
 Assets Store에서 [괜찮은 프로젝트](https://www.assetstore.unity3d.com/kr/#!/content/15)를 받아온다.<br>
 \- 2018년 11월 현재 위 프로젝트는 서비스되지 않아서 받아올 수 없다.
 
-![sample project]({{site.suburl}}/assets/post/17-10-25-Unity-VR-Controller/20171024_224745.png)
+![sample project]({{site.baseurl}}/assets/post/17-10-25-Unity-VR-Controller/20171024_224745.png)
 
 ## 씬 수정
 
 필요없는 부분은 다 지우고 먼저 1인칭 캐릭터 역할을 할 GameObject를 적당한 위치에 적당한 크기로 하나 만든다.
 
-![scene view]({{site.suburl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_001652.png)
+![scene view]({{site.baseurl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_001652.png)
 
-![inspector]({{site.suburl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_001706.png)
+![inspector]({{site.baseurl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_001706.png)
 
 벽과 바닥을 뚫고 다니면 안 되니까 Capsule Collider를 추가하고 물리엔진과 상호작용(중력이라던가 다른 물체와 충돌이라던가)을 할 수 있도록 Rigidbody를 추가한다. 중요한게 Rigidbody에서 Constraints안에 Freeze Rotation의 모든 축을 체크해야 한다. 물리엔진에 의해 캐릭터가 회전하지 않도록 제약을 걸어 두는 것으로, 이렇게 하지 않으면 Capsule Collider의 곡면 때문에 캐릭터가 자기 맘대로 막 굴러다닌다.
 
 그 다음엔 캐릭터 GameObject의 하위 Object로 포함되도록 Camera를 추가한다.
 
-![scene view]({{site.suburl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_003124.png)
+![scene view]({{site.baseurl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_003124.png)
 
-![inspector]({{site.suburl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_003150.png)
+![inspector]({{site.baseurl}}/assets/post/17-10-25-Unity-VR-Controller/20171026_003150.png)
 
 카메라의 위치는 적당히 잡아주면 된다. 단, X와 Z 좌표는 0으로 해 두는 것이 좋다.
 

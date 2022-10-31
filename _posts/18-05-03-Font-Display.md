@@ -17,7 +17,7 @@ GLCD Font Creator라는 프로그램인데, 시스템에 정의된 폰트와 스
 
 생성된 C 배열의 구조는 다음과 같다.
 
-![generated c array]({{site.suburl}}/assets/post/18-05-03-Font-Display/20180504_121423.png)
+![generated c array]({{site.baseurl}}/assets/post/18-05-03-Font-Display/20180504_121423.png)
 
 C 배열에서 각각의 줄은 줄 끝에 주석으로 설명된 문자에 해당하는 비트맵이고 순서는 아스키 코드를 따른다.
 
@@ -27,9 +27,9 @@ C 배열에서 각각의 줄은 줄 끝에 주석으로 설명된 문자에 해�
 
 예를 들어 'a' 문자의 경우 첫 번째 바이트인 0x06은 비트맵 중 폰트가 정의된 가로 픽셀 수를 의미하고 나머지는 다음과 같이 비트맵 데이터를 담고 있다.
 
-![generated c array: a character]({{site.suburl}}/assets/post/18-05-03-Font-Display/20180504_134433.png)
+![generated c array: a character]({{site.baseurl}}/assets/post/18-05-03-Font-Display/20180504_134433.png)
 
-![bit align]({{site.suburl}}/assets/post/18-05-03-Font-Display/bit_align.png)
+![bit align]({{site.baseurl}}/assets/post/18-05-03-Font-Display/bit_align.png)
 
 따라서 byte 3의 경우 0x06이고 이 값이 배열의 5번째 바이트(index=4)에 존재하는 것을 알 수 있다.
 

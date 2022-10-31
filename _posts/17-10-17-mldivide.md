@@ -102,7 +102,7 @@ $$n$$과 $$m$$이 동일하면서 $$A$$의 rank가 $$m$$과 같은 경우, 즉 �
 
 $$n$$이 $$m$$보다 작은 경우 mldivide는 다음과 같이 $$m - n$$개에 해당하는 미지수를 $$0$$으로 설정한 후 나머지 미지수에 대한 값을 계산한다.
 
-![mldivide result]({{site.suburl}}/assets/post/17-10-17-mldivide/20171018_111803.png)
+![mldivide result]({{site.baseurl}}/assets/post/17-10-17-mldivide/20171018_111803.png)
 
 ## Linear Regression
 
@@ -149,7 +149,7 @@ $$
 
 예를 들어서 키와 몸무게 사이의 관계에 관한 Linear regression 문제를 MATLAB을 사용하여 푸는 방법은 다음과 같다.
 
-![linear regression]({{site.suburl}}/assets/post/17-10-17-mldivide/linear_regression.png){: .custom-align-center-img}
+![linear regression]({{site.baseurl}}/assets/post/17-10-17-mldivide/linear_regression.png){: .custom-align-center-img}
 *데이터 : [https://github.com/johnmyleswhite/ML_for_Hackers/blob/master/07-Optimization/data/01_heights_weights_genders.csv](https://github.com/johnmyleswhite/ML_for_Hackers/blob/master/07-Optimization/data/01_heights_weights_genders.csv)*{: .custom-caption}
 
 최종적으로 다음과 같은 선형 모델을 얻게 된다.
@@ -170,7 +170,7 @@ inv(transpose(A) * A) * transpose(A) * Y
 
 그러나 다음 행렬과 같이 데이터의 스케일 차이가 큰 경우 부동소수점 연산 정밀도의 한계로, 정확한 해를 구할 수 없게 된다.
 
-![calculation]({{site.suburl}}/assets/post/17-10-17-mldivide/20171018_114105.png)
+![calculation]({{site.baseurl}}/assets/post/17-10-17-mldivide/20171018_114105.png)
 
 MATLAB에는 해를 구하기 위해 다음의 여러 가지 방법들을 제공한다.
 

@@ -7,7 +7,7 @@ categories:
 layout: post
 ---
 
-[지난 번]({% post_url 17-07-31-cmake %})에는 cmake를 사용하여 서로 다른 플랫폼에서 빌드하는 방법을 알아보았는데, 이번엔 한 플랫폼에서 다른 플랫폼 실행 파일을 크로스 컴파일하는 방법을 알아볼 것이다.
+[지난 번]({{ site.baseurl }}{% post_url 17-07-31-cmake %})에는 cmake를 사용하여 서로 다른 플랫폼에서 빌드하는 방법을 알아보았는데, 이번엔 한 플랫폼에서 다른 플랫폼 실행 파일을 크로스 컴파일하는 방법을 알아볼 것이다.
 
 예제로, 데스크탑 PC(x86_64 Ubuntu 16.04)에서 ARM Linux 실행 파일을 크로스 컴파일해 볼 것이다.
 
@@ -68,8 +68,8 @@ $ make
 
 App 이라는 실행파일이 생성되었을 것이다. file 명령어를 통해 확인해 보면 잘 컴파일 된 것을 확인할 수 있다.
 
-![build]({{site.suburl}}/assets/post/17-10-26-CMake-Toolchain/build.png)
+![build]({{site.baseurl}}/assets/post/17-10-26-CMake-Toolchain/build.png)
 
 이 파일을 ARM 플랫폼으로 (여기서는 raspberry pi에) 전송한 후에 실행한 화면이다.
 
-![execute]({{site.suburl}}/assets/post/17-10-26-CMake-Toolchain/execute.png)
+![execute]({{site.baseurl}}/assets/post/17-10-26-CMake-Toolchain/execute.png)

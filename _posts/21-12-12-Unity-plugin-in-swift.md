@@ -170,11 +170,11 @@ Swift -> Objective-C
 * Swift에서 Objective-C를 참조하려면 Bridge Header를 쓰지 못하기 때문에 약간 복잡하다. 여기서는 Bridge Header 대신 [Umbrella header](https://stackoverflow.com/questions/31238761/what-is-an-umbrella-header/31238936)를  사용할 것이다.
 * Xcode에서 /UnityFramework/UnityFramework.h 파일을 열고 가장 아랫줄에 앞서 작성했던 objc_bridge.h 헤더파일을 import한다.
 
-![import header]({{site.suburl}}/assets/post/21-12-12-Unity-plugin-in-swift/import_header.png)
+![import header]({{site.baseurl}}/assets/post/21-12-12-Unity-plugin-in-swift/import_header.png)
 
 * 다음으로 UnityFramework 타겟의 Build Phases 섹션에서 Headers 카테고리의 Public에 objc_bridge.h 헤더파일을 추가한다.
 
-![build phases]({{site.suburl}}/assets/post/21-12-12-Unity-plugin-in-swift/build_phases.png)
+![build phases]({{site.baseurl}}/assets/post/21-12-12-Unity-plugin-in-swift/build_phases.png)
 
 * 그 다음에는 ObjcBridge 클래스의 sendMessage() 함수를 호출하여 최종적으로 유니티의 함수를 호출한다.
 
@@ -219,7 +219,7 @@ public class SampleScript : MonoBehaviour
 
 로그를 통해 Swift에서 리턴한 메시지도 잘 출력되는 것을 확인할 수 있다.
 
-![result]({{site.suburl}}/assets/post/21-12-12-Unity-plugin-in-swift/result.png)
+![result]({{site.baseurl}}/assets/post/21-12-12-Unity-plugin-in-swift/result.png)
 
 ## 빌드 스크립트
 

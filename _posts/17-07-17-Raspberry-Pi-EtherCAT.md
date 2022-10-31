@@ -51,7 +51,7 @@ $ make
 EtherCAT 슬레이브로 사용할 장치는 Beckhoff사의 EL9800 보드로 하였다.
 EtherCAT을 통해 제어 가능한 각 8개의 On-board LED와 스위치가 있다.
 
-![Beckhoff EL9800]({{site.suburl}}/assets/post/17-07-17-EtherCAT/20170529_143851.jpg)
+![Beckhoff EL9800]({{site.baseurl}}/assets/post/17-07-17-EtherCAT/20170529_143851.jpg)
 
 이제 예제 프로그램을 실행한다.
 
@@ -62,7 +62,7 @@ $ ./simple_test eth0
 
 실행시키면 다음 그림과 같이 PDO 값에 대해 모니터링해 준다.
 
-![pdo]({{site.suburl}}/assets/post/17-07-17-EtherCAT/pdo.png)
+![pdo]({{site.baseurl}}/assets/post/17-07-17-EtherCAT/pdo.png)
 
 `O:` 뒤에 첫 1바이트가 LED를 의미하고, `I:` 뒤의 첫 1바이트가 스위치를 의미한다.
 
@@ -112,7 +112,7 @@ LED는 RxPDO의 첫 번째 바이트로 다음 변수를 통해 접근할 수 �
 $ ./slaveinfo eth0 -map
 {% endhighlight %}
 
-![pdo]({{site.suburl}}/assets/post/17-07-17-EtherCAT/slaveinfo.png)
+![pdo]({{site.baseurl}}/assets/post/17-07-17-EtherCAT/slaveinfo.png)
 
 슬레이브의 SII에 저장된 PDO 매핑 정보가 출력되어 나온다.
 

@@ -13,12 +13,12 @@ layout: post
 
 이번 글은 Unity에서 다 해주므로. 분량이 없다. Edit -> Project Settings -> Player에 들어가서 원하는 플랫폼에 대해 Virtual Reality Supported에 체크한방 날리고 카드보드인지 아니면 다른 플랫폼인지 선택하면 끝이다.
 
-![player settings]({{site.suburl}}/assets/post/17-10-24-Unity-VR-Support/20171023_234700.png)
+![player settings]({{site.baseurl}}/assets/post/17-10-24-Unity-VR-Support/20171023_234700.png)
 
-![player settings]({{site.suburl}}/assets/post/17-10-24-Unity-VR-Support/20171023_234901.png)
+![player settings]({{site.baseurl}}/assets/post/17-10-24-Unity-VR-Support/20171023_234901.png)
 
 알아서 화면도 나눠주고 렌즈를 통해 보기 편하도록 화면 왜곡도 해 주며 head tracking도 된다.
 
-![demo]({{site.suburl}}/assets/post/17-10-24-Unity-VR-Support/Screenshot_20171023-235321.png)
+![demo]({{site.baseurl}}/assets/post/17-10-24-Unity-VR-Support/Screenshot_20171023-235321.png)
 
 카드보드를 선택하면 안드로이드 4.4 Kit Kat (API level 19) 부터, 데이드림을 선택하면 안드로이드 7.0 Nougat (API level 24) 부터 앱을 실행할 수 있다.
