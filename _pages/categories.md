@@ -13,7 +13,7 @@ description: All the posts are sorted based on their category.
    <a name="{{ category_name | slugify }}"></a>    
     <h3 class="category-head">{{ category_name }}</h3>
         <div class="row">
-    {% for post in site.categories[category_name] %}
+    {% for post in site.categories[category_name] limit: 3 %}
     <div class="col-md-4">
      <a class="nostyle" href="{{ site.baseurl }}{{ post.url }}">
        <div class="cards">

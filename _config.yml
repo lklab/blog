@@ -86,6 +86,10 @@ compress_html:
   profile: false
   startings: []
 
+collections:
+  staff_members:
+    output: true
+
 ####################################################################################################
 
 destination: _avocado

@@ -1,0 +1,9 @@
+---
+permalink: /staff_members/
+---
+
+{{ site.staff_members.size }}<br>
+
+{% for staff_member in site.staff_members offset: 0 limit: 2 %}
+<a href="{{ staff_member.url | relative_url }}">{{ staff_member.name }}</a><br>
+{% endfor %}
