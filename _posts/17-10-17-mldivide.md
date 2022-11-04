@@ -149,7 +149,7 @@ $$
 
 예를 들어서 키와 몸무게 사이의 관계에 관한 Linear regression 문제를 MATLAB을 사용하여 푸는 방법은 다음과 같다.
 
-![linear regression]({{site.baseurl}}/assets/post/17-10-17-mldivide/linear_regression.png){: .custom-align-center-img}
+![linear regression]({{site.baseurl}}/assets/post/17-10-17-mldivide/linear_regression.png){: .custom-align-center-img .custom-disable-img-margin}
 *데이터 : [https://github.com/johnmyleswhite/ML_for_Hackers/blob/master/07-Optimization/data/01_heights_weights_genders.csv](https://github.com/johnmyleswhite/ML_for_Hackers/blob/master/07-Optimization/data/01_heights_weights_genders.csv)*{: .custom-caption}
 
 최종적으로 다음과 같은 선형 모델을 얻게 된다.

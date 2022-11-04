@@ -30,7 +30,6 @@
     }
     
     h5 {
-        text-transform: capitalize;
         @include media-query($on-laptop) {
             text-align: center;
         }

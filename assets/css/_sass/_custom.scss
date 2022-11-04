@@ -1,4 +1,19 @@
 /* Add your own style here */
+/* general */
+.custom-disable-img-margin { }
+.custom-disable-a-effect { }
+.custom-disable-p-align {  }
+
+/* about */
+.custom-about-skill-img img {
+    margin-top: 0em;
+    margin-bottom: 1em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    height: 5rem;
+}
+
+/* post */
 .custom-align-center-img {
     display: block;
     margin-top: 1em;

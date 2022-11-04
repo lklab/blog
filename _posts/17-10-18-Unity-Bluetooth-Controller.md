@@ -11,12 +11,12 @@ layout: post
 
 VR 앱을 개발하기 위해 아이페가 PG-9068 TOMAHAWK 모델의 블루투스 컨트롤러를 구입하였다.
 
-![controller]({{site.baseurl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_01.jpeg){: .custom-align-center-img}
+![controller]({{site.baseurl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_01.jpeg){: .custom-align-center-img .custom-disable-img-margin}
 
 집에 도착한 모습
 
-![controller]({{site.baseurl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg){: .custom-align-center-img}
-![controller]({{site.baseurl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_03.jpeg){: .custom-align-center-img}
+![controller]({{site.baseurl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_02.jpeg){: .custom-align-center-img .custom-disable-img-margin}
+![controller]({{site.baseurl}}/assets/post/17-10-18-Unity-Bluetooth-Controller/controller_03.jpeg){: .custom-align-center-img .custom-disable-img-margin}
 
 Xbox 컨트롤러와 유사한 구조를 갖고 있다.
 
