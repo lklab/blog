@@ -3,8 +3,12 @@ layout: page
 title: About
 permalink: /about/
 author: khlee
-include_author: true
 ---
+
+{% include author.html %}
+
+<hr />
+<br />
 
 ### 관심 분야
 {: .text-center .custom-about-title}
