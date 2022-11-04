@@ -14,20 +14,20 @@ layout: post
 
 UPPAAL에서 사용하는 정형 언어인 타임드 오토마타의 의미론(Semantics)에서는 시간 값, 즉 clock 변수의 값은 연속적이다. 그러나 컴퓨터 시스템에서는 시간성을 구현하기 위해서 일정 주기 단위로 반복 수행하는 방법을 사용하는데, 이 경우 각 주기마다 시간은 동일한 것으로 표현되어 이산적인 시간 값을 갖게 된다.
 
-![continuous time and discrete time]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/continuous_time_discrete_time.png){: .custom-align-center-img}
+![continuous time and discrete time]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/continuous_time_discrete_time.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<연속적인 실제 시간과 이산적인 시간\><br>
 실제 시간은 각 시점마다 연속적인 실수 값으로 표현되지만 이산적인 시간은 한 주기 내에서 동일한 값으로 표현된다.*{: .custom-caption}
 
 이를 해결하기 위해 주기를 짧게 해서 이산적인 시간 값으로 최대한 연속적인 시간을 흉내 내게 하는 방법이 있을 것이다. 하지만 이것은 엄격한 의미가 중요시되는 정형 기법에서는 허용되지 않는다. 이러한 차이로 인해 모델과 실제 동작 사이에 차이가 생길 수 있기 때문이다.
 그렇다면 타임드 오토마타의 의미론을 약간 수정하면 어떨까? 연속적인 시간 값을 사용하지 않는 것이다. 사실 이것을 위한 준비가 이미 되어 있다. 지난 글에서 UPPAAL에서 모델을 개발할 때 반드시 포함해야 하는 템플릿, 시스템 템플릿이 있다고 했다. 이 템플릿에서 연속적인 clock 값을 이용하여 주기적으로 `dataExchanged` 채널을 출력한다. 이 채널의 출력 주기가 바로 이산적인 시간을 의미하게 된다. 프로그램 템플릿에서는 이 채널을 수신하여 이산적인 시간을 모델링할 수 있다. 또한, 주기 clock 값의 배수만 사용하는 것으로 제한해도 이산적인 시간을 표현하는 것이 된다. 단, 환경 템플릿에서는 이 제한을 지키지 않아도 된다. 더 좋은 검증을 위해서는 환경 템플릿에 한해 이러한 제한을 지키지 않는 것이 좋다.
 
-![system template]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/system_template.png){: .custom-align-center-img}
+![system template]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/system_template.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<시스템 템플릿\><br>
 주기적으로 dataExchanged 채널을 출력한다. 이 채널을 받을 때마다 시간 값이 주기만큼 증가한다고 모델링한다.*{: .custom-caption}
 
 동시성 가설은 어떤 실행이 한 순간에 완료된다고 가정하는 것이다. 타임드 오토마타의 의미론에서는 동시성 가설이 적용되어, 전이라던가 guard 검사, update 수행 등이 모두 시간의 흐름 없이 진행된다. 또한 urgent, committed location 등과 같이 아예 의미적으로 시간이 흐르지 않고 바로 다음 상태로 전이되어야 하는 상태도 존재한다. 이것은 앞에서 언급한 모델에 이산적인 시간을 도입하는 것으로 어느 정도 해결된다. 한 주기 내에서는 시간이 동일한 것으로 표현되므로, 그 주기 내에 실행되는 것들은 모두 실행 시간이 없는 것이 된다. 다만 로드가 심해서 한 주기 동안 수행되어야 할 모든 일을 주기 내에 마치지 못하면 왜곡이 발생한다. 이전 주기에 시작되어 다음 주기에 끝난 태스크는 그 수행 시간이 이미 한 주기 만큼의 시간이 되기 때문이다.
 
-![concurrency hypothesis]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/concurrency_hypothesis.png){: .custom-align-center-img}
+![concurrency hypothesis]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/concurrency_hypothesis.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<동시성 가설의 구현\><br>
 이산적인 시간 표현에서는 한 주기 내에 태스크가 실행되고 종료되면 그 수행 시간이 0인 것으로 표현된다. 그러나 주기를 넘어가게 되면 수행 시간이 한 주기 만큼의 시간이 된다.*{: .custom-caption}
 
@@ -39,19 +39,19 @@ UPPAAL에서 사용하는 정형 언어인 타임드 오토마타의 의미론(S
 
 타임드 오토마타의 의미론에서는, 현재 상태에서 채널이나 guard 조건 등을 만족한 전이가 여러 개 있을 경우 그것들 중 하나를 랜덤으로 선택하여 전이를 수행하거나, invariant 등의 조건이 만족한다면 아예 전이가 일어나지 않을 수 있다. 즉, 수행 트레이스를 정확히 예측할 수 없는 비결정성이 존재한다.
 
-![non-deterministic transition]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/non-deterministic_transition_01.png){: .custom-align-center-img}
+![non-deterministic transition]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/non-deterministic_transition_01.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<비결정적인 전이가 일어날 수 있는 예\><br>
 value의 값이 150이라면, 초기 Initial 상태에서 다음 상태에 L0이나 L1 또는 L2 상태가 될 수 있고 그대로 Initial 상태에 머무를 수도 있다.*{: .custom-caption}
 
 이러한 특징을 구현하기 위해서는 현재 상태에서 모든 가능한 다음 상태를 리스트로 구한 다음 그들 중 하나를 랜덤함수를 이용하여 선택하는 방법이 사용될 수 있다. 그러나 비결정성이 반드시 필요한가? 게임 등에서는 여러분의 장비를 강화할 때 일정 확률로 부서지게 하는 기능에는 사용될 수 있겠지만 산업 장치들을 제어하는 프로그램에서 어떻게 실행될지 예측하지 못하는 기능이 효용성이 있을지는 생각해 봐야 한다. 물론, 타임드 오토마타의 시멘틱스를 온전하게 구현하면 정형 검증에 대한 보장을 가져갈 수 있지만, 쓸모 없는 기능을 위해 계산 시간을 낭비하는 것도 피해야 할 요소이다.
 
-![non-deterministic transition]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/non-deterministic_transition_02.png){: .custom-align-center-img}
+![non-deterministic transition]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/non-deterministic_transition_02.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<모델 수준에서 비결정성의 제거\><br>
 guard의 검사 범위 구분, 채널 동기화 committed / urgent location, invariant(그림에는 나와있지 않음) 등을 사용하여 비결정성을 제거할 수 있다.*{: .custom-caption}
 
 따라서 필자는 비결정성을 구현하는 대신, 앞의 1번 항목과 같이 모델을 제한하고자 한다. 방법은 비결정성이 없도록 프로그램 모델을 구현하는 것이다. (아까도 말했지만 환경 모델은 해당되지 않는다. 환경 모델은 비결정성을 많이 둘수록 더 포괄적인 검증이 가능하게 된다.) 그렇지만 어떻게 비결정성이 없도록 모델을 구현할 수 있을까? 여러 전이 사이의 guard에 겹치는 구간을 없도록 하고, 채널이나 invariant, committed/urgent 기능들을 사용하여 시간적 비결정성도 없게 하는 등의 가이드라인이 제시될 수 있다. 아니면 모델을 파싱하는 과정에서 이러한 조건을 만족하도록 모델을 구현했는지 검사하는 기능을 넣을 수도 있겠다.
 
-![TCTL]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/TCTL.png){: .custom-align-center-img}
+![TCTL]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/TCTL.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<TCTL 검증의 검사 조건\><br>
 A 검증이 참이기 위해서는 모든 가능한 트레이스에 대해 참이어야 하고, E 검증이 참이려면 그러한 조건이 만족하는 트레이스가 하나 이상 존재해야 한다.<br>
 \[출처 : UPPAAL Tutorial, [http://people.cs.aau.dk/~adavid/publications/21-tutorial.pdf](http://people.cs.aau.dk/~adavid/publications/21-tutorial.pdf)\]*{: .custom-caption}
@@ -67,8 +67,8 @@ UPPAAL2PLC는 single thread로 동작하는 프로그램을 생성한다. 따라
 
 다중 태스크를 지원하게 되면 필연적으로 채널도 구현해야 한다. 채널은 그 종류도 다양하고 그 종류에 따라 구현 방법이 다르다. 채널 종류인 일반, urgent, broadcast와 UPPAAL2PLC에서 특별히 정의하는 `dataExchanged` 각각에 대해 구현 방법을 설명할 것이다.
 
-![channel 1]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/channel_01.png){: .custom-align-center-img}
-![channel 2]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/channel_02.png){: .custom-align-center-img}
+![channel 1]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/channel_01.png){: .custom-align-center-img .custom-disable-img-margin}
+![channel 2]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/channel_02.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<채널 동기화 시에 update 수행 순서\><br>
 채널을 송신하는 쪽(! 기호)의 update가 먼저 수행된다. 위 그림의 경우 채널 동기화가 수행되면 x의 값은 2가 된다.*{: .custom-caption}
 
@@ -76,9 +76,9 @@ UPPAAL2PLC는 single thread로 동작하는 프로그램을 생성한다. 따라
 
 urgent 채널은 송신자와 수신자가 1:1로 결정되는 것은 일반 채널과 같지만, 송신자와 수신자의 해당 채널을 가진 전이가 모두 준비되었을 경우 그 시점에서 시간이 흐르지 않은 시점 내에 반드시 해당 전이가 일어나야 한다. 준비된 시점부터 전이가 일어나는 시점 사이에 시간은 흐르지 않지만 그 동안에 다른 동작은 일어날 수 있다. 그 동작으로 인해 urgent 채널이 있는 전이의 guard가 바뀌어서 전이가 disable되면 해당 전이는 동작하지 않을 수 있다. 구현 관점에서는 앞에서 결정적 동작으로 구현한다고 하였으므로, 일반 채널도 조건이 만족하면 즉시 전이를 수행할 것이니까 urgent 채널과 일반 채널은 동일하게 구현하면 된다.
 
-![broadcast_channel 1]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/broadcast_channel_01.png){: .custom-align-center-img}
-![broadcast_channel 2]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/broadcast_channel_02.png){: .custom-align-center-img}
-![broadcast_channel 3]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/broadcast_channel_03.png){: .custom-align-center-img}
+![broadcast_channel 1]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/broadcast_channel_01.png){: .custom-align-center-img .custom-disable-img-margin}
+![broadcast_channel 2]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/broadcast_channel_02.png){: .custom-align-center-img .custom-disable-img-margin}
+![broadcast_channel 3]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/broadcast_channel_03.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<broadcast 채널의 update 실행 순서\><br>
 먼저 송신하는 쪽의 update가 수행되고, System declarations에 정의된 템플릿 순서대로 update가 수행된다. 위 그림의 경우 채널 동기화가 수행되고 나면 x의 값은 3이 된다. (위에서부터 아래 순서대로 정의된 경우)*{: .custom-caption}
 
@@ -90,7 +90,7 @@ broadcast 채널은 송신자와 수신자가 1:n으로 결정된다. n은 0일�
 
 Invariant는 어떤 location에서 정의되며 태스크가 그 상태에 있을 때 반드시 만족해야 하는 조건을 의미한다. clock 변수 등의 변화로 인해 현재 location에서 더 이상 invariant를 만족하지 않게 될 경우 그 전에 location을 벗어나야 한다. 벗어날 수 없으면 그 invariant를 만족하지 않게 하는 수행, 시간의 흐름이나 변수의 변경이 불가능하다. 이렇게 invariant를 더 이상 만족하지 않을 수밖에 없는데 벗어날 조건이 만족하는 전이가 없으면 deadlock이 발생하게 된다.
 
-![system template]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/system_template.png){: .custom-align-center-img}
+![system template]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/system_template.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<시스템 템플릿에 쓰인 invariant (tickClock <= PERIOD)\><br>
 invariant가 없다면 전이 조건 tickClock >= PERIOD가 참이 되었다고 해도 WaitStep에 계속 머무를 수 있다. 이러한 동작을 제한하기 위해 invariant를 도입하면 tickClock 값이 PERIOD 값이 되는 순간 전이가 일어나도록 모델링할 수 있다.*{: .custom-caption}
 
@@ -110,8 +110,8 @@ invariant가 없다면 전이 조건 tickClock >= PERIOD가 참이 되었다고 
 
 location에도 채널처럼 타입이 존재한다. 일반 location은 별도의 제약이 없는 일반적인 location이며 의미론에서는 조건이 만족하면 이 상태에서 계속 머무를 수 있다. urgent location은 이 location에 들어온 시점부터 나가는 시점까지 시간이 흐르지 않아야 하는 것을 의미한다. 차이점은 urgent location은 단지 시간이 흐르지만 않으면 될 뿐이지만 committed location은 다른 태스크의 전이보다 반드시 해당 location에서 빠져나가는 전이가 먼저 수행되어야 한다는 것이다.
 
-![urgent location]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/urgent_location.png){: .custom-align-center-img}
-![committed location]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/committed_location.png){: .custom-align-center-img}
+![urgent location]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/urgent_location.png){: .custom-align-center-img .custom-disable-img-margin}
+![committed location]({{site.baseurl}}/assets/post/17-07-26-UPPAAL2PLC/committed_location.png){: .custom-align-center-img .custom-disable-img-margin}
 *\<urgent location과 committed location\>*{: .custom-caption}
 
 위 그림의 경우 가능한 트레이스는 다음과 같다.
