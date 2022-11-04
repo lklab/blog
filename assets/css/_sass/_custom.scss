@@ -2,7 +2,7 @@
 /* general */
 .custom-disable-img-margin { }
 .custom-disable-a-effect { }
-.custom-disable-p-align {  }
+.custom-disable-p-align { }
 
 /* about */
 .custom-about-skill-img img {
@@ -11,6 +11,17 @@
     margin-right: 0.5em;
     margin-left: 0.5em;
     height: 5rem;
+}
+
+.custom-about-title:after {
+    content: "";
+    display: block;
+    border-bottom: 3px solid lighten($brand-color, 10%);
+    width: 10%;
+    margin-top: 0em;
+    margin-bottom: 1em;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* post */

@@ -6,17 +6,19 @@ author: khlee
 include_author: true
 ---
 
-## 관심 분야
+### 관심 분야
+{: .text-center .custom-about-title}
 
 자연어 처리, 소프트웨어 공학, 게임 프로그래밍, VR/AR, 산업용 네트워크, 실시간 시스템
 
-<br>
-<hr>
-<br>
+<br />
+<hr />
+<br />
 
-## 사용하는 언어
+### 사용하는 언어
+{: .text-center .custom-about-title}
 
-### 주요 언어
+#### 주요 언어
 
 [![c]({{site.baseurl}}/assets/about/languages/c.png)](https://ko.wikipedia.org/wiki/C_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4))
 [![c#]({{site.baseurl}}/assets/about/languages/csharp.png)](https://ko.wikipedia.org/wiki/C_%EC%83%A4%ED%94%84)
@@ -24,7 +26,7 @@ include_author: true
 [![python]({{site.baseurl}}/assets/about/languages/python.png)](https://www.python.org/)
 {: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
 
-### 숙련된 언어
+#### 숙련된 언어
 
 [![c++]({{site.baseurl}}/assets/about/languages/cpp.png)](https://ko.wikipedia.org/wiki/C%2B%2B)
 [![Kotlin]({{site.baseurl}}/assets/about/languages/kotlin.png)](https://kotlinlang.org/)
@@ -35,7 +37,7 @@ include_author: true
 [![Timed automata]({{site.baseurl}}/assets/about/languages/ta.png)](https://en.wikipedia.org/wiki/Timed_automaton)
 {: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
 
-### 사용가능한 언어
+#### 사용가능한 언어
 
 [![javascript]({{site.baseurl}}/assets/about/languages/js.png)](https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8)
 [![HTML5]({{site.baseurl}}/assets/about/languages/html.png)](https://ko.wikipedia.org/wiki/HTML)
@@ -44,20 +46,21 @@ include_author: true
 [![Perl]({{site.baseurl}}/assets/about/languages/perl.png)](https://www.perl.org/)
 {: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
 
-<br>
-<hr>
-<br>
+<br />
+<hr />
+<br />
 
-## 플랫폼 및 환경
+### 플랫폼 및 환경
+{: .text-center .custom-about-title}
 
-### Platform independent
+#### Platform independent
 
 [![Unity]({{site.baseurl}}/assets/about/platforms/unity.png)](https://unity.com/kr)
 [![java]({{site.baseurl}}/assets/about/languages/java.png)](https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4))
 [![python]({{site.baseurl}}/assets/about/languages/python.png)](https://www.python.org/)
 {: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
 
-### General OS
+#### General OS
 
 [![windows]({{site.baseurl}}/assets/about/platforms/windows.png)](https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%86%8C%ED%94%84%ED%8A%B8_%EC%9C%88%EB%8F%84%EC%9A%B0)
 [![Visual studio]({{site.baseurl}}/assets/about/platforms/visual_studio.png)](https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%86%8C%ED%94%84%ED%8A%B8_%EB%B9%84%EC%A3%BC%EC%96%BC_%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4)
@@ -66,13 +69,27 @@ include_author: true
 [![Android]({{site.baseurl}}/assets/about/platforms/android.png)](https://ko.wikipedia.org/wiki/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_(%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C))
 {: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
 
-### Embedded OS
+#### Embedded OS
 
 [![Raspberry PI]({{site.baseurl}}/assets/about/platforms/raspberrypi.jpg)](https://www.raspberrypi.com/software/)
 [![Beagleboard]({{site.baseurl}}/assets/about/platforms/beagleboard.jpg)](https://beagleboard.org/)
 {: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
 
-<br>
+#### Real-time OS
+
+[![CSS]({{site.baseurl}}/assets/about/platforms/ccs.jpg)](https://en.wikipedia.org/wiki/Code_Composer_Studio)
+[![Xenomai]({{site.baseurl}}/assets/about/platforms/xenomai.png)](https://en.wikipedia.org/wiki/Xenomai)
+[![uC/OS]({{site.baseurl}}/assets/about/platforms/ucos.png)](https://ko.wikipedia.org/wiki/MicroC/OS)
+{: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
+
+#### Bare metal
+
+[![Arduino]({{site.baseurl}}/assets/about/platforms/arduino.png)](https://www.arduino.cc/)
+[![TI]({{site.baseurl}}/assets/about/platforms/ti.png)](https://www.ti.com/)
+[![STM]({{site.baseurl}}/assets/about/platforms/stm.png)](https://www.st.com/content/st_com/en.html)
+{: .custom-disable-p-align .custom-disable-img-margin .custom-disable-a-effect .custom-about-skill-img}
+
+<br />
 
 
 
