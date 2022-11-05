@@ -1,0 +1,66 @@
+---
+layout: page
+title: About
+permalink: /about/
+author: khlee
+---
+
+
+{% include author.html %}
+<br />
+
+<hr>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="custom-about-title text-center rev">관심 분야</h3>
+      </div>
+    </div>
+
+    <div class="rev">{{ site.data.about.interest }}</div>
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="custom-about-title text-center rev">사용하는 언어</h3>
+      </div>
+    </div>
+
+    {% for language in site.data.about.language %}
+      <h4 class="rev">{{ language.kind }}</h3>
+      <p class="custom-disable-p-align custom-disable-img-margin custom-disable-a-effect custom-about-skill-img rev">
+      {% for item in language.items %}
+        <a href="{{ item.link }}"><img src="{{ site.baseurl }}{{ item.img }}" alt="{{ item.title }}" /></a>
+      {% endfor %}
+      </p>
+    {% endfor %}
+  </div>
+</section>
+
+<hr>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="custom-about-title text-center rev">플랫폼 및 환경</h3>
+      </div>
+    </div>
+
+    {% for platform in site.data.about.platform %}
+      <h4 class="rev">{{ platform.kind }}</h3>
+      <p class="custom-disable-p-align custom-disable-img-margin custom-disable-a-effect custom-about-skill-img rev">
+      {% for item in platform.items %}
+        <a href="{{ item.link }}"><img src="{{ site.baseurl }}{{ item.img }}" alt="{{ item.title }}" /></a>
+      {% endfor %}
+      </p>
+    {% endfor %}
+  </div>
+</section>

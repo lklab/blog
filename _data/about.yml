@@ -1,0 +1,147 @@
+interest: 자연어 처리, 소프트웨어 공학, 게임 프로그래밍, VR/AR, 산업용 네트워크, 실시간 시스템
+
+language:
+  - kind: 주요 언어
+    items:
+    - title: C
+      img: /assets/about/languages/c.png
+      link: https://ko.wikipedia.org/wiki/C_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4)
+
+    - title: C#
+      img: /assets/about/languages/csharp.png
+      link: https://ko.wikipedia.org/wiki/C_%EC%83%A4%ED%94%84
+
+    - title: Java
+      img: /assets/about/languages/java.png
+      link: https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4)
+
+    - title: Python
+      img: /assets/about/languages/python.png
+      link: https://www.python.org/
+
+  - kind: 숙련된 언어
+    items:
+    - title: C++
+      img: /assets/about/languages/cpp.png
+      link: https://ko.wikipedia.org/wiki/C%2B%2B
+
+    - title: Kotlin
+      img: /assets/about/languages/kotlin.png
+      link: https://kotlinlang.org/
+
+    - title: R
+      img: /assets/about/languages/r.png
+      link: https://www.r-project.org/
+
+    - title: MATLAB
+      img: /assets/about/languages/matlab.jpeg
+      link: https://www.mathworks.com/products/matlab.html
+
+    - title: VBA
+      img: /assets/about/languages/vba.png
+      link: https://ko.wikipedia.org/wiki/%EB%B9%84%EC%A3%BC%EC%96%BC_%EB%B2%A0%EC%9D%B4%EC%A7%81_%ED%8F%AC_%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98
+
+    - title: IEC 61131-3
+      img: /assets/about/languages/iec611313.png
+      link: https://en.wikipedia.org/wiki/IEC_61131-3
+
+    - title: Timed automata
+      img: /assets/about/languages/ta.png
+      link: https://en.wikipedia.org/wiki/Timed_automaton
+
+  - kind: 사용가능한 언어
+    items:
+    - title: javascript
+      img: /assets/about/languages/js.png
+      link: https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8
+
+    - title: HTML5
+      img: /assets/about/languages/html.png
+      link: https://ko.wikipedia.org/wiki/HTML
+
+    - title: CSS3
+      img: /assets/about/languages/css2.png
+      link: https://ko.wikipedia.org/wiki/CSS
+
+    - title: PHP
+      img: /assets/about/languages/php.png
+      link: https://www.php.net/
+
+    - title: Perl
+      img: /assets/about/languages/perl.png
+      link: https://www.perl.org/
+
+platform:
+  - kind: Platform independent
+    items:
+    - title: Unity
+      img: /assets/about/platforms/unity.png
+      link: https://unity.com/kr
+
+    - title: Java
+      img: /assets/about/languages/java.png
+      link: https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4)
+
+    - title: Python
+      img: /assets/about/languages/python.png
+      link: https://www.python.org/
+
+  - kind: General OS
+    items:
+    - title: Windows
+      img: /assets/about/platforms/windows.png
+      link: https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%86%8C%ED%94%84%ED%8A%B8_%EC%9C%88%EB%8F%84%EC%9A%B0
+
+    - title: Visual studio
+      img: /assets/about/platforms/visual_studio.png
+      link: https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%86%8C%ED%94%84%ED%8A%B8_%EB%B9%84%EC%A3%BC%EC%96%BC_%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4
+
+    - title: MinGW
+      img: /assets/about/platforms/mingw.png
+      link: https://ko.wikipedia.org/wiki/MinGW
+
+    - title: Linux
+      img: /assets/about/platforms/linux.png
+      link: https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4
+
+    - title: Android
+      img: /assets/about/platforms/android.png
+      link: https://ko.wikipedia.org/wiki/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C_(%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C)
+
+  - kind: Embedded OS
+    items:
+    - title: Raspberry PI
+      img: /assets/about/platforms/raspberrypi.jpg
+      link: https://www.raspberrypi.com/software/
+
+    - title: Beagleboard
+      img: /assets/about/platforms/beagleboard.jpg
+      link: https://beagleboard.org/
+
+  - kind: Real-time OS
+    items:
+    - title: CSS
+      img: /assets/about/platforms/ccs.jpg
+      link: https://en.wikipedia.org/wiki/Code_Composer_Studio
+
+    - title: Xenomai
+      img: /assets/about/platforms/xenomai.png
+      link: https://en.wikipedia.org/wiki/Xenomai
+
+    - title: uC/OS
+      img: /assets/about/platforms/ucos.png
+      link: https://ko.wikipedia.org/wiki/MicroC/OS
+
+  - kind: Bare metal
+    items:
+    - title: Arduino
+      img: /assets/about/platforms/arduino.png
+      link: https://www.arduino.cc/
+
+    - title: Texas Instruments
+      img: /assets/about/platforms/ti.png
+      link: https://www.ti.com/
+
+    - title: STM
+      img: /assets/about/platforms/stm.png
+      link: https://www.st.com/content/st_com/en.html
