@@ -48,6 +48,7 @@ projects: I work
 # Jekyll will read contents inside _pages only if we tell it to
 include:
   - _pages
+  - _categories
 
 # Google Ananlytics Tracker
 analytics: G-LYHC56N0SX # Sign up with Google analytics and replce with your analytics ID
