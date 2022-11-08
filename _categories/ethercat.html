@@ -1,0 +1,63 @@
+---
+layout: page
+permalink: /categories/ethercat
+category: EtherCAT
+page_index: 1
+total_page: 1
+---
+
+{% assign post_offset = page.page_index | minus: 1 | times: 5 %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      {% for post in site.categories[page.category] limit: 5 offset: post_offset %}
+      <a class="nostyle" href="{{ post.url | relative_url }}">
+        <div class="row cards blog-list rev">
+          <div class="col-md-4 image" style="background-image: url({{ post.image | relative_url }});">
+          </div>
+          <div class="col-md-8 content">
+            <h3 class="blog-index-title">{{ post.title }}</h3>
+            {% if post.description %}
+            <p class="description">{{ post.description | strip_html | truncate: 190 }}</p>
+            {% else %}
+            <p class="description">{{ post.content | strip_html | truncate: 190 }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if page.total_page > 1 %}
+  <div class="wj-pagination">
+    {% capture category_url %}{{ site.baseurl }}/categories/{{ page.category | downcase | replace: ' ', '-' }}{% endcapture %}
+
+    {% if page.page_index == 1 %}
+    <span>&laquo; Prev</span>
+    {% elsif page.page_index == 2 %}
+    <a href="{{ category_url }}">&laquo; Prev</a>
+    {% else %}
+    <a href="{{ category_url }}/page{{ page.page_index | minus: 1 }}">&laquo; Prev</a>
+    {% endif %}
+
+    {% for index in (1..page.total_page) %}
+    {% if index == page.page_index %}
+    <span class="active">{{ index }}</span>
+    {% elsif index == 1 %}
+    <a href="{{ category_url }}">{{ index }}</a>
+    {% else %}
+    <a href="{{ category_url }}/page{{ index }}">{{ index }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% if page.page_index == page.total_page %}
+    <span>Next &raquo;</span>
+    {% else %}
+    <a href="{{ category_url }}/page{{ page.page_index | plus: 1 }}">Next &raquo;</a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+</div>
