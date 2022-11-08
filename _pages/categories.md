@@ -7,9 +7,9 @@ no_article_rev: true
 ---
 
 <div class="categories-page">
-  {% for category in site.categories reversed %}
+  {% for category in site.data.categories %}
   <div class="archive-group rev">
-    {% capture category_name %}{{ category | first }}{% endcapture %}
+    {% capture category_name %}{{ category }}{% endcapture %}
     <a name="{{ category_name | slugify }}"></a>
     <div>
       <h3 class="category-head custom-category-head">{{ category_name }}</h3>
