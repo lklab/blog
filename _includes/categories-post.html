@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-md-12">
-    <p class="categories rev">{% for item in page.categories %} <span><a
-          href="{{'/categories' | relative_url}}/#{{item | slugify }}">{{ item }}</a></span>{% endfor %}</p>
+    <p class="categories rev">
+      {% for item in page.categories %}
+      <span>
+        <a href="{{ site.baseurl }}/categories/{{ item | downcase | replace: ' ', '-' }}">{{ item }}</a>
+      </span>
+      {% endfor %}
+    </p>
   </div>
 </div>
