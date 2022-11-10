@@ -65,3 +65,42 @@
     text-align: center;
     display: block;
 }
+
+/* portfolio  */
+.custom-portfolio-title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.custom-portfolio-title:after {
+    content: "";
+    display: block;
+    border-bottom: 3px solid lighten($brand-color, 10%);
+    width: 50%;
+    margin-top: 0em;
+    margin-bottom: 1em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.custom-portfolio-summary {
+    font-size: 0.8rem;
+    display: inline-block;
+    float: right;
+    width: auto;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+
+    @include media-query($on-palm) {
+        float: none;
+        margin-left: 0rem;
+        margin-bottom: 1rem;
+        font-size: $small-fs * 0.9;
+    }
+}
+
+.custom-portfolio-summary td:first-child {
+    text-align: center;
+    color: #83ce2c;
+}

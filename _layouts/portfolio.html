@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+<div class="page-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {% include breadcrumbs.html %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <article>
+          <h1 class="custom-portfolio-title rev">{{ page.title }}</h1>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="categories rev">
+                {% for item in page.tag %}
+                <span>
+                  <a class="custom-disable-a-effect" href="https://naver.com">#{{ item }}</a>
+                </span>
+                {% endfor %}
+              </p>
+            </div>
+          </div>
+
+          <table class="custom-portfolio-summary rev"><tbody>
+            {% if page.summary.division %}
+            <tr><td>구분</td><td>{{ page.summary.division }}</td></tr>
+            {% endif %}
+            {% if page.summary.period %}
+            <tr><td>수행기간</td><td>{{ page.summary.period }}</td></tr>
+            {% endif %}
+            {% if page.summary.platform %}
+            <tr><td>타겟 플랫폼</td><td>{{ page.summary.platform }}</td></tr>
+            {% endif %}
+            {% if page.summary.environment %}
+            <tr><td>개발환경</td><td>{{ page.summary.environment }}</td></tr>
+            {% endif %}
+            {% if page.summary.language %}
+            <tr><td>사용 언어</td><td>{{ page.summary.language }}</td></tr>
+            {% endif %}
+            {% if page.summary.work %}
+            <tr><td>담당 업무</td><td>{{ page.summary.work }}</td></tr>
+            {% endif %}
+          </tbody></table>
+          {{content}}
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
