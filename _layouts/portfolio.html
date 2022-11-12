@@ -6,7 +6,7 @@ layout: default
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        {% include breadcrumbs.html %}
+        {% include breadcrumbs-portfolio.html %}
       </div>
     </div>
   </div>
@@ -28,7 +28,8 @@ layout: default
             </div>
           </div>
 
-          <table class="custom-portfolio-summary rev"><tbody>
+          <h2>개요</h2>
+          <table class="custom-portfolio-summary"><tbody>
             {% if page.summary.division %}
             <tr><td>구분</td><td>{{ page.summary.division }}</td></tr>
             {% endif %}
@@ -50,6 +51,7 @@ layout: default
           </tbody></table>
           {{content}}
         </article>
+        <br />
       </div>
     </div>
   </div>

@@ -66,6 +66,10 @@
     display: block;
 }
 
+.custom-align-center-p {
+    text-align: center;
+}
+
 /* portfolio  */
 .custom-portfolio-title {
     text-align: center;
@@ -84,23 +88,24 @@
 }
 
 .custom-portfolio-summary {
-    font-size: 0.8rem;
-    display: inline-block;
-    float: right;
+    font-size: 0.9rem;
+    display: block;
     width: auto;
-    margin-left: 2rem;
     margin-bottom: 1rem;
     margin-top: 0rem;
-
-    @include media-query($on-palm) {
-        float: none;
-        margin-left: 0rem;
-        margin-bottom: 1rem;
-        font-size: $small-fs * 0.9;
-    }
 }
 
 .custom-portfolio-summary td:first-child {
     text-align: center;
-    color: #83ce2c;
+    color: $brand-color;
+}
+
+.custom-portfolio-summary tr {
+    border-top: none;
+    border-bottom: 1px solid #cceca7;;
+}
+
+.custom-portfolio-summary tr td {
+    padding: 6px 6px;
+    border: none;
 }
