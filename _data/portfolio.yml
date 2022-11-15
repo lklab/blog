@@ -1,29 +1,11 @@
-- title: Headphones
-  category: Concept & Design
-  image: /assets/images/portfolio/icons8-team-643494-unsplash.jpg
-  link: /portfolio/
-
-- title: Speaker
-  category: Concept & Design
-  image: /assets/images/portfolio/marius-masalar-139960-unsplash.jpg
-  link: /portfolio/
-
-- title: Banana
-  category: Photography
-  image: /assets/images/portfolio/mike-dorner-173502-unsplash.jpg
-  link: /portfolio/
-
-- title: Pantone
-  category: Photography
-  image: /assets/images/portfolio/autri-taheri-435297-unsplash.jpg
-  link: /portfolio/
-
-- title: Leaf
-  category: Photography
-  image: /assets/images/portfolio/agata-create-1098094-unsplash.jpg
-  link: /portfolio/
-
-- title: Apartment
-  category: Photography
-  image: /assets/images/portfolio/erol-ahmed-255854-unsplash.jpg
-  link: /portfolio/
+---
+- category: Unity
+  link: "/portfolio/unity"
+  projects:
+  - link: "/portfolio/unity/8death"
+    title: 포인트 앤 클릭 추리 게임 "8인의 죽음" 개발
+    date: 2021-01-01
+    tag:
+    - 시스템 설계
+    - 셰이더
+    - Spine

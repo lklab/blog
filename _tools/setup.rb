@@ -1,5 +1,7 @@
 require 'yaml'
 
+### 경로 설정 ###
+
 root_path = "."
 if ARGV.length >= 1
 	root_path = ARGV[0]
@@ -8,10 +10,13 @@ end
 posts_path = File.join(root_path, "_posts")
 tools_path = File.join(root_path, "_tools")
 categories_path = File.join(root_path, "_categories")
+portfolio_path = File.join(root_path, "_portfolio")
 data_path = File.join(root_path, "_data")
 
+### 카테고리별 포스트 분류 ###
+
 files = Dir.entries(posts_path)
-posts = Array.new()
+posts = Array.new
 files.each { |file|
 	if File.extname(file) == ".md"
 		posts.push(file)
@@ -63,3 +68,60 @@ categories.each { |category|
 }
 
 File.open(File.join(data_path, "categories.yml"), "w") { |f| f.write categories.to_yaml }
+
+### 포트폴리오 ###
+
+portfolio_data = Array.new
+portfolio_projects = Array.new
+categories = YAML.load_file(File.join(data_path, "portfolio_categories.yml"))
+
+categories.each { |category|
+	category_url = category.downcase.gsub(" ", "-")
+	category_path = File.join(portfolio_path, category_url)
+
+	category_data = Hash.new
+	category_data["category"] = category
+	category_data["link"] = "/portfolio/" + category_url
+	category_data["projects"] = Array.new
+	portfolio_data.push(category_data)
+
+	files = Dir.entries(category_path)
+	files.each { |file|
+		if File.extname(file) == ".md"
+			yaml = YAML.load_file(File.join(category_path, file))
+
+			data = Hash.new
+			data["link"] = "/portfolio/" + category_url + "/" + File.basename(file, ".md")
+			data["title"] = yaml["title"]
+			data["date"] = yaml["date"]
+			data["tag"] = yaml["tag"]
+
+			category_data["projects"].push(data)
+			portfolio_projects.push(data)
+		end
+	}
+
+	category_data["projects"].sort! { |x, y| y["date"] <=> x["date"] }
+
+	# TODO setup category page
+}
+portfolio_projects.sort! { |x, y| y["date"] <=> x["date"] }
+
+File.open(File.join(data_path, "portfolio.yml"), "w") { |f| f.write portfolio_data.to_yaml }
+
+### 포트폴리오 - 태그 ###
+
+portfolio_tags = Hash.new
+
+portfolio_projects.each { |project|
+
+	project["tag"].each { |tag|
+		if not portfolio_tags.key?(tag)
+			portfolio_tags[tag] = Array.new
+			# TODO setup tag page
+		end
+		portfolio_tags[tag].push(project)
+	}
+}
+
+File.open(File.join(data_path, "portfolio_tags.yml"), "w") { |f| f.write portfolio_tags.to_yaml }
