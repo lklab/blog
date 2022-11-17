@@ -2,18 +2,34 @@
 layout: page
 title: Portfolio
 permalink: /portfolio/
-description: This is an individual item from the portfolio.
 ---
 
-<div class="row portfolio-individual">
-	<div class="col-md-7 image">
-		<img src="{{ site.baseurl }}/assets/images/portfolio/icons8-team-643494-unsplash.jpg" alt="{{page.title}}">
-	</div>
-	<div class="col-md-5 details">
-		<h1 class="double-u">Project Title</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente ipsa eius voluptatibus quia natus magnam suscipit vero et perspiciatis a excepturi nihil quas saepe beatae omnis, debitis est, ipsum non. </p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa atque doloribus, quae natus repellat nobis dolorem est velit similique nesciunt, corporis praesentium necessitatibus eos enim itaque cumque soluta accusamus quisquam.</p>
-		<p><strong>Client:</strong><span> Fruit Market</span></p>
-		<p><strong>Date:</strong><span> {{"now" | date: '%b %Y'}}</span></p>
-	</div>
-</div>	
+<div class="col-lg-8">
+  {% for category in site.data.portfolio %}
+    <div class="archive-group rev">
+      <a name="{{ category.category | slugify }}"></a>
+      <div class="row">
+        <h3 class="category-head custom-category-head">{{ category.category }}</h3>
+      </div>
+
+      <div>
+        {% for project in category.projects %}
+          <a class="nostyle" href="{{ project.link | relative_url }}">
+            <div class="row cards custom-portfolio-list rev">
+              <div class="image" style="background-image: url({{ project.image | relative_url }});">
+              </div>
+              <div class="col-md-8 content">
+                <h3 class="blog-index-title">{{ project.title }}</h3>
+                <!-- {% if post.description %}
+                <p class="description">{{ post.description | strip_html | truncate: 190 }}</p>
+                {% else %}
+                <p class="description">{{ post.content | strip_html | truncate: 190 }}</p>
+                {% endif %} -->
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

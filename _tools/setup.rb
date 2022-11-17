@@ -94,6 +94,7 @@ categories.each { |category|
 			data["link"] = "/portfolio/" + category_url + "/" + File.basename(file, ".md")
 			data["title"] = yaml["title"]
 			data["date"] = yaml["date"]
+			data["image"] = yaml["image"]
 			data["tag"] = yaml["tag"]
 
 			category_data["projects"].push(data)

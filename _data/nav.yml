@@ -13,13 +13,5 @@
 - title: Categories
   link: '/categories/'
 
-# - title: Portfolio
-#   link: '/portfolio/'
-  # dropdown:
-  #   - title: Testimonials
-  #     link: /testimonials/
-  #   - title: Item
-  #     link: /portfolio/
-  #   - title: Another Item
-  #     link: /portfolio/
-
+- title: Portfolio
+  link: '/portfolio/'

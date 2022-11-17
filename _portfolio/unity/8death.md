@@ -2,6 +2,7 @@
 layout: portfolio
 title: 포인트 앤 클릭 추리 게임 "8인의 죽음" 개발
 date: 2021-01-01
+image: /assets/portfolio/8death/8death-01.png
 tag:
   - 시스템 설계
   - 셰이더
