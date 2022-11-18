@@ -63,6 +63,10 @@ language:
       img: /assets/about/languages/css2.png
       link: https://ko.wikipedia.org/wiki/CSS
 
+    - title: Ruby
+      img: /assets/about/languages/ruby.png
+      link: https://www.ruby-lang.org/
+
     - title: PHP
       img: /assets/about/languages/php.png
       link: https://www.php.net/
