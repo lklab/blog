@@ -15,13 +15,13 @@ layout: default
     <div class="row">
       <div class="col-md-12">
         <article>
-          <h1 class="custom-portfolio-title rev">{{ page.title }}</h1>
+          <h1 class="custom-portfolio-title">{{ page.title }}</h1>
           <div class="row">
             <div class="col-md-12">
-              <p class="categories rev">
+              <p class="categories">
                 {% for item in page.tag %}
                 <span>
-                  <a class="custom-disable-a-effect" href="https://naver.com">#{{ item }}</a>
+                  <a class="custom-disable-a-effect" href="{{ site.baseurl }}/portfolio/tag-{{ item | downcase | replace: ' ', '-' }}">#{{ item }}</a>
                 </span>
                 {% endfor %}
               </p>

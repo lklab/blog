@@ -1,17 +1,18 @@
 ---
 layout: page
-title: Unity
-permalink: /portfolio/unity
-category_index: 0
+title: 연구 협력
+permalink: /portfolio/tag-연구-협력
+tag_index: 4
+custom_breadcrumbs: "#연구 협력"
 ---
 
-{% assign category = site.data.portfolio[page.category_index] %}
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
 
 <div class="col-lg-8">
   <div class="archive-group rev">
     <a name="{{ category.category | slugify }}"></a>
     <div>
-      {% for project in category.projects %}
+      {% for project in projects %}
         {% include project.html %}
       {% endfor %}
     </div>

@@ -2,6 +2,7 @@
 layout: page
 title: Portfolio
 permalink: /portfolio/
+category_index: 0
 ---
 
 <div class="col-lg-8">
@@ -11,23 +12,9 @@ permalink: /portfolio/
       <div class="row">
         <h3 class="category-head custom-category-head">{{ category.category }}</h3>
       </div>
-
       <div>
         {% for project in category.projects %}
-          <a class="nostyle" href="{{ project.link | relative_url }}">
-            <div class="row cards custom-portfolio-list rev">
-              <div class="image" style="background-image: url({{ project.image | relative_url }});">
-              </div>
-              <div class="col-md-8 content">
-                <h3 class="blog-index-title">{{ project.title }}</h3>
-                <!-- {% if post.description %}
-                <p class="description">{{ post.description | strip_html | truncate: 190 }}</p>
-                {% else %}
-                <p class="description">{{ post.content | strip_html | truncate: 190 }}</p>
-                {% endif %} -->
-              </div>
-            </div>
-          </a>
+          {% include project.html %}
         {% endfor %}
       </div>
     </div>

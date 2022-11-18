@@ -69,7 +69,7 @@ categories.each { |category|
 
 File.open(File.join(data_path, "categories.yml"), "w") { |f| f.write categories.to_yaml }
 
-### 포트폴리오 ###
+### 포트폴리오 - 전체 데이터 ###
 
 portfolio_data = Array.new
 portfolio_projects = Array.new
@@ -77,7 +77,7 @@ categories = YAML.load_file(File.join(data_path, "portfolio_categories.yml"))
 
 categories.each { |category|
 	category_url = category.downcase.gsub(" ", "-")
-	category_path = File.join(portfolio_path, category_url)
+	category_path = File.join(portfolio_path, category.gsub(" ", "-"))
 
 	category_data = Hash.new
 	category_data["category"] = category
@@ -103,26 +103,51 @@ categories.each { |category|
 	}
 
 	category_data["projects"].sort! { |x, y| y["date"] <=> x["date"] }
-
-	# TODO setup category page
 }
 portfolio_projects.sort! { |x, y| y["date"] <=> x["date"] }
 
 File.open(File.join(data_path, "portfolio.yml"), "w") { |f| f.write portfolio_data.to_yaml }
 
-### 포트폴리오 - 태그 ###
+### 포트폴리오 - 카테고리 페이지 ###
 
-portfolio_tags = Hash.new
+template = File.read(File.join(tools_path, "portfolio_category.html"))
+for i in 0..(portfolio_data.count-1) do
+	html = template
+	html = html.gsub("{$category}", portfolio_data[i]["category"])
+	html = html.gsub("{$link}", portfolio_data[i]["link"])
+	html = html.gsub("{$index}", i.to_s)
+	File.open(File.join(portfolio_path, portfolio_data[i]["category"] + ".html"), "w") { |f| f.write html }
+end
+
+### 포트폴리오 - 태그 데이터 ###
+
+portfolio_tag_hash = Hash.new
+portfolio_tags = Array.new
 
 portfolio_projects.each { |project|
-
 	project["tag"].each { |tag|
-		if not portfolio_tags.key?(tag)
-			portfolio_tags[tag] = Array.new
-			# TODO setup tag page
+		if not portfolio_tag_hash.key?(tag)
+			portfolio_tag_hash[tag] = portfolio_tags.count
+			tag_data = Hash.new
+			tag_data["tag"] = tag
+			tag_data["projects"] = Array.new
+			portfolio_tags.push(tag_data)
 		end
-		portfolio_tags[tag].push(project)
+
+		portfolio_tags[portfolio_tag_hash[tag]]["projects"].push(project)
 	}
 }
 
 File.open(File.join(data_path, "portfolio_tags.yml"), "w") { |f| f.write portfolio_tags.to_yaml }
+
+### 포트폴리오 - 태그 페이지 ###
+
+template = File.read(File.join(tools_path, "portfolio_tag.html"))
+for i in 0..(portfolio_tags.count-1) do
+	tag_url = portfolio_tags[i]["tag"].downcase.gsub(" ", "-")
+	html = template
+	html = html.gsub("{$tag}", portfolio_tags[i]["tag"])
+	html = html.gsub("{$tag_url}", tag_url)
+	html = html.gsub("{$index}", i.to_s)
+	File.open(File.join(portfolio_path, "tag-" + portfolio_tags[i]["tag"] + ".html"), "w") { |f| f.write html }
+end

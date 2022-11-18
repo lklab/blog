@@ -1,17 +1,18 @@
 ---
 layout: page
-title: Unity
-permalink: /portfolio/unity
-category_index: 0
+title: Steam
+permalink: /portfolio/tag-steam
+tag_index: 8
+custom_breadcrumbs: "#Steam"
 ---
 
-{% assign category = site.data.portfolio[page.category_index] %}
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
 
 <div class="col-lg-8">
   <div class="archive-group rev">
     <a name="{{ category.category | slugify }}"></a>
     <div>
-      {% for project in category.projects %}
+      {% for project in projects %}
         {% include project.html %}
       {% endfor %}
     </div>
