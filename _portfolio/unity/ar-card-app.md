@@ -2,7 +2,7 @@
 layout: portfolio
 title: AR 기반 장난감 카드 인식 앱 개발
 date: 2019-04-01
-image: 
+image: /assets/portfolio/ar-card-app/ar-app.jpg
 tag:
   - 출시
   - AR

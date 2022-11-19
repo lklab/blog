@@ -2,7 +2,7 @@
 layout: portfolio
 title: 어드벤처 게임 "웬즈데이" 개발
 date: 2019-05-01
-image: 
+image: /assets/portfolio/wednesday/wednesday-01.jpg
 tag:
   - 출시
   - 프로젝트 관리

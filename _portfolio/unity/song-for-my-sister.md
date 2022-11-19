@@ -2,7 +2,7 @@
 layout: portfolio
 title: 스토리 퍼즐 게임 "사자의 노래" 개발
 date: 2020-03-01
-image: 
+image: /assets/about/platforms/unity.png
 tag:
   - 3D
 summary:

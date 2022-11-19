@@ -21,14 +21,14 @@
   - link: "/portfolio/unity/song-for-my-sister"
     title: 스토리 퍼즐 게임 "사자의 노래" 개발
     date: 2020-03-01
-    image: 
+    image: "/assets/about/platforms/unity.png"
     tag:
     - 3D
   - &3
     link: "/portfolio/unity/wednesday"
     title: 어드벤처 게임 "웬즈데이" 개발
     date: 2019-05-01
-    image: 
+    image: "/assets/portfolio/wednesday/wednesday-01.jpg"
     tag:
     - 출시
     - 프로젝트 관리
@@ -39,7 +39,7 @@
     link: "/portfolio/unity/senior"
     title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
     date: 2020-01-01
-    image: 
+    image: "/assets/about/platforms/unity.png"
     tag:
     - 연구 협력
     - 서버 연동
@@ -62,10 +62,18 @@
     link: "/portfolio/unity/ar-card-app"
     title: AR 기반 장난감 카드 인식 앱 개발
     date: 2019-04-01
-    image: 
+    image: "/assets/portfolio/ar-card-app/ar-app.jpg"
     tag:
     - 출시
     - AR
+  - &6
+    link: "/portfolio/unity/light-the-time"
+    title: 공포 게임 Light the Time 개발
+    date: 2014-10-01
+    image: "/assets/portfolio/light-the-time/ingame-01.png"
+    tag:
+    - VR
+    - 출시
 - tag: 지역화
   projects:
   - *4
@@ -78,3 +86,17 @@
 - tag: AR
   projects:
   - *5
+- tag: VR
+  projects:
+  - &7
+    link: "/portfolio/unity/brain-vr"
+    title: 뇌과학 연구용 VR 게임 개발
+    date: 2018-12-01
+    image: "/assets/portfolio/brain-vr/gear_vr.png"
+    tag:
+    - VR
+    - Oculus
+  - *6
+- tag: Oculus
+  projects:
+  - *7

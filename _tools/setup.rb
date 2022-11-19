@@ -77,7 +77,7 @@ categories = YAML.load_file(File.join(data_path, "portfolio_categories.yml"))
 
 categories.each { |category|
 	category_url = category.downcase.gsub(" ", "-")
-	category_path = File.join(portfolio_path, category.gsub(" ", "-"))
+	category_path = File.join(portfolio_path, category_url)
 
 	category_data = Hash.new
 	category_data["category"] = category
