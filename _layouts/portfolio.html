@@ -51,6 +51,9 @@ layout: default
             {% if page.summary.work %}
             <tr><td>담당 업무</td><td>{{ page.summary.work }}</td></tr>
             {% endif %}
+            {% if page.summary.result %}
+            <tr><td>결과물</td><td>{{ page.summary.result }}</td></tr>
+            {% endif %}
           </tbody></table>
           {{content}}
         </article>

@@ -100,3 +100,103 @@
 - tag: Oculus
   projects:
   - *7
+- tag: EtherCAT
+  projects:
+  - &8
+    link: "/portfolio/industrial-network/cia402-profile"
+    title: 위치, 속도, 토크 프로파일 및 Homing 알고리즘 개발 (CiA 402 표준)
+    date: 2018-09-01
+    image: "/assets/portfolio/cia402-profile/document.png"
+    tag:
+    - EtherCAT
+    - CiA 402
+  - &9
+    link: "/portfolio/industrial-network/drive-setting-app"
+    title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
+    date: 2018-06-01
+    image: "/assets/portfolio/drive-setting-app/ui.png"
+    tag:
+    - EtherCAT
+    - SOEM
+    - Java swing
+  - &13
+    link: "/portfolio/industrial-network/ethercat-foe"
+    title: EtherCAT FoE 기반 장치 펌웨어 관리 기능 개선
+    date: 2017-03-01
+    image: "/assets/portfolio/ethercat-foe/ui.png"
+    tag:
+    - EtherCAT
+    - FoE
+- tag: CiA 402
+  projects:
+  - *8
+- tag: SOEM
+  projects:
+  - *9
+- tag: Java swing
+  projects:
+  - *9
+- tag: CANopen
+  projects:
+  - &10
+    link: "/portfolio/industrial-network/canopen"
+    title: 서보모터 드라이브 펌웨어 CANopen 컴포넌트 개발
+    date: 2018-05-01
+    image: "/assets/portfolio/canopen/test-01.png"
+    tag:
+    - CANopen
+    - 펌웨어
+- tag: 펌웨어
+  projects:
+  - *10
+  - &11
+    link: "/portfolio/industrial-network/modbus"
+    title: 서보모터 드라이브 펌웨어 Modbus 컴포넌트 개발
+    date: 2018-04-01
+    image: "/assets/portfolio/modbus/test-02.png"
+    tag:
+    - Modbus
+    - 펌웨어
+- tag: Modbus
+  projects:
+  - *11
+- tag: PLC
+  projects:
+  - &12
+    link: "/portfolio/industrial-network/hmi"
+    title: 오픈 소스 통합개발환경을 활용한 실시간 임베디드 제어기 HMI 개발
+    date: 2017-03-01
+    image: "/assets/portfolio/hmi/hmi.png"
+    tag:
+    - PLC
+    - HMI
+  - &14
+    link: "/portfolio/industrial-network/motion-recipe"
+    title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
+    date: 2016-02-01
+    image: "/assets/portfolio/motion-recipe/ui.png"
+    tag:
+    - PLC
+    - Beremiz
+  - &15
+    link: "/portfolio/industrial-network/drawing-robot"
+    title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
+    date: 2014-10-01
+    image: "/assets/portfolio/drawing-robot/test.jpg"
+    tag:
+    - PLC
+    - Beremiz
+    - IEC 61131-3
+- tag: HMI
+  projects:
+  - *12
+- tag: FoE
+  projects:
+  - *13
+- tag: Beremiz
+  projects:
+  - *14
+  - *15
+- tag: IEC 61131-3
+  projects:
+  - *15

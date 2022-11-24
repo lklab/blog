@@ -1,0 +1,20 @@
+---
+layout: page
+title: FoE
+permalink: /portfolio/tag-foe
+tag_index: 22
+custom_breadcrumbs: "#FoE"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
