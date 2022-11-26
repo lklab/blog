@@ -2,7 +2,7 @@
 layout: portfolio
 title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
 date: 2016-02-01
-image: /assets/portfolio/motion-recipe/ui.png
+image: /assets/portfolio/motion-recipe/testbed.png
 tag:
   - PLC
   - Beremiz

@@ -109,7 +109,7 @@
   - link: "/portfolio/industrial-network/motion-recipe"
     title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
     date: 2016-02-01
-    image: "/assets/portfolio/motion-recipe/ui.png"
+    image: "/assets/portfolio/motion-recipe/testbed.png"
     tag:
     - PLC
     - Beremiz
@@ -121,3 +121,31 @@
     - PLC
     - Beremiz
     - IEC 61131-3
+- category: Software Engineering
+  link: "/portfolio/software-engineering"
+  projects:
+  - link: "/portfolio/software-engineering/miica"
+    title: 'MIICA: A Model-Driven Integrated Development Environment for Industrial
+      Control Applications 외 1건'
+    date: 2017-08-01
+    image: "/assets/portfolio/miica/ui.png"
+    tag:
+    - MDD
+    - IDE
+    - Real-time
+    - Timed automata
+  - link: "/portfolio/software-engineering/uppaal2plc"
+    title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성 프레임워크 외 1건
+    date: 2017-03-01
+    image: "/assets/portfolio/uppaal2plc/testbed.png"
+    tag:
+    - Timed automata
+    - Automatic programming
+  - link: "/portfolio/software-engineering/uppaal2c"
+    title: UPPAAL2C를 이용하여 정형 모델 기반의 검증된 일체형 드라이브 상태머신 개발
+    date: 2016-04-01
+    image: "/assets/portfolio/uppaal2c/model.png"
+    tag:
+    - Timed automata
+    - UPPAAL2C
+    - Beremiz

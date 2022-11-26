@@ -160,9 +160,51 @@
 - tag: Modbus
   projects:
   - *11
-- tag: PLC
+- tag: MDD
   projects:
   - &12
+    link: "/portfolio/software-engineering/miica"
+    title: 'MIICA: A Model-Driven Integrated Development Environment for Industrial
+      Control Applications 외 1건'
+    date: 2017-08-01
+    image: "/assets/portfolio/miica/ui.png"
+    tag:
+    - MDD
+    - IDE
+    - Real-time
+    - Timed automata
+- tag: IDE
+  projects:
+  - *12
+- tag: Real-time
+  projects:
+  - *12
+- tag: Timed automata
+  projects:
+  - *12
+  - &15
+    link: "/portfolio/software-engineering/uppaal2plc"
+    title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성 프레임워크 외 1건
+    date: 2017-03-01
+    image: "/assets/portfolio/uppaal2plc/testbed.png"
+    tag:
+    - Timed automata
+    - Automatic programming
+  - &16
+    link: "/portfolio/software-engineering/uppaal2c"
+    title: UPPAAL2C를 이용하여 정형 모델 기반의 검증된 일체형 드라이브 상태머신 개발
+    date: 2016-04-01
+    image: "/assets/portfolio/uppaal2c/model.png"
+    tag:
+    - Timed automata
+    - UPPAAL2C
+    - Beremiz
+- tag: FoE
+  projects:
+  - *13
+- tag: PLC
+  projects:
+  - &14
     link: "/portfolio/industrial-network/hmi"
     title: 오픈 소스 통합개발환경을 활용한 실시간 임베디드 제어기 HMI 개발
     date: 2017-03-01
@@ -170,15 +212,15 @@
     tag:
     - PLC
     - HMI
-  - &14
+  - &17
     link: "/portfolio/industrial-network/motion-recipe"
     title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
     date: 2016-02-01
-    image: "/assets/portfolio/motion-recipe/ui.png"
+    image: "/assets/portfolio/motion-recipe/testbed.png"
     tag:
     - PLC
     - Beremiz
-  - &15
+  - &18
     link: "/portfolio/industrial-network/drawing-robot"
     title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
     date: 2014-10-01
@@ -189,14 +231,18 @@
     - IEC 61131-3
 - tag: HMI
   projects:
-  - *12
-- tag: FoE
+  - *14
+- tag: Automatic programming
   projects:
-  - *13
+  - *15
+- tag: UPPAAL2C
+  projects:
+  - *16
 - tag: Beremiz
   projects:
-  - *14
-  - *15
+  - *16
+  - *17
+  - *18
 - tag: IEC 61131-3
   projects:
-  - *15
+  - *18
