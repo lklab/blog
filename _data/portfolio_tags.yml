@@ -252,6 +252,19 @@
   - *17
   - *18
   - *19
+- tag: Optimization
+  projects:
+  - &20
+    link: "/portfolio/others/genetic-algorithm"
+    title: Genetic algorithm을 이용한 automatic rule acquisition 알고리즘 구현
+    date: 2016-04-01
+    image: "/assets/portfolio/genetic-algorithm/algorithm.png"
+    tag:
+    - Optimization
+    - Genetic algorithm
+- tag: Genetic algorithm
+  projects:
+  - *20
 - tag: 웨어러블
   projects:
   - link: "/portfolio/embedded/wearable-instrument"
@@ -279,3 +292,41 @@
     image: "/assets/portfolio/emergency-exit/product.png"
     tag:
     - 안전 시스템
+- tag: CATIA
+  projects:
+  - &21
+    link: "/portfolio/others/catia-bridge"
+    title: CATIA를 활용한 교량전차 설계 및 정역학 분석
+    date: 2013-10-01
+    image: "/assets/portfolio/catia-bridge/avlb.jpg"
+    tag:
+    - CATIA
+    - 정역학
+    - 모델링
+    - 설계
+- tag: 정역학
+  projects:
+  - *21
+- tag: 모델링
+  projects:
+  - *21
+- tag: 설계
+  projects:
+  - *21
+- tag: Kinematics
+  projects:
+  - &22
+    link: "/portfolio/others/linkage-system"
+    title: 엑셀을 활용한 linkage system 분석기 개발
+    date: 2013-04-01
+    image: "/assets/portfolio/linkage-system/ui.png"
+    tag:
+    - Kinematics
+    - VBA
+    - Linkage System
+- tag: VBA
+  projects:
+  - *22
+- tag: Linkage System
+  projects:
+  - *22

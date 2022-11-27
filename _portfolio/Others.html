@@ -1,18 +1,18 @@
 ---
 layout: page
-title: 웨어러블
-permalink: /portfolio/tag-웨어러블
-tag_index: 32
-custom_breadcrumbs: "#웨어러블"
+title: Others
+permalink: /portfolio/others
+category_index: 4
+breadcrumbs_use_title: true
 ---
 
-{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+{% assign category = site.data.portfolio[page.category_index] %}
 
 <div class="col-lg-8">
   <div class="archive-group rev">
     <a name="{{ category.category | slugify }}"></a>
     <div>
-      {% for project in projects %}
+      {% for project in category.projects %}
         {% include project.html %}
       {% endfor %}
     </div>
