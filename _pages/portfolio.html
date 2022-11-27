@@ -3,13 +3,14 @@ layout: page
 title: Portfolio
 permalink: /portfolio/
 category_index: 0
+no_article_rev: true
 ---
 
 <div class="col-lg-8">
   {% for category in site.data.portfolio %}
-    <div class="archive-group rev">
+    <div class="archive-group">
       <a name="{{ category.category | slugify }}"></a>
-      <div class="row">
+      <div class="row rev">
         <h3 class="category-head custom-category-head">{{ category.category }}</h3>
       </div>
       <div>

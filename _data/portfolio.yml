@@ -149,3 +149,31 @@
     - Timed automata
     - UPPAAL2C
     - Beremiz
+- category: Embedded
+  link: "/portfolio/embedded"
+  projects:
+  - link: "/portfolio/embedded/drive-oled"
+    title: 서보모터 드라이브 사용자 메뉴 기능을 위한 OLED 출력 알고리즘 개발
+    date: 2018-03-01
+    image: "/assets/portfolio/drive-oled/oled-03.jpg"
+    tag:
+    - HMI
+    - 펌웨어
+  - link: "/portfolio/embedded/wearable-instrument"
+    title: 스마트폰 연동 연주용 장갑(웨어러블 디바이스) 개발
+    date: 2015-09-01
+    image: "/assets/portfolio/wearable-instrument/architecture.png"
+    tag:
+    - 웨어러블
+  - link: "/portfolio/embedded/quadcopter"
+    title: 스마트폰으로 조종하는 드론 개발
+    date: 2015-03-01
+    image: "/assets/portfolio/quadcopter/architecture.png"
+    tag:
+    - 드론
+  - link: "/portfolio/embedded/emergency-exit"
+    title: 화재 상황을 대비한 동적 비상구 방향지시 시스템 개발
+    date: 2014-06-01
+    image: "/assets/portfolio/emergency-exit/product.png"
+    tag:
+    - 안전 시스템
