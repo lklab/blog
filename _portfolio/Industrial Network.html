@@ -1,0 +1,20 @@
+---
+layout: page
+title: Industrial Network
+permalink: /portfolio/industrial-network
+category_index: 1
+breadcrumbs_use_title: true
+---
+
+{% assign category = site.data.portfolio[page.category_index] %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in category.projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

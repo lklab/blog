@@ -1,0 +1,20 @@
+---
+layout: page
+title: 정역학
+permalink: /portfolio/tag-정역학
+tag_index: 37
+custom_breadcrumbs: "#정역학"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

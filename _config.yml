@@ -90,6 +90,10 @@ compress_html:
   profile: false
   startings: []
 
+collections:
+  portfolio:
+    output: true
+
 ####################################################################################################
 
 destination: _avocado
