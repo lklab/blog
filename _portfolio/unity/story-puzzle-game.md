@@ -1,8 +1,8 @@
 ---
 layout: portfolio
-title: 스토리 퍼즐 게임 "SIIMI(시미)" 개발
+title: 스토리 퍼즐 게임 개발
 date: 2019-10-01
-image: /assets/portfolio/siimi/siimi.jpg
+image: /assets/portfolio/story-puzzle-game/story-puzzle-game.jpg
 tag:
   - 출시
   - 지역화
@@ -38,4 +38,4 @@ summary:
 
 ## 게임 내 화면
 
-![siimi]({{site.baseurl}}/assets/portfolio/siimi/siimi.jpg)
+![story-puzzle-game]({{site.baseurl}}/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg)

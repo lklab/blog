@@ -2,16 +2,16 @@
 - category: Unity
   link: "/portfolio/unity"
   projects:
-  - link: "/portfolio/unity/8death"
-    title: 포인트 앤 클릭 추리 게임 "8인의 죽음" 개발
+  - link: "/portfolio/unity/point-and-click"
+    title: 포인트 앤 클릭 추리 게임 개발
     date: 2021-01-01
-    image: "/assets/portfolio/8death/8death-01.png"
+    image: "/assets/portfolio/point-and-click/point-and-click-01.png"
     tag:
     - 시스템 설계
     - 셰이더
     - Spine
-  - link: "/portfolio/unity/song-for-my-sister"
-    title: 스토리 퍼즐 게임 "사자의 노래" 개발
+  - link: "/portfolio/unity/story-puzzle-game-3d"
+    title: 3D 스토리 퍼즐 게임 개발
     date: 2020-03-01
     image: "/assets/about/platforms/unity.png"
     tag:
@@ -23,18 +23,18 @@
     tag:
     - 연구 협력
     - 서버 연동
-  - link: "/portfolio/unity/siimi"
-    title: 스토리 퍼즐 게임 "SIIMI(시미)" 개발
+  - link: "/portfolio/unity/story-puzzle-game"
+    title: 스토리 퍼즐 게임 개발
     date: 2019-10-01
-    image: "/assets/portfolio/siimi/siimi.jpg"
+    image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
     tag:
     - 출시
     - 지역화
     - Steam
-  - link: "/portfolio/unity/wednesday"
-    title: 어드벤처 게임 "웬즈데이" 개발
+  - link: "/portfolio/unity/adventure"
+    title: 어드벤처 게임 개발
     date: 2019-05-01
-    image: "/assets/portfolio/wednesday/wednesday-01.jpg"
+    image: "/assets/portfolio/adventure/adventure-01.jpg"
     tag:
     - 출시
     - 프로젝트 관리

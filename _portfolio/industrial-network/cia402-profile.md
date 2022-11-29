@@ -19,7 +19,7 @@ summary:
 
 ## 주요 내용
 
-* 제어기와 모터드라이브의 동작 모드들이 정의된 문서인 CiA 402 표준 문서를 분석
+* 제어기와 모터드라이브의 동작 모드들이 정의된 문서인 [CiA 402 표준 문서](https://www.quicksilvercontrols.com/SP/AN/QCI-AN060_CiA402-CANopenDrivesAndMotionControlProfile.pdf)를 분석
 * 표준 문서에 정의된 내용대로 모터의 위치, 속도, 토크 프로파일과 Homing 알고리즘을 개발
 * 위치 프로파일의 경우 목표 위치, 최대 속도, 가/감속도 등을 받아 각 제어 주기별로 도달해야 하는 중간 위치들을 계산
 * 기타 Halt 및 Quick stop(긴급 정지) 등의 상황별 기능 구현

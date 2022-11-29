@@ -33,4 +33,4 @@ summary:
 * 소프트웨어 구조 및 개발된 앱의 화면
 
 ![Class diagram]({{site.baseurl}}/assets/portfolio/wearable-instrument/class-diagram.png)
-![UI]({{site.baseurl}}/assets/portfolio/wearable-instrument/ui.png)
+![UI]({{site.baseurl}}/assets/portfolio/wearable-instrument/ui.png){: width="320"}
