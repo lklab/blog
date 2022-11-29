@@ -1,0 +1,332 @@
+---
+- tag: 시스템 설계
+  projects:
+  - &1
+    link: "/portfolio/unity/point-and-click"
+    title: 포인트 앤 클릭 추리 게임 개발
+    date: 2021-01-01
+    image: "/assets/portfolio/point-and-click/point-and-click-01.png"
+    tag:
+    - 시스템 설계
+    - 셰이더
+    - Spine
+- tag: 셰이더
+  projects:
+  - *1
+- tag: Spine
+  projects:
+  - *1
+- tag: 3D
+  projects:
+  - link: "/portfolio/unity/story-puzzle-game-3d"
+    title: 3D 스토리 퍼즐 게임 개발
+    date: 2020-03-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 3D
+  - &3
+    link: "/portfolio/unity/adventure"
+    title: 어드벤처 게임 개발
+    date: 2019-05-01
+    image: "/assets/portfolio/adventure/adventure-01.jpg"
+    tag:
+    - 출시
+    - 프로젝트 관리
+    - 3D
+- tag: 연구 협력
+  projects:
+  - &2
+    link: "/portfolio/unity/senior"
+    title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
+    date: 2020-01-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 연구 협력
+    - 서버 연동
+- tag: 서버 연동
+  projects:
+  - *2
+- tag: 출시
+  projects:
+  - &4
+    link: "/portfolio/unity/story-puzzle-game"
+    title: 스토리 퍼즐 게임 개발
+    date: 2019-10-01
+    image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
+    tag:
+    - 출시
+    - 지역화
+    - Steam
+  - *3
+  - &5
+    link: "/portfolio/unity/ar-card-app"
+    title: AR 기반 장난감 카드 인식 앱 개발
+    date: 2019-04-01
+    image: "/assets/portfolio/ar-card-app/ar-app.jpg"
+    tag:
+    - 출시
+    - AR
+  - &6
+    link: "/portfolio/unity/light-the-time"
+    title: 공포 게임 Light the Time 개발
+    date: 2014-10-01
+    image: "/assets/portfolio/light-the-time/ingame-01.png"
+    tag:
+    - VR
+    - 출시
+- tag: 지역화
+  projects:
+  - *4
+- tag: Steam
+  projects:
+  - *4
+- tag: 프로젝트 관리
+  projects:
+  - *3
+- tag: AR
+  projects:
+  - *5
+- tag: VR
+  projects:
+  - &7
+    link: "/portfolio/unity/brain-vr"
+    title: 뇌과학 연구용 VR 게임 개발
+    date: 2018-12-01
+    image: "/assets/portfolio/brain-vr/gear_vr.png"
+    tag:
+    - VR
+    - Oculus
+  - *6
+- tag: Oculus
+  projects:
+  - *7
+- tag: EtherCAT
+  projects:
+  - &8
+    link: "/portfolio/industrial-network/cia402-profile"
+    title: 위치, 속도, 토크 프로파일 및 Homing 알고리즘 개발 (CiA 402 표준)
+    date: 2018-09-01
+    image: "/assets/portfolio/cia402-profile/document.png"
+    tag:
+    - EtherCAT
+    - CiA 402
+  - &9
+    link: "/portfolio/industrial-network/drive-setting-app"
+    title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
+    date: 2018-06-01
+    image: "/assets/portfolio/drive-setting-app/ui.png"
+    tag:
+    - EtherCAT
+    - SOEM
+    - Java swing
+  - &14
+    link: "/portfolio/industrial-network/ethercat-foe"
+    title: EtherCAT FoE 기반 장치 펌웨어 관리 기능 개선
+    date: 2017-03-01
+    image: "/assets/portfolio/ethercat-foe/ui.png"
+    tag:
+    - EtherCAT
+    - FoE
+- tag: CiA 402
+  projects:
+  - *8
+- tag: SOEM
+  projects:
+  - *9
+- tag: Java swing
+  projects:
+  - *9
+- tag: CANopen
+  projects:
+  - &10
+    link: "/portfolio/industrial-network/canopen"
+    title: 서보모터 드라이브 펌웨어 CANopen 컴포넌트 개발
+    date: 2018-05-01
+    image: "/assets/portfolio/canopen/test-01.png"
+    tag:
+    - CANopen
+    - 펌웨어
+- tag: 펌웨어
+  projects:
+  - *10
+  - &11
+    link: "/portfolio/industrial-network/modbus"
+    title: 서보모터 드라이브 펌웨어 Modbus 컴포넌트 개발
+    date: 2018-04-01
+    image: "/assets/portfolio/modbus/test-02.png"
+    tag:
+    - Modbus
+    - 펌웨어
+  - &12
+    link: "/portfolio/embedded/drive-oled"
+    title: 서보모터 드라이브 사용자 메뉴 기능을 위한 OLED 출력 알고리즘 개발
+    date: 2018-03-01
+    image: "/assets/portfolio/drive-oled/oled-03.jpg"
+    tag:
+    - HMI
+    - 펌웨어
+- tag: Modbus
+  projects:
+  - *11
+- tag: HMI
+  projects:
+  - *12
+  - &15
+    link: "/portfolio/industrial-network/hmi"
+    title: 오픈 소스 통합개발환경을 활용한 실시간 임베디드 제어기 HMI 개발
+    date: 2017-03-01
+    image: "/assets/portfolio/hmi/hmi.png"
+    tag:
+    - PLC
+    - HMI
+- tag: MDD
+  projects:
+  - &13
+    link: "/portfolio/software-engineering/miica"
+    title: 'MIICA: A Model-Driven Integrated Development Environment for Industrial
+      Control Applications 외 1건'
+    date: 2017-08-01
+    image: "/assets/portfolio/miica/ui.png"
+    tag:
+    - MDD
+    - IDE
+    - Real-time
+    - Timed automata
+- tag: IDE
+  projects:
+  - *13
+- tag: Real-time
+  projects:
+  - *13
+- tag: Timed automata
+  projects:
+  - *13
+  - &16
+    link: "/portfolio/software-engineering/uppaal2plc"
+    title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성 프레임워크 외 1건
+    date: 2017-03-01
+    image: "/assets/portfolio/uppaal2plc/testbed.png"
+    tag:
+    - Timed automata
+    - Automatic programming
+  - &17
+    link: "/portfolio/software-engineering/uppaal2c"
+    title: UPPAAL2C를 이용하여 정형 모델 기반의 검증된 일체형 드라이브 상태머신 개발
+    date: 2016-04-01
+    image: "/assets/portfolio/uppaal2c/model.png"
+    tag:
+    - Timed automata
+    - UPPAAL2C
+    - Beremiz
+- tag: FoE
+  projects:
+  - *14
+- tag: PLC
+  projects:
+  - *15
+  - &18
+    link: "/portfolio/industrial-network/motion-recipe"
+    title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
+    date: 2016-02-01
+    image: "/assets/portfolio/motion-recipe/testbed.png"
+    tag:
+    - PLC
+    - Beremiz
+  - &19
+    link: "/portfolio/industrial-network/drawing-robot"
+    title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
+    date: 2014-10-01
+    image: "/assets/portfolio/drawing-robot/test.jpg"
+    tag:
+    - PLC
+    - Beremiz
+    - IEC 61131-3
+- tag: Automatic programming
+  projects:
+  - *16
+- tag: UPPAAL2C
+  projects:
+  - *17
+- tag: Beremiz
+  projects:
+  - *17
+  - *18
+  - *19
+- tag: Optimization
+  projects:
+  - &20
+    link: "/portfolio/others/genetic-algorithm"
+    title: Genetic algorithm을 이용한 automatic rule acquisition 알고리즘 구현
+    date: 2016-04-01
+    image: "/assets/portfolio/genetic-algorithm/algorithm.png"
+    tag:
+    - Optimization
+    - Genetic algorithm
+- tag: Genetic algorithm
+  projects:
+  - *20
+- tag: 웨어러블
+  projects:
+  - link: "/portfolio/embedded/wearable-instrument"
+    title: 스마트폰 연동 연주용 장갑(웨어러블 디바이스) 개발
+    date: 2015-09-01
+    image: "/assets/portfolio/wearable-instrument/architecture.png"
+    tag:
+    - 웨어러블
+- tag: 드론
+  projects:
+  - link: "/portfolio/embedded/quadcopter"
+    title: 스마트폰으로 조종하는 드론 개발
+    date: 2015-03-01
+    image: "/assets/portfolio/quadcopter/architecture.png"
+    tag:
+    - 드론
+- tag: IEC 61131-3
+  projects:
+  - *19
+- tag: 안전 시스템
+  projects:
+  - link: "/portfolio/embedded/emergency-exit"
+    title: 화재 상황을 대비한 동적 비상구 방향지시 시스템 개발
+    date: 2014-06-01
+    image: "/assets/portfolio/emergency-exit/product.png"
+    tag:
+    - 안전 시스템
+- tag: CATIA
+  projects:
+  - &21
+    link: "/portfolio/others/catia-bridge"
+    title: CATIA를 활용한 교량전차 설계 및 정역학 분석
+    date: 2013-10-01
+    image: "/assets/portfolio/catia-bridge/avlb.jpg"
+    tag:
+    - CATIA
+    - 정역학
+    - 모델링
+    - 설계
+- tag: 정역학
+  projects:
+  - *21
+- tag: 모델링
+  projects:
+  - *21
+- tag: 설계
+  projects:
+  - *21
+- tag: Kinematics
+  projects:
+  - &22
+    link: "/portfolio/others/linkage-system"
+    title: 엑셀을 활용한 linkage system 분석기 개발
+    date: 2013-04-01
+    image: "/assets/portfolio/linkage-system/ui.png"
+    tag:
+    - Kinematics
+    - VBA
+    - Linkage System
+- tag: VBA
+  projects:
+  - *22
+- tag: Linkage System
+  projects:
+  - *22

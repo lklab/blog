@@ -1,0 +1,20 @@
+---
+layout: page
+title: 안전 시스템
+permalink: /portfolio/tag-안전-시스템
+tag_index: 35
+custom_breadcrumbs: "#안전 시스템"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

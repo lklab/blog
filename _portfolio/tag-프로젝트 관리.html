@@ -1,0 +1,20 @@
+---
+layout: page
+title: 프로젝트 관리
+permalink: /portfolio/tag-프로젝트-관리
+tag_index: 9
+custom_breadcrumbs: "#프로젝트 관리"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

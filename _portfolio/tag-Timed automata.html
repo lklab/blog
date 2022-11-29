@@ -1,0 +1,20 @@
+---
+layout: page
+title: Timed automata
+permalink: /portfolio/tag-timed-automata
+tag_index: 24
+custom_breadcrumbs: "#Timed automata"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
