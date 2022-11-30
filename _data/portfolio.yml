@@ -70,6 +70,7 @@
     tag:
     - EtherCAT
     - CiA 402
+    - 펌웨어
   - link: "/portfolio/industrial-network/drive-setting-app"
     title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
     date: 2018-06-01
@@ -97,8 +98,10 @@
     date: 2017-03-01
     image: "/assets/portfolio/hmi/hmi.png"
     tag:
-    - PLC
     - HMI
+    - PLC
+    - Beremiz
+    - IEC 61131-3
   - link: "/portfolio/industrial-network/ethercat-foe"
     title: EtherCAT FoE 기반 장치 펌웨어 관리 기능 개선
     date: 2017-03-01
@@ -113,6 +116,7 @@
     tag:
     - PLC
     - Beremiz
+    - IEC 61131-3
   - link: "/portfolio/industrial-network/drawing-robot"
     title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
     date: 2014-10-01

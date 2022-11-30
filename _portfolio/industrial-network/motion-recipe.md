@@ -6,6 +6,7 @@ image: /assets/portfolio/motion-recipe/testbed.png
 tag:
   - PLC
   - Beremiz
+  - IEC 61131-3
 summary:
   division: 논문
   period: 2016.02 - 2016.05 (4개월)

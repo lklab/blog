@@ -110,6 +110,7 @@
     tag:
     - EtherCAT
     - CiA 402
+    - 펌웨어
   - &9
     link: "/portfolio/industrial-network/drive-setting-app"
     title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
@@ -130,14 +131,9 @@
 - tag: CiA 402
   projects:
   - *8
-- tag: SOEM
+- tag: 펌웨어
   projects:
-  - *9
-- tag: Java swing
-  projects:
-  - *9
-- tag: CANopen
-  projects:
+  - *8
   - &10
     link: "/portfolio/industrial-network/canopen"
     title: 서보모터 드라이브 펌웨어 CANopen 컴포넌트 개발
@@ -146,9 +142,6 @@
     tag:
     - CANopen
     - 펌웨어
-- tag: 펌웨어
-  projects:
-  - *10
   - &11
     link: "/portfolio/industrial-network/modbus"
     title: 서보모터 드라이브 펌웨어 Modbus 컴포넌트 개발
@@ -165,6 +158,15 @@
     tag:
     - HMI
     - 펌웨어
+- tag: SOEM
+  projects:
+  - *9
+- tag: Java swing
+  projects:
+  - *9
+- tag: CANopen
+  projects:
+  - *10
 - tag: Modbus
   projects:
   - *11
@@ -177,8 +179,10 @@
     date: 2017-03-01
     image: "/assets/portfolio/hmi/hmi.png"
     tag:
-    - PLC
     - HMI
+    - PLC
+    - Beremiz
+    - IEC 61131-3
 - tag: MDD
   projects:
   - &13
@@ -201,7 +205,7 @@
 - tag: Timed automata
   projects:
   - *13
-  - &16
+  - &19
     link: "/portfolio/software-engineering/uppaal2plc"
     title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성 프레임워크 외 1건
     date: 2017-03-01
@@ -209,7 +213,7 @@
     tag:
     - Timed automata
     - Automatic programming
-  - &17
+  - &16
     link: "/portfolio/software-engineering/uppaal2c"
     title: UPPAAL2C를 이용하여 정형 모델 기반의 검증된 일체형 드라이브 상태머신 개발
     date: 2016-04-01
@@ -224,7 +228,7 @@
 - tag: PLC
   projects:
   - *15
-  - &18
+  - &17
     link: "/portfolio/industrial-network/motion-recipe"
     title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
     date: 2016-02-01
@@ -232,7 +236,8 @@
     tag:
     - PLC
     - Beremiz
-  - &19
+    - IEC 61131-3
+  - &18
     link: "/portfolio/industrial-network/drawing-robot"
     title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
     date: 2014-10-01
@@ -241,17 +246,23 @@
     - PLC
     - Beremiz
     - IEC 61131-3
-- tag: Automatic programming
-  projects:
-  - *16
-- tag: UPPAAL2C
-  projects:
-  - *17
 - tag: Beremiz
   projects:
+  - *15
+  - *16
   - *17
   - *18
+- tag: IEC 61131-3
+  projects:
+  - *15
+  - *17
+  - *18
+- tag: Automatic programming
+  projects:
   - *19
+- tag: UPPAAL2C
+  projects:
+  - *16
 - tag: Optimization
   projects:
   - &20
@@ -281,9 +292,6 @@
     image: "/assets/portfolio/quadcopter/architecture.png"
     tag:
     - 드론
-- tag: IEC 61131-3
-  projects:
-  - *19
 - tag: 안전 시스템
   projects:
   - link: "/portfolio/embedded/emergency-exit"

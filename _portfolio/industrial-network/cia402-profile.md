@@ -6,6 +6,7 @@ image: /assets/portfolio/cia402-profile/document.png
 tag:
   - EtherCAT
   - CiA 402
+  - 펌웨어
 summary:
   division: 연구 용역
   period: 2018.09 - 2018.11
