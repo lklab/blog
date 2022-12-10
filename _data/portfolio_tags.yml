@@ -1,4 +1,46 @@
 ---
+- tag: 출시
+  projects:
+  - link: "/portfolio/unity/silver-care"
+    title: 실버케어 모바일 앱 개발
+    date: 2021-09-01
+    image: "/assets/portfolio/silver-care/main.jpg"
+    tag:
+    - 출시
+  - &4
+    link: "/portfolio/unity/story-puzzle-game"
+    title: 스토리 퍼즐 게임 개발
+    date: 2019-10-01
+    image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
+    tag:
+    - 출시
+    - 지역화
+    - Steam
+  - &2
+    link: "/portfolio/unity/adventure"
+    title: 어드벤처 게임 개발
+    date: 2019-05-01
+    image: "/assets/portfolio/adventure/adventure-01.jpg"
+    tag:
+    - 출시
+    - 프로젝트 관리
+    - 3D
+  - &5
+    link: "/portfolio/unity/ar-card-app"
+    title: AR 기반 장난감 카드 인식 앱 개발
+    date: 2019-04-01
+    image: "/assets/portfolio/ar-card-app/ar-app.jpg"
+    tag:
+    - 출시
+    - AR
+  - &6
+    link: "/portfolio/unity/light-the-time"
+    title: 공포 게임 Light the Time 개발
+    date: 2014-10-01
+    image: "/assets/portfolio/light-the-time/ingame-01.png"
+    tag:
+    - VR
+    - 출시
 - tag: 시스템 설계
   projects:
   - &1
@@ -24,18 +66,10 @@
     image: "/assets/about/platforms/unity.png"
     tag:
     - 3D
-  - &3
-    link: "/portfolio/unity/adventure"
-    title: 어드벤처 게임 개발
-    date: 2019-05-01
-    image: "/assets/portfolio/adventure/adventure-01.jpg"
-    tag:
-    - 출시
-    - 프로젝트 관리
-    - 3D
+  - *2
 - tag: 연구 협력
   projects:
-  - &2
+  - &3
     link: "/portfolio/unity/senior"
     title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
     date: 2020-01-01
@@ -45,35 +79,7 @@
     - 서버 연동
 - tag: 서버 연동
   projects:
-  - *2
-- tag: 출시
-  projects:
-  - &4
-    link: "/portfolio/unity/story-puzzle-game"
-    title: 스토리 퍼즐 게임 개발
-    date: 2019-10-01
-    image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
-    tag:
-    - 출시
-    - 지역화
-    - Steam
   - *3
-  - &5
-    link: "/portfolio/unity/ar-card-app"
-    title: AR 기반 장난감 카드 인식 앱 개발
-    date: 2019-04-01
-    image: "/assets/portfolio/ar-card-app/ar-app.jpg"
-    tag:
-    - 출시
-    - AR
-  - &6
-    link: "/portfolio/unity/light-the-time"
-    title: 공포 게임 Light the Time 개발
-    date: 2014-10-01
-    image: "/assets/portfolio/light-the-time/ingame-01.png"
-    tag:
-    - VR
-    - 출시
 - tag: 지역화
   projects:
   - *4
@@ -82,7 +88,7 @@
   - *4
 - tag: 프로젝트 관리
   projects:
-  - *3
+  - *2
 - tag: AR
   projects:
   - *5
@@ -260,9 +266,6 @@
 - tag: Automatic programming
   projects:
   - *19
-- tag: UPPAAL2C
-  projects:
-  - *16
 - tag: Optimization
   projects:
   - &20
@@ -276,6 +279,9 @@
 - tag: Genetic algorithm
   projects:
   - *20
+- tag: UPPAAL2C
+  projects:
+  - *16
 - tag: 웨어러블
   projects:
   - link: "/portfolio/embedded/wearable-instrument"

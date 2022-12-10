@@ -2,6 +2,12 @@
 - category: Unity
   link: "/portfolio/unity"
   projects:
+  - link: "/portfolio/unity/silver-care"
+    title: 실버케어 모바일 앱 개발
+    date: 2021-09-01
+    image: "/assets/portfolio/silver-care/main.jpg"
+    tag:
+    - 출시
   - link: "/portfolio/unity/point-and-click"
     title: 포인트 앤 클릭 추리 게임 개발
     date: 2021-01-01
