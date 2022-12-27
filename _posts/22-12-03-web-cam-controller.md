@@ -15,7 +15,7 @@ layout: post
     * 사용자에게 카메라 권한을 요청하고, 그 응답에 따라 처리하는 작업이다.
 * 프리뷰
     * WebCamTexture 화면을 그대로 UI에 출력하면 기종이나 orientation에 따라 화면이 돌아가 있거나 뒤집혀서 나오는데 화면에 똑바로 보이도록 [WebCamTexture.videoRotationAngle](https://docs.unity3d.com/ScriptReference/WebCamTexture-videoRotationAngle.html)과 [WebCamTexture.videoVerticallyMirrored](https://docs.unity3d.com/ScriptReference/WebCamTexture-videoVerticallyMirrored.html)를 이용하여 UI의 Transform을 보정해햐 한다.
-    * 프리뷰를 전체화면으로 표시할 것인지, 일부 영역에서만 표시할 것인지와 그에 따라 Mask, Aspect ratio를 조절해야 한다.
+    * 프리뷰를 전체화면으로 출력하거나 일부 영역에만 출력할 수 있어야 한다.
 * 캡쳐
     * 프리뷰에 보이는 카메라 이미지를 캡쳐해서 Unity의 Texture2D 또는 Sprite로 내보내는 기능이다. 이 때에도 화면의 방향과 뒤집힘을 보정해야 한다.
 
