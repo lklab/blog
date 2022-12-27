@@ -15,7 +15,7 @@ layout: post
     * 사용자에게 카메라 권한을 요청하고, 그 응답에 따라 처리하는 작업이다.
 * 프리뷰
     * WebCamTexture 화면을 그대로 UI에 출력하면 기종이나 orientation에 따라 화면이 돌아가 있거나 뒤집혀서 나오는데 화면에 똑바로 보이도록 [WebCamTexture.videoRotationAngle](https://docs.unity3d.com/ScriptReference/WebCamTexture-videoRotationAngle.html)과 [WebCamTexture.videoVerticallyMirrored](https://docs.unity3d.com/ScriptReference/WebCamTexture-videoVerticallyMirrored.html)를 이용하여 UI의 Transform을 보정해햐 한다.
-    * 부수적으로 프리뷰를 전체화면으로 표시할 것인지, 일부 영역에서만 표시할 것인지와 그에 따라 Mask, Aspect ratio를 조절해야 한다.
+    * 프리뷰를 전체화면으로 표시할 것인지, 일부 영역에서만 표시할 것인지와 그에 따라 Mask, Aspect ratio를 조절해야 한다.
 * 캡쳐
     * 프리뷰에 보이는 카메라 이미지를 캡쳐해서 Unity의 Texture2D 또는 Sprite로 내보내는 기능이다. 이 때에도 화면의 방향과 뒤집힘을 보정해야 한다.
 
@@ -25,13 +25,13 @@ layout: post
 
 ### UI에서 프리뷰 영역 설정 
 
-위의 유니티 프로젝트에서 `SampleScene` 씬을 열면, 아래 그림과 같이 `WebCamController` 프리팹을 확인할 수 있다.
+[유니티 프로젝트](https://github.com/lklab/WebCamController)에서 `SampleScene` 씬을 열면, 아래 그림과 같이 `WebCamController` 프리팹을 확인할 수 있다.
 
 ![Prefab]({{site.baseurl}}/assets/post/22-12-03-web-cam-controller/prefab.png)
 
-이 프리팹의 `RectTransform`이 정의하는 영역이 프리뷰가 출력될 영역이다. `SampleScene` 씬에서는 전체화면으로 되어 있지만 화면의 일부 영역에 출력하거나 Layout group으로 제어되는 영역에도 프리뷰를 출력할 수 있다.
+이 프리팹의 `RectTransform`이 정의하는 영역이 프리뷰가 출력될 영역이다. `SampleScene` 씬에서는 전체화면으로 되어 있지만 화면의 일부 영역에만 프리뷰를 출력하도록 설정할 수 있다.
 
-UI 상의 프리뷰 영역과 디바이스 카메라를 통해 받아온 이미지의 종횡비(Aspect ratio)가 다르다면 프리뷰 영역을 꽉 채우고 카메라 이미지의 나머지 부분은 잘리도록 되어 있다. 만약 프리뷰 영역에 빈 공간이 생기더라도 잘리지 않기를 원하면 `WebCamController` > `Viewport` > `RawImage` 게임오브젝트의 `Aspect Ratio Fitter` 컴포넌트의 `Aspect Mode` 를 `Fit In Parent`로 설정하면 된다.
+UI 상의 프리뷰 영역과 디바이스 카메라를 통해 받아온 이미지의 종횡비(Aspect ratio)가 다르다면 프리뷰 영역을 꽉 채우고 카메라 이미지의 나머지 부분은 잘리도록 되어 있다. 만약 프리뷰 영역에 빈 공간이 생기더라도 잘리지 않기를 원하면 `WebCamController` > `Viewport` > `RawImage` 게임오브젝트에 있는 `Aspect Ratio Fitter` 컴포넌트의 `Aspect Mode` 를 `Fit In Parent`로 설정하면 된다.
 
 ### 초기화
 
@@ -52,7 +52,7 @@ private void Start()
 
 {% endhighlight %}
 
-`WebCamController.Initialize()`는 WebCamController.Awake()에서도 호출하기 때문에 반드시 호출하지 않아도 무방하나, 스크립트 실행순서 때문에 초기화하지 않고 사용하는 것을 방지하기 위해 호출하는 것을 권장한다.
+`WebCamController.Initialize()`는 WebCamController.Awake()에서도 호출되기 때문에 반드시 호출하지 않아도 무방하나, 스크립트 실행순서 때문에 초기화하지 않고 사용하는 것을 방지하기 위해 호출하는 것을 권장한다.
 
 ### 권한 요청
 
@@ -73,7 +73,7 @@ private void Start()
 
 권한을 성공적으로 획득하면 콜백 파라미터로 `WebCamController.Error.Success`를 받아온다. 앱이 이미 권한을 갖고 있는 경우에도 콜백 파라미터로 `WebCamController.Error.Success`를 받아온다.
 
-권한을 거부당한 경우 안드로이드에서는 콜백히 호출되지 않는다. 이는 유니티에서 사용자가 권한 요청 다어얼로그에 응답했을 때의 이벤트를 제공하지 않기 때문이다. 권한을 거부당한 경우 iOS에서는 콜백 파라미터로 `WebCamController.Error.Permission`을 받아온다.
+권한을 거부당한 경우 안드로이드에서는 콜백이 호출되지 않는다. 이는 유니티에서 사용자가 권한 요청 다어얼로그에 응답했을 때의 이벤트를 제공하지 않기 때문이다. 권한을 거부당한 경우 iOS에서는 콜백 파라미터로 `WebCamController.Error.Permission`을 받아온다.
 
 ### 프리뷰 시작
 
@@ -171,7 +171,7 @@ private void OnDestroy()
 
 `WebCamController.Capture()`는 현재 기기의 orientation과 전면 카메라 여부에 따라 rotation 및 flip을 자동으로 계산한다. 만약 해당 값들을 직접 지정하고 싶은 경우 `WebCamController.Capture(float rotationAngle, bool flipHorizontally, bool clip)` 함수를 사용하면 된다.
 
-카메라 원본 이미지와 UI 상의 프리뷰 영역의 종횡비가 달라 원본 이미지가 잘려서 출력되는 경우 캡쳐된 이미지도 화면에 보이는 부분만 캡쳐되도록 이미지를 자른다. 만약 화면에 보이는 그대로 출력하지 않더라도 이미지를 자르지 않기 원하면 `clip` 파라미터를 `false` 로 설정하면 된다.
+카메라 원본 이미지와 UI 상의 프리뷰 영역의 종횡비가 달라 원본 이미지가 잘려서 출력되는 경우 캡쳐된 이미지도 화면에 보이는 부분만 캡쳐되도록 이미지를 자른다. 만약 이미지를 자르지 않기 원하면 `clip` 파라미터를 `false` 로 설정하면 된다.
 
 ## 구현 사항
 
@@ -219,7 +219,7 @@ else
 
 ### 카메라 시작
 
-카메라를 시작하려면 먼저 기기에 있는 여러 개의 카메라 중 어떤 카메라를 시작할지 결정해야 한다. 구체적으로 기기에 있는 모든 카메라를 참조하는 `WebCamTexture.devices` 배열로부터 사용할 `WebCamDevice` 객체 하나를 결정해야 한다.
+카메라를 시작하려면 먼저 기기에 있는 여러 개의 카메라 중 어떤 카메라를 시작할지 결정해야 한다. 구체적으로, 기기에 있는 모든 카메라를 참조하는 `WebCamTexture.devices` 배열로부터 사용할 `WebCamDevice` 객체 하나를 결정해야 한다.
 
 만약 전면 카메라 또는 후면 카메라를 사용하려는 경우 다음과 같이 하면 된다. `useFrontFacing` 변수가 `true`면 전면 카메라가, `false`면 후면 카메라가 선택된다.
 
@@ -295,11 +295,11 @@ else
 
 rotation과 상하반전은 `_rawImage` 오브젝트에 적용한다. 여기서 90도 또는 270도 회전되는 경우 Viewport 크기에 맞게 `_rawImage`를 확대하거나 축소해야 한다. 이를 위해 `scale` 변수를 계산하여 적용하였다.
 
-`Resizing()` 함수는 `WebCamController` 객체의 값이 바뀔 때에만 호출되므로, 만약 UI에서 프리뷰 화면은 변경한 경우 직접 `Resizing()` 함수를 호출해서 화면에 프리뷰가 올바르게 출력되도록 할 수 있다.
+`Resizing()` 함수는 `WebCamController` 객체의 값이 바뀔 때에만 호출되므로, 만약 UI에서 프리뷰 화면을 변경한 경우 직접 `Resizing()` 함수를 호출해서 화면에 프리뷰가 올바르게 출력되도록 할 수 있다.
 
 ### 캡쳐
 
-현재 프레임의 카메라 화면은 `WebCamTexture` 객체를 통해 가져올 수 있는데, 이전에 언급한 것과 같이 이미지를 회전하고 반전해야 한다. `WebCamTexture.GetPixels()`를 통해 픽셀별 컬러를 가져온 후 회전, 반전에 따라 새로운 텍스쳐에 알맞은 컬러를 대입한다. 아래 코드가 길지만 각 상황에 따라 좌표를 변환하는 단순한 로직의 반복이다.
+현재 프레임의 카메라 화면은 `WebCamTexture` 객체를 통해 가져올 수 있는데, 이전에 언급한 것과 같이 이미지를 회전하고 반전해야 한다. `WebCamTexture.GetPixels()`를 통해 픽셀별 컬러를 가져온 후 회전, 반전에 따라 새로운 텍스쳐에 알맞은 컬러를 대입한다. 아래 코드는 길지만 각 상황에 따라 좌표를 변환하는 단순한 로직의 반복이다.
 
 {% highlight csharp %}
 if (!flipHorizontally)
