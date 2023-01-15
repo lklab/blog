@@ -1,6 +1,7 @@
 ---
 title: JNI 객체 사용과 메모리 관리
 image: /assets/post/18-07-04-Object_and_memory/title.jpeg
+image-source: https://pixabay.com/ko/photos/%eb%85%b8%ed%8a%b8-%eb%b9%a8%eb%9e%98%ec%a7%91%ea%b2%8c-%eb%b9%a8%eb%9e%ab%ec%a4%84-3454277/
 author: khlee
 categories:
     - JNI

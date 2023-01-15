@@ -1,6 +1,7 @@
 ---
 title: Unity에서 디바이스 카메라 사용하기
 image: /assets/post/22-12-03-web-cam-controller/title.jpg
+image-source: https://pixabay.com/ko/photos/%ec%b9%b4%eb%a9%94%eb%9d%bc-%ed%95%b8%eb%93%9c%ed%8f%b0-%ea%b7%b8%eb%a6%bc-%ed%8f%ac%ec%b0%a9-1842202/
 author: khlee
 categories:
     - Unity

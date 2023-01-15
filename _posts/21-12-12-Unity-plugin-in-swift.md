@@ -1,6 +1,7 @@
 ---
 title: Unity 2019.3 이상에서 Swift로 플러그인 개발하기
 image: /assets/post/21-12-12-Unity-plugin-in-swift/title.jpeg
+image-source: https://pixabay.com/ko/illustrations/%ed%8d%bc%ec%a6%90-%ec%9b%90%ed%98%95-%ed%8d%bc%ec%a6%90-%ed%94%8c%eb%9e%ab%ed%8f%bc-1713170/
 author: khlee
 categories:
     - Unity
