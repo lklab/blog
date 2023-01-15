@@ -1,6 +1,7 @@
 ---
 title: cmake에서 툴체인 사용하기
 image: /assets/post/17-10-26-CMake-Toolchain/chain.jpg
+image-source: https://pixabay.com/ko/photos/%ec%b2%b4%ec%9d%b8-%eb%b3%b4%ec%95%88-%ea%b8%88%ec%86%8d-%ec%b2%a0-3481377/
 author: khlee
 categories:
     - Build system

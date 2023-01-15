@@ -1,6 +1,7 @@
 ---
 title: Windows에서 ARM Linux 크로스 컴파일 환경 구성하기
 image: /assets/post/17-10-27-ARM-Linux-Cross-Compile/satellite.jpg
+image-source: https://unsplash.com/photos/8Hjx3GNZYeA
 author: khlee
 categories:
     - Build system

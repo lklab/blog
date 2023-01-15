@@ -1,6 +1,7 @@
 ---
 title: IgH EtherCAT Master Stack API 분석
 image: /assets/post/18-02-14-IgH-EtherCAT/ethercat.jpg
+image-source: https://www.beckhoff.com/media/pictures/content-images/timeline/milestones_2006_ax5000.jpg
 author: khlee
 categories:
     - EtherCAT
