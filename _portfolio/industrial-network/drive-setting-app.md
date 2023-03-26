@@ -4,6 +4,11 @@ title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
 date: 2018-06-01
 image: /assets/portfolio/drive-setting-app/ui.png
 tag:
+  - 하이젠모터
+  - C
+  - Java
+  - Windows
+  - CMake
   - EtherCAT
   - SOEM
   - Java swing

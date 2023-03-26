@@ -4,7 +4,10 @@ title: 공포 게임 Light the Time 개발
 date: 2014-10-01
 image: /assets/portfolio/light-the-time/ingame-01.png
 tag:
+  - 학부
+  - Csharp
   - VR
+  - 모바일
   - 출시
 summary:
   division: 학기 프로젝트

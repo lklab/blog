@@ -4,9 +4,14 @@ title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
 date: 2014-10-01
 image: /assets/portfolio/drawing-robot/test.jpg
 tag:
+  - 학부
+  - Python
+  - Linux
+  - Xenomai
   - PLC
   - Beremiz
   - IEC 61131-3
+  - Tkinter
 summary:
   division: 학기 프로젝트
   period: 2014.10 - 2014.12 (3개월)

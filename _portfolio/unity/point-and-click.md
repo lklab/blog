@@ -4,6 +4,9 @@ title: 포인트 앤 클릭 추리 게임 개발
 date: 2021-01-01
 image: /assets/portfolio/point-and-click/point-and-click-01.png
 tag:
+  - 겜브릿지
+  - Csharp
+  - Windows
   - 시스템 설계
   - 셰이더
   - Spine

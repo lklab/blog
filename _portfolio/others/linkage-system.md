@@ -4,6 +4,7 @@ title: 엑셀을 활용한 linkage system 분석기 개발
 date: 2013-04-01
 image: /assets/portfolio/linkage-system/ui.png
 tag:
+  - 학부
   - Kinematics
   - VBA
   - Linkage System

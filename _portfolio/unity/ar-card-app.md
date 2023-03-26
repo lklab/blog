@@ -4,8 +4,12 @@ title: AR 기반 장난감 카드 인식 앱 개발
 date: 2019-04-01
 image: /assets/portfolio/ar-card-app/ar-app.jpg
 tag:
-  - 출시
+  - 겜브릿지
+  - Csharp
   - AR
+  - Vuforia
+  - 모바일
+  - 출시
 summary:
   division: 외주
   period: 2019.04 - 2019.11 (8개월)

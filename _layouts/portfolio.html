@@ -20,7 +20,7 @@ layout: default
             <div class="col-md-12">
               <p class="categories">
                 {% for item in page.tag %}
-                <span>
+                <span style="white-space: nowrap;">
                   <a class="custom-disable-a-effect" href="{{ site.baseurl }}/portfolio/tag-{{ item | downcase | replace: ' ', '-' }}">#{{ item }}</a>
                 </span>
                 {% endfor %}

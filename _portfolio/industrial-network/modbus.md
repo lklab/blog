@@ -4,6 +4,10 @@ title: 서보모터 드라이브 펌웨어 Modbus 컴포넌트 개발
 date: 2018-04-01
 image: /assets/portfolio/modbus/test-02.png
 tag:
+  - 하이젠모터
+  - C
+  - CCS
+  - ARM
   - Modbus
   - 펌웨어
 summary:

@@ -4,6 +4,13 @@ title: 스마트폰으로 조종하는 드론 개발
 date: 2015-03-01
 image: /assets/portfolio/quadcopter/architecture.png
 tag:
+  - 학부
+  - C
+  - Java
+  - Python
+  - Linux
+  - Android
+  - Raspberry pi
   - 드론
 summary:
   division: 학기 프로젝트

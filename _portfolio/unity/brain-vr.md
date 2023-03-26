@@ -4,6 +4,8 @@ title: 뇌과학 연구용 VR 게임 개발
 date: 2018-12-01
 image: /assets/portfolio/brain-vr/gear_vr.png
 tag:
+  - 겜브릿지
+  - Csharp
   - VR
   - Oculus
 summary:

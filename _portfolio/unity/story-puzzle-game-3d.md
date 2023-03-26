@@ -4,6 +4,9 @@ title: 3D 스토리 퍼즐 게임 개발
 date: 2020-03-01
 image: /assets/about/platforms/unity.png
 tag:
+  - 겜브릿지
+  - Csharp
+  - 모바일
   - 3D
 summary:
   division: 정규 프로젝트
