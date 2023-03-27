@@ -1,13 +1,19 @@
-<a class="nostyle" href="{{ project.link | relative_url }}">
-  <div class="row cards custom-portfolio-list rev">
+<div class="row cards custom-portfolio-list rev">
+  <a class="nostyle custom-portfolio-image-a" href="{{ project.link | relative_url }}">
     <div class="image" style="background-image: url({{ project.image | relative_url }});"></div>
-    <div class="col-md-9 content">
-      <h3 class="blog-index-title">{{ project.title }}</h3>
-      <p class="custom-portfolio-tag">
-        {% for item in project.tag %}
-          <span>#{{ item }}</span>
-        {% endfor %}
-      </p>
-    </div>
+  </a>
+  <div class="col-md-9 content">
+    <h3 class="blog-index-title">
+      <a class="nostyle" href="{{ project.link | relative_url }}">
+        {{ project.title }}
+      </a>
+    </h3>
+    <p class="custom-portfolio-tag">
+      {% for item in project.tag %}
+        <span>
+          <a class="custom-disable-a-effect" href="{{ site.baseurl }}/portfolio/tag-{{ item | downcase | replace: ' ', '-' }}">#{{ item }}</a>
+        </span>
+      {% endfor %}
+    </p>
   </div>
-</a>
+</div>

@@ -7,26 +7,51 @@
     date: 2021-09-01
     image: "/assets/portfolio/silver-care/main.jpg"
     tag:
+    - 원더풀플랫폼
+    - Csharp
+    - Java
+    - Kotlin
+    - Objective-C
+    - Swift
+    - 모바일
+    - Android
+    - iOS
+    - REST API
+    - 서버 연동
     - 출시
+    - 지역화
   - link: "/portfolio/unity/point-and-click"
     title: 포인트 앤 클릭 추리 게임 개발
     date: 2021-01-01
     image: "/assets/portfolio/point-and-click/point-and-click-01.png"
     tag:
+    - 겜브릿지
+    - Csharp
+    - Windows
     - 시스템 설계
     - 셰이더
     - Spine
+    - 지역화
   - link: "/portfolio/unity/story-puzzle-game-3d"
     title: 3D 스토리 퍼즐 게임 개발
     date: 2020-03-01
     image: "/assets/about/platforms/unity.png"
     tag:
+    - 겜브릿지
+    - Csharp
+    - 모바일
     - 3D
+    - 지역화
   - link: "/portfolio/unity/senior"
     title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
     date: 2020-01-01
     image: "/assets/about/platforms/unity.png"
     tag:
+    - 겜브릿지
+    - Csharp
+    - Python
+    - Windows
+    - 모바일
     - 연구 협력
     - 서버 연동
   - link: "/portfolio/unity/story-puzzle-game"
@@ -34,6 +59,10 @@
     date: 2019-10-01
     image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
     tag:
+    - 겜브릿지
+    - Csharp
+    - Windows
+    - 모바일
     - 출시
     - 지역화
     - Steam
@@ -42,29 +71,46 @@
     date: 2019-05-01
     image: "/assets/portfolio/adventure/adventure-01.jpg"
     tag:
+    - 겜브릿지
+    - Csharp
+    - Windows
+    - 3D
     - 출시
     - 프로젝트 관리
-    - 3D
   - link: "/portfolio/unity/ar-card-app"
     title: AR 기반 장난감 카드 인식 앱 개발
     date: 2019-04-01
     image: "/assets/portfolio/ar-card-app/ar-app.jpg"
     tag:
-    - 출시
+    - 겜브릿지
+    - Csharp
     - AR
+    - Vuforia
+    - 모바일
+    - 출시
   - link: "/portfolio/unity/brain-vr"
     title: 뇌과학 연구용 VR 게임 개발
     date: 2018-12-01
     image: "/assets/portfolio/brain-vr/gear_vr.png"
     tag:
+    - 겜브릿지
+    - Csharp
     - VR
     - Oculus
+    - 모바일
+    - REST API
+    - 서버 연동
+    - 연구 협력
   - link: "/portfolio/unity/light-the-time"
     title: 공포 게임 Light the Time 개발
     date: 2014-10-01
     image: "/assets/portfolio/light-the-time/ingame-01.png"
     tag:
+    - 학부
+    - Csharp
     - VR
+    - 모바일
+    - 3D
     - 출시
 - category: Industrial Network
   link: "/portfolio/industrial-network"
@@ -74,6 +120,10 @@
     date: 2018-09-01
     image: "/assets/portfolio/cia402-profile/document.png"
     tag:
+    - 하이젠모터
+    - C
+    - CCS
+    - ARM
     - EtherCAT
     - CiA 402
     - 펌웨어
@@ -82,6 +132,11 @@
     date: 2018-06-01
     image: "/assets/portfolio/drive-setting-app/ui.png"
     tag:
+    - 하이젠모터
+    - C
+    - Java
+    - Windows
+    - CMake
     - EtherCAT
     - SOEM
     - Java swing
@@ -90,6 +145,10 @@
     date: 2018-05-01
     image: "/assets/portfolio/canopen/test-01.png"
     tag:
+    - 하이젠모터
+    - C
+    - CCS
+    - ARM
     - CANopen
     - 펌웨어
   - link: "/portfolio/industrial-network/modbus"
@@ -97,6 +156,10 @@
     date: 2018-04-01
     image: "/assets/portfolio/modbus/test-02.png"
     tag:
+    - 하이젠모터
+    - C
+    - CCS
+    - ARM
     - Modbus
     - 펌웨어
   - link: "/portfolio/industrial-network/hmi"
@@ -104,22 +167,35 @@
     date: 2017-03-01
     image: "/assets/portfolio/hmi/hmi.png"
     tag:
+    - 대학원
+    - Python
+    - Xenomai
+    - Beaglebone black
     - HMI
     - PLC
     - Beremiz
     - IEC 61131-3
+    - wxPython
   - link: "/portfolio/industrial-network/ethercat-foe"
     title: EtherCAT FoE 기반 장치 펌웨어 관리 기능 개선
     date: 2017-03-01
     image: "/assets/portfolio/ethercat-foe/ui.png"
     tag:
+    - 대학원
+    - PM
     - EtherCAT
     - FoE
+    - SOEM
   - link: "/portfolio/industrial-network/motion-recipe"
     title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
     date: 2016-02-01
     image: "/assets/portfolio/motion-recipe/testbed.png"
     tag:
+    - 대학원
+    - C
+    - Python
+    - Xenomai
+    - Beaglebone black
     - PLC
     - Beremiz
     - IEC 61131-3
@@ -128,9 +204,14 @@
     date: 2014-10-01
     image: "/assets/portfolio/drawing-robot/test.jpg"
     tag:
+    - 학부
+    - Python
+    - Linux
+    - Xenomai
     - PLC
     - Beremiz
     - IEC 61131-3
+    - Tkinter
 - category: Software Engineering
   link: "/portfolio/software-engineering"
   projects:
@@ -140,6 +221,17 @@
     date: 2017-08-01
     image: "/assets/portfolio/miica/ui.png"
     tag:
+    - 대학원
+    - C
+    - Python
+    - Windows
+    - Linux
+    - Xenomai
+    - PyQt
+    - SOEM
+    - IgH EtherCAT Master
+    - UPPAAL
+    - GNU toolchain
     - MDD
     - IDE
     - Real-time
@@ -149,6 +241,13 @@
     date: 2017-03-01
     image: "/assets/portfolio/uppaal2plc/testbed.png"
     tag:
+    - 대학원
+    - C
+    - Python
+    - Linux
+    - Raspberry pi
+    - UPPAAL
+    - GNU toolchain
     - Timed automata
     - Automatic programming
   - link: "/portfolio/software-engineering/uppaal2c"
@@ -156,6 +255,10 @@
     date: 2016-04-01
     image: "/assets/portfolio/uppaal2c/model.png"
     tag:
+    - 대학원
+    - C
+    - Xenomai
+    - UPPAAL
     - Timed automata
     - UPPAAL2C
     - Beremiz
@@ -167,6 +270,9 @@
     date: 2018-03-01
     image: "/assets/portfolio/drive-oled/oled-03.jpg"
     tag:
+    - 하이젠모터
+    - C
+    - CCS
     - HMI
     - 펌웨어
   - link: "/portfolio/embedded/wearable-instrument"
@@ -174,19 +280,36 @@
     date: 2015-09-01
     image: "/assets/portfolio/wearable-instrument/architecture.png"
     tag:
+    - 학부
+    - C
+    - Java
+    - Android
+    - Arduino
     - 웨어러블
   - link: "/portfolio/embedded/quadcopter"
     title: 스마트폰으로 조종하는 드론 개발
     date: 2015-03-01
     image: "/assets/portfolio/quadcopter/architecture.png"
     tag:
+    - 학부
+    - C
+    - Java
+    - Python
+    - Linux
+    - Android
+    - Raspberry pi
     - 드론
   - link: "/portfolio/embedded/emergency-exit"
     title: 화재 상황을 대비한 동적 비상구 방향지시 시스템 개발
     date: 2014-06-01
     image: "/assets/portfolio/emergency-exit/product.png"
     tag:
-    - 안전 시스템
+    - 학부
+    - C
+    - Python
+    - Raspberry pi
+    - Arduino
+    - Tkinter
 - category: Others
   link: "/portfolio/others"
   projects:
@@ -195,6 +318,9 @@
     date: 2016-04-01
     image: "/assets/portfolio/genetic-algorithm/algorithm.png"
     tag:
+    - 대학원
+    - R
+    - R Studio
     - Optimization
     - Genetic algorithm
   - link: "/portfolio/others/catia-bridge"
@@ -202,6 +328,7 @@
     date: 2013-10-01
     image: "/assets/portfolio/catia-bridge/avlb.jpg"
     tag:
+    - 학부
     - CATIA
     - 정역학
     - 모델링
@@ -211,6 +338,7 @@
     date: 2013-04-01
     image: "/assets/portfolio/linkage-system/ui.png"
     tag:
+    - 학부
     - Kinematics
     - VBA
     - Linkage System

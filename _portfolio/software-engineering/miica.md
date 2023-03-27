@@ -4,6 +4,17 @@ title: "MIICA: A Model-Driven Integrated Development Environment for Industrial 
 date: 2017-08-01
 image: /assets/portfolio/miica/ui.png
 tag:
+  - 대학원
+  - C
+  - Python
+  - Windows
+  - Linux
+  - Xenomai
+  - PyQt
+  - SOEM
+  - IgH EtherCAT Master
+  - UPPAAL
+  - GNU toolchain
   - MDD
   - IDE
   - Real-time

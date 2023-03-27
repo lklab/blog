@@ -4,6 +4,10 @@ title: 스토리 퍼즐 게임 개발
 date: 2019-10-01
 image: /assets/portfolio/story-puzzle-game/story-puzzle-game.jpg
 tag:
+  - 겜브릿지
+  - Csharp
+  - Windows
+  - 모바일
   - 출시
   - 지역화
   - Steam

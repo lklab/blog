@@ -1,0 +1,20 @@
+---
+layout: page
+title: PM
+permalink: /portfolio/tag-pm
+tag_index: 51
+custom_breadcrumbs: "#PM"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -4,6 +4,10 @@ title: 서보모터 드라이브 펌웨어 CANopen 컴포넌트 개발
 date: 2018-05-01
 image: /assets/portfolio/canopen/test-01.png
 tag:
+  - 하이젠모터
+  - C
+  - CCS
+  - ARM
   - CANopen
   - 펌웨어
 summary:

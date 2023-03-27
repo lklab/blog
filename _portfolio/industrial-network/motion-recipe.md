@@ -4,6 +4,11 @@ title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위
 date: 2016-02-01
 image: /assets/portfolio/motion-recipe/testbed.png
 tag:
+  - 대학원
+  - C
+  - Python
+  - Xenomai
+  - Beaglebone black
   - PLC
   - Beremiz
   - IEC 61131-3

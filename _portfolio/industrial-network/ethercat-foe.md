@@ -4,8 +4,11 @@ title: EtherCAT FoE 기반 장치 펌웨어 관리 기능 개선
 date: 2017-03-01
 image: /assets/portfolio/ethercat-foe/ui.png
 tag:
+  - 대학원
+  - PM
   - EtherCAT
   - FoE
+  - SOEM
 summary:
   division: 논문
   period: 2017.03 - 2017.04 (2개월)

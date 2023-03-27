@@ -4,8 +4,14 @@ title: 뇌과학 연구용 VR 게임 개발
 date: 2018-12-01
 image: /assets/portfolio/brain-vr/gear_vr.png
 tag:
+  - 겜브릿지
+  - Csharp
   - VR
   - Oculus
+  - 모바일
+  - REST API
+  - 서버 연동
+  - 연구 협력
 summary:
   division: 용역
   period: 2018.12 - 2019.08 (9개월)

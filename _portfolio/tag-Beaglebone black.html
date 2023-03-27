@@ -1,0 +1,20 @@
+---
+layout: page
+title: Beaglebone black
+permalink: /portfolio/tag-beaglebone-black
+tag_index: 53
+custom_breadcrumbs: "#Beaglebone black"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

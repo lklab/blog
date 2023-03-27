@@ -4,6 +4,10 @@ title: 위치, 속도, 토크 프로파일 및 Homing 알고리즘 개발 (CiA 4
 date: 2018-09-01
 image: /assets/portfolio/cia402-profile/document.png
 tag:
+  - 하이젠모터
+  - C
+  - CCS
+  - ARM
   - EtherCAT
   - CiA 402
   - 펌웨어
