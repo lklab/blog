@@ -14,7 +14,9 @@ tag:
   - Android
   - iOS
   - REST API
+  - 서버 연동
   - 출시
+  - 지역화
 summary:
   division: 정규 프로젝트
   period: 2021.09 - 현재

@@ -10,6 +10,7 @@ tag:
   - 시스템 설계
   - 셰이더
   - Spine
+  - 지역화
 summary:
   division: 정규 프로젝트
   period: 2021.01 - 2021.08 (8개월, 중단됨)

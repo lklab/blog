@@ -8,7 +8,7 @@ tag:
   - C
   - Python
   - Windows
-  - Ubuntu Linux
+  - Linux
   - Xenomai
   - PyQt
   - SOEM

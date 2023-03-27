@@ -8,6 +8,7 @@ tag:
   - Csharp
   - 모바일
   - 3D
+  - 지역화
 summary:
   division: 정규 프로젝트
   period: 2020.03 - 2020.12 (10개월, 중단됨)
