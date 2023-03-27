@@ -1,0 +1,20 @@
+---
+layout: page
+title: R Studio
+permalink: /portfolio/tag-r-studio
+tag_index: 61
+custom_breadcrumbs: "#R Studio"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

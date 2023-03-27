@@ -4,7 +4,19 @@ title: 실버케어 모바일 앱 개발
 date: 2021-09-01
 image: /assets/portfolio/silver-care/main.jpg
 tag:
+  - 원더풀플랫폼
+  - Csharp
+  - Java
+  - Kotlin
+  - Objective-C
+  - Swift
+  - 모바일
+  - Android
+  - iOS
+  - REST API
+  - 서버 연동
   - 출시
+  - 지역화
 summary:
   division: 정규 프로젝트
   period: 2021.09 - 현재

@@ -4,7 +4,12 @@ title: 화재 상황을 대비한 동적 비상구 방향지시 시스템 개발
 date: 2014-06-01
 image: /assets/portfolio/emergency-exit/product.png
 tag:
-  - 안전 시스템
+  - 학부
+  - C
+  - Python
+  - Raspberry pi
+  - Arduino
+  - Tkinter
 summary:
   division: 교내 대회
   period: 2014.06 - 2014.09 (4개월)

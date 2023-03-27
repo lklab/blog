@@ -4,6 +4,9 @@ title: 서보모터 드라이브 사용자 메뉴 기능을 위한 OLED 출력 �
 date: 2018-03-01
 image: /assets/portfolio/drive-oled/oled-03.jpg
 tag:
+  - 하이젠모터
+  - C
+  - CCS
   - HMI
   - 펌웨어
 summary:

@@ -4,6 +4,13 @@ title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성
 date: 2017-03-01
 image: /assets/portfolio/uppaal2plc/testbed.png
 tag:
+  - 대학원
+  - C
+  - Python
+  - Linux
+  - Raspberry pi
+  - UPPAAL
+  - GNU toolchain
   - Timed automata
   - Automatic programming
 summary:

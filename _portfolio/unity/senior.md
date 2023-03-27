@@ -4,6 +4,11 @@ title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
 date: 2020-01-01
 image: /assets/about/platforms/unity.png
 tag:
+  - 겜브릿지
+  - Csharp
+  - Python
+  - Windows
+  - 모바일
   - 연구 협력
   - 서버 연동
 summary:

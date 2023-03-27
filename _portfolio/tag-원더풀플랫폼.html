@@ -1,0 +1,20 @@
+---
+layout: page
+title: 원더풀플랫폼
+permalink: /portfolio/tag-원더풀플랫폼
+tag_index: 0
+custom_breadcrumbs: "#원더풀플랫폼"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

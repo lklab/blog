@@ -4,6 +4,10 @@ title: UPPAAL2C를 이용하여 정형 모델 기반의 검증된 일체형 드�
 date: 2016-04-01
 image: /assets/portfolio/uppaal2c/model.png
 tag:
+  - 대학원
+  - C
+  - Xenomai
+  - UPPAAL
   - Timed automata
   - UPPAAL2C
   - Beremiz

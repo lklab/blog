@@ -18,7 +18,7 @@ layout: default
           <h1 class="custom-portfolio-title">{{ page.title }}</h1>
           <div class="row">
             <div class="col-md-12">
-              <p class="categories">
+              <p class="custom-portfolio-tag">
                 {% for item in page.tag %}
                 <span>
                   <a class="custom-disable-a-effect" href="{{ site.baseurl }}/portfolio/tag-{{ item | downcase | replace: ' ', '-' }}">#{{ item }}</a>

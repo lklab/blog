@@ -4,10 +4,15 @@ title: 오픈 소스 통합개발환경을 활용한 실시간 임베디드 제�
 date: 2017-03-01
 image: /assets/portfolio/hmi/hmi.png
 tag:
+  - 대학원
+  - Python
+  - Xenomai
+  - Beaglebone black
   - HMI
   - PLC
   - Beremiz
   - IEC 61131-3
+  - wxPython
 summary:
   division: 논문
   period: 2017.03 - 2017.04 (2개월)

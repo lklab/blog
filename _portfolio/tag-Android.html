@@ -1,0 +1,20 @@
+---
+layout: page
+title: Android
+permalink: /portfolio/tag-android
+tag_index: 7
+custom_breadcrumbs: "#Android"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

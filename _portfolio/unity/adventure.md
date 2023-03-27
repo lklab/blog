@@ -4,9 +4,12 @@ title: 어드벤처 게임 개발
 date: 2019-05-01
 image: /assets/portfolio/adventure/adventure-01.jpg
 tag:
+  - 겜브릿지
+  - Csharp
+  - Windows
+  - 3D
   - 출시
   - 프로젝트 관리
-  - 3D
 summary:
   division: 정규 프로젝트
   period: 2019.05 - 2020.12 (1년 8개월)

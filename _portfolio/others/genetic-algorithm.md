@@ -4,6 +4,9 @@ title: Genetic algorithm을 이용한 automatic rule acquisition 알고리즘 �
 date: 2016-04-01
 image: /assets/portfolio/genetic-algorithm/algorithm.png
 tag:
+  - 대학원
+  - R
+  - R Studio
   - Optimization
   - Genetic algorithm
 summary:

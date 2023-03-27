@@ -4,6 +4,7 @@ title: CATIA를 활용한 교량전차 설계 및 정역학 분석
 date: 2013-10-01
 image: /assets/portfolio/catia-bridge/avlb.jpg
 tag:
+  - 학부
   - CATIA
   - 정역학
   - 모델링

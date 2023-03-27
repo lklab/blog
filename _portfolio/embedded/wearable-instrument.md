@@ -4,6 +4,11 @@ title: 스마트폰 연동 연주용 장갑(웨어러블 디바이스) 개발
 date: 2015-09-01
 image: /assets/portfolio/wearable-instrument/architecture.png
 tag:
+  - 학부
+  - C
+  - Java
+  - Android
+  - Arduino
   - 웨어러블
 summary:
   division: 학부 졸업작품

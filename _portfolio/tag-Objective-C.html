@@ -1,0 +1,20 @@
+---
+layout: page
+title: Objective-C
+permalink: /portfolio/tag-objective-c
+tag_index: 4
+custom_breadcrumbs: "#Objective-C"
+---
+
+{% assign projects = site.data.portfolio_tags[page.tag_index].projects %}
+
+<div class="col-lg-8">
+  <div class="archive-group rev">
+    <a name="{{ category.category | slugify }}"></a>
+    <div>
+      {% for project in projects %}
+        {% include project.html %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
