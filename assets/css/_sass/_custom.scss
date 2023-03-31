@@ -70,6 +70,10 @@
     text-align: center;
 }
 
+.post h2:not(:first-of-type) {
+  margin-top: 5rem;
+}
+
 /* portfolio  */
 .custom-portfolio-title {
     text-align: center;
