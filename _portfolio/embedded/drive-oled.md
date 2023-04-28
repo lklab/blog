@@ -33,6 +33,14 @@ summary:
 
 ![Architecture]({{site.baseurl}}/assets/portfolio/drive-oled/architecture.png)
 
+* 렌더링 엔진 구조
+  * Display buffer에 먼저 렌더링을 한 후 모두 그려지면 I2C를 통해 OLED의 GDDRAM에 버퍼의 값을 쓰는 구조
+  * OLED_Clear(), OLED_PrintString() 등 Display buffer에 렌더링하는 API를 구현
+  * OLED_Invert(), OLED_Blink() 등 반전, 깜빡임, 애니메이션과 같은 효과를 출력하는 API를 구현
+  * OLED_PeriodicProcess() 함수는 주기적으로 실행되어 Display buffer의 값을 OLED에 출력하며, 깜빡임이나 애니메이션의 업데이트도 수행함
+
+![Rendering engine]({{site.baseurl}}/assets/portfolio/drive-oled/rendering.png){: width="480"}
+
 * 동작 화면
 
 ![OLED 1]({{site.baseurl}}/assets/portfolio/drive-oled/oled-01.jpg)
