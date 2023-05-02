@@ -34,9 +34,19 @@ layout: post
 
 UI 상의 프리뷰 영역과 디바이스 카메라를 통해 받아온 이미지의 종횡비(Aspect ratio)가 다르다면 프리뷰 영역을 꽉 채우고 카메라 이미지의 나머지 부분은 잘리도록 되어 있다. 만약 프리뷰 영역에 빈 공간이 생기더라도 잘리지 않기를 원하면 `WebCamController` > `Viewport` > `RawImage` 게임오브젝트에 있는 `Aspect Ratio Fitter` 컴포넌트의 `Aspect Mode` 를 `Fit In Parent`로 설정하면 된다.
 
+### WebCamController 인스펙터 설정
+
+* `Web Cam Resolution`: 카메라의 해상도를 설정한다. 기기의 카메라에서 지원하지 않는 해상도인 경우 가장 비슷한 해상도로 설정된다. `WebCamController.StartWebCam()`의 파라미터로 해상도를 명시한 경우 이 값 대신 파라미터로 전달한 해상도가 사용된다.
+* `Web Cam FPS`: 카메라의 프레임률을 설정한다. 기기의 카메라에서 지원하지 않는 프레임률인 경우 가장 비슷한 프레임률로 설정된다. `WebCamController.StartWebCam()`의 파라미터로 프레임률을 명시한 경우 이 값 대신 파라미터로 전달한 프레임률이 사용된다.
+* `Use Front Facing`: 전면 카메라를 사용할지 여부를 설정한다. 만약 사용할 전면/후면 카메라가 기기에 없는 경우 `WebCamController.StartWebCam()`은 `Error.NotSupported`를 반환한다. `WebCamController.StartWebCam()`의 파라미터로 전면카메라 여부를 명시한 경우 이 값 대신 파라미터로 전달한 전면카메라 여부 값이 사용된다.
+* `Auto Resize Viewport`: 기기의 회전이나 카메라 초기화/변경 등으로 카메라의 속성이 변경될 경우 이를 감지해서 자동으로 뷰포트의 크기를 조절할지 여부를 설정한다. 최적화를 위해 이 값을 `false`로 설정하고 직접 `WebCamController.Resize()`를 호출하도록 구현할 수 있다.
+* `Capture Thread Count`: 캡쳐하는 경우 이미지 회전/반전을 위해 이미지 복사가 일어나는데 이를 수행할 스레드의 개수를 설정한다.
+
 ### 초기화
 
-먼저 `WebCamController` 인스턴스를 인스펙터를 통해 받아온다.
+가장 먼저 `using LKWebCam;`를 선언한다.
+
+그 다음에 `WebCamController` 인스턴스를 인스펙터를 통해 받아온다.
 
 {% highlight csharp %}
 [SerializeField] private WebCamController _webCamController;
@@ -170,7 +180,7 @@ private void OnDestroy()
 }
 {% endhighlight %}
 
-`WebCamController.Capture()`는 현재 기기의 orientation과 전면 카메라 여부에 따라 rotation 및 flip을 자동으로 계산한다. 만약 해당 값들을 직접 지정하고 싶은 경우 `WebCamController.Capture(float rotationAngle, bool flipHorizontally, bool clip)` 함수를 사용하면 된다.
+`WebCamController.Capture()`는 현재 기기의 orientation과 전면 카메라 여부에 따라 rotation 및 flip을 자동으로 계산한다. 만약 해당 값들을 직접 지정하고 싶은 경우 `WebCamController.Capture(float rotationAngle, bool flipHorizontally, bool clip)` 함수를 사용하면 된다. 이 때 이미지를 회전하고 반전하는 과정에서 이미지 복사가 일어나는데, 비동기적으로 복사가 완료된 후 콜백을 받고 싶다면 `WebCamController.Capture()` 대신 `WebCamController.CaptureAsync()`를 호출하면 된다.
 
 카메라 원본 이미지와 UI 상의 프리뷰 영역의 종횡비가 달라 원본 이미지가 잘려서 출력되는 경우 캡쳐된 이미지도 화면에 보이는 부분만 캡쳐되도록 이미지를 자른다. 만약 이미지를 자르지 않기 원하면 `clip` 파라미터를 `false` 로 설정하면 된다.
 
@@ -262,7 +272,7 @@ else
 
 ### Rotation 및 Flip
 
-프리뷰를 올바르게 출력하려면 기기의 Orientation에 따라 카메라로 들어오는 이미지를 회전하거나 반전해야 한다. 얼마나 회전해야 하는지와 반전해야 하는지 여부는 `WebCamTexture.videoRotationAngle`과 `WebCamTexture.videoVerticallyMirrored` 값을 통해 확인할 수 있다. `WebCamController`에서는 `Update()`에서 호출하는 `Resizing()` 함수에 해당 기능이 구현되어 있다.
+프리뷰를 올바르게 출력하려면 기기의 Orientation에 따라 카메라로 들어오는 이미지를 회전하거나 반전해야 한다. 얼마나 회전해야 하는지와 반전해야 하는지 여부는 `WebCamTexture.videoRotationAngle`과 `WebCamTexture.videoVerticallyMirrored` 값을 통해 확인할 수 있다. `WebCamController`에서는 `WebCamViewport.ResizeInternal()` 함수에 해당 기능이 구현되어 있다.
 
 {% highlight csharp %}
 /* setup params */
@@ -296,98 +306,10 @@ else
 
 rotation과 상하반전은 `_rawImage` 오브젝트에 적용한다. 여기서 90도 또는 270도 회전되는 경우 Viewport 크기에 맞게 `_rawImage`를 확대하거나 축소해야 한다. 이를 위해 `scale` 변수를 계산하여 적용하였다.
 
-`Resizing()` 함수는 `WebCamController` 객체의 값이 바뀔 때에만 호출되므로, 만약 UI에서 프리뷰 화면을 변경한 경우 직접 `Resizing()` 함수를 호출해서 화면에 프리뷰가 올바르게 출력되도록 할 수 있다.
+`WebCamViewport.ResizeInternal()` 함수는 `WebCamController` 객체의 값이 바뀔 때에만 호출되므로, 만약 UI에서 프리뷰 화면을 변경한 경우 직접 `WebCamController.Resize()` 함수를 호출해서 화면에 프리뷰가 올바르게 출력되도록 할 수 있다.
 
 ### 캡쳐
 
-현재 프레임의 카메라 화면은 `WebCamTexture` 객체를 통해 가져올 수 있는데, 이전에 언급한 것과 같이 이미지를 회전하고 반전해야 한다. `WebCamTexture.GetPixels()`를 통해 픽셀별 컬러를 가져온 후 회전, 반전에 따라 새로운 텍스쳐에 알맞은 컬러를 대입한다. 아래 코드는 길지만 각 상황에 따라 좌표를 변환하는 단순한 로직의 반복이다.
+현재 프레임의 카메라 화면은 `WebCamTexture` 객체를 통해 가져올 수 있는데, 이전에 언급한 것과 같이 이미지를 회전하고 반전해야 한다. `WebCamTexture.GetPixels32()`를 통해 픽셀별 컬러를 가져온 후 회전, 반전에 따라 새로운 텍스쳐에 알맞은 컬러를 대입한다. 따라서 이미지 복사를 수행해야 하므로 스레드를 사용해서 병렬 처리하도록 되어 있다. 이 때 사용할 스레드의 개수는 인스펙터의 `WebCamController` 컴포넌트에서 `Capture Thread Count` 값으로 설정할 수 있다.
 
-{% highlight csharp %}
-if (!flipHorizontally)
-{
-    switch (rotationStep)
-    {
-        case 0:
-            if (clip)
-            {
-                for (int j = 0; j < height; j++)
-                {
-                    int ybase = (j + heightOffset) * textureWidth;
-                    for (int i = 0; i < width; i++)
-                        captureTexture.SetPixel(i, j, webCamPixels[(i + widthOffset) + ybase]);
-                }
-            }
-            else
-                captureTexture.SetPixels(webCamPixels);
-            break;
-
-        case 1:
-            for (int j = 0; j < height; j++)
-            {
-                int x = textureWidth - 1 - (j + heightOffset);
-                for (int i = 0; i < width; i++)
-                    captureTexture.SetPixel(i, j, webCamPixels[x + (i + widthOffset) * textureWidth]);
-            }
-            break;
-
-        case 2:
-            for (int i = 0; i < width; i++)
-            {
-                int x = textureWidth - 1 - (i + widthOffset);
-                for (int j = 0; j < height; j++)
-                    captureTexture.SetPixel(i, j, webCamPixels[x + (textureHeight - 1 - (j + heightOffset)) * textureWidth]);
-            }
-            break;
-
-        case 3:
-            for (int i = 0; i < width; i++)
-            {
-                int y = textureHeight - 1 - (i + widthOffset);
-                for (int j = 0; j < height; j++)
-                    captureTexture.SetPixel(i, j, webCamPixels[(j + heightOffset) + y * textureWidth]);
-            }
-            break;
-    }
-}
-else
-{
-    switch (rotationStep)
-    {
-        case 0:
-            for (int i = 0; i < width; i++)
-            {
-                int x = textureWidth - 1 - (i + widthOffset);
-                for (int j = 0; j < height; j++)
-                    captureTexture.SetPixel(i, j, webCamPixels[x + (j + heightOffset) * textureWidth]);
-            }
-            break;
-
-        case 1:
-            for (int i = 0; i < width; i++)
-            {
-                int y = textureHeight - 1 - (i + widthOffset);
-                for (int j = 0; j < height; j++)
-                    captureTexture.SetPixel(i, j, webCamPixels[(textureWidth - 1 - (j + heightOffset)) + y * textureWidth]);
-            }
-            break;
-
-        case 2:
-            for (int j = 0; j < height; j++)
-            {
-                int y = textureHeight - 1 - (j + heightOffset);
-                for (int i = 0; i < width; i++)
-                    captureTexture.SetPixel(i, j, webCamPixels[(i + widthOffset) + y * textureWidth]);
-            }
-            break;
-
-        case 3:
-            for (int i = 0; i < width; i++)
-            {
-                int ybase = (i + widthOffset) * textureWidth;
-                for (int j = 0; j < height; j++)
-                    captureTexture.SetPixel(i, j, webCamPixels[(j + heightOffset) + ybase]);
-            }
-            break;
-    }
-}
-{% endhighlight %}
+캡쳐하는 코드는 [링크](https://github.com/lklab/WebCamController/blob/master/Assets/Scripts/WebCamCaptureWorker.cs)로 첨부한다.
