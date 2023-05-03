@@ -256,19 +256,22 @@ if (!found)
 
 {% highlight csharp %}
 Texture = new WebCamTexture(device.name, resolution.x, resolution.y, fps);
-_rawImage.texture = Texture;
-
 Texture.Play();
-_rawImage.gameObject.SetActive(true);
+_viewport.SetWebCamTexture(Texture);
+
+if (_autoResizeViewport)
+    _viewport.SetAutoResizingEnabled(true);
 
 if (flipHorizontally)
-    _viewport.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+    _viewport.RectTr.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
 else
-    _viewport.localScale = Vector3.one;
+    _viewport.RectTr.localScale = Vector3.one;
 
 {% endhighlight %}
 
-`_rawImage` 컴포넌트를 통해 프리뷰가 UI 출력된다. 전면 카메라를 사용하는 등의 이유로 좌우반전이 필요하면 `_viewport.localScale.x` 값을 `-1.0f`로 설정한다.
+뷰포트 영역을 제어하는 `WebCamViewport`에 `WebCamTexture` 객체를 전달한다. 이후 `WebCamViewport` 내부의 `RawImage` 컴포넌트에서 프리뷰가 UI에 출력된다. 전면 카메라를 사용하는 등의 이유로 좌우반전이 필요하면 뷰포트의 x 스케일 값을 `-1.0f`로 설정한다.
+
+`_autoResizeViewport`가 `true`로 설정된 경우 `WebCamViewport`의 Auto resizing 기능을 활성화해서 기기의 회전이나 카메라의 회전/반전 속성이 변경된 경우 자동으로 뷰포트를 그에 맞게 업데이트한다.
 
 ### Rotation 및 Flip
 
