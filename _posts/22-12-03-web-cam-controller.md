@@ -84,7 +84,7 @@ private void Start()
 
 권한을 성공적으로 획득하면 콜백 파라미터로 `WebCamController.Error.Success`를 받아온다. 앱이 이미 권한을 갖고 있는 경우에도 콜백 파라미터로 `WebCamController.Error.Success`를 받아온다.
 
-권한을 거부당한 경우 안드로이드에서는 콜백이 호출되지 않는다. 이는 유니티에서 사용자가 권한 요청 다어얼로그에 응답했을 때의 이벤트를 제공하지 않기 때문이다. 권한을 거부당한 경우 iOS에서는 콜백 파라미터로 `WebCamController.Error.Permission`을 받아온다.
+사용자가 권한을 거부한 경우 콜백 파라미터로 `WebCamController.Error.Permission`을 받아온다.
 
 ### 프리뷰 시작
 
@@ -199,15 +199,15 @@ if (Permission.HasUserAuthorizedPermission(Permission.Camera))
     yield break;
 }
 
-Permission.RequestUserPermission(Permission.Camera);
+PermissionCallbacks permissionCallbacks = new PermissionCallbacks();
+permissionCallbacks.PermissionDenied += (string msg) => callback?.Invoke(Error.Permission);
+permissionCallbacks.PermissionDeniedAndDontAskAgain += (string msg) => callback?.Invoke(Error.Permission);
+permissionCallbacks.PermissionGranted += (string msg) => callback?.Invoke(Error.Success);
 
-while (!Permission.HasUserAuthorizedPermission(Permission.Camera))
-    yield return null;
-
-callback?.Invoke(Error.Success);
+Permission.RequestUserPermission(Permission.Camera, permissionCallbacks);
 {% endhighlight %}
 
-`Permission.HasUserAuthorizedPermission()` 함수로 권한 보유 여부를 확인하고 `Permission.RequestUserPermission()` 함수로 권한을 사용자에게 요청한다. 안드로이드에서는 권한 요청 결과를 받아오는 이벤트가 없으므로 사용자가 권한 요청을 거부한 경우 `while (!Permission.HasUserAuthorizedPermission(Permission.Camera))`에서 영원히 기다리게 된다. 대신에 `WebCamController.StopRequestPermission()` 함수로 권한 요청 코루틴을 중단시킬 수 있다.
+`Permission.HasUserAuthorizedPermission()` 함수로 권한 보유 여부를 확인하고 `Permission.RequestUserPermission()` 함수로 권한을 사용자에게 요청한다. `PermissionCallbacks` 객체를 통해 사용자의 권한 응답을 콜백으로 전달한다.
 
 iOS
 
