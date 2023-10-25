@@ -96,6 +96,7 @@ categories.each { |category|
 			data["date"] = yaml["date"]
 			data["image"] = yaml["image"]
 			data["tag"] = yaml["tag"]
+			data["period"] = yaml["summary"]["period"].sub '<br />', ' / '
 
 			category_data["projects"].push(data)
 			portfolio_projects.push(data)
