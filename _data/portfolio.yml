@@ -2,6 +2,41 @@
 - category: Unity
   link: "/portfolio/unity"
   projects:
+  - link: "/portfolio/unity/digital-twin-xr"
+    title: 디지털 트윈 XR 작업지원 플랫폼 개발
+    date: 2023-09-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 맥스트
+    - Csharp
+    - UniRx
+    - UniTask
+    - AR
+    - VR
+    - XR
+    - Digital twin
+    - Android
+    - REST API
+    - 서버 연동
+    - 지역화
+    period: 2023.09 - 현재
+  - link: "/portfolio/unity/ar-remote_support"
+    title: AR 작업지원 앱 및 도구 개발
+    date: 2023-05-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 맥스트
+    - Csharp
+    - WebRTC
+    - LiveKit
+    - UniRx
+    - UniTask
+    - AR
+    - Android
+    - REST API
+    - 서버 연동
+    - 지역화
+    period: 2023.05 - 2023.08 (4개월)
   - link: "/portfolio/unity/silver-care"
     title: 실버케어 모바일 앱 개발
     date: 2021-09-01

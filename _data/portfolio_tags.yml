@@ -1,7 +1,48 @@
 ---
-- tag: 원더풀플랫폼
+- tag: 맥스트
   projects:
   - &1
+    link: "/portfolio/unity/digital-twin-xr"
+    title: 디지털 트윈 XR 작업지원 플랫폼 개발
+    date: 2023-09-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 맥스트
+    - Csharp
+    - UniRx
+    - UniTask
+    - AR
+    - VR
+    - XR
+    - Digital twin
+    - Android
+    - REST API
+    - 서버 연동
+    - 지역화
+    period: 2023.09 - 현재
+  - &2
+    link: "/portfolio/unity/ar-remote_support"
+    title: AR 작업지원 앱 및 도구 개발
+    date: 2023-05-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 맥스트
+    - Csharp
+    - WebRTC
+    - LiveKit
+    - UniRx
+    - UniTask
+    - AR
+    - Android
+    - REST API
+    - 서버 연동
+    - 지역화
+    period: 2023.05 - 2023.08 (4개월)
+- tag: Csharp
+  projects:
+  - *1
+  - *2
+  - &6
     link: "/portfolio/unity/silver-care"
     title: 실버케어 모바일 앱 개발
     date: 2021-09-01
@@ -21,10 +62,7 @@
     - 출시
     - 지역화
     period: 2021.09 - 2023.05 (1년 9개월)
-- tag: Csharp
-  projects:
-  - *1
-  - &11
+  - &8
     link: "/portfolio/unity/point-and-click"
     title: 포인트 앤 클릭 추리 게임 개발
     date: 2021-01-01
@@ -38,7 +76,7 @@
     - Spine
     - 지역화
     period: 2021.01 - 2021.08 (8개월, 중단됨)
-  - &2
+  - &9
     link: "/portfolio/unity/story-puzzle-game-3d"
     title: 3D 스토리 퍼즐 게임 개발
     date: 2020-03-01
@@ -50,7 +88,7 @@
     - 3D
     - 지역화
     period: 2020.03 - 2020.12 (10개월, 중단됨)
-  - &3
+  - &7
     link: "/portfolio/unity/senior"
     title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
     date: 2020-01-01
@@ -64,7 +102,7 @@
     - 연구 협력
     - 서버 연동
     period: 2020.01 - 2021.08 (1년 8개월)
-  - &4
+  - &10
     link: "/portfolio/unity/story-puzzle-game"
     title: 스토리 퍼즐 게임 개발
     date: 2019-10-01
@@ -78,7 +116,7 @@
     - 지역화
     - Steam
     period: '개발 기간: 2019.10 - 2019.12 (3개월) / 출시 후 업데이트: 2020.01 - 2021.06'
-  - &10
+  - &13
     link: "/portfolio/unity/adventure"
     title: 어드벤처 게임 개발
     date: 2019-05-01
@@ -91,7 +129,7 @@
     - 출시
     - 프로젝트 관리
     period: 2019.05 - 2020.12 (1년 8개월)
-  - &5
+  - &3
     link: "/portfolio/unity/ar-card-app"
     title: AR 기반 장난감 카드 인식 앱 개발
     date: 2019-04-01
@@ -104,7 +142,7 @@
     - 모바일
     - 출시
     period: 2019.04 - 2019.11 (8개월)
-  - &6
+  - &4
     link: "/portfolio/unity/brain-vr"
     title: 뇌과학 연구용 VR 게임 개발
     date: 2018-12-01
@@ -119,7 +157,7 @@
     - 서버 연동
     - 연구 협력
     period: 2018.12 - 2019.08 (9개월)
-  - &7
+  - &5
     link: "/portfolio/unity/light-the-time"
     title: 공포 게임 Light the Time 개발
     date: 2014-10-01
@@ -132,25 +170,36 @@
     - 3D
     - 출시
     period: 2014.10 - 2014.12 (3개월)
-- tag: Java
+- tag: UniRx
   projects:
   - *1
-  - &12
-    link: "/portfolio/industrial-network/drive-setting-app"
-    title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
-    date: 2018-06-01
-    image: "/assets/portfolio/drive-setting-app/ui.png"
-    tag:
-    - 하이젠모터
-    - C
-    - Java
-    - Windows
-    - CMake
-    - EtherCAT
-    - SOEM
-    - Java swing
-    period: 2018.06 - 2018.07 (2개월) - 기본 개발 / 2018.12 - 2019.01 (2개월) - 추가 개선 개발
-  - &8
+  - *2
+- tag: UniTask
+  projects:
+  - *1
+  - *2
+- tag: AR
+  projects:
+  - *1
+  - *2
+  - *3
+- tag: VR
+  projects:
+  - *1
+  - *4
+  - *5
+- tag: XR
+  projects:
+  - *1
+- tag: Digital twin
+  projects:
+  - *1
+- tag: Android
+  projects:
+  - *1
+  - *2
+  - *6
+  - &11
     link: "/portfolio/embedded/wearable-instrument"
     title: 스마트폰 연동 연주용 장갑(웨어러블 디바이스) 개발
     date: 2015-09-01
@@ -163,7 +212,7 @@
     - Arduino
     - 웨어러블
     period: 2015.09 - 2015.12 (4개월)
-  - &9
+  - &12
     link: "/portfolio/embedded/quadcopter"
     title: 스마트폰으로 조종하는 드론 개발
     date: 2015-03-01
@@ -178,71 +227,101 @@
     - Raspberry pi
     - 드론
     period: 2015.03 - 2015.06 (4개월)
-- tag: Kotlin
-  projects:
-  - *1
-- tag: Objective-C
-  projects:
-  - *1
-- tag: Swift
-  projects:
-  - *1
-- tag: 모바일
-  projects:
-  - *1
-  - *2
-  - *3
-  - *4
-  - *5
-  - *6
-  - *7
-- tag: Android
-  projects:
-  - *1
-  - *8
-  - *9
-- tag: iOS
-  projects:
-  - *1
 - tag: REST API
   projects:
   - *1
+  - *2
   - *6
+  - *4
 - tag: 서버 연동
   projects:
   - *1
-  - *3
+  - *2
   - *6
-- tag: 출시
-  projects:
-  - *1
-  - *4
-  - *10
-  - *5
   - *7
+  - *4
 - tag: 지역화
   projects:
   - *1
-  - *11
   - *2
+  - *6
+  - *8
+  - *9
+  - *10
+- tag: WebRTC
+  projects:
+  - *2
+- tag: LiveKit
+  projects:
+  - *2
+- tag: 원더풀플랫폼
+  projects:
+  - *6
+- tag: Java
+  projects:
+  - *6
+  - &14
+    link: "/portfolio/industrial-network/drive-setting-app"
+    title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
+    date: 2018-06-01
+    image: "/assets/portfolio/drive-setting-app/ui.png"
+    tag:
+    - 하이젠모터
+    - C
+    - Java
+    - Windows
+    - CMake
+    - EtherCAT
+    - SOEM
+    - Java swing
+    period: 2018.06 - 2018.07 (2개월) - 기본 개발 / 2018.12 - 2019.01 (2개월) - 추가 개선 개발
+  - *11
+  - *12
+- tag: Kotlin
+  projects:
+  - *6
+- tag: Objective-C
+  projects:
+  - *6
+- tag: Swift
+  projects:
+  - *6
+- tag: 모바일
+  projects:
+  - *6
+  - *9
+  - *7
+  - *10
+  - *3
   - *4
+  - *5
+- tag: iOS
+  projects:
+  - *6
+- tag: 출시
+  projects:
+  - *6
+  - *10
+  - *13
+  - *3
+  - *5
 - tag: 겜브릿지
   projects:
-  - *11
-  - *2
+  - *8
+  - *9
+  - *7
+  - *10
+  - *13
   - *3
   - *4
-  - *10
-  - *5
-  - *6
 - tag: Windows
   projects:
-  - *11
-  - *3
-  - *4
+  - *8
+  - *7
   - *10
-  - *12
-  - &13
+  - *13
+  - *14
+  - &15
     link: "/portfolio/software-engineering/miica"
     title: 'MIICA: A Model-Driven Integrated Development Environment for Industrial
       Control Applications 외 1건'
@@ -267,23 +346,23 @@
     period: 2017.08 - 2018.03 (8개월)
 - tag: 시스템 설계
   projects:
-  - *11
+  - *8
 - tag: 셰이더
   projects:
-  - *11
+  - *8
 - tag: Spine
   projects:
-  - *11
+  - *8
 - tag: 3D
   projects:
-  - *2
-  - *10
-  - *7
+  - *9
+  - *13
+  - *5
 - tag: Python
   projects:
-  - *3
-  - *13
-  - &22
+  - *7
+  - *15
+  - &24
     link: "/portfolio/industrial-network/hmi"
     title: 오픈 소스 통합개발환경을 활용한 실시간 임베디드 제어기 HMI 개발
     date: 2017-03-01
@@ -299,7 +378,7 @@
     - IEC 61131-3
     - wxPython
     period: 2017.03 - 2017.04 (2개월)
-  - &18
+  - &20
     link: "/portfolio/software-engineering/uppaal2plc"
     title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성 프레임워크 외 1건
     date: 2017-03-01
@@ -315,7 +394,7 @@
     - Timed automata
     - Automatic programming
     period: 2017.03 - 2017.07 (5개월)
-  - &19
+  - &21
     link: "/portfolio/industrial-network/motion-recipe"
     title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
     date: 2016-02-01
@@ -330,8 +409,8 @@
     - Beremiz
     - IEC 61131-3
     period: 2016.02 - 2016.05 (4개월)
-  - *9
-  - &24
+  - *12
+  - &26
     link: "/portfolio/industrial-network/drawing-robot"
     title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
     date: 2014-10-01
@@ -346,7 +425,7 @@
     - IEC 61131-3
     - Tkinter
     period: 2014.10 - 2014.12 (3개월)
-  - &20
+  - &22
     link: "/portfolio/embedded/emergency-exit"
     title: 화재 상황을 대비한 동적 비상구 방향지시 시스템 개발
     date: 2014-06-01
@@ -361,30 +440,23 @@
     period: 2014.06 - 2014.09 (4개월)
 - tag: 연구 협력
   projects:
-  - *3
-  - *6
+  - *7
+  - *4
 - tag: Steam
   projects:
-  - *4
+  - *10
 - tag: 프로젝트 관리
   projects:
-  - *10
-- tag: AR
-  projects:
-  - *5
+  - *13
 - tag: Vuforia
   projects:
-  - *5
-- tag: VR
-  projects:
-  - *6
-  - *7
+  - *3
 - tag: Oculus
   projects:
-  - *6
+  - *4
 - tag: 하이젠모터
   projects:
-  - &14
+  - &16
     link: "/portfolio/industrial-network/cia402-profile"
     title: 위치, 속도, 토크 프로파일 및 Homing 알고리즘 개발 (CiA 402 표준)
     date: 2018-09-01
@@ -398,8 +470,8 @@
     - CiA 402
     - 펌웨어
     period: 2018.09 - 2018.11 (3개월)
-  - *12
-  - &15
+  - *14
+  - &17
     link: "/portfolio/industrial-network/canopen"
     title: 서보모터 드라이브 펌웨어 CANopen 컴포넌트 개발
     date: 2018-05-01
@@ -412,7 +484,7 @@
     - CANopen
     - 펌웨어
     period: 2018.05 (1개월)
-  - &16
+  - &18
     link: "/portfolio/industrial-network/modbus"
     title: 서보모터 드라이브 펌웨어 Modbus 컴포넌트 개발
     date: 2018-04-01
@@ -425,7 +497,7 @@
     - Modbus
     - 펌웨어
     period: 2018.04 (1개월)
-  - &17
+  - &19
     link: "/portfolio/embedded/drive-oled"
     title: 서보모터 드라이브 사용자 메뉴 기능을 위한 OLED 출력 알고리즘 개발
     date: 2018-03-01
@@ -439,14 +511,14 @@
     period: 2018.03 (1개월)
 - tag: C
   projects:
-  - *14
-  - *12
-  - *15
   - *16
+  - *14
   - *17
-  - *13
   - *18
-  - &23
+  - *19
+  - *15
+  - *20
+  - &25
     link: "/portfolio/software-engineering/uppaal2c"
     title: UPPAAL2C를 이용하여 정형 모델 기반의 검증된 일체형 드라이브 상태머신 개발
     date: 2016-04-01
@@ -460,26 +532,26 @@
     - UPPAAL2C
     - Beremiz
     period: 2016.04 - 2016.06 (3개월)
-  - *19
-  - *8
-  - *9
-  - *20
+  - *21
+  - *11
+  - *12
+  - *22
 - tag: CCS
   projects:
-  - *14
-  - *15
   - *16
   - *17
+  - *18
+  - *19
 - tag: ARM
   projects:
-  - *14
-  - *15
   - *16
+  - *17
+  - *18
 - tag: EtherCAT
   projects:
+  - *16
   - *14
-  - *12
-  - &21
+  - &23
     link: "/portfolio/industrial-network/ethercat-foe"
     title: EtherCAT FoE 기반 장치 펌웨어 관리 기능 개선
     date: 2017-03-01
@@ -493,41 +565,42 @@
     period: 2017.03 - 2017.04 (2개월)
 - tag: CiA 402
   projects:
-  - *14
+  - *16
 - tag: 펌웨어
   projects:
-  - *14
-  - *15
   - *16
   - *17
+  - *18
+  - *19
 - tag: CMake
   projects:
-  - *12
+  - *14
 - tag: SOEM
   projects:
-  - *12
-  - *13
-  - *21
+  - *14
+  - *15
+  - *23
 - tag: Java swing
   projects:
-  - *12
+  - *14
 - tag: CANopen
   projects:
-  - *15
+  - *17
 - tag: Modbus
   projects:
-  - *16
+  - *18
 - tag: HMI
   projects:
-  - *17
-  - *22
+  - *19
+  - *24
 - tag: 대학원
   projects:
-  - *13
-  - *21
-  - *22
-  - *18
-  - &25
+  - *15
+  - *23
+  - *24
+  - *20
+  - *25
+  - &27
     link: "/portfolio/others/genetic-algorithm"
     title: Genetic algorithm을 이용한 automatic rule acquisition 알고리즘 구현
     date: 2016-04-01
@@ -539,110 +612,109 @@
     - Optimization
     - Genetic algorithm
     period: 2016.04 - 2016.06 (3개월)
-  - *23
-  - *19
+  - *21
 - tag: Linux
   projects:
-  - *13
-  - *18
-  - *9
-  - *24
+  - *15
+  - *20
+  - *12
+  - *26
 - tag: Xenomai
   projects:
-  - *13
-  - *22
-  - *23
-  - *19
+  - *15
   - *24
+  - *25
+  - *21
+  - *26
 - tag: PyQt
   projects:
-  - *13
+  - *15
 - tag: IgH EtherCAT Master
   projects:
-  - *13
+  - *15
 - tag: UPPAAL
   projects:
-  - *13
-  - *18
-  - *23
+  - *15
+  - *20
+  - *25
 - tag: GNU toolchain
   projects:
-  - *13
-  - *18
+  - *15
+  - *20
 - tag: MDD
   projects:
-  - *13
+  - *15
 - tag: IDE
   projects:
-  - *13
+  - *15
 - tag: Real-time
   projects:
-  - *13
+  - *15
 - tag: Timed automata
   projects:
-  - *13
-  - *18
-  - *23
+  - *15
+  - *20
+  - *25
 - tag: PM
   projects:
-  - *21
+  - *23
 - tag: FoE
   projects:
-  - *21
+  - *23
 - tag: Beaglebone black
   projects:
-  - *22
-  - *19
+  - *24
+  - *21
 - tag: PLC
   projects:
-  - *22
-  - *19
   - *24
+  - *21
+  - *26
 - tag: Beremiz
   projects:
-  - *22
-  - *23
-  - *19
   - *24
+  - *25
+  - *21
+  - *26
 - tag: IEC 61131-3
   projects:
-  - *22
-  - *19
   - *24
+  - *21
+  - *26
 - tag: wxPython
   projects:
-  - *22
+  - *24
 - tag: Raspberry pi
   projects:
-  - *18
-  - *9
   - *20
+  - *12
+  - *22
 - tag: Automatic programming
   projects:
-  - *18
-- tag: R
-  projects:
-  - *25
-- tag: R Studio
-  projects:
-  - *25
-- tag: Optimization
-  projects:
-  - *25
-- tag: Genetic algorithm
-  projects:
-  - *25
+  - *20
 - tag: UPPAAL2C
   projects:
-  - *23
+  - *25
+- tag: R
+  projects:
+  - *27
+- tag: R Studio
+  projects:
+  - *27
+- tag: Optimization
+  projects:
+  - *27
+- tag: Genetic algorithm
+  projects:
+  - *27
 - tag: 학부
   projects:
-  - *8
-  - *9
-  - *7
-  - *24
-  - *20
-  - &26
+  - *11
+  - *12
+  - *26
+  - *5
+  - *22
+  - &28
     link: "/portfolio/others/catia-bridge"
     title: CATIA를 활용한 교량전차 설계 및 정역학 분석
     date: 2013-10-01
@@ -654,7 +726,7 @@
     - 모델링
     - 설계
     period: 2013.10 - 2013.12 (3개월)
-  - &27
+  - &29
     link: "/portfolio/others/linkage-system"
     title: 엑셀을 활용한 linkage system 분석기 개발
     date: 2013-04-01
@@ -667,36 +739,36 @@
     period: 2013.04 - 2013.06 (3개월)
 - tag: Arduino
   projects:
-  - *8
-  - *20
+  - *11
+  - *22
 - tag: 웨어러블
   projects:
-  - *8
+  - *11
 - tag: 드론
   projects:
-  - *9
+  - *12
 - tag: Tkinter
   projects:
-  - *24
-  - *20
+  - *26
+  - *22
 - tag: CATIA
   projects:
-  - *26
+  - *28
 - tag: 정역학
   projects:
-  - *26
+  - *28
 - tag: 모델링
   projects:
-  - *26
+  - *28
 - tag: 설계
   projects:
-  - *26
+  - *28
 - tag: Kinematics
   projects:
-  - *27
+  - *29
 - tag: VBA
   projects:
-  - *27
+  - *29
 - tag: Linkage System
   projects:
-  - *27
+  - *29
