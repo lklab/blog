@@ -344,7 +344,7 @@ AsyncWork b
 Start b
 {% endhighlight %}
 
-`OnCompleted()` 함수의 매개변수로 들어오는 `continuation`을 호출하면 `await` 이후의 코드인 로그 `AsyncWork b`가 출력되는 것을 확인할 수 있다. 하지만 이렇게 구현된 `MyAwaiter<T>`를 사용하면, 로그 `Start b`가 항상 `called OnCompleted` 다음에 출력된다. 즉, `OnCompleted()` 함수는 동기적으로 실행되므로 비동기 작업을 여기서 실행하면 안된다. 비동기적인 작업을 수행할 수 있도록 `MyTask<T>`를 다음과 같이 수정한다.
+`OnCompleted()` 함수의 매개변수로 들어오는 `continuation`을 호출하면 `await` 이후의 코드인 로그 `AsyncWork b`가 출력되는 것을 확인할 수 있다. 하지만 이렇게 구현된 `MyAwaiter<T>`를 사용하면, 로그 `Start b`가 항상 `called OnCompleted` 다음에 출력된다. 즉, `OnCompleted()` 함수는 동기적으로 실행되므로 비동기 작업을 여기서 실행하면 안 된다. 비동기적인 작업을 수행할 수 있도록 `MyTask<T>`를 다음과 같이 수정한다.
 
 {% highlight csharp %}
 public struct MyAwaiter<T> : INotifyCompletion
@@ -428,7 +428,7 @@ ThreadID Task = 1100
 value=5, ThreadID AsyncWork b = 1100
 {% endhighlight %}
 
-이제 `MyTask<T>`는 작업을 비동기적으로 실행하기 때문에 `Start b`가 `AsyncWork b`보다 먼저 출력되는 것을 확인할 수 있다. 하지만 여기에서는 `Task`와 한 가지 차이점이 있다. 바로 로그 `AsyncWork a`가 메인 스레드에서 실행되었음에도 로그 `AsyncWork b`는 메인 스레드에서 실행되지 않았다는 점이다. 그럼 작업이 종료되었을 때 `continuation`을 메인 스레드에서 실행하는 방법을 알아야 한다. 이것을 위해 `SynchronizationContext`가 있다.
+이제 `MyTask<T>`는 작업을 비동기적으로 실행하기 때문에 `Start b`가 `AsyncWork b`보다 먼저 출력되는 것을 확인할 수 있다. 하지만 여기에서는 `Task`와 한 가지 차이점이 있다. 바로 로그 `AsyncWork a`가 메인 스레드에서 실행되었음에도 로그 `AsyncWork b`는 메인 스레드에서 실행되지 않았다는 점이다. 로그 `AsyncWork b`도 메인 스레드에서 실행되기를 원한다면, 작업이 종료되었을 때 `continuation`을 메인 스레드로 디스패치해서 실행하는 방법을 알아야 한다. 이것을 위해 `SynchronizationContext`가 있다.
 
 ## SynchronizationContext
 
@@ -453,7 +453,7 @@ Start: UnityEngine.UnitySynchronizationContext
 Task: null
 {% endhighlight %}
 
-마지막으로 `SynchronizationContext`에는 `Post()`와 `Send()` 함수가 있다. 이 함수를 통해 특정 함수를 `SynchronizationContext`가 정의된 스레드에서 실행되도록 디스패치할 수 있다. 따라서 `UnitySynchronizationContext`의 경우에는 유니티 메인 스레드에서 실행되도록 디스패치할 수 있다. `Post()`와 `Send()`의 차이점은, `Post()`는 비동기적으로 함수를 디스패치하고 현재 스레드에서 다음 작업을 실행할 수 있는 반면 `Send()`는 디스패치 후 그 결과를 받아야 하므로 전달한 함수가 끝나야만 현재 스레드를 재개할 수 있다는 것이다.
+마지막으로 `SynchronizationContext`에는 `Post()`와 `Send()` 함수가 있다. 이 함수를 통해 특정 함수를 `SynchronizationContext`가 정의된 스레드에서 실행되도록 디스패치할 수 있다. 예를 들어 `UnitySynchronizationContext`의 `Post()`와 `Send()` 함수를 통해 특정 함수가 유니티 메인 스레드에서 실행되도록 디스패치할 수 있다. `Post()`와 `Send()`의 차이점은, `Post()`는 비동기적으로 함수를 디스패치하고 현재 스레드에서 다음 작업을 실행할 수 있는 반면 `Send()`는 디스패치 후 그 결과를 받아야 하므로 디스패치 된 함수가 끝나야만 현재 스레드를 재개할 수 있다는 것이다.
 
 이제 `SynchronizationContext`를 고려해서 수정한 `MyTask<T>`는 다음과 같다. `MyAwaiter<T>.OnCompleted()` 함수의 구현만 변경하였다.
 
@@ -493,7 +493,7 @@ value=5, ThreadID AsyncWork b = 1
 마지막으로 UniTask 차례다. UniTask는 유니티를 위한 `async / await` 통합 기능을 제공한다. 사용법과 기능은 대부분 Task와 유사하나 다음과 같은 중요한 차이점이 있다.
 
 * 기본적으로 메인 스레드에서 동작한다.
-* 유니티의 Coroutine이나  Player loop와 연동하기 쉽다.
+* 유니티의 Coroutine이나 Player loop와 연동하기 쉽다.
 
 먼저 스레드 부분부터 확인해 본다. Task의 경우 `Task.Run()`를 사용해서 쉽게 작업을 스레드풀에서 실행할 수 있었지만, UniTask를 사용해서 백그라운드 스레드에서 작업을 실행하려면 다음과 같이 명시적인 함수를 사용해야 한다.
 
@@ -536,7 +536,7 @@ ThreadID Task 2 = 1
 
 한편 `await` 전후로 스레드를 전환할 수 있는 기능을 제공한다.
 
-`UniTask.SwitchToMainThread()`를 사용하면 `await` 이후의 코드를 메인 스레드에서 실행되도록 할 수 있다. 그러나 이것은 다른 "일반적인" `await UniTask`와 큰 차이는 없다.
+`UniTask.SwitchToMainThread()`를 사용하면 `await` 이후의 코드를 메인 스레드에서 실행되도록 할 수 있다. 그러나 이것은 다른 "일반적인" `await UniTask`와 큰 차이는 없다. 다만 메인 스레드로 전환하는 용도로 사용한다면 `UniTask.SwitchToMainThread()`를 사용하는 것이 가독성 면에서 더 좋을 것이다.
 
 {% highlight csharp %}
 private void Start()
@@ -604,4 +604,4 @@ await UniTask.WaitForEndOfFrame();
 await UniTask.WaitForFixedUpdate();
 {% endhighlight %}
 
-여기서 `UniTask.Yield()` 대신 `Task.Yield()`를 사용해도 되지 않을지 의문이 있는데, 실험해 본 결과 동작은 크게 다르지 않지만 `Task.Yield()`가 정확히 한 프레임을 기다린다는 보장은 없다. `await Task.Yield()`를 실행하면 `UnitySynchronizationContext.Post()`로 `await` 이후의 동작이 넘어가겠지만 유니티가 이것을 다음 프레임에 실행해줄지 아니면 그 다음 프레임에 실행해줄지 알 수 없다. 따라서 프레임 단위 로직을 구현하는 경우 Coroutine을 사용하거나 UniTask를 사용하는 것이 좋다.
+여기서 `UniTask.Yield()` 대신 `Task.Yield()`를 사용해도 되지 않을지 의문이 있는데, 실험해 본 결과 동작은 크게 다르지 않았다. 다만 `Task.Yield()`가 정확히 한 프레임을 기다린다는 보장은 없다. `await Task.Yield()`를 실행하면 `UnitySynchronizationContext.Post()`로 `await` 이후의 코드가 넘어가겠지만 유니티가 이것을 다음 프레임에 실행해줄지 아니면 그 다음 프레임에 실행해줄지 알 수 없다. 따라서 프레임 단위 로직을 구현하는 경우 Coroutine을 사용하거나 UniTask를 사용하는 것이 좋다.
