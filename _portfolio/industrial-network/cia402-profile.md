@@ -13,7 +13,7 @@ tag:
   - 펌웨어
 summary:
   division: 연구 용역
-  period: 2018.09 - 2018.11
+  period: 2018.09 - 2018.11 (3개월)
   platform: AM4377 (ARM Cortex-A9)
   environment: CCS(Code Composer Studio)
   language: C

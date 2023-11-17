@@ -11,6 +11,7 @@ posts_path = File.join(root_path, "_posts")
 tools_path = File.join(root_path, "_tools")
 categories_path = File.join(root_path, "_categories")
 portfolio_path = File.join(root_path, "_portfolio")
+study_path = File.join(root_path, "_study")
 data_path = File.join(root_path, "_data")
 
 ### 카테고리별 포스트 분류 ###
@@ -96,6 +97,7 @@ categories.each { |category|
 			data["date"] = yaml["date"]
 			data["image"] = yaml["image"]
 			data["tag"] = yaml["tag"]
+			data["period"] = yaml["summary"]["period"].sub '<br />', ' / '
 
 			category_data["projects"].push(data)
 			portfolio_projects.push(data)
@@ -151,3 +153,38 @@ for i in 0..(portfolio_tags.count-1) do
 	html = html.gsub("{$index}", i.to_s)
 	File.open(File.join(portfolio_path, "tag-" + portfolio_tags[i]["tag"] + ".html"), "w") { |f| f.write html }
 end
+
+### 스터디
+
+study_data = Hash.new
+
+collections = Dir.entries(study_path)
+collections.each { |collection|
+	collection_path = File.join(study_path, collection)
+
+	if collection != "." and collection != ".." and File.directory?(collection_path)
+		collection_data = Hash.new
+		collection_data["name"] = collection
+		collection_data["studies"] = Array.new
+
+		files = Dir.entries(collection_path)
+		files.each { |file|
+			if File.extname(file) == ".md"
+				yaml = YAML.load_file(File.join(collection_path, file))
+
+				data = Hash.new
+				data["index"] = file.split("_", 2)[0].to_i
+				data["link"] = "/study/" + collection + "/" + File.basename(file, ".md")
+				data["title"] = yaml["title"]
+				data["image"] = yaml["image"]
+
+				collection_data["studies"].push(data)
+			end
+		}
+
+		collection_data["studies"].sort! { |x, y| y["index"] <=> x["index"] }
+		study_data[collection] = collection_data
+	end
+}
+
+File.open(File.join(data_path, "study.yml"), "w") { |f| f.write study_data.to_yaml }

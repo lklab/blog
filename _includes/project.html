@@ -9,6 +9,7 @@
       </a>
     </h3>
     <p class="custom-portfolio-tag">
+      <span class="custom-portfolio-tag-period">{{ project.period }}</span>
       {% for item in project.tag %}
         <span>
           <a class="custom-disable-a-effect" href="{{ site.baseurl }}/portfolio/tag-{{ item | downcase | replace: ' ', '-' }}">#{{ item }}</a>

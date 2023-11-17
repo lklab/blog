@@ -93,6 +93,8 @@ compress_html:
 collections:
   portfolio:
     output: true
+  study:
+    output: true
 
 ####################################################################################################
 

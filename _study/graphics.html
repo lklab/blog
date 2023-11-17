@@ -1,0 +1,21 @@
+---
+layout: page
+title: Graphics
+name: graphics
+permalink: /study/graphics
+no_article_rev: true
+---
+
+{% assign collection = site.data.study[page.name] %}
+
+<div class="categories-page">
+  <div class="archive-group rev">
+    <div class="row">
+
+      {% for study in collection.studies %}
+        {% include study.html %}
+      {% endfor %}
+
+    </div>
+  </div>
+</div>

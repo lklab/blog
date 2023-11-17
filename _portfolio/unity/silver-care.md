@@ -19,7 +19,7 @@ tag:
   - 지역화
 summary:
   division: 정규 프로젝트
-  period: 2021.09 - 현재
+  period: 2021.09 - 2023.05 (1년 9개월)
   platform: Android, iOS
   environment: Unity 2020.3.19f1
   language: C#, Java, Kotlin, Objective-C, Swift
