@@ -2,6 +2,10 @@
 graphics:
   name: graphics
   studies:
+  - index: 2
+    link: "/study/graphics/002_renderhell_pipeline_1"
+    title: Render Hell – Book II (Shaders)
+    image: "/assets/study/graphics/001_renderhell_pipeline_0/banner_book_02.jpg"
   - index: 1
     link: "/study/graphics/001_renderhell_pipeline_0"
     title: Render Hell – Book II (Architecture)
