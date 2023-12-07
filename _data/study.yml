@@ -2,6 +2,10 @@
 graphics:
   name: graphics
   studies:
+  - index: 4
+    link: "/study/graphics/004_renderhell_solutions_0"
+    title: Render Hell – Book IV
+    image: "/assets/study/graphics/004_renderhell_solutions_0/banner_book_04.jpg"
   - index: 3
     link: "/study/graphics/003_renderhell_problems_0"
     title: Render Hell – Book III
