@@ -22,3 +22,10 @@ graphics:
     link: "/study/graphics/000_renderhell_overview_0"
     title: Render Hell – Book I
     image: "/assets/study/graphics/000_renderhell_overview_0/banner_book_01.jpg"
+unreal:
+  name: unreal
+  studies:
+  - index: 0
+    link: "/study/unreal/000_hello_unreal"
+    title: 헬로 언리얼!
+    image: "/assets/study/main/unreal_logo_2.png"
