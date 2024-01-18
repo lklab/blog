@@ -1,5 +1,5 @@
 ---
-title: 헬로 언리얼!
+title: 1강 헬로 언리얼!
 image: /assets/study/main/unreal_logo_2.png
 author: khlee
 layout: post

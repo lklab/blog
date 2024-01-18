@@ -25,7 +25,11 @@ graphics:
 unreal:
   name: unreal
   studies:
+  - index: 1
+    link: "/study/unreal/001_cpp_coding_standard"
+    title: 2강 C++ 코딩 표준
+    image: "/assets/study/main/unreal_logo_2.png"
   - index: 0
     link: "/study/unreal/000_hello_unreal"
-    title: 헬로 언리얼!
+    title: 1강 헬로 언리얼!
     image: "/assets/study/main/unreal_logo_2.png"
