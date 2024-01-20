@@ -1,4 +1,11 @@
 ---
+unity_csharp:
+  name: unity_csharp
+  studies:
+  - index: 0
+    link: "/study/unity_csharp/000_in_out_ref"
+    title: in, out, ref
+    image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
 graphics:
   name: graphics
   studies:
