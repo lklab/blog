@@ -2,6 +2,10 @@
 unity_csharp:
   name: unity_csharp
   studies:
+  - index: 1
+    link: "/study/unity_csharp/001_lazy_asynclazy"
+    title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
+    image: "/assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png"
   - index: 0
     link: "/study/unity_csharp/000_in_out_ref"
     title: in, out, ref
