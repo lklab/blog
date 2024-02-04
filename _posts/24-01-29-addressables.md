@@ -57,7 +57,7 @@ Addressables Groups의 상단에 Play Mode Script를 클릭하면 다음과 같�
 
 ## 에셋을 로드하는 방법
 
-어드레서블 에셋 시스템은 런타임에 에셋을 로드할 수 있는 다양한 방법을 제공한다. 먼저 `Addressables.InstantiateAsync()` 함수를 통해 로드하고 바로 인스턴스로 만들 수 있다.
+어드레서블 에셋 시스템은 런타임에 에셋을 로드할 수 있는 다양한 방법을 제공한다. 먼저 `Addressables.InstantiateAsync()` 함수를 통해 다운로드 및 로드하고 바로 인스턴스로 만들 수 있다.
 
 {% highlight csharp %}
 using UnityEngine;
@@ -107,15 +107,6 @@ public class TestScript : MonoBehaviour
 }
 {% endhighlight %}
 
-로드한 에셋을 언로드해서 메모리를 확보하려면 `Addressables.Release<>()` 또는 `Addressables.ReleaseInstance()`(`Addressables.InstantiateAsync()`로 로드한 경우) 함수를 호출하면 된다.
-
-{% highlight csharp %}
-public void Unload()
-{
-    Addressables.ReleaseInstance(handle);
-}
-{% endhighlight %}
-
 로드하지 않고 다운로드만 하려면 `Addressables.GetDownloadSizeAsync()` 함수로 다운로드할 크기가 있는지 확인하고 0이 아니면 `Addressables.DownloadDependenciesAsync()` 함수로 다운로드할 수 있다. 다운로드 중에 `AsyncOperationHandle.PercentComplete` 값을 읽어서 다운로드 진행도를 체크할 수 있다.
 
 {% highlight csharp %}
@@ -157,6 +148,61 @@ public class TestScript : MonoBehaviour
     }
 }
 {% endhighlight %}
+
+## 에셋 메모리 관리
+
+에셋 번들은 그에 포함되어 있는 모든 에셋의 참조 카운트가 0이 된 경우 언로드될 수 있다. 에셋을 로드한 다음 더 이상 필요하지 않을 경우 `Addressables.Release()` 또는 `Addressables.ReleaseInstance()`를 호출해서 참조 카운트를 감소시킬 수 있다. 다만 에셋 번들에 참조 카운트가 0이 아닌 에셋이 하나라도 있을 경우 다른 에셋들의 참조 카운트가 0이 되더라도 언로드되지 않는다. 해당 에셋 번들에 있는 모든 에셋들이 어디서도 참조되지 않을 경우에만 에셋 번들 전체가 언로드 된다.
+
+`Addressables.Release()` 함수의 파라미터로 `Addressables.LoadAssetAsync()` 함수를 통해 얻은 `AsyncOperationHandle`이나 그 결과로 로드된 에셋의 참조를 전달하여 해당 에셋을 릴리즈할 수 있다. 다만 `Addressables.InstantiateAsync()`로 로드한 경우 `Addressables.ReleaseInstance()`를 통해 릴리즈해야 한다. 그런데 `Addressables.InstantiateAsync()`의 `trackHandle` 파라미터가 default로 `true`로 설정되어 있는데, 이 경우 꼭 `Addressables.ReleaseInstance()` 함수로 릴리즈하지 않더라도 해당 게임오브젝트가 Destroy될 경우(한 예로, 씬이 언로드될 때 함께 Destroy되는 경우 등) 알아서 릴리즈된다.
+
+다음 코드는 에셋을 로드하고 릴리즈하는 예시이다.
+
+{% highlight csharp %}
+private IEnumerator Start()
+{
+    /* load and instantiate instance 1 */
+    AsyncOperationHandle<GameObject> handle1 = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Cube.prefab");
+
+    yield return handle1;
+    if (handle1.Status != AsyncOperationStatus.Succeeded)
+    {
+        Debug.LogError("Fail to load asset.");
+        yield break;
+    }
+
+    GameObject instance1 = Instantiate(handle1.Result);
+    instance1.transform.position = new Vector3(-1.0f, 0.0f, 0.0f);
+
+    /* load and instantiate instance 2 */
+    AsyncOperationHandle<GameObject> handle2 = Addressables.InstantiateAsync("Assets/Prefabs/Cube.prefab");
+
+    yield return handle2;
+    if (handle2.Status != AsyncOperationStatus.Succeeded)
+    {
+        Debug.LogError("Fail to load asset.");
+        yield break;
+    }
+
+    GameObject instance2 = handle2.Result;
+    instance2.transform.position = new Vector3(1.0f, 0.0f, 0.0f);
+
+    /* release instance 2 */
+    yield return new WaitForSeconds(3.0f);
+    Addressables.ReleaseInstance(instance2);
+
+    /* release instance 1 */
+    yield return new WaitForSeconds(3.0f);
+    Addressables.Release(handle1);
+}
+{% endhighlight %}
+
+동일한 에셋에 대해 `Addressables.LoadAssetAsync()`로 로드하고 인스턴스화해서 1번 인스턴스를 생성하고 `Addressables.InstantiateAsync()`로는 2번 인스턴스를 생성하였다. 3초 후, 2번 인스턴스를 `Addressables.ReleaseInstance()` 함수로 릴리즈하면 해당 게임오브젝트도 destroy 되어 씬에서 사라진다. 그러나 아직 1번 인스턴스가 에셋을 참조하고 있기 때문에 에셋 번들이 언로드되지 않는다. 그 다음 3초 후, 1번 인스턴스를 만들었던 핸들을 `Addressables.Release()` 함수를 통해 릴리즈하면 참조 카운트가 0이 되어 해당 에셋 번들이 언로드된다. 이 때 1번 인스턴스는 2번 인스턴스와 다르게 릴리즈하더라도 씬에서 사라지지 않는다. 다만 에셋 번들이 언로드되므로 게임오브젝트가 참조하는 머티리얼 같은 다른 에셋들이 언로드되어 올바르게 동작하지 않을 것이다.
+
+자세한 내용은 다음 문서를 참고하면 좋다.
+
+[Memory management overview](https://docs.unity3d.com/Packages/com.unity.addressables@2.0/manual/MemoryManagement.html)
+
+[Unload Addressable assets](https://docs.unity3d.com/Packages/com.unity.addressables@2.0/manual/UnloadingAddressableAssets.html)
 
 ## 리모트 서버로 테스트 - 서버 구축하기
 
