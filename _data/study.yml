@@ -10,6 +10,13 @@ unity_csharp:
     link: "/study/unity_csharp/000_in_out_ref"
     title: in, out, ref
     image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
+flutter:
+  name: flutter
+  studies:
+  - index: 0
+    link: "/study/flutter/000_widget"
+    title: 위젯
+    image: "/assets/study/main/flutter_logo.png"
 graphics:
   name: graphics
   studies:
