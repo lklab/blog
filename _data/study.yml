@@ -13,6 +13,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 1
+    link: "/study/flutter/001_code"
+    title: 플러터 코드 1
+    image: "/assets/study/main/flutter_logo.png"
   - index: 0
     link: "/study/flutter/000_widget"
     title: 위젯
