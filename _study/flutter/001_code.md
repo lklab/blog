@@ -33,10 +33,10 @@ layout: post
 import 'package:flutter/material.dart';
 {% endhighlight %}
 
-메인 함수는 다음과 같이 작성한다. `MyApp()`은 커스텀 위젯이다.
+메인 함수는 다음과 같이 작성한다. 플러터 최상위 함수인 `runApp()`을 호출하도록 한다. `runApp()`의 파라미터로 위젯을 전달해야 하는데 여기서는 `MyApp()` 커스텀 위젯을 전달한다.
 
 {% highlight dart %}
-void main() => runApp(MyApp())
+void main() => runApp(const MyApp())
 {% endhighlight %}
 
 명명법은 카멜 케이스를 사용하며, 함수명은 소문자로 시작하고 클래스명은 대문자로 시작한다.
