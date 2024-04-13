@@ -10,6 +10,25 @@ unity_csharp:
     link: "/study/unity_csharp/000_in_out_ref"
     title: in, out, ref
     image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
+flutter:
+  name: flutter
+  studies:
+  - index: 3
+    link: "/study/flutter/003_code"
+    title: 플러터 코드 3
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 2
+    link: "/study/flutter/002_code"
+    title: 플러터 코드 2
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 1
+    link: "/study/flutter/001_code"
+    title: 플러터 코드 1
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 0
+    link: "/study/flutter/000_widget"
+    title: 위젯
+    image: "/assets/study/main/flutter_logo.png"
 graphics:
   name: graphics
   studies:
