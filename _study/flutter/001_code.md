@@ -1,5 +1,5 @@
 ---
-title: 플러터 코드 1
+title: 기본 코드 1
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post

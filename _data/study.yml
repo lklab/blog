@@ -13,17 +13,21 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 4
+    link: "/study/flutter/004_align_widget"
+    title: '캐릭터 페이지 디자인 1: 위젯 정리'
+    image: "/assets/study/main/flutter_logo.png"
   - index: 3
     link: "/study/flutter/003_code"
-    title: 플러터 코드 3
+    title: 기본 코드 3
     image: "/assets/study/main/flutter_logo.png"
   - index: 2
     link: "/study/flutter/002_code"
-    title: 플러터 코드 2
+    title: 기본 코드 2
     image: "/assets/study/main/flutter_logo.png"
   - index: 1
     link: "/study/flutter/001_code"
-    title: 플러터 코드 1
+    title: 기본 코드 1
     image: "/assets/study/main/flutter_logo.png"
   - index: 0
     link: "/study/flutter/000_widget"
