@@ -13,6 +13,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 5
+    link: "/study/flutter/005_charactor_page_1"
+    title: '캐릭터 페이지 디자인 2: 실전코딩 part 1'
+    image: "/assets/study/main/flutter_logo.png"
   - index: 4
     link: "/study/flutter/004_align_widget"
     title: '캐릭터 페이지 디자인 1: 위젯 정리'
