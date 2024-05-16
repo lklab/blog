@@ -13,6 +13,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 8
+    link: "/study/flutter/008_drawer"
+    title: Drawer 메뉴 만들기
+    image: "/assets/study/main/flutter_logo.png"
   - index: 7
     link: "/study/flutter/007_appbar_menu_icon"
     title: 앱바(app bar) 메뉴 아이콘 추가하기
