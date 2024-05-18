@@ -13,6 +13,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 9
+    link: "/study/flutter/009_build_context"
+    title: BuildContext
+    image: "/assets/study/main/flutter_logo.png"
   - index: 8
     link: "/study/flutter/008_drawer"
     title: Drawer 메뉴 만들기
