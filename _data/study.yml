@@ -13,6 +13,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 10
+    link: "/study/flutter/010_snackbar_toast"
+    title: SnackBar & Toast
+    image: "/assets/study/main/flutter_logo.png"
   - index: 9
     link: "/study/flutter/009_build_context"
     title: BuildContext
