@@ -94,6 +94,10 @@ return Scaffold(
 
 그런데 강좌에서는 `Scaffold.of()`에 `showSnackBar` 함수가 없어서 찾아보니 현재는 `ScaffoldMessenger.of()` 함수를 사용해야 하는 것으로 변경되어 있었다. 그 동안 `SnackBar` 관련해서 위와 같은 오류가 많이 발생해서 변경된 것인가 싶다. `ScaffoldMessenger.of()` 함수를 사용하게 되면 `Builder` 위젯을 사용할 필요 없이 다음과 같이 `SnackBar`를 출력할 수 있게 된다.
 
+`ScaffoldMessenger`는 `MaterialApp`이 관리하며 여러 `Scaffold`(추후에 나올 `Route`에 따라 페이지별로 각각 `Scaffold`를 보유하게 됨)를 가지고 있다. 따라서 페이지가 바뀌더라도(`Scaffold`가 바뀌어도) `SnackBar`를 지속적으로 출력할 수 있게 된다. [참고](https://youtu.be/IKpOAQJbADk?si=sSSQEIP20mdjljge)
+
+만약 현재 페이지에서만 스낵바를 보여주고 싶다면 그 `Scaffold`를 `ScaffoldMessenger`로 감싸면 된다. 그렇게 하면 `ScaffoldMessenger.of()`가 `MaterialApp`의 `ScaffoldMessenger`가 아닌 현재 페이지에 새로 정의한 `ScaffoldMessenger`를 가리키게 되므로 현재 페이지를 벗어나면 스낵바가 사라지게 된다.
+
 {% highlight dart %}
 return Scaffold(
   // ...
