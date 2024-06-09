@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌 1](https://youtu.be/BWG9XS5ecig?si=t4onwXzB5rSE11j2), [플러터 강좌 2](https://youtu.be/rX2RZr6y8yM?si=rVN6G-aQ-nuFueKA)를 보고 정리한 내용입니다.
+[플러터 강좌 1](https://youtu.be/BWG9XS5ecig), [플러터 강좌 2](https://youtu.be/rX2RZr6y8yM)를 보고 정리한 내용입니다.
 
 ## Flutter의 페이지 이동
 

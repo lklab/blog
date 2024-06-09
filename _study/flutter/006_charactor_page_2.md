@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌](https://youtu.be/qnnExhBcNTk?si=3zLvsP_-7ZrQ1GYb)를 보고 정리한 내용입니다.
+[플러터 강좌](https://youtu.be/qnnExhBcNTk)를 보고 정리한 내용입니다.
 
 ![Complete]({{site.baseurl}}/assets/study/flutter/006_charactor_page_2/complete.png){: width="360" .custom-align-center-img}
 

@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌 1](https://youtu.be/o-HpnWhI70U?si=8No-tpTjaySA_viR), [플러터 강좌 2](https://youtu.be/-zxGPfjiQQA?si=sryHeVIMRlL9iNHV)를 보고 정리한 내용입니다.
+[플러터 강좌 1](https://youtu.be/o-HpnWhI70U), [플러터 강좌 2](https://youtu.be/-zxGPfjiQQA)를 보고 정리한 내용입니다.
 
 ## BuildContext
 

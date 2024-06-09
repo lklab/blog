@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌 1](https://youtu.be/8gDhEdFhfys?si=9gLZq4VihAZtOh1r), [플러터 강좌 2](https://youtu.be/j5O49p7CL1o?si=AQcRqG-yTCwD5bOM)를 보고 정리한 내용입니다.
+[플러터 강좌 1](https://youtu.be/8gDhEdFhfys), [플러터 강좌 2](https://youtu.be/j5O49p7CL1o)를 보고 정리한 내용입니다.
 
 ![Complete]({{site.baseurl}}/assets/study/flutter/008_drawer/complete.png){: width="360" .custom-align-center-img}
 
