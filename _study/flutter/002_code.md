@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌](https://youtu.be/bapuCsJXBdc?si=FKnDl7BNH93siC9V)를 보고 정리한 내용입니다.
+[플러터 강좌](https://youtu.be/bapuCsJXBdc)를 보고 정리한 내용입니다.
 
 ## MyApp 위젯 작성
 

@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌](https://youtu.be/7E8l9ggxz-Q?si=-eq3j6wwJU21u6PQ)를 보고 정리한 내용입니다.
+[플러터 강좌](https://youtu.be/7E8l9ggxz-Q)를 보고 정리한 내용입니다.
 
 ![Complete]({{site.baseurl}}/assets/study/flutter/010_snackbar_toast/complete.png){: width="360" .custom-align-center-img}
 

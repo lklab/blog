@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌](https://youtu.be/jI4kqLdqXic?si=YkXzkjDLlMlHZYEe)를 보고 정리한 내용입니다.
+[플러터 강좌](https://youtu.be/jI4kqLdqXic)를 보고 정리한 내용입니다.
 
 ## 위젯이란?
 
