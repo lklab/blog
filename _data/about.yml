@@ -90,6 +90,10 @@ platform:
       img: /assets/about/languages/python.png
       link: https://www.python.org/
 
+    - title: Flutter
+      img: /assets/about/platforms/flutter_logo.png
+      link: https://flutter.dev/
+
   - kind: General OS
     items:
     - title: Windows
