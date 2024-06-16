@@ -5,7 +5,6 @@ author: khlee
 layout: post
 ---
 
-013_stateful_widget
 [플러터 강좌 1](https://youtu.be/StvbitxUKSo), [플러터 강좌 2](https://youtu.be/OvWrOKMqSG0)를 보고 정리한 내용입니다.
 
 ## Hot reload
