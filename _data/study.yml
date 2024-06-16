@@ -13,6 +13,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 14
+    link: "/study/flutter/014_dice_app"
+    title: Dice login app
+    image: "/assets/study/main/flutter_logo.png"
   - index: 13
     link: "/study/flutter/013_stateful_widget"
     title: Stateful widget
