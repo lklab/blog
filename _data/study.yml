@@ -1,15 +1,4 @@
 ---
-unity_csharp:
-  name: unity_csharp
-  studies:
-  - index: 1
-    link: "/study/unity_csharp/001_lazy_asynclazy"
-    title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
-    image: "/assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png"
-  - index: 0
-    link: "/study/unity_csharp/000_in_out_ref"
-    title: in, out, ref
-    image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
 flutter:
   name: flutter
   studies:
@@ -96,6 +85,17 @@ graphics:
     link: "/study/graphics/000_renderhell_overview_0"
     title: Render Hell – Book I
     image: "/assets/study/graphics/000_renderhell_overview_0/banner_book_01.jpg"
+unity_csharp:
+  name: unity_csharp
+  studies:
+  - index: 1
+    link: "/study/unity_csharp/001_lazy_asynclazy"
+    title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
+    image: "/assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png"
+  - index: 0
+    link: "/study/unity_csharp/000_in_out_ref"
+    title: in, out, ref
+    image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
 unreal:
   name: unreal
   studies:
