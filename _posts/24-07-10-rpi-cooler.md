@@ -67,11 +67,14 @@ layout: post
 
 회로 구성은 다음과 같다.
 
-* Fan GND ----- RPI Pin 09 (Ground)
-* Fan VCC ----- Relay
-* Relay VCC ----- RPI Pin 02 (DC Power 5v)
-* Relay GND ----- RPI Pin 06 (Ground)
-* Relay IN ----- RPI Pin 40 (GPIO21)
+* Fan GND ------ RPI Pin 06 (Ground)
+* Fan VCC ------ Relay COM
+* Relay NO ------ RPI Pin 02 (DC Power 5v)
+* Relay VCC ------ RPI Pin 17 (DC Power 3.3v)
+* Relay GND ------ RPI Pin 39 (Ground)
+* Relay IN ------ RPI Pin 40 (GPIO21)
+
+![회로]({{site.baseurl}}/assets/post/24-07-10-rpi-cooler/20240711_223343.jpg)
 
 회로를 연결한 모습
 
