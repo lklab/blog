@@ -139,6 +139,58 @@ Fragment shader에서는 간단하게 outline 색상을 반환하도록 하면 �
 
 ## 오브젝트 scale과 카메라 거리에 Outline의 두께가 영향을 받지 않도록 하기
 
+지금까지 만든 outline shader는 오브젝트의 scale이나 카메라와의 거리에 따라 "화면에 보여지는" outline의 두께가 달라진다.
+
+![두께가 달라지는 outline]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/dif_outline.png)
+
+프로젝트에 따라 크게 문제가 없을 수도 있지만, 여기서는 scale이나 카메라 거리에 상관 없이 항상 동일한 두께로 아웃라인이 그려지도록 수정해 볼 것이다.
+
+오브젝트의 scale에 영향을 받지 않게 하려면 vertex를 normal 방향으로 옮기는 계산을 object space가 아닌 world space에서 하면 된다.
+
+{% highlight c %}
+Varyings vert(Attributes IN)
+{
+    Varyings OUT;
+
+    float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+    float3 normalWS = TransformObjectToWorldNormal(IN.normalOS.xyz);
+    positionWS += normalWS * _OutlineThickness;
+    OUT.positionHCS = TransformWorldToHClip(positionWS);
+
+    return OUT;
+}
+{% endhighlight %}
+
+`TransformObjectToWorld()` 함수와 `TransformObjectToWorldNormal()` 함수를 통해 vertex와 normal을 각각 world space로 변환해 준 뒤 연산을 수행하였다. 이제 world space 좌표를 clip space로 변환해야 하므로 기존의 `TransformWorldToHClip()` 함수 대신 `TransformWorldToHClip()` 함수를 사용해야 한다.
+
+카메라와의 거리에 영향을 받지 않게 하려면 카메라와의 거리에 따른 보정을 해야 한다. 카메라와의 거리가 멀수록 vertex를 더 많이 이동해서 결과적으로 화면에 보여지는 outline의 두께가 동일하도록 하면 된다. 이 때 카메라 위치와 오브젝트의 직선 거리를 사용해서 보정하면 오브젝트가 화면 가장자리로 갈수록 아웃라인이 화면에 더 두껍게 출력될 것이다. 다음 그림을 보자
+
+![거리에 따라 화면에 보여지는 크기]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-16-191119.png){: width="480" .custom-align-center-img}
+
+그림에서 빨간 선에 위치하는 모든 것은 화면에 동일한 크기로 출력된다. 카메라의 뷰 프러스텀이 사각뿔 형태이기 때문이다. 따라서 보정할 값으로 검정색의 직선거리 대신 파란색 화살표를 사용할 것이다. 그 길이는 검정색 화살표 벡터에 카메라의 forward 벡터를 내적해서 얻을 수 있다. 코드로 구현하면 다음과 같다.
+
+{% highlight c %}
+Varyings vert(Attributes IN)
+{
+    Varyings OUT;
+
+    float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+    float3 normalWS = TransformObjectToWorldNormal(IN.normalOS.xyz);
+    float3 positionView = positionWS - GetCameraPositionWS();
+    float distToCam = dot(GetViewForwardDir(), positionView);
+    positionWS += normalWS * distToCam * _OutlineThickness;
+    OUT.positionHCS = TransformWorldToHClip(positionWS);
+
+    return OUT;
+}
+{% endhighlight %}
+
+`GetCameraPositionWS()` 함수를 통해 world space에서의 카메라 위치를 가져와서 카메라를 기준으로 상대적인 vertex 위치인 `positionView`를 계산한다. 그 후 `GetViewForwardDir()` 함수를 통해 얻어온 카메라의 forward 벡터와 내적해서 보정에 사용할 거리 값을 가져올 수 있다.
+
+![두께가 일정한 outline]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-16-192445.png)
+
+이제 outline이 오브젝트의 scale이나 카메라와의 거리와 관계 없이 일정한 두께로 출력된다.
+
 ## Hard(Sharp) Edge 오브젝트에 Outline 만들기
 
 ## Stencil 버퍼를 사용해서 벽을 통과해서 보이는 Outline 만들기
