@@ -9,7 +9,7 @@ layout: post
 
 ## Outline Shader 구현 방법
 
-Outline shader를 구현하는 방법으로 가장 잘 알려진 2 pass로 outline을 그리는 방법을 사용한 것이다. 요약하면 다음과 같다.
+Outline shader를 구현하는 방법으로 가장 잘 알려진 2 pass로 outline을 그리는 방법을 사용할 것이다. 요약하면 다음과 같다.
 
 * 기존 shader에 outline을 그리는 pass를 추가
 * 앞면을 컬링해서 뒷 면만 그리기
@@ -137,7 +137,7 @@ Fragment shader에서는 간단하게 outline 색상을 반환하도록 하면 �
 
 ![완성된 화면]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/title.png){: width="640" .custom-align-center-img}
 
-## 오브젝트 scale과 카메라 거리에 Outline의 두께가 영향을 받지 않도록 하기
+## 오브젝트 Scale과 카메라 거리에 Outline의 두께가 영향을 받지 않도록 하기
 
 지금까지 만든 outline shader는 오브젝트의 scale이나 카메라와의 거리에 따라 "화면에 보여지는" outline의 두께가 달라진다.
 
@@ -193,6 +193,270 @@ Varyings vert(Attributes IN)
 
 ## Hard(Sharp) Edge 오브젝트에 Outline 만들기
 
+이 outline shader를 cube 오브젝트에 적용하면 아래처럼 이상하게 나온다.
+
+![Cube에 적용한 outline]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-15-154346.png){: width="640" .custom-align-center-img}
+
+그 이유는 cube의 모델이 각진 면을 표현하기 위해 각 꼭지점별로 3개의 vertex를 두고 각각 3방향의 normal이 있기 때문이다.
+
+![Vertex normal]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/vertex_normal.png){: width="540" .custom-align-center-img}
+
+위 그림에서 'a'가 우리가 사용하는 cube 모델의 구조와 같다. 각 꼭지점별로 3개의 normal이 있어서 빛을 받을 때 각진 모서리를 표현할 수 있다. 반대로 각 꼭지점별로 1개의 vertex에 1개의 normal만 있다면 위 그림의 'b' 처럼 모서리에서 부드러운 라이팅을 표현할 수 있다.
+
+그런데 아웃라인을 표현하려면 cube가 위 그림의 'b'와 같은 구조로 되어 있어야 한다. 하지만 그러면 cube의 각진 모서리를 표현할 수 없게 된다. 이를 해결하기 위해 다음과 같은 방법을 사용할 수 있다.
+
+* 모델의 vertex color를 outline을 그리기 위한 normal로 사용하기
+* Outline만 그리는 전용 soft(smoothing) edge 오브젝트를 생성하기
+
+첫 번째 방법은 모델을 수정해야 하므로 여기서는 두 번째 방법에 대해 소개할 것이다. 다음 코드는 soft edge 오브젝트를 대상 오브젝트 하위에 생성하고 outline material을 할당하는 기능을 구현한다. ([출처](https://blog.naver.com/mnpshino/221495979665))
+
+{% highlight csharp %}
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class OutlineCreator : MonoBehaviour
+{
+    [SerializeField] private Material _outlineMat;
+    [SerializeField] private MeshFilter _meshFilter;
+
+    private void Awake()
+    {
+        GameObject outlineObject;
+
+        outlineObject = new GameObject("Outline");
+        outlineObject.transform.parent = transform;
+
+        outlineObject.AddComponent<MeshFilter>();
+        outlineObject.AddComponent<MeshRenderer>();
+        Mesh tmpMesh = Instantiate(_meshFilter.sharedMesh);
+        CreateMeshNormalAverage(tmpMesh);
+        outlineObject.GetComponent<MeshFilter>().sharedMesh = tmpMesh;
+        outlineObject.GetComponent<MeshRenderer>().material = _outlineMat;
+
+        outlineObject.transform.localPosition = Vector3.zero;
+        outlineObject.transform.localRotation = Quaternion.identity;
+        outlineObject.transform.localScale = Vector3.one;
+    }
+
+    private static void CreateMeshNormalAverage(Mesh mesh)
+    {
+        Dictionary<Vector3, List<int>> map = new Dictionary<Vector3, List<int>>();
+
+        for (int v = 0; v < mesh.vertexCount; ++v)
+        {
+            if (!map.ContainsKey(mesh.vertices[v]))
+            {
+                map.Add(mesh.vertices[v], new List<int>());
+            }
+
+            map[mesh.vertices[v]].Add(v);
+        }
+
+        Vector3[] normals = mesh.normals;
+        Vector3 normal;
+
+        foreach (var p in map)
+        {
+            normal = Vector3.zero;
+
+            foreach (var n in p.Value)
+            {
+                normal += mesh.normals[n];
+            }
+
+            normal /= p.Value.Count;
+
+            foreach (var n in p.Value)
+            {
+                normals[n] = normal;
+            }
+        }
+
+        mesh.normals = normals;
+    }
+}
+{% endhighlight %}
+
+이 스크립트를 대상 오브젝트에 넣고 실행하면 다음과 같이 하위에 outline 오브젝트가 생성된다.
+
+![Outline 오브젝트]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-15-155748.png){: width="200" .custom-align-center-img}
+![Outline 오브젝트 모습]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-15-155607.png){: width="540" .custom-align-center-img}
+
+이제 기존의 2 pass outline shader 대신 outline만 전용으로 그리는 shader를 작성한다.
+
+{% highlight c %}
+Shader "Custom/OutlineAngled"
+{
+    Properties
+    {
+        _OutlineColor("Outline Color", Color) = (1, 0, 0, 1)
+        _OutlineThickness("Outline Thickness", Float) = 0.01
+    }
+
+    SubShader
+    {
+        Pass
+        {
+            Tags
+            {
+                "RenderType" = "Opaque"
+                "RenderPipeline" = "UniversalPipeline"
+            }
+
+            Cull Front
+
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            struct Attributes
+            {
+                float4 positionOS   : POSITION;
+                float3 normalOS     : NORMAL;
+            };
+
+            struct Varyings
+            {
+                float4 positionHCS  : SV_POSITION;
+            };
+
+            CBUFFER_START(UnityPerMaterial)
+            half4 _OutlineColor;
+            half _OutlineThickness;
+            CBUFFER_END
+
+            Varyings vert(Attributes IN)
+            {
+                Varyings OUT;
+
+                float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+                float3 normalWS = TransformObjectToWorldNormal(IN.normalOS.xyz);
+                float3 positionView = positionWS - GetCameraPositionWS();
+                float distToCam = dot(GetViewForwardDir(), positionView);
+                positionWS += normalWS * distToCam * _OutlineThickness;
+                OUT.positionHCS = TransformWorldToHClip(positionWS);
+
+                return OUT;
+            }
+
+            half4 frag(Varyings IN) : SV_Target
+            {
+                return _OutlineColor;
+            }
+            ENDHLSL
+        }
+    }
+
+    FallBack "Hidden/Universal Render Pipeline/FallbackError"
+}
+{% endhighlight %}
+
+Pass의 내용은 전부 동일한데, 기존 shader에서 다른 pass는 모두 지우고 outline pass가 기존 파이프라인과 함께 실행되도록 `LightMode` 태그도 지웠다. 하지만 프로젝트에 따라 outline을 별도 render object로 다루고 싶은 경우 `LightMode` 태그를 유지해도 된다.
+
+그리고 마이너한 차이점으로 중간에 `CBUFFER_START(UnityPerMaterial)`와 `CBUFFER_END`가 들어갔는데, 이는 SRP batcher 호환을 위한 것이다. 기존에는 lit shader에 있는 property 목록을 수정할 수 없어서 `_OutlineColor` 같은 property를 `CBUFFER`에 추가하지 못하기 때문에 SRP batcher 호환성을 확보하지 못했는데, 이제 outline 전용 shader를 만들었으므로 모든 property를 `CBUFFER`에 추가해서 SRP batcher 호환성을 확보할 수 있게 되었다.
+
+![각진 오브젝트의 outline]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-15-155800.png){: width="540" .custom-align-center-img}
+
 ## Stencil 버퍼를 사용해서 벽을 통과해서 보이는 Outline 만들기
 
+Outline shader를 응용해서 다음 그림과 같이 벽을 통과해서 보이는 outline을 만들어 볼 것이다.
+
+![벽을 통과해서 보이는 outline]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-17-090558.png){: width="540" .custom-align-center-img}
+
+방법은 다음과 같다.
+
+1. 대상 오브젝트를 그릴 때 stencil 버퍼에 특정 값을 쓴다. (여기서는 특정 값으로 2를 사용)
+2. 다른 모든 오브젝트들을 그린다.
+3. 마지막으로 outline을 그릴 때 stencil 버퍼의 값을 확인하여 특정 값이 써 있다면 해당 픽셀은 그리지 않는다.
+
+대상 오브젝트의 forward pass에서 stencil 버퍼에 값을 쓰도록 수정한다. (관련 stencil 커맨드는 [여기](https://docs.unity3d.com/2022.3/Documentation/Manual/SL-Stencil.html) 참고)
+
+{% highlight c %}
+Pass
+{
+    Name "ForwardLit"
+    Tags
+    {
+        "LightMode" = "UniversalForward"
+    }
+
+    Stencil
+    {
+        Ref 2
+        Comp Always
+        Pass Replace
+        ZFail Replace
+    }
+
+    // ...
+}
+{% endhighlight %}
+
+대상 오브젝트의 outline pass에서 stencil test를 추가한다.
+
+{% highlight c %}
+Pass
+{
+    Name "Outline"
+    Tags
+    {
+        "LightMode" = "Outline"
+    }
+
+    Stencil
+    {
+        Ref 2
+        Comp NotEqual
+    }
+
+    // ...
+}
+{% endhighlight %}
+
+Outline pass가 가장 나중에 수행되도록 universal renderer data 에셋에서 outline render object의 `Event`를 `AfterRenderingTransparents`로 수정한다.
+
+![Outline render object]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-17-092456.png){: width="640" .custom-align-center-img}
+
+다만 이 방법을 사용하면 물체의 외부 경계에만 outline이 생기고 아래 그림의 빨간색 사각형 영역처럼 물체의 튀어나온 부분의 outline은 사라진다.
+
+![Outline 차이점]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-17-095212.png)
+
 ## 투명한 오브젝트의 Outline 만들기
+
+한편 stencil을 이용하면 투명한 오브젝트의 outline도 만들 수 있다. 기존의 stencil을 사용하지 않는 outline shader를 투명한 오브젝트에 적용해 보면 다음과 같이 흰색의 반투명한 오브젝트 뒤로 outline pass가 그린 빨간색 이 블랜딩되어서 올바르게 렌더링되지 않는다.
+
+![Original transparent object]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-17-093505.png){: width="640" .custom-align-center-img}
+*원래의 반투명 오브젝트*{: .custom-caption}
+
+![Outlined transparent object]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-17-093337.png){: width="640" .custom-align-center-img}
+*기존의 outline shader를 사용한 반투명 오브젝트*{: .custom-caption}
+
+Stencil을 사용하면 이를 해결할 수 있다. 만약 outline이 벽을 통과해서 보이도록 하고 싶다면 앞서 만든 shader를 그대로 쓰면 된다. 벽을 통과해서 보이도록 하고 싶지 않다면 다음과 같은 순서로 그린다.
+
+1. Stencil 버퍼에서 대상 오브젝트가 렌더링될 영역에 특정 값을 쓴다. (여기서는 특정 값으로 2를 사용)
+2. Opaque 오브젝트를 모두 그린다.
+3. Outline을 그린다!
+4. Transparent 오브젝트를 그린다.
+
+이제 stencil 버퍼에 쓰는 순서(1번)와 대상 오브젝트를 그리는 순서(4번)가 달라졌기 때문에 stencil 버퍼에 쓰는 pass를 새로 만들어야 한다. 이번에는 해당 pass를 shader에 추가하지 않고 universal renderer data 에셋에서 render object를 추가하는 방법으로 구현해 볼 것이다.
+
+![투명한 오브젝트를 위한 render object 설정]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-17-100127.png){: width="850" .custom-align-center-img}
+
+설정할 값들은 다음과 같다.
+
+* 기존 `Outline` render object의 `Queue`를 `Opaque`에서 `Transparent`로 바꾼다.
+* 기존 `Outline` render object의 `Layer Mask`를 원하는 대상 오브젝트의 layer로 설정한다.
+* 새로운 render object를 만든다. (아래부터는 새로운 render object에 해당하는 내용)
+* `Event`를 `BeforeRenderingOpaques`로 설정한다.
+* `Queue`를 `Transparent`로 설정한다.
+* `Layer Mask`를 원하는 대상 오브젝트의 layer로 설정한다.
+* `Overrides`에서 material override를 켜고 커스텀 material을 할당한다.
+  * 어차피 프레임에 그려지면 안 되기 때문에 최대한 무거운 연산을 하지 않도록 간단한 shader를 사용할 것이다. [기본적인 unlit shader](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.0/manual/writing-shaders-urp-basic-unlit-structure.html) 참고
+* `Overrides`에서 depth override를 켜고 항상 depth test를 실패하게 설정해서 프레임에 그려지지 않도록 한다.
+* `Overrides`에서 stencil override를 켜고 항상 특정한 값을 쓰도록 한다. (특히 Z Fail!)
+
+완성한 화면이다.
+
+![반투명 오브젝트의 outline]({{site.baseurl}}/assets/post/24-07-16-urp-outline-shader/2024-07-17-102650.png){: width="640" .custom-align-center-img}
