@@ -1,4 +1,5 @@
 require 'yaml'
+require 'date'
 
 ### 경로 설정 ###
 
@@ -89,7 +90,7 @@ categories.each { |category|
 	files = Dir.entries(category_path)
 	files.each { |file|
 		if File.extname(file) == ".md"
-			yaml = YAML.load_file(File.join(category_path, file))
+			yaml = YAML.load_file(File.join(category_path, file), permitted_classes: [Date])
 
 			data = Hash.new
 			data["link"] = "/portfolio/" + category_url + "/" + File.basename(file, ".md")

@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌](https://youtu.be/AXFV1JOr6_Q?si=SM2A8kTT1C_6u4YU)를 보고 정리한 내용입니다.
+[플러터 강좌](https://youtu.be/AXFV1JOr6_Q)를 보고 정리한 내용입니다.
 
 ## Scaffold
 

@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌](https://youtu.be/gUVAUOvPm_c?si=C2KMKBUr_6F5iAOJ)를 보고 정리한 내용입니다.
+[플러터 강좌](https://youtu.be/gUVAUOvPm_c)를 보고 정리한 내용입니다.
 
 ## 앱바 색상 및 정렬
 

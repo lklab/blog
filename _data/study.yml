@@ -1,18 +1,27 @@
 ---
-unity_csharp:
-  name: unity_csharp
-  studies:
-  - index: 1
-    link: "/study/unity_csharp/001_lazy_asynclazy"
-    title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
-    image: "/assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png"
-  - index: 0
-    link: "/study/unity_csharp/000_in_out_ref"
-    title: in, out, ref
-    image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
 flutter:
   name: flutter
   studies:
+  - index: 14
+    link: "/study/flutter/014_dice_app"
+    title: Dice login app
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 13
+    link: "/study/flutter/013_stateful_widget"
+    title: Stateful widget
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 12
+    link: "/study/flutter/012_navigator"
+    title: Navigator
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 11
+    link: "/study/flutter/011_layout"
+    title: Layout
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 10
+    link: "/study/flutter/010_snackbar_toast"
+    title: SnackBar & Toast
+    image: "/assets/study/main/flutter_logo.png"
   - index: 9
     link: "/study/flutter/009_build_context"
     title: BuildContext
@@ -76,6 +85,33 @@ graphics:
     link: "/study/graphics/000_renderhell_overview_0"
     title: Render Hell – Book I
     image: "/assets/study/graphics/000_renderhell_overview_0/banner_book_01.jpg"
+unity_csharp:
+  name: unity_csharp
+  studies:
+  - index: 5
+    link: "/study/unity_csharp/005_uday_seoul_2024"
+    title: UDay Seoul 2024
+    image: "/assets/study/unity_csharp/005_uday_seoul_2024/title.jpg"
+  - index: 4
+    link: "/study/unity_csharp/004_sentis"
+    title: Sentis
+    image: "/assets/study/unity_csharp/004_sentis/title.jpg"
+  - index: 3
+    link: "/study/unity_csharp/003_unity-apac-industry-summit-2023"
+    title: Unity APAC Industry Summit 2023
+    image: "/assets/study/unity_csharp/003_unity-apac-industry-summit-2023/title.png"
+  - index: 2
+    link: "/study/unity_csharp/002_unity_dev_weeks_2023"
+    title: Unity Dev Weeks 2023
+    image: "/assets/study/unity_csharp/002_unity_dev_weeks_2023/title.jpg"
+  - index: 1
+    link: "/study/unity_csharp/001_lazy_asynclazy"
+    title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
+    image: "/assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png"
+  - index: 0
+    link: "/study/unity_csharp/000_in_out_ref"
+    title: in, out, ref
+    image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
 unreal:
   name: unreal
   studies:

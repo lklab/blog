@@ -5,7 +5,7 @@ author: khlee
 layout: post
 ---
 
-[플러터 강좌](https://youtu.be/b5wbsJFXVTM?si=Ef4aZvWNS-g0fL-6)를 보고 정리한 내용입니다.
+[플러터 강좌](https://youtu.be/b5wbsJFXVTM)를 보고 정리한 내용입니다.
 
 ## 프로젝트 폴더 구성
 
