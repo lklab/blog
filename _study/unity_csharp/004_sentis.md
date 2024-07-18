@@ -1,6 +1,6 @@
 ---
 title: Sentis
-image: /assets/study/unity_csharp/002_sentis/title.jpg
+image: /assets/study/unity_csharp/004_sentis/title.jpg
 author: khlee
 layout: post
 ---
@@ -16,16 +16,16 @@ layout: post
 * 호환성이 높은 Open Neural Network Exchange (ONNX) 포맷을 사용
 * 다양한 Pre-trained 모델과 C# 샘플 코드 제공
 
-![Sentis의 역할]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-082359.png)
+![Sentis의 역할]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-082359.png)
 *Sentis는 런타임에 온디바이스 추론 기능을 제공한다.*{: .custom-caption}
 
-![Hugging face에서 제공하는 모델들]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-082730.png)
-![Hugging face에서 제공하는 모델들]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-082808.png)
+![Hugging face에서 제공하는 모델들]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-082730.png)
+![Hugging face에서 제공하는 모델들]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-082808.png)
 *Hugging face에서 다양한 pre-trained 모델을 제공한다.*{: .custom-caption}
 
 ## Sentis 사용 방법
 
-![Sentis 사용 방법]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-082853.png)
+![Sentis 사용 방법]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-082853.png)
 
 1. AI 모델 선택
 2. Unity로 임포트 및 최적화
@@ -34,7 +34,7 @@ layout: post
 
 ## 1. AI 모델 선택
 
-![AI 모델 선택]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-083024.png)
+![AI 모델 선택]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-083024.png)
 
 ONNX 파일이란?
 > ONNX는 Open Neural Network Exchange의 약자로 서로 다른 ML 프레임워크에서 개발된 모델을 서로 호환할 수 있도록 하는 표준 모델 포맷입니다. ONNX는 Meta와 MicroSoft가 주도하여 개발한 오픈 소스 표준으로, 현재는 여러 회사와 연구 기관이 참여하여 공동으로 개발하고 있습니다. PyTorch나 TensorFlow와 같은 다양한 ML 프레임워크와 NVIDIA의 Jetson 플랫폼에서 적극적으로 지원되는 등 다양한 곳에서 활용도가 높아져 사실상 AI 모델 표준으로 인정받고 있습니다.
@@ -55,13 +55,13 @@ Drag & Drop!하면 됨. 단, Sentis에서 모델에 있는 모든 ONNX operators
 
 * FP32 (4 bytes) -> FP16 (2 bytes) -> INT8 (1 byte)
 
-![모델 양자화]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-084107.png)
+![모델 양자화]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-084107.png)
 
 위 그림을 보면 FP32와 FP16은 큰 차이가 없는데 INT8과는 차이가 많이 나는 것을 알 수 있다. 따라서 FP16을 사용해서 모델이 차지하는 용량을 반으로 줄일 수 있고, 상황에 따라서 정확도보다 용량 최적화가 더 중요한 경우에는 INT8을 사용하기로 결정할 수도 있다.
 
 ## 3. 추론 코드 작성
 
-![추론 코드 작성]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-084301.png)
+![추론 코드 작성]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-084301.png)
 
 * `Unity.Sentis` 네임스페이스를 사용
 * `ModelLoader.Load()` 함수를 통해 모델을 로드할 수 있음
@@ -82,11 +82,11 @@ Drag & Drop!하면 됨. 단, Sentis에서 모델에 있는 모든 ONNX operators
 
 [Hand landmark](https://huggingface.co/unity/sentis-hand-landmark) 모델을 선택했으며, 다음과 같이 사용 방법이 잘 나와 있다.
 
-![Hand landmark 모델 사용 방법]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-084632.png)
+![Hand landmark 모델 사용 방법]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-084632.png)
 
 다음과 같이 모델을 임포트하고 적용한다.
 
-![모델 임포트 및 적용]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-084759.png)
+![모델 임포트 및 적용]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-084759.png)
 
 * Run Hand Landmark 스크립트를 메인 카메라에 추가
 * Asset 필드에 모델 에셋 (.onnx 파일 또는 .sentis 파일) 지정
@@ -148,8 +148,8 @@ using var image = TextureConverter.ToTensor(source, transform);
 
 이 때 `size` 값이 모델의 입력과 맞아야 하는데 [Netron](https://github.com/lutzroeder/netron)을 사용하면 다음 그림과 같이 모델의 입출력 형태를 확인할 수 있다.
 
-![모델 출력 부분]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-085808.png)
-![모델 입력 부분]({{site.baseurl}}/assets/study/unity_csharp/002_sentis/2024-06-18-085831.png)
+![모델 출력 부분]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-085808.png)
+![모델 입력 부분]({{site.baseurl}}/assets/study/unity_csharp/004_sentis/2024-06-18-085831.png)
 {: .custom-disable-p-align}
 
 이제 `IWorker.Execute()` 함수를 통해 추론 엔진을 실행한다.
