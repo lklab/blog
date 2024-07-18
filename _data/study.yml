@@ -88,6 +88,10 @@ graphics:
 unity_csharp:
   name: unity_csharp
   studies:
+  - index: 2
+    link: "/study/unity_csharp/002_sentis"
+    title: Sentis
+    image: "/assets/study/unity_csharp/002_sentis/title.jpg"
   - index: 1
     link: "/study/unity_csharp/001_lazy_asynclazy"
     title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
