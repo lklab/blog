@@ -73,10 +73,17 @@
       type="image/x-icon"
     />
 
-    {% if site.analytics %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYHC56N0SX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <!-- Google Analytics code. <head> tag is the right place for analytics code as directed by Google. This is unofficial light version which loads blazing fast! Implemented for faster page load.  -->
-    {% include analytics-lite.html %} {% endif %} {% if site.enable-mathjax %}
+      gtag('config', 'G-LYHC56N0SX');
+    </script>
+
+    {% if site.enable-mathjax %}
     <script
       async
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"
