@@ -101,6 +101,24 @@ exclude:
   - .git
   - vendor
 
+# sitemap setting
+defaults:
+  - 
+    scope:
+      path: _portfolio/**
+    values:
+      sitemap: false
+  - 
+    scope:
+      path: _categories/**
+    values:
+      sitemap: false
+  - 
+    scope:
+      path: _pages/**
+    values:
+      sitemap: false
+
 # These plugins are supported by github by default and can be installed locally using ruby gems
 plugins:
   - jekyll-sitemap # Adds sitemap to the website at /sitemap.xml
