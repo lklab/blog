@@ -88,6 +88,10 @@ graphics:
 unity_csharp:
   name: unity_csharp
   studies:
+  - index: 6
+    link: "/study/unity_csharp/006_monthly_tech_talk_2024_07"
+    title: Unity Monthly Tech Talk 7월
+    image: "/assets/study/unity_csharp/006_monthly_tech_talk_2024_07/title.png"
   - index: 5
     link: "/study/unity_csharp/005_uday_seoul_2024"
     title: UDay Seoul 2024
