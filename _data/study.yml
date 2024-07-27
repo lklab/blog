@@ -33,6 +33,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 16
+    link: "/study/flutter/016_login_refactoring"
+    title: Login refactoring
+    image: "/assets/study/main/flutter_logo.png"
   - index: 15
     link: "/study/flutter/015_final_and_const"
     title: final and const
