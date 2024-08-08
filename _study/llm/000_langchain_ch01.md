@@ -20,6 +20,16 @@ LangChain 은 언어 모델을 활용해 다양한 애플리케이션을 개발�
 > pip install -qU langchain-openai
 {% endhighlight %}
 
+만약 다른 모델을 사용하고 싶은 경우 `langchain-` 뒤에 다음 예시와 같이 해당 모델을 적으면 된다. 자세한 내용은 [여기](https://python.langchain.com/v0.2/docs/tutorials/llm_chain/#using-language-models) 참고.
+
+* Anthropic: `pip install -qU langchain-anthropic`
+* Google: `pip install -qU langchain-google-vertexai`
+* Cohere: `pip install -qU langchain-cohere`
+* NVIDIA: `pip install -qU langchain-nvidia-ai-endpoints`
+* FireworksAI: `pip install -qU langchain-fireworks`
+* Groq: `pip install -qU langchain-groq`
+* MistralAI: `pip install -qU langchain-mistralai`
+
 ## OpenAI API 키 발급 및 테스트
 
 [OpenAI API 웹사이트](https://platform.openai.com/docs/overview)에 접속해서 로그인한 후 신용카드를 등록하고 일정 금액을 충전한다.
@@ -34,25 +44,63 @@ LangChain 은 언어 모델을 활용해 다양한 애플리케이션을 개발�
 }
 {% endhighlight %}
 
-## LangSmith 추적 설정
-
-LangSmith는 LLM 애플리케이션 개발, 모니터링 및 테스트 를 위한 플랫폼이다. 추적은 다음과 같은 문제를 추적하는 데 도움이 될 수 있다.
-
-* 예상치 못한 최종 결과
-* 에이전트가 루핑되는 이유
-* 체인이 예상보다 느린 이유
-* 에이전트가 각 단계에서 사용한 토큰 수
-
-[https://smith.langchain.com/](https://smith.langchain.com/)에 접속하여 로그인한 후 API 키를 만든다. 역시 다음과 같이 `apikeys.json` 파일에 저장한다.
-
-{% highlight json %}
-{
-    "OPENAI_API_KEY": "{발급받은 키}",
-    "LANGCHAIN_API_KEY": "{발급받은 키}"
-}
-{% endhighlight %}
-
 ## OpenAI API 사용(GPT-4o 멀티모달)
 
+파이썬 파일을 하나 만들고 다음과 같이 API key를 읽어온다.
 
+{% highlight python %}
+import json
+import os
 
+# load API key
+with open('apikeys.json') as f:
+    keys = json.load(f)
+
+os.environ["OPENAI_API_KEY"] = keys['OPENAI_API_KEY']
+{% endhighlight %}
+
+모델을 생성하고 초기화한다.
+
+{% highlight python %}
+# initialize model
+from langchain_openai import ChatOpenAI
+model = ChatOpenAI(model="gpt-4")
+{% endhighlight %}
+
+모델에 보낼 메시지를 생성하고 보낸다.
+
+{% highlight python %}
+# send messages
+from langchain_core.messages import HumanMessage, SystemMessage
+
+messages = [
+    SystemMessage(content="Translate the following from English into Italian"),
+    HumanMessage(content="hi!"),
+]
+
+aiMessage = model.invoke(messages)
+print(aiMessage)
+{% endhighlight %}
+
+실행하면 다음과 같은 결과를 출력한다.
+
+{% highlight txt %}
+content='Ciao!' response_metadata={'token_usage': {'completion_tokens': 3, 'prompt_tokens': 20, 'total_tokens': 23}, 'model_name': 'gpt-4-0613', 'system_fingerprint': None, 'finish_reason': 'stop', 'logprobs': None} id='run-4571bf06-060e-4799-acfd-08837c9b09c7-0' usage_metadata={'input_tokens': 20, 'output_tokens': 3, 'total_tokens': 23}
+{% endhighlight %}
+
+`OutputParsers`를 사용해서 응답 문자열만 가져온다.
+
+{% highlight python %}
+# parse output
+from langchain_core.output_parsers import StrOutputParser
+
+parser = StrOutputParser()
+result = parser.invoke(aiMessage)
+print(result)
+{% endhighlight %}
+
+다음과 같은 결과를 출력한다.
+
+{% highlight txt %}
+Ciao!
+{% endhighlight %}
