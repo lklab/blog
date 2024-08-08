@@ -96,6 +96,10 @@ graphics:
 llm:
   name: llm
   studies:
+  - index: 1
+    link: "/study/llm/001_langchain_ch01_langsmith"
+    title: LangChain ch01 - LangSmith
+    image: "/assets/study/llm/default/langchain_logo.jpg"
   - index: 0
     link: "/study/llm/000_langchain_ch01"
     title: LangChain ch01 - 시작하기

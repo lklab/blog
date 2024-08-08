@@ -44,7 +44,7 @@ LangChain 은 언어 모델을 활용해 다양한 애플리케이션을 개발�
 }
 {% endhighlight %}
 
-## OpenAI API 사용(GPT-4o 멀티모달)
+## OpenAI API 사용
 
 파이썬 파일을 하나 만들고 다음과 같이 API key를 읽어온다.
 
