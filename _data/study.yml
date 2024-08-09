@@ -96,6 +96,10 @@ graphics:
 llm:
   name: llm
   studies:
+  - index: 2
+    link: "/study/llm/002_langchain_ch01_lcel_runnable"
+    title: LangChain ch01 - LCEL & Runnable
+    image: "/assets/study/llm/default/langchain_logo.jpg"
   - index: 1
     link: "/study/llm/001_langchain_ch01_langsmith"
     title: LangChain ch01 - LangSmith
