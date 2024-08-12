@@ -96,6 +96,10 @@ graphics:
 llm:
   name: llm
   studies:
+  - index: 3
+    link: "/study/llm/003_langchain_chatbot"
+    title: LangChain - Chatbot
+    image: "/assets/study/llm/default/langchain_logo.jpg"
   - index: 2
     link: "/study/llm/002_langchain_ch01_lcel_runnable"
     title: LangChain ch01 - LCEL & Runnable
