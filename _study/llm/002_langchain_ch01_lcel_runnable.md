@@ -24,6 +24,44 @@ print(result)
 text='대한민국의 수도는 어디인가요?'
 {% endhighlight %}
 
+`ChatPromptTemplate`은 대화 형태의 프롬프트 템플릿을 만들 때 활용할 수 있다.
+
+{% highlight python %}
+from langchain_core.prompts import ChatPromptTemplate
+
+system_template = "Translate the following into {language}:"
+prompt_template = ChatPromptTemplate.from_messages(
+    [("system", system_template), ("user", "{text}")]
+)
+message = prompt_template.invoke({"language": "korean", "text": "hi"})
+print(message)
+{% endhighlight %}
+
+{% highlight txt %}
+messages=[SystemMessage(content='Translate the following into korean:'), HumanMessage(content='hi')]
+{% endhighlight %}
+
+`ChatPromptTemplate.from_messages()` 함수를 통해 (`role`, `message`) 형태로 구성된 대화 목록으로 템플릿을 생성할 수 있다. `system`은 LLM의 역할을 정해주는 등 전체적인 설정을 할 수 있는 메시지다. `user`는 사용자의 입력 메시지이다.
+
+역시 동일하게 `model.invoke(message)`를 통해 LLM의 결과를 받아볼 수 있다.
+
+{% highlight python %}
+from langchain_openai import ChatOpenAI
+
+model = ChatOpenAI(
+    model='gpt-3.5-turbo',
+    max_tokens=64,
+    temperature=0.1,
+)
+
+result = model.invoke(message)
+print(result)
+{% endhighlight %}
+
+{% highlight txt %}
+content='안녕하세요' response_metadata={'token_usage': {'completion_tokens': 5, 'prompt_tokens': 19, 'total_tokens': 24}, 'model_name': 'gpt-3.5-turbo-0125', 'system_fingerprint': None, 'finish_reason': 'stop', 'logprobs': None} id='run-a3b41c65-266e-4a18-b442-2d3c64ae4d02-0' usage_metadata={'input_tokens': 19, 'output_tokens': 5, 'total_tokens': 24}
+{% endhighlight %}
+
 ## LCEL
 
 LangChain에서는 프롬프트 + 모델 + 파서 등으로 구성되는 일련의 과정들을 연결지을 수 있도록 [LangChain Expression Language (LCEL)](https://python.langchain.com/v0.2/docs/concepts/#langchain-expression-language-lcel)이라는 문법을 제공한다.
