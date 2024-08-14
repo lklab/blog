@@ -96,6 +96,10 @@ graphics:
 llm:
   name: llm
   studies:
+  - index: 4
+    link: "/study/llm/004_langchain_vector_stores_and_retrievers"
+    title: LangChain - Vector stores and retrievers
+    image: "/assets/study/llm/default/langchain_logo.jpg"
   - index: 3
     link: "/study/llm/003_langchain_chatbot"
     title: LangChain - Chatbot
