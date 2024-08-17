@@ -330,22 +330,6 @@
   projects:
   - *6
   - *14
-  - &19
-    link: "/portfolio/software-engineering/uppaal2plc"
-    title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성 프레임워크 외 1건
-    date: 2017-03-01
-    image: "/assets/portfolio/uppaal2plc/testbed.png"
-    tag:
-    - 대학원
-    - C
-    - Python
-    - Linux
-    - Raspberry pi
-    - UPPAAL
-    - GNU toolchain
-    - Timed automata
-    - Automatic programming
-    period: 2017.03 - 2017.07 (5개월)
   - &23
     link: "/portfolio/industrial-network/hmi"
     title: 오픈 소스 통합개발환경을 활용한 실시간 임베디드 제어기 HMI 개발
@@ -362,6 +346,22 @@
     - IEC 61131-3
     - wxPython
     period: 2017.03 - 2017.04 (2개월)
+  - &19
+    link: "/portfolio/software-engineering/uppaal2plc"
+    title: 타임드 오토마타 모델 기반 산업 자동화 응용 자동생성 프레임워크 외 1건
+    date: 2017-03-01
+    image: "/assets/portfolio/uppaal2plc/testbed.png"
+    tag:
+    - 대학원
+    - C
+    - Python
+    - Linux
+    - Raspberry pi
+    - UPPAAL
+    - GNU toolchain
+    - Timed automata
+    - Automatic programming
+    period: 2017.03 - 2017.07 (5개월)
   - &20
     link: "/portfolio/industrial-network/motion-recipe"
     title: 다중 동작 모드를 가진 PLCopen 표준 호환 모션 응용을 위한 모션 레시피 개념 설계 및 구현 외 1건
@@ -565,9 +565,8 @@
   projects:
   - *14
   - *22
-  - *19
   - *23
-  - *24
+  - *19
   - &26
     link: "/portfolio/others/genetic-algorithm"
     title: Genetic algorithm을 이용한 automatic rule acquisition 알고리즘 구현
@@ -580,6 +579,7 @@
     - Optimization
     - Genetic algorithm
     period: 2016.04 - 2016.06 (3개월)
+  - *24
   - *20
 - tag: Linux
   projects:
@@ -629,14 +629,6 @@
 - tag: FoE
   projects:
   - *22
-- tag: Raspberry pi
-  projects:
-  - *19
-  - *11
-  - *21
-- tag: Automatic programming
-  projects:
-  - *19
 - tag: Beaglebone black
   projects:
   - *23
@@ -660,9 +652,14 @@
 - tag: wxPython
   projects:
   - *23
-- tag: UPPAAL2C
+- tag: Raspberry pi
   projects:
-  - *24
+  - *19
+  - *11
+  - *21
+- tag: Automatic programming
+  projects:
+  - *19
 - tag: R
   projects:
   - *26
@@ -675,6 +672,9 @@
 - tag: Genetic algorithm
   projects:
   - *26
+- tag: UPPAAL2C
+  projects:
+  - *24
 - tag: 학부
   projects:
   - *10
