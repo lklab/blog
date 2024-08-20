@@ -104,6 +104,10 @@ graphics:
 llm:
   name: llm
   studies:
+  - index: 5
+    link: "/study/llm/005_langchain_rag"
+    title: LangChain - Retrieval Augmented Generation (RAG)
+    image: "/assets/study/llm/default/langchain_logo.jpg"
   - index: 4
     link: "/study/llm/004_langchain_vector_stores_and_retrievers"
     title: LangChain - Vector stores and retrievers
