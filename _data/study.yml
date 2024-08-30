@@ -104,6 +104,10 @@ graphics:
 llm:
   name: llm
   studies:
+  - index: 7
+    link: "/study/llm/007_langchain_agents"
+    title: LangChain - Agents
+    image: "/assets/study/llm/default/langchain_logo.jpg"
   - index: 6
     link: "/study/llm/006_langchain_conversational_rag"
     title: LangChain - Conversational RAG
