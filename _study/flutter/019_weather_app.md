@@ -145,6 +145,35 @@ class _LoadingState extends State<Loading> {
 
 ![위치 권한 요청]({{site.baseurl}}/assets/study/flutter/019_weather_app/Screenshot_1724585196.png){: width="360" .custom-align-center-img}
 
+버튼을 눌렀을 때 위치를 가져오는 것이 아닌, 앱을 실행했을 때 위치를 가져오도록 `getLocation()` 함수를 호출하는 위치를 `initState()` 함수로 바꾸었다.
+
+{% highlight dart %}
+class _LoadingState extends State<Loading> {
+
+  @override
+  void initState() {
+    super.initState();
+    getLocation();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: null,
+          child: Text('Get my location'),
+        ),
+      ),
+    );
+  }
+
+  void getLocation() async {
+    // ...
+  }
+}
+{% endhighlight %}
+
 #### Troubleshooting
 
 2024년 8월, Flutter SDK 3.24.0과 geolocator 13.0.1을 사용하여 바로 빌드하면 아래와 같은 오류 메시지를 출력한다.
@@ -193,14 +222,71 @@ Exited (1).
 id "org.jetbrains.kotlin.android" version "2.0.10" apply false
 {% endhighlight %}
 
-## API
-
-API를 호출할 때에는 key가 필요하다.
-
 ## Exception handling
 
-## Http package
+Dart에서 다음과 같이 `try`, `catch` 구문을 사용해서 예외를 처리할 수 있다.
+
+{% highlight dart %}
+try {
+  Position position = await Geolocator.getCurrentPosition(locationSettings: locationSettings);
+  print(position);
+}
+catch(e) {
+  print('There was a problem with the internet connection.');
+}
+{% endhighlight %}
+
+## http package
+
+HTTP 요청을 사용하려면 먼저 [http package](https://pub.dev/packages/http)를 설치해야 한다. 해당 페이지에 방문해서 최신 버전을 확인하고 다음과 같이 `pubspec.yaml` 파일에 dependency를 추가한다.
+
+{% highlight yaml %}
+dependencies:
+  http: ^1.2.2
+{% endhighlight %}
+
+이 패키지를 사용하려면 다음과 같이 import 하면 된다.
+
+{% highlight dart %}
+import 'package:http/http.dart' as http;
+{% endhighlight %}
+
+그리고 아래와 같이 `get()` 함수를 호출해서 HTTP 요청을 보낼 수 있다. 그리고 응답은 `Response` 클래스의 `body`와 `statusCode` 값을 통해 가져올 수 있다.
+
+{% highlight dart %}
+void fetchData() async {
+  Uri uri = Uri.parse('https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1');
+  http.Response response = await http.get(uri);
+  print(response.body);
+  print(response.statusCode);
+}
+{% endhighlight %}
 
 ## Json parsing
+
+Json parsing을 하기 위해서 다음 패키지를 import 해야 한다.
+
+{% highlight dart %}
+import 'dart:convert';
+{% endhighlight %}
+
+그리고 다음과 같이 parsing할 수 있다.
+
+{% highlight dart %}
+if(response.statusCode == 200) {
+  String jsonData = response.body;
+  var myJson = jsonDecode(jsonData);
+  var description = myJson['weather'][0]['description'];
+  var wind = myJson['wind']['speed'];
+  var id = myJson['id'];
+  print('description: $description\nwind: $wind\nid: $id');
+}
+{% endhighlight %}
+
+{% highlight txt %}
+I/flutter ( 8295): description: light intensity drizzle
+I/flutter ( 8295): wind: 4.1
+I/flutter ( 8295): id: 2643743
+{% endhighlight %}
 
 ## Passing data
