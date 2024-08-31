@@ -108,6 +108,14 @@ graphics:
 llm:
   name: llm
   studies:
+  - index: 7
+    link: "/study/llm/007_langchain_agents"
+    title: LangChain - Agents
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 6
+    link: "/study/llm/006_langchain_conversational_rag"
+    title: LangChain - Conversational RAG
+    image: "/assets/study/llm/default/langchain_logo.jpg"
   - index: 5
     link: "/study/llm/005_langchain_rag"
     title: LangChain - Retrieval Augmented Generation (RAG)
