@@ -8,6 +8,8 @@ layout: post
 다음 플러터 강좌들을 보고 정리한 내용입니다.
 
 * [강좌 13 \| 날씨 앱(weather app) 만들기 1](https://youtu.be/YqKMBQYZSmw)
+* [강좌 14 \| 날씨 앱(weather app) 만들기 2: JSON parsing(제이슨 파싱)](https://youtu.be/ccq1yCmNzdk)
+* [강좌 15 \| 날씨 앱(weather app) 만들기 3: Passing json data(제이슨 데이터 전달하기)](https://youtu.be/c1PNEa_eiIM)
 
 ## Widget lifecycle
 
@@ -289,4 +291,66 @@ I/flutter ( 8295): wind: 4.1
 I/flutter ( 8295): id: 2643743
 {% endhighlight %}
 
+## OpenWeather API 사용하기
+
+[OpenWeather](https://openweathermap.org/)에 로그인하고 API 키를 받자. 나의 경우에는 이메일 인증 후 시간이 좀 지나서야 API 키를 사용할 수 있었다.
+
+다음과 같이 특정 위도/경도의 날씨 정보를 가져올 수 있다. `latitude`와 `longitude`는 geolocator를 통해 가져 온 `position` 값을 통해 가져올 수 있다.
+
+{% highlight dart %}
+String url = 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey';
+Network network = Network(url);
+var weatherData = await network.getJsonData();
+print(weatherData);
+{% endhighlight %}
+
+섭씨 온도로 받아오려면 url 뒤에 `&units=metric`를 붙인다.
+
+{% highlight dart %}
+String url = 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric';
+{% endhighlight %}
+
 ## Passing data
+
+위젯간 데이터를 전달하는 방법 중 하나로 생성자 파라미터를 통해 전달하는 방법이 있다.
+
+{% highlight dart %}
+class WeatherScreen extends StatefulWidget {
+  final dynamic parseWeatherData;
+
+  const WeatherScreen({
+    super.key,
+    this.parseWeatherData,
+  });
+
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  @override
+  void initState() {
+    super.initState();
+    print(widget.parseWeatherData);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SomeWidget();
+  }
+}
+{% endhighlight %}
+
+위 코드 예시와 같이 `StatefulWidget`의 경우에는 해당하는 state 클래스에서 `widget` 변수를 통해 그 전달받은 데이터를 확인할 수 있다. (`_WeatherScreenState.initState()` 함수 참조)
+
+간단한 팁
+
+`double` 타입의 변수를 `int` 타입으로 변환하려면 두 가지 방법이 있다.
+
+{% highlight dart %}
+int temp = tempDouble.toInt();
+{% endhighlight %}
+
+{% highlight dart %}
+int temp = tempDouble.round();
+{% endhighlight %}
