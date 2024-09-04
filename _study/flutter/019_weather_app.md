@@ -10,6 +10,7 @@ layout: post
 * [강좌 13 \| 날씨 앱(weather app) 만들기 1](https://youtu.be/YqKMBQYZSmw)
 * [강좌 14 \| 날씨 앱(weather app) 만들기 2: JSON parsing(제이슨 파싱)](https://youtu.be/ccq1yCmNzdk)
 * [강좌 15 \| 날씨 앱(weather app) 만들기 3: Passing json data(제이슨 데이터 전달하기)](https://youtu.be/c1PNEa_eiIM)
+* [강좌 16 \| 날씨 앱(weather app) 만들기 4: 날씨 앱 UI 디자인](https://youtu.be/yfbQVkTZ6F0)
 
 ## Widget lifecycle
 
@@ -354,3 +355,28 @@ int temp = tempDouble.toInt();
 {% highlight dart %}
 int temp = tempDouble.round();
 {% endhighlight %}
+
+## UI 꿀팁
+
+앱바에 아이콘 버튼은 있지만 투명하게 하고 싶은 경우 아래와 같이 한다.
+
+{% highlight dart %}
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    extendBodyBehindAppBar: true,
+    appBar: AppBar(
+      // title: Text(''),
+      backgroundColor: Colors.transparent,
+      elevation: 0.0,
+      leading: IconButton(),
+      actions: [
+        IconButton(),
+      ],
+    ),
+    body: Container(),
+  );
+}
+{% endhighlight %}
+
+`extendBodyBehindAppBar`, `backgroundColor`, `elevation` 속성들을 활용하면 된다.
