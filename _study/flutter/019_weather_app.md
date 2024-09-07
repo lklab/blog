@@ -11,6 +11,7 @@ layout: post
 * [강좌 14 \| 날씨 앱(weather app) 만들기 2: JSON parsing(제이슨 파싱)](https://youtu.be/ccq1yCmNzdk)
 * [강좌 15 \| 날씨 앱(weather app) 만들기 3: Passing json data(제이슨 데이터 전달하기)](https://youtu.be/c1PNEa_eiIM)
 * [강좌 16 \| 날씨 앱(weather app) 만들기 4: 날씨 앱 UI 디자인](https://youtu.be/yfbQVkTZ6F0)
+* [강좌 17 \| 날씨 앱(weather app) 만들기 5: 날씨 앱 UI에 데이터 연동하기](https://youtu.be/3cjktl_HWHc)
 
 ## Widget lifecycle
 
