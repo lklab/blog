@@ -2,6 +2,14 @@
 flutter:
   name: flutter
   studies:
+  - index: 20
+    link: "/study/flutter/020_key"
+    title: Key
+    image: "/assets/study/main/flutter_logo.png"
+  - index: 19
+    link: "/study/flutter/019_weather_app"
+    title: Weather app
+    image: "/assets/study/main/flutter_logo.png"
   - index: 18
     link: "/study/flutter/018_null_safety"
     title: Null safety
