@@ -2,6 +2,10 @@
 flutter:
   name: flutter
   studies:
+  - index: 21
+    link: "/study/flutter/021_tips"
+    title: Flutter tips
+    image: "/assets/study/main/flutter_logo.png"
   - index: 20
     link: "/study/flutter/020_key"
     title: Key
