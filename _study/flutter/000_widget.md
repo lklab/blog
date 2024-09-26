@@ -3,6 +3,7 @@ title: 위젯
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-06-09
 ---
 
 [플러터 강좌](https://youtu.be/jI4kqLdqXic)를 보고 정리한 내용입니다.

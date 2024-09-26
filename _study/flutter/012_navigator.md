@@ -3,6 +3,7 @@ title: "Navigator"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-06-09
 ---
 
 [플러터 강좌 1](https://youtu.be/BWG9XS5ecig), [플러터 강좌 2](https://youtu.be/rX2RZr6y8yM)를 보고 정리한 내용입니다.

@@ -3,6 +3,7 @@ title: UDay Seoul 2024
 image: /assets/study/unity_csharp/005_uday_seoul_2024/title.jpg
 author: khlee
 layout: post
+last_modified_at: 2024-07-18
 ---
 
 # 1일차

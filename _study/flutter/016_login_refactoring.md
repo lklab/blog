@@ -3,6 +3,7 @@ title: "Login refactoring"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-08-12
 ---
 
 [플러터 강좌](https://youtu.be/tTA1Vxxi3mg)를 보고 정리한 내용입니다.

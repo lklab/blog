@@ -3,6 +3,7 @@ title: Unity Monthly Tech Talk 7월
 image: /assets/study/unity_csharp/006_monthly_tech_talk_2024_07/title.png
 author: khlee
 layout: post
+last_modified_at: 2024-07-25
 ---
 
 ## 유니티 애플리케이션의 안드로이드 ANR(Application Not Responding) 오류를 줄이는 팁과 사례

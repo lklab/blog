@@ -3,6 +3,7 @@ title: LangChain - Retrieval Augmented Generation (RAG)
 image: /assets/study/llm/default/langchain_logo.jpg
 author: khlee
 layout: post
+last_modified_at: 2024-08-20
 ---
 
 [LangChain 튜토리얼](https://python.langchain.com/v0.2/docs/tutorials/rag/)을 읽고 정리한 내용이다.
