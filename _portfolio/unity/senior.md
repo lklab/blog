@@ -9,8 +9,8 @@ tag:
   - Python
   - Windows
   - 모바일
-  - 연구 협력
   - 서버 연동
+  - 납품
 summary:
   division: 연구 과제
   period: 2020.01 - 2021.08 (1년 8개월)
