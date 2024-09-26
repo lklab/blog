@@ -13,7 +13,7 @@ tag:
   - 지역화
 summary:
   division: 정규 프로젝트
-  period: 2021.01 - 2021.08 (8개월, 중단됨)
+  period: 2021.01 - 2021.08 (8개월)
   platform: Windows, Mac(예정), 모바일(예정), 콘솔(예정)
   environment: Unity 2020.3.15f2
   language: C#

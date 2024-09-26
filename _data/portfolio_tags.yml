@@ -56,7 +56,7 @@
     - 셰이더
     - Spine
     - 지역화
-    period: 2021.01 - 2021.08 (8개월, 중단됨)
+    period: 2021.01 - 2021.08 (8개월)
   - &8
     link: "/portfolio/unity/story-puzzle-game-3d"
     title: 3D 스토리 퍼즐 게임 개발
@@ -68,7 +68,7 @@
     - 모바일
     - 3D
     - 지역화
-    period: 2020.03 - 2020.12 (10개월, 중단됨)
+    period: 2020.03 - 2020.12 (10개월)
   - &6
     link: "/portfolio/unity/senior"
     title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
