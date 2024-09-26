@@ -9,6 +9,7 @@ tag:
   - AR
   - Vuforia
   - 모바일
+  - 서버 연동
   - 출시
 summary:
   division: 외주

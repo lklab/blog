@@ -9,7 +9,6 @@ tag:
   - Windows
   - 3D
   - 출시
-  - 프로젝트 관리
 summary:
   division: 정규 프로젝트
   period: 2019.05 - 2020.12 (1년 8개월)

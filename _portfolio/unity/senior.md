@@ -9,12 +9,12 @@ tag:
   - Python
   - Windows
   - 모바일
-  - 연구 협력
   - 서버 연동
+  - 납품
 summary:
   division: 연구 과제
   period: 2020.01 - 2021.08 (1년 8개월)
-  platform: Windows(초기 버전), 모바일(최종 버전)
+  platform: Windows, 모바일
   environment: Unity 2019.4.23f1
   language: C#, Python
   work: 클라이언트 개발, 서버 통신 프로토콜 설계
