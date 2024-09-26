@@ -3,6 +3,7 @@ title: LangChain - Vector stores and retrievers
 image: /assets/study/llm/default/langchain_logo.jpg
 author: khlee
 layout: post
+last_modified_at: 2024-08-14
 ---
 
 [LangChain 튜토리얼](https://python.langchain.com/v0.2/docs/tutorials/retrievers/)을 읽고 정리한 내용이다.

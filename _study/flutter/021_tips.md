@@ -3,6 +3,7 @@ title: "Flutter tips"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-09-21
 ---
 
 플러터 공부하면서 기억할만한 팁들 정리

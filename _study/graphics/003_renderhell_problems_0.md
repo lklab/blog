@@ -3,6 +3,7 @@ title: Render Hell – Book III
 image: /assets/study/graphics/003_renderhell_problems_0/banner_book_03.jpg
 author: khlee
 layout: post
+last_modified_at: 2023-12-03
 ---
 
 [Render Hell – Book III](https://simonschreibt.de/gat/renderhell-book3/)를 읽고 정리한 내용이다.

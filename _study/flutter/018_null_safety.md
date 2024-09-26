@@ -3,6 +3,7 @@ title: "Null safety"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-08-18
 ---
 
 [플러터 강좌 1](https://youtu.be/0LNUSnmzDg4), [플러터 강좌 2](https://youtu.be/QP0THWoDeag)를 보고 정리한 내용입니다.

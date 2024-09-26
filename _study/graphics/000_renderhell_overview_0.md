@@ -3,6 +3,7 @@ title: Render Hell – Book I
 image: /assets/study/graphics/000_renderhell_overview_0/banner_book_01.jpg
 author: khlee
 layout: post
+last_modified_at: 2023-11-17
 ---
 
 [Render Hell – Book I](https://simonschreibt.de/gat/renderhell-book1/)을 읽고 정리한 내용이다.

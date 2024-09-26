@@ -3,6 +3,7 @@ title: "앱바(app bar) 메뉴 아이콘 추가하기"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-06-09
 ---
 
 [플러터 강좌](https://youtu.be/ze0t5gWKBvE)를 보고 정리한 내용입니다.
