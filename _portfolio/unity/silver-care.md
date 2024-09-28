@@ -14,7 +14,7 @@ tag:
   - Android
   - iOS
   - 서버 연동
-  - 출시
+  - 라이브
   - 지역화
 summary:
   division: 정규 프로젝트
