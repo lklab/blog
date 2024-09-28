@@ -6,10 +6,12 @@ image: /assets/portfolio/brain-vr/gear_vr.png
 tag:
   - 겜브릿지
   - Csharp
+  - UGUI
   - VR
   - Oculus
   - 모바일
-  - REST API
+  - Android
+  - 서버 연동
   - 납품
 summary:
   division: 용역

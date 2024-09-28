@@ -6,12 +6,15 @@ image: /assets/about/platforms/unity.png
 tag:
   - 맥스트
   - Csharp
+  - UGUI
   - AR
   - XR
+  - 모바일
   - Android
   - WebGL
   - 서버 연동
   - 지역화
+  - 3D
   - 납품
   - 리드
 summary:

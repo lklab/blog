@@ -9,12 +9,15 @@
     tag:
     - 맥스트
     - Csharp
+    - UGUI
     - AR
     - XR
+    - 모바일
     - Android
     - WebGL
     - 서버 연동
     - 지역화
+    - 3D
     - 납품
     - 리드
     period: 2023.09 - 2023.12 (4개월)
@@ -26,7 +29,9 @@
     tag:
     - 맥스트
     - Csharp
+    - UGUI
     - AR
+    - 모바일
     - Android
     - WebGL
     - 서버 연동
@@ -39,7 +44,7 @@
   projects:
   - *1
   - *2
-  - &4
+  - &3
     link: "/portfolio/unity/silver-care"
     title: 실버케어 모바일 앱 개발
     date: 2021-09-01
@@ -47,10 +52,8 @@
     tag:
     - 원더풀플랫폼
     - Csharp
+    - UGUI
     - Java
-    - Kotlin
-    - Objective-C
-    - Swift
     - 모바일
     - Android
     - iOS
@@ -58,7 +61,7 @@
     - 라이브
     - 지역화
     period: 2021.09 - 2023.05 (1년 9개월)
-  - &6
+  - &4
     link: "/portfolio/unity/point-and-click"
     title: 포인트 앤 클릭 추리 게임 개발
     date: 2021-01-01
@@ -66,6 +69,7 @@
     tag:
     - 겜브릿지
     - Csharp
+    - UGUI
     - Windows
     - 시스템 설계
     - 셰이더
@@ -73,7 +77,7 @@
     - 지역화
     - 리드
     period: 2021.01 - 2021.08 (8개월)
-  - &7
+  - &5
     link: "/portfolio/unity/story-puzzle-game-3d"
     title: 3D 스토리 퍼즐 게임 개발
     date: 2020-03-01
@@ -81,11 +85,14 @@
     tag:
     - 겜브릿지
     - Csharp
+    - UGUI
     - 모바일
+    - Android
+    - iOS
     - 3D
     - 지역화
     period: 2020.03 - 2020.12 (10개월)
-  - &5
+  - &6
     link: "/portfolio/unity/senior"
     title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
     date: 2020-01-01
@@ -93,13 +100,16 @@
     tag:
     - 겜브릿지
     - Csharp
+    - UGUI
     - Python
     - Windows
     - 모바일
+    - Android
+    - iOS
     - 서버 연동
     - 납품
     period: 2020.01 - 2021.08 (1년 8개월)
-  - &8
+  - &7
     link: "/portfolio/unity/story-puzzle-game"
     title: 스토리 퍼즐 게임 개발
     date: 2019-10-01
@@ -107,13 +117,16 @@
     tag:
     - 겜브릿지
     - Csharp
+    - UGUI
     - Windows
     - 모바일
+    - Android
+    - iOS
     - 출시
     - 지역화
     - Steam
     period: '개발 기간: 2019.10 - 2019.12 (3개월) / 출시 후 업데이트: 2020.01 - 2021.06'
-  - &13
+  - &8
     link: "/portfolio/unity/adventure"
     title: 어드벤처 게임 개발
     date: 2019-05-01
@@ -121,11 +134,12 @@
     tag:
     - 겜브릿지
     - Csharp
+    - UGUI
     - Windows
     - 3D
     - 출시
     period: 2019.05 - 2020.12 (1년 8개월)
-  - &3
+  - &9
     link: "/portfolio/unity/ar-card-app"
     title: AR 기반 장난감 카드 인식 앱 개발
     date: 2019-04-01
@@ -133,13 +147,16 @@
     tag:
     - 겜브릿지
     - Csharp
+    - UGUI
     - AR
     - Vuforia
     - 모바일
+    - Android
+    - iOS
     - 서버 연동
     - 출시
     period: 2019.04 - 2019.11 (8개월)
-  - &9
+  - &10
     link: "/portfolio/unity/brain-vr"
     title: 뇌과학 연구용 VR 게임 개발
     date: 2018-12-01
@@ -147,13 +164,15 @@
     tag:
     - 겜브릿지
     - Csharp
+    - UGUI
     - VR
     - Oculus
     - 모바일
-    - REST API
+    - Android
+    - 서버 연동
     - 납품
     period: 2018.12 - 2019.08 (9개월)
-  - &12
+  - &11
     link: "/portfolio/unity/light-the-time"
     title: 공포 게임 Light the Time 개발
     date: 2014-10-01
@@ -163,23 +182,52 @@
     - Csharp
     - VR
     - 모바일
+    - Android
     - 3D
     - 출시
     period: 2014.10 - 2014.12 (3개월)
-- tag: AR
+- tag: UGUI
   projects:
   - *1
   - *2
   - *3
+  - *4
+  - *5
+  - *6
+  - *7
+  - *8
+  - *9
+  - *10
+- tag: AR
+  projects:
+  - *1
+  - *2
+  - *9
 - tag: XR
   projects:
   - *1
+- tag: 모바일
+  projects:
+  - *1
+  - *2
+  - *3
+  - *5
+  - *6
+  - *7
+  - *9
+  - *10
+  - *11
 - tag: Android
   projects:
   - *1
   - *2
-  - *4
-  - &10
+  - *3
+  - *5
+  - *6
+  - *7
+  - *9
+  - *10
+  - &12
     link: "/portfolio/embedded/wearable-instrument"
     title: 스마트폰 연동 연주용 장갑(웨어러블 디바이스) 개발
     date: 2015-09-01
@@ -192,7 +240,7 @@
     - Arduino
     - 웨어러블
     period: 2015.09 - 2015.12 (4개월)
-  - &11
+  - &13
     link: "/portfolio/embedded/quadcopter"
     title: 스마트폰으로 조종하는 드론 개발
     date: 2015-03-01
@@ -207,6 +255,7 @@
     - Raspberry pi
     - 드론
     period: 2015.03 - 2015.06 (4개월)
+  - *11
 - tag: WebGL
   projects:
   - *1
@@ -215,27 +264,34 @@
   projects:
   - *1
   - *2
-  - *4
-  - *5
   - *3
+  - *6
+  - *9
+  - *10
 - tag: 지역화
   projects:
   - *1
   - *2
+  - *3
   - *4
-  - *6
+  - *5
   - *7
+- tag: 3D
+  projects:
+  - *1
+  - *5
   - *8
+  - *11
 - tag: 납품
   projects:
   - *1
   - *2
-  - *5
-  - *9
+  - *6
+  - *10
 - tag: 리드
   projects:
   - *1
-  - *6
+  - *4
 - tag: WebRTC
   projects:
   - *2
@@ -244,10 +300,10 @@
   - *2
 - tag: 원더풀플랫폼
   projects:
-  - *4
+  - *3
 - tag: Java
   projects:
-  - *4
+  - *3
   - &14
     link: "/portfolio/industrial-network/drive-setting-app"
     title: EtherCAT 기반 모터드라이브 설정 프로그램 개발
@@ -263,47 +319,33 @@
     - SOEM
     - Java swing
     period: 2018.06 - 2018.07 (2개월) - 기본 개발 / 2018.12 - 2019.01 (2개월) - 추가 개선 개발
-  - *10
-  - *11
-- tag: Kotlin
-  projects:
-  - *4
-- tag: Objective-C
-  projects:
-  - *4
-- tag: Swift
-  projects:
-  - *4
-- tag: 모바일
-  projects:
-  - *4
-  - *7
-  - *5
-  - *8
-  - *3
-  - *9
   - *12
+  - *13
 - tag: iOS
   projects:
-  - *4
-- tag: 라이브
-  projects:
-  - *4
-- tag: 겜브릿지
-  projects:
+  - *3
+  - *5
   - *6
   - *7
-  - *5
-  - *8
-  - *13
-  - *3
   - *9
+- tag: 라이브
+  projects:
+  - *3
+- tag: 겜브릿지
+  projects:
+  - *4
+  - *5
+  - *6
+  - *7
+  - *8
+  - *9
+  - *10
 - tag: Windows
   projects:
+  - *4
   - *6
-  - *5
+  - *7
   - *8
-  - *13
   - *14
   - &15
     link: "/portfolio/software-engineering/miica"
@@ -330,21 +372,16 @@
     period: 2017.08 - 2018.03 (8개월)
 - tag: 시스템 설계
   projects:
-  - *6
+  - *4
 - tag: 셰이더
   projects:
-  - *6
+  - *4
 - tag: Spine
   projects:
-  - *6
-- tag: 3D
-  projects:
-  - *7
-  - *13
-  - *12
+  - *4
 - tag: Python
   projects:
-  - *5
+  - *6
   - *15
   - &24
     link: "/portfolio/industrial-network/hmi"
@@ -393,7 +430,7 @@
     - Beremiz
     - IEC 61131-3
     period: 2016.02 - 2016.05 (4개월)
-  - *11
+  - *13
   - &26
     link: "/portfolio/industrial-network/drawing-robot"
     title: Beremiz IDE를 사용하여 그림을 그리는 3축 로봇 응용 개발
@@ -424,26 +461,23 @@
     period: 2014.06 - 2014.09 (4개월)
 - tag: 출시
   projects:
+  - *7
   - *8
-  - *13
-  - *3
-  - *12
+  - *9
+  - *11
 - tag: Steam
   projects:
-  - *8
+  - *7
 - tag: Vuforia
   projects:
-  - *3
+  - *9
 - tag: VR
   projects:
-  - *9
-  - *12
+  - *10
+  - *11
 - tag: Oculus
   projects:
-  - *9
-- tag: REST API
-  projects:
-  - *9
+  - *10
 - tag: 하이젠모터
   projects:
   - &16
@@ -523,8 +557,8 @@
     - Beremiz
     period: 2016.04 - 2016.06 (3개월)
   - *21
-  - *10
-  - *11
+  - *12
+  - *13
   - *22
 - tag: CCS
   projects:
@@ -607,7 +641,7 @@
   projects:
   - *15
   - *20
-  - *11
+  - *13
   - *26
 - tag: Xenomai
   projects:
@@ -677,7 +711,7 @@
 - tag: Raspberry pi
   projects:
   - *20
-  - *11
+  - *13
   - *22
 - tag: Automatic programming
   projects:
@@ -699,10 +733,10 @@
   - *27
 - tag: 학부
   projects:
-  - *10
-  - *11
-  - *26
   - *12
+  - *13
+  - *26
+  - *11
   - *22
   - &28
     link: "/portfolio/others/catia-bridge"
@@ -729,14 +763,14 @@
     period: 2013.04 - 2013.06 (3개월)
 - tag: Arduino
   projects:
-  - *10
+  - *12
   - *22
 - tag: 웨어러블
   projects:
-  - *10
+  - *12
 - tag: 드론
   projects:
-  - *11
+  - *13
 - tag: Tkinter
   projects:
   - *26

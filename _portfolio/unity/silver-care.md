@@ -6,10 +6,8 @@ image: /assets/portfolio/silver-care/main.jpg
 tag:
   - 원더풀플랫폼
   - Csharp
+  - UGUI
   - Java
-  - Kotlin
-  - Objective-C
-  - Swift
   - 모바일
   - Android
   - iOS

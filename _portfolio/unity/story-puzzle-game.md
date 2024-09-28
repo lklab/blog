@@ -6,8 +6,11 @@ image: /assets/portfolio/story-puzzle-game/story-puzzle-game.jpg
 tag:
   - 겜브릿지
   - Csharp
+  - UGUI
   - Windows
   - 모바일
+  - Android
+  - iOS
   - 출시
   - 지역화
   - Steam

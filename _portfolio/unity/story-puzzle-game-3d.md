@@ -6,7 +6,10 @@ image: /assets/about/platforms/unity.png
 tag:
   - 겜브릿지
   - Csharp
+  - UGUI
   - 모바일
+  - Android
+  - iOS
   - 3D
   - 지역화
 summary:
