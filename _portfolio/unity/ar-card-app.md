@@ -6,9 +6,12 @@ image: /assets/portfolio/ar-card-app/ar-app.jpg
 tag:
   - 겜브릿지
   - Csharp
+  - UGUI
   - AR
   - Vuforia
   - 모바일
+  - Android
+  - iOS
   - 서버 연동
   - 출시
 summary:

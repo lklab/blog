@@ -6,7 +6,9 @@ image: /assets/about/platforms/unity.png
 tag:
   - 맥스트
   - Csharp
+  - UGUI
   - AR
+  - 모바일
   - Android
   - WebGL
   - 서버 연동

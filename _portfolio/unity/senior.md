@@ -6,9 +6,12 @@ image: /assets/about/platforms/unity.png
 tag:
   - 겜브릿지
   - Csharp
+  - UGUI
   - Python
   - Windows
   - 모바일
+  - Android
+  - iOS
   - 서버 연동
   - 납품
 summary:
