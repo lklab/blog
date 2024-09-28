@@ -55,7 +55,7 @@
     - Android
     - iOS
     - 서버 연동
-    - 출시
+    - 라이브
     - 지역화
     period: 2021.09 - 2023.05 (1년 9개월)
   - &6
@@ -286,13 +286,9 @@
 - tag: iOS
   projects:
   - *4
-- tag: 출시
+- tag: 라이브
   projects:
   - *4
-  - *8
-  - *13
-  - *3
-  - *12
 - tag: 겜브릿지
   projects:
   - *6
@@ -426,6 +422,12 @@
     - Arduino
     - Tkinter
     period: 2014.06 - 2014.09 (4개월)
+- tag: 출시
+  projects:
+  - *8
+  - *13
+  - *3
+  - *12
 - tag: Steam
   projects:
   - *8
@@ -584,9 +586,10 @@
 - tag: 대학원
   projects:
   - *15
+  - *23
   - *24
   - *20
-  - *23
+  - *25
   - &27
     link: "/portfolio/others/genetic-algorithm"
     title: Genetic algorithm을 이용한 automatic rule acquisition 알고리즘 구현
@@ -599,7 +602,6 @@
     - Optimization
     - Genetic algorithm
     period: 2016.04 - 2016.06 (3개월)
-  - *25
   - *21
 - tag: Linux
   projects:
@@ -643,6 +645,12 @@
   - *15
   - *20
   - *25
+- tag: PM
+  projects:
+  - *23
+- tag: FoE
+  projects:
+  - *23
 - tag: Beaglebone black
   projects:
   - *24
@@ -674,12 +682,9 @@
 - tag: Automatic programming
   projects:
   - *20
-- tag: PM
+- tag: UPPAAL2C
   projects:
-  - *23
-- tag: FoE
-  projects:
-  - *23
+  - *25
 - tag: R
   projects:
   - *27
@@ -692,9 +697,6 @@
 - tag: Genetic algorithm
   projects:
   - *27
-- tag: UPPAAL2C
-  projects:
-  - *25
 - tag: 학부
   projects:
   - *10
