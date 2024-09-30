@@ -3,6 +3,7 @@ title: "Future, async, await"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-08-17
 ---
 
 플러터 강좌 [기본](https://youtu.be/oFXV4qSXNVs), [심화](https://youtu.be/HjhPhAUPHos)를 보고 정리한 내용입니다.

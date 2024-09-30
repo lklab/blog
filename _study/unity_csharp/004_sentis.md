@@ -3,6 +3,7 @@ title: Sentis
 image: /assets/study/unity_csharp/004_sentis/title.jpg
 author: khlee
 layout: post
+last_modified_at: 2024-07-25
 ---
 
 ## 개요

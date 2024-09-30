@@ -3,6 +3,7 @@ title: Render Hell – Book IV
 image: /assets/study/graphics/004_renderhell_solutions_0/banner_book_04.jpg
 author: khlee
 layout: post
+last_modified_at: 2023-12-07
 ---
 
 [Render Hell – Book IV](https://simonschreibt.de/gat/renderhell-book4/)를 읽고 정리한 내용이다.

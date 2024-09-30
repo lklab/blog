@@ -3,6 +3,7 @@ title: "final and const"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-07-27
 ---
 
 [플러터 강좌](https://youtu.be/akc51-j84os)를 보고 정리한 내용입니다.

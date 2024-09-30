@@ -171,7 +171,7 @@ collections.each { |collection|
 		files = Dir.entries(collection_path)
 		files.each { |file|
 			if File.extname(file) == ".md"
-				yaml = YAML.load_file(File.join(collection_path, file))
+				yaml = YAML.load_file(File.join(collection_path, file), permitted_classes: [Date])
 
 				data = Hash.new
 				data["index"] = file.split("_", 2)[0].to_i

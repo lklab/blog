@@ -8,6 +8,7 @@ tag:
   - Csharp
   - VR
   - 모바일
+  - Android
   - 3D
   - 출시
 summary:
@@ -24,7 +25,7 @@ summary:
 
 * 팀 내에 그래픽 디자이너 없이 인터넷에 있는 무료 3D 모델만을 사용하여 개발
 * Unity에서 제공하는 다양한 게임 개발 도구 활용 (3D 렌더링, 물리엔진, Navigator 등)
-* [Google play](https://play.google.com/store/apps/details?id=com.imsogong.lightthetime_beta&hl=ko)에 앱 출시
+* Google play에 앱 출시 (현재는 내려감)
 
 ![Store]({{site.baseurl}}/assets/portfolio/light-the-time/store.png)
 

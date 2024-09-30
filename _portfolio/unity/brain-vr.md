@@ -6,12 +6,13 @@ image: /assets/portfolio/brain-vr/gear_vr.png
 tag:
   - 겜브릿지
   - Csharp
+  - UGUI
   - VR
   - Oculus
   - 모바일
-  - REST API
+  - Android
   - 서버 연동
-  - 연구 협력
+  - 납품
 summary:
   division: 용역
   period: 2018.12 - 2019.08 (9개월)

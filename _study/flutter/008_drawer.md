@@ -3,6 +3,7 @@ title: "Drawer 메뉴 만들기"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-06-09
 ---
 
 [플러터 강좌 1](https://youtu.be/8gDhEdFhfys), [플러터 강좌 2](https://youtu.be/j5O49p7CL1o)를 보고 정리한 내용입니다.

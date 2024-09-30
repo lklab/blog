@@ -3,6 +3,7 @@ title: LangChain ch01 - 시작하기
 image: /assets/study/llm/default/langchain_logo.jpg
 author: khlee
 layout: post
+last_modified_at: 2024-08-08
 ---
 
 [CH01 LangChain 시작하기](https://wikidocs.net/233341)을 읽고 정리한 내용이다.

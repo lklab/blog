@@ -6,12 +6,15 @@ image: /assets/about/platforms/unity.png
 tag:
   - 겜브릿지
   - Csharp
+  - UGUI
   - 모바일
+  - Android
+  - iOS
   - 3D
   - 지역화
 summary:
   division: 정규 프로젝트
-  period: 2020.03 - 2020.12 (10개월, 중단됨)
+  period: 2020.03 - 2020.12 (10개월)
   platform: 모바일
   environment: Unity 2018.4.20f1
   language: C#
