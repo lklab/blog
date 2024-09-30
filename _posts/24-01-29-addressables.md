@@ -6,6 +6,7 @@ author: khlee
 categories:
     - Unity
 layout: post
+last_modified_at: 2024-09-30
 ---
 
 ## 개요
@@ -320,3 +321,33 @@ Player Version Override는 카탈로그의 버전을 지정할 수 있는 기능
 동일한 에셋을 여러 개의 Addressables Group 또는 Built in Scene에서 참조하는 경우 그 에셋은 각각의 Group이나 Built in에 중복으로 존재하게 된다. 따라서 에셋이 중복되어 하드디스크나 메모리 용량을 낭비하지 않도록 에셋간의 의존성을 잘 설계해야 한다. 어떤 에셋이 중복되는지에 관한 정보는 Window -> Asset Management -> Addressables -> Analyze로 열 수 있는 Addressables Analyze 창에서 확인할 수 있다. unity_builtin_extra는 유니티에서 기본 제공하는 에셋들인 것 같은데 이 에셋의 의존성이 중복되는 것은 어쩔 수 없는 것 같다. 아래 예에서는 아마 Cube 메시가 중복되는 것 같다.
 
 ![Addressables Analyze]({{site.baseurl}}/assets/post/24-01-29-addressables/addressables_analyze.png){: width="640" .custom-align-center-img}
+
+## 메모리 최적화
+
+U Day Seoul 2024의 [Optimization: Memory Management](https://youtu.be/Jw9fJCMtMjI) 세션 관련 내용 추가
+
+Addressables과 관련된 메모리 영역은 크게 다음의 3가지가 있다. 이 항목은 프로젝트에서 에셋 번들을 어떻게 사용하는지에 따라 메모리 사용량이 많이 달라짐
+
+* AssetBundle (Native/Native Objects)
+    * 실제 asset bundle에 대한 native 객체의 메모리 점유를 의미
+* SerializedFile (Native/Unity Subsystem)
+    * AssetBundle의 직렬화된 메타데이터
+    * AssetBundle에 포함된 asset 목록, type tree, read buffer를 포함함
+* PersistentManager.Remapper (Native/Unity Subsystem)
+    * 프로젝트에서 사용하는 모든 asset의 GUID, LocalID와 내부적으로 사용되는 InstanceID를 연결하는 hash table
+
+Asset bundle 상에 포함된 에셋의 개수가 많아질수록 위 3가지 메모리의 사용량이 많이 늘어난다. 이를 억제하기 위해서는 다음과 같은 원칙을 준수할 필요가 있다.
+
+* Scene과 무관한 asset이 포함되지 않도록 asset bundle을 관리한다.
+    * 하지만 관리가 어려움. 가능하면 함께 사용될 확률이 높은 에셋끼리 묶기
+* Asset bundle과의 종속성을 줄인다.
+* 사용이 끝난 asset bundle은 반드시 unload 해서 메모리에서 해제한다.
+* 가급적 asset bundle의 preload는 지양한다.
+
+요약하면 동시에 로드되는 에셋 번들 내의 에셋 개수를 줄이면 된다 정도 되겠다.
+
+관련 참고 자료: [어드레서블 에셋 시스템으로 메모리 최적화하기](https://unity.com/kr/blog/technology/tales-from-the-optimization-trenches-saving-memory-with-addressables) 참조
+
+AssetBundle과 SerializedFile이 차지하는 메모리 영역은 해당하는 asset bundle이 unload되면 메모리 사용량이 줄어들지만 Remapper 영역은 줄어들지 않는다. 따라서 동시에 로드되는 asset bundle의 개수를 줄여야 한다.
+
+`AssetBundle.Unload(true)`를 호출하면 에셋 번들과 함께 로드된 인스턴스들이 함께 언로드된다. `AssetBundle.Unload(false)`를 호출하면 에셋번들에서 사용하는 메모리만 해제된다. `Addressables.Release()` 함수를 호출하면 내부에서 `AssetBundle.Unload(true)`가 호출됨
