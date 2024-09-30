@@ -350,4 +350,4 @@ Asset bundle 상에 포함된 에셋의 개수가 많아질수록 위 3가지 �
 
 AssetBundle과 SerializedFile이 차지하는 메모리 영역은 해당하는 asset bundle이 unload되면 메모리 사용량이 줄어들지만 Remapper 영역은 줄어들지 않는다. 따라서 동시에 로드되는 asset bundle의 개수를 줄여야 한다.
 
-`AssetBundle.Unload(true)`를 호출하면 에셋 번들과 함께 로드된 인스턴스들이 함께 언로드된다. `AssetBundle.Unload(false)`를 호출하면 에셋번들에서 사용하는 메모리만 해제된다. `Addressables.Release()` 함수를 호출하면 내부에서 `AssetBundle.Unload(true)`가 호출됨
+`AssetBundle.Unload(true)`를 호출하면 에셋 번들과 함께 로드된 인스턴스들이 함께 언로드된다. `AssetBundle.Unload(false)`를 호출하면 에셋번들에서 사용하는 메모리만 해제된다. `Addressables.Release()` 함수를 호출하면 내부에서 `AssetBundle.Unload(true)`가 호출된다. 따라서 프로젝트에서 필요하다면 어드레서블 패키지의 해당 부분을 `AssetBundle.Unload(false)`로 수정해서 사용해도 된다. 이렇게 하면 에셋 번들을 로드하고 인스턴스화한 후 언로드하면 인스턴스를 제거하지 않으면서 동시에 로드되는 에셋 번들의 에셋 개수를 줄일 수 있다.
