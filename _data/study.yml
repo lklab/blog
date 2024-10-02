@@ -37,6 +37,10 @@ llm:
 unity_csharp:
   name: unity_csharp
   studies:
+  - index: 7
+    link: "/study/unity_csharp/007_uday_seoul_industry_2024"
+    title: 'U/Day Seoul: Industry (2024)'
+    image: "/assets/study/unity_csharp/007_uday_seoul_industry_2024/unity-1-2048x883.png"
   - index: 6
     link: "/study/unity_csharp/006_monthly_tech_talk_2024_07"
     title: Unity Monthly Tech Talk 7월

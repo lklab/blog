@@ -30,7 +30,7 @@ categories = Array.new
 category_count = Hash.new
 
 posts.each { |post|
-	data = YAML.load_file(File.join(posts_path, post))
+	data = YAML.load_file(File.join(posts_path, post), permitted_classes: [Date])
 	data["categories"].each { |category|
 		if not categories.include?(category)
 			categories.push(category)
