@@ -37,6 +37,10 @@ llm:
 unity_csharp:
   name: unity_csharp
   studies:
+  - index: 8
+    link: "/study/unity_csharp/008_unity6_preview"
+    title: Unity 6 Preview 주요 하이라이트
+    image: "/assets/study/unity_csharp/008_unity6_preview/title.avif"
   - index: 7
     link: "/study/unity_csharp/007_uday_seoul_industry_2024"
     title: 'U/Day Seoul: Industry (2024)'
