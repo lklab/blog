@@ -76,6 +76,10 @@ unity_csharp:
 flutter:
   name: flutter
   studies:
+  - index: 22
+    link: "/study/flutter/022_stream_builder"
+    title: Stream builder
+    image: "/assets/study/main/flutter_logo.png"
   - index: 21
     link: "/study/flutter/021_tips"
     title: Flutter tips
