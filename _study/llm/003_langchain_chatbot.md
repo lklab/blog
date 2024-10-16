@@ -6,7 +6,7 @@ layout: post
 last_modified_at: 2024-08-13
 ---
 
-[LangChain 튜토리얼](https://python.langchain.com/v0.2/docs/tutorials/chatbot/)을 읽고 정리한 내용이다.
+[LangChain 튜토리얼](https://python.langchain.com/docs/tutorials/chatbot/)을 읽고 정리한 내용이다.
 
 ## 이전 대화 기억하기
 
