@@ -6,7 +6,7 @@ layout: post
 last_modified_at: 2024-08-20
 ---
 
-[LangChain 튜토리얼](https://python.langchain.com/v0.2/docs/tutorials/rag/)을 읽고 정리한 내용이다.
+[LangChain 튜토리얼](https://python.langchain.com/docs/tutorials/rag/)을 읽고 정리한 내용이다.
 
 RAG에 대한 설명은 [여기](https://brunch.co.kr/@ywkim36/146) 참고.
 

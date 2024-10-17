@@ -6,7 +6,7 @@ layout: post
 last_modified_at: 2024-08-30
 ---
 
-[LangChain 튜토리얼](https://python.langchain.com/v0.2/docs/tutorials/agents/)을 읽고 정리한 내용이다.
+[LangChain 튜토리얼](https://python.langchain.com/docs/tutorials/agents/)을 읽고 정리한 내용이다.
 
 ## 개요
 
