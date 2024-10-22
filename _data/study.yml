@@ -2,6 +2,10 @@
 flutter:
   name: flutter
   studies:
+  - index: 23
+    link: "/study/flutter/023_provider"
+    title: Provider
+    image: "/assets/study/main/flutter_logo.png"
   - index: 22
     link: "/study/flutter/022_stream_builder"
     title: Stream builder
