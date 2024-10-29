@@ -73,7 +73,7 @@
       type="image/x-icon"
     />
 
-    {% if site.url contains "localhost" or site.url contains "127.0.0.1" %}
+    {% if site.url contains "localhost" or site.url contains "127.0.0.1" or site.url contains ":5000" %}
     {% else %}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYHC56N0SX"></script>
