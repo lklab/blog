@@ -3,6 +3,7 @@ title: "Dice login app"
 image: /assets/study/main/flutter_logo.png
 author: khlee
 layout: post
+last_modified_at: 2024-06-23
 ---
 
 다음 플러터 강좌들을 보고 정리한 내용입니다.

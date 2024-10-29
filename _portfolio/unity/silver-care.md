@@ -6,16 +6,13 @@ image: /assets/portfolio/silver-care/main.jpg
 tag:
   - 원더풀플랫폼
   - Csharp
+  - UGUI
   - Java
-  - Kotlin
-  - Objective-C
-  - Swift
   - 모바일
   - Android
   - iOS
-  - REST API
   - 서버 연동
-  - 출시
+  - 라이브
   - 지역화
 summary:
   division: 정규 프로젝트
@@ -51,7 +48,7 @@ summary:
 
 ## 앱 특징
 
-* 실버 케어 앱으로 어르신의 긴급상황, 복약 알림 등을 관리할 수 있음
+* 실버 케어 앱으로 어르신의 긴급상황, 복약 알람 등을 관리할 수 있음
 * 음성 인식을 통해 앱의 기능을 사용할 수 있음
 * 보호자 앱과 연동되어 보호자가 어르신의 현재 상태를 확인하거나 영상통화, 모니터링 등의 기능을 사용할 수 있음
 * 유튜브 재생, 커뮤니티(다대다 음성통화), 건강관리 등의 기능 제공

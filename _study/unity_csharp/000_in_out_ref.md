@@ -3,6 +3,7 @@ title: in, out, ref
 image: /assets/study/unity_csharp/000_in_out_ref/in_out_ref.png
 author: khlee
 layout: post
+last_modified_at: 2024-01-20
 ---
 
 ## 개요

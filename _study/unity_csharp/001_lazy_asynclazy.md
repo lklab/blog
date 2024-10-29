@@ -3,6 +3,7 @@ title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
 image: /assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png
 author: khlee
 layout: post
+last_modified_at: 2024-01-22
 ---
 
 ## 개요

@@ -3,6 +3,7 @@ title: Sentis
 image: /assets/study/unity_csharp/004_sentis/title.jpg
 author: khlee
 layout: post
+last_modified_at: 2024-07-25
 ---
 
 ## 개요
@@ -176,4 +177,4 @@ B.CompleteOperationsAndDownload();
 debugText.text = $"Identity_1: {A[0, 0]}\nIdentity_2: {B[0, 0]}";
 {% endhighlight %}
 
-출력값 `Identity`는 hand landmarks의 위치를 의미하고 그 외에 `Identity_1` 등은 출력해 보니 정확도를 의미하는 것으로 추정된다.
+출력값 `Identity`는 hand landmarks의 위치를 의미하고 그 외에 `Identity_1` 등은 출력해 보니 정확도를 의미하는 것으로 추정된다. `Identity_2`는 왼손/오른손 구분이라고 한다.

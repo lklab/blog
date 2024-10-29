@@ -3,6 +3,7 @@ title: Render Hell – Book II (Architecture)
 image: /assets/study/graphics/001_renderhell_pipeline_0/banner_book_02.jpg
 author: khlee
 layout: post
+last_modified_at: 2023-11-18
 ---
 
 [Render Hell – Book II](https://simonschreibt.de/gat/renderhell-book2/)를 읽고 정리한 내용이다.

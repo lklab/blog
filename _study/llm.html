@@ -1,0 +1,22 @@
+---
+layout: page
+title: LLM
+name: llm
+permalink: /study/llm/
+no_article_rev: true
+sitemap: false
+---
+
+{% assign collection = site.data.study[page.name] %}
+
+<div class="categories-page">
+  <div class="archive-group rev">
+    <div class="row">
+
+      {% for study in collection.studies %}
+        {% include study.html %}
+      {% endfor %}
+
+    </div>
+  </div>
+</div>

@@ -1,27 +1,51 @@
 ---
 layout: portfolio
 title: 디지털 트윈 XR 작업지원 플랫폼 개발
-date: 2023-05-01
+date: 2023-09-01
 image: /assets/about/platforms/unity.png
 tag:
   - 맥스트
   - Csharp
+  - UGUI
   - AR
-  - VR
   - XR
-  - Digital twin
+  - 모바일
   - Android
-  - REST API
+  - WebGL
   - 서버 연동
   - 지역화
-  - WebRTC
-  - LiveKit
+  - 3D
+  - 납품
+  - 리드
 summary:
   division: 정규 프로젝트
-  period: 2023.05 - 현재
+  period: 2023.09 - 2023.12 (4개월)
   platform: Android, WebGL
-  environment: Unity 2022.3.19f1
-  library: UniRx, UniTask, Maxst XR SDK, WebRTC, LiveKit
+  environment: Unity 2022.3.9f1
+  library: UniTask, Maxst XR SDK, NHN GPM
   language: C#
-  work: XR 기술을 활용하여 설비 점검 및 원격 지원(통화) 기능을 개발
+  work: 클라이언트 리드
 ---
+
+## 개요
+
+* Unity를 이용한 산업용 작업지원 솔루션 개발
+* 산업통상자원부 과제 완수
+
+## 솔루션 특징
+
+* 디지털 트윈 공장에 3D 컨텐츠를 저작할 수 있는 WebGL 툴과, 저작한 컨텐츠를 XR 기능을 활용하여 실제 공장의 공간에 증강할 수 있는 모바일 앱으로 구성됨
+* 여러 명의 사용자가 가상 또는 실제 공간에 모여서 상호작용할 수 있는 XR Telepresence 기능 제공
+* 컨텐츠 저작에 활용할 수 있는 다양한 2D, 3D 에셋 제공
+* 자유로운 컨텐츠 저작을 위해 유니티 에디터와 같이 기즈모와 속성 설정 기능 제공
+
+## 개발 내용
+
+* 클라이언트 개발을 리드하였으며, 소프트웨어를 처음부터 설계하고 일정에 맞게 개발 완료
+* 제한된 시간 안에 개발을 완료하기 위해 작업의 선후관계를 고려해서 일정을 분배하고 타 파트와 긴밀하게 소통했으며 서트파티 패키지를 적극 활용하였음
+* Maxst XR SDK를 사용하여 디지털 트윈 공장을 탐색하거나, VPS를 통해 현재 위치를 인식하는 기능 개발
+* 미니맵 및 길찾기, 3D 길안내 기능 개발
+* 기존 프로젝트를 참고하여 colyseus 게임 서버를 활용한 아바타 Transform 동기화 및 채팅 기능 개발
+* 저작 컨텐츠 직렬화 기능 및 직렬화된 컨텐츠 데이터로부터 실제 컨텐츠 오브젝트를 생성하고 배치하는 기능 개발
+* 저작용 에셋 생성 UI 및 오브젝트 생성 기능 개발
+* 각 에셋별 상호작용 기능 (동영상 재생, 아바타 애니메이션 재생 등) 개발

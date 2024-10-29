@@ -3,6 +3,7 @@ title: Unity APAC Industry Summit 2023
 image: /assets/study/unity_csharp/003_unity-apac-industry-summit-2023/title.png
 author: khlee
 layout: post
+last_modified_at: 2024-07-18
 ---
 
 ## Opening session
