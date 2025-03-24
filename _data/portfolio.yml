@@ -1,4 +1,108 @@
 ---
+- category: Game
+  link: "/portfolio/game"
+  projects:
+  - link: "/portfolio/game/point-and-click"
+    title: 포인트 앤 클릭 추리 게임 개발
+    date: 2021-01-01
+    image: "/assets/portfolio/point-and-click/point-and-click-01.png"
+    tag:
+    - 겜브릿지
+    - Csharp
+    - UGUI
+    - Windows
+    - 시스템 설계
+    - 셰이더
+    - Spine
+    - 지역화
+    - 리드
+    period: 2021.01 - 2021.08 (8개월)
+  - link: "/portfolio/game/story-puzzle-game-3d"
+    title: 3D 스토리 퍼즐 게임 개발
+    date: 2020-03-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 겜브릿지
+    - Csharp
+    - UGUI
+    - 모바일
+    - Android
+    - iOS
+    - 3D
+    - 지역화
+    period: 2020.03 - 2020.12 (10개월)
+  - link: "/portfolio/game/senior"
+    title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
+    date: 2020-01-01
+    image: "/assets/about/platforms/unity.png"
+    tag:
+    - 겜브릿지
+    - Csharp
+    - UGUI
+    - Python
+    - Windows
+    - 모바일
+    - Android
+    - iOS
+    - 서버 연동
+    - 납품
+    period: 2020.01 - 2021.08 (1년 8개월)
+  - link: "/portfolio/game/story-puzzle-game"
+    title: 스토리 퍼즐 게임 개발
+    date: 2019-10-01
+    image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
+    tag:
+    - 겜브릿지
+    - Csharp
+    - UGUI
+    - Windows
+    - 모바일
+    - Android
+    - iOS
+    - 출시
+    - 지역화
+    - Steam
+    period: '개발 기간: 2019.10 - 2019.12 (3개월) / 출시 후 업데이트: 2020.01 - 2021.06'
+  - link: "/portfolio/game/adventure"
+    title: 어드벤처 게임 개발
+    date: 2019-05-01
+    image: "/assets/portfolio/adventure/adventure-01.jpg"
+    tag:
+    - 겜브릿지
+    - Csharp
+    - UGUI
+    - Windows
+    - 3D
+    - 출시
+    period: 2019.05 - 2020.12 (1년 8개월)
+  - link: "/portfolio/game/brain-vr"
+    title: 뇌과학 연구용 VR 게임 개발
+    date: 2018-12-01
+    image: "/assets/portfolio/brain-vr/gear_vr.png"
+    tag:
+    - 겜브릿지
+    - Csharp
+    - UGUI
+    - VR
+    - Oculus
+    - 모바일
+    - Android
+    - 서버 연동
+    - 납품
+    period: 2018.12 - 2019.08 (9개월)
+  - link: "/portfolio/game/light-the-time"
+    title: 공포 게임 Light the Time 개발
+    date: 2014-10-01
+    image: "/assets/portfolio/light-the-time/ingame-01.png"
+    tag:
+    - 학부
+    - Csharp
+    - VR
+    - 모바일
+    - Android
+    - 3D
+    - 출시
+    period: 2014.10 - 2014.12 (3개월)
 - category: Unity
   link: "/portfolio/unity"
   projects:
@@ -55,79 +159,6 @@
     - 라이브
     - 지역화
     period: 2021.09 - 2023.05 (1년 9개월)
-  - link: "/portfolio/unity/point-and-click"
-    title: 포인트 앤 클릭 추리 게임 개발
-    date: 2021-01-01
-    image: "/assets/portfolio/point-and-click/point-and-click-01.png"
-    tag:
-    - 겜브릿지
-    - Csharp
-    - UGUI
-    - Windows
-    - 시스템 설계
-    - 셰이더
-    - Spine
-    - 지역화
-    - 리드
-    period: 2021.01 - 2021.08 (8개월)
-  - link: "/portfolio/unity/story-puzzle-game-3d"
-    title: 3D 스토리 퍼즐 게임 개발
-    date: 2020-03-01
-    image: "/assets/about/platforms/unity.png"
-    tag:
-    - 겜브릿지
-    - Csharp
-    - UGUI
-    - 모바일
-    - Android
-    - iOS
-    - 3D
-    - 지역화
-    period: 2020.03 - 2020.12 (10개월)
-  - link: "/portfolio/unity/senior"
-    title: 시니어 게임 플레이 지원 기술이 적용된 게임 개발
-    date: 2020-01-01
-    image: "/assets/about/platforms/unity.png"
-    tag:
-    - 겜브릿지
-    - Csharp
-    - UGUI
-    - Python
-    - Windows
-    - 모바일
-    - Android
-    - iOS
-    - 서버 연동
-    - 납품
-    period: 2020.01 - 2021.08 (1년 8개월)
-  - link: "/portfolio/unity/story-puzzle-game"
-    title: 스토리 퍼즐 게임 개발
-    date: 2019-10-01
-    image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
-    tag:
-    - 겜브릿지
-    - Csharp
-    - UGUI
-    - Windows
-    - 모바일
-    - Android
-    - iOS
-    - 출시
-    - 지역화
-    - Steam
-    period: '개발 기간: 2019.10 - 2019.12 (3개월) / 출시 후 업데이트: 2020.01 - 2021.06'
-  - link: "/portfolio/unity/adventure"
-    title: 어드벤처 게임 개발
-    date: 2019-05-01
-    image: "/assets/portfolio/adventure/adventure-01.jpg"
-    tag:
-    - 겜브릿지
-    - Csharp
-    - UGUI
-    - Windows
-    - 3D
-    - 출시
-    period: 2019.05 - 2020.12 (1년 8개월)
   - link: "/portfolio/unity/ar-card-app"
     title: AR 기반 장난감 카드 인식 앱 개발
     date: 2019-04-01
@@ -144,34 +175,6 @@
     - 서버 연동
     - 출시
     period: 2019.04 - 2019.11 (8개월)
-  - link: "/portfolio/unity/brain-vr"
-    title: 뇌과학 연구용 VR 게임 개발
-    date: 2018-12-01
-    image: "/assets/portfolio/brain-vr/gear_vr.png"
-    tag:
-    - 겜브릿지
-    - Csharp
-    - UGUI
-    - VR
-    - Oculus
-    - 모바일
-    - Android
-    - 서버 연동
-    - 납품
-    period: 2018.12 - 2019.08 (9개월)
-  - link: "/portfolio/unity/light-the-time"
-    title: 공포 게임 Light the Time 개발
-    date: 2014-10-01
-    image: "/assets/portfolio/light-the-time/ingame-01.png"
-    tag:
-    - 학부
-    - Csharp
-    - VR
-    - 모바일
-    - Android
-    - 3D
-    - 출시
-    period: 2014.10 - 2014.12 (3개월)
 - category: Industrial Network
   link: "/portfolio/industrial-network"
   projects:
