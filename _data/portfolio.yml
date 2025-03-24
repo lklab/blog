@@ -2,6 +2,24 @@
 - category: Game
   link: "/portfolio/game"
   projects:
+  - link: "/portfolio/game/aimafia"
+    title: AI 및 친구와 함께 플레이할 수 있는 마피아 게임 개발
+    date: 2024-11-01
+    image: "/assets/portfolio/aimafia/logo.png"
+    tag:
+    - 개인프로젝트
+    - AI
+    - C
+    - C++
+    - Python
+    - Dart
+    - Flutter
+    - Android
+    - iOS
+    - 모바일
+    - 지역화
+    - 출시
+    period: 2024.11 - 2025.03 (5개월)
   - link: "/portfolio/game/point-and-click"
     title: 포인트 앤 클릭 추리 게임 개발
     date: 2021-01-01
