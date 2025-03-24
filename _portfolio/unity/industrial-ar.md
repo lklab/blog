@@ -5,6 +5,7 @@ date: 2023-05-01
 image: /assets/about/platforms/unity.png
 tag:
   - 맥스트
+  - Unity
   - Csharp
   - UGUI
   - AR

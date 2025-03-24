@@ -5,6 +5,7 @@ date: 2020-03-01
 image: /assets/about/platforms/unity.png
 tag:
   - 겜브릿지
+  - Unity
   - Csharp
   - UGUI
   - 모바일

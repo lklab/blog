@@ -26,6 +26,7 @@
     image: "/assets/portfolio/point-and-click/point-and-click-01.png"
     tag:
     - 겜브릿지
+    - Unity
     - Csharp
     - UGUI
     - Windows
@@ -41,6 +42,7 @@
     image: "/assets/about/platforms/unity.png"
     tag:
     - 겜브릿지
+    - Unity
     - Csharp
     - UGUI
     - 모바일
@@ -55,6 +57,7 @@
     image: "/assets/about/platforms/unity.png"
     tag:
     - 겜브릿지
+    - Unity
     - Csharp
     - UGUI
     - Python
@@ -71,6 +74,7 @@
     image: "/assets/portfolio/story-puzzle-game/story-puzzle-game.jpg"
     tag:
     - 겜브릿지
+    - Unity
     - Csharp
     - UGUI
     - Windows
@@ -87,6 +91,7 @@
     image: "/assets/portfolio/adventure/adventure-01.jpg"
     tag:
     - 겜브릿지
+    - Unity
     - Csharp
     - UGUI
     - Windows
@@ -99,6 +104,7 @@
     image: "/assets/portfolio/brain-vr/gear_vr.png"
     tag:
     - 겜브릿지
+    - Unity
     - Csharp
     - UGUI
     - VR
@@ -114,6 +120,7 @@
     image: "/assets/portfolio/light-the-time/ingame-01.png"
     tag:
     - 학부
+    - Unity
     - Csharp
     - VR
     - 모바일
@@ -130,6 +137,7 @@
     image: "/assets/about/platforms/unity.png"
     tag:
     - 맥스트
+    - Unity
     - Csharp
     - UGUI
     - AR
@@ -149,6 +157,7 @@
     image: "/assets/about/platforms/unity.png"
     tag:
     - 맥스트
+    - Unity
     - Csharp
     - UGUI
     - AR
@@ -167,6 +176,7 @@
     image: "/assets/portfolio/silver-care/main.jpg"
     tag:
     - 원더풀플랫폼
+    - Unity
     - Csharp
     - UGUI
     - Java
@@ -183,6 +193,7 @@
     image: "/assets/portfolio/ar-card-app/ar-app.jpg"
     tag:
     - 겜브릿지
+    - Unity
     - Csharp
     - UGUI
     - AR
