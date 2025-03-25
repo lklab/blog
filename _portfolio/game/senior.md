@@ -5,6 +5,7 @@ date: 2020-01-01
 image: /assets/about/platforms/unity.png
 tag:
   - 겜브릿지
+  - Unity
   - Csharp
   - UGUI
   - Python

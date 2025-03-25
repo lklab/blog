@@ -1,4 +1,82 @@
 ---
+llm:
+  name: llm
+  studies:
+  - index: 8
+    link: "/study/llm/008_langchain_custom_tools"
+    title: LangChain - Custom tools
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 7
+    link: "/study/llm/007_langchain_agents"
+    title: LangChain - Agents
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 6
+    link: "/study/llm/006_langchain_conversational_rag"
+    title: LangChain - Conversational RAG
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 5
+    link: "/study/llm/005_langchain_rag"
+    title: LangChain - Retrieval Augmented Generation (RAG)
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 4
+    link: "/study/llm/004_langchain_vector_stores_and_retrievers"
+    title: LangChain - Vector stores and retrievers
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 3
+    link: "/study/llm/003_langchain_chatbot"
+    title: LangChain - Chatbot
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 2
+    link: "/study/llm/002_langchain_ch01_lcel_runnable"
+    title: LangChain ch01 - LCEL & Runnable
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 1
+    link: "/study/llm/001_langchain_ch01_langsmith"
+    title: LangChain ch01 - LangSmith
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+  - index: 0
+    link: "/study/llm/000_langchain_ch01"
+    title: LangChain ch01 - 시작하기
+    image: "/assets/study/llm/default/langchain_logo.jpg"
+unity_csharp:
+  name: unity_csharp
+  studies:
+  - index: 8
+    link: "/study/unity_csharp/008_unity6_preview"
+    title: Unity 6 Preview 주요 하이라이트
+    image: "/assets/study/unity_csharp/008_unity6_preview/title.avif"
+  - index: 7
+    link: "/study/unity_csharp/007_uday_seoul_industry_2024"
+    title: 'U/Day Seoul: Industry (2024)'
+    image: "/assets/study/unity_csharp/007_uday_seoul_industry_2024/unity-1-2048x883.png"
+  - index: 6
+    link: "/study/unity_csharp/006_monthly_tech_talk_2024_07"
+    title: Unity Monthly Tech Talk 7월
+    image: "/assets/study/unity_csharp/006_monthly_tech_talk_2024_07/title.png"
+  - index: 5
+    link: "/study/unity_csharp/005_uday_seoul_2024"
+    title: UDay Seoul 2024
+    image: "/assets/study/unity_csharp/005_uday_seoul_2024/title.jpg"
+  - index: 4
+    link: "/study/unity_csharp/004_sentis"
+    title: Sentis
+    image: "/assets/study/unity_csharp/004_sentis/title.jpg"
+  - index: 3
+    link: "/study/unity_csharp/003_unity-apac-industry-summit-2023"
+    title: Unity APAC Industry Summit 2023
+    image: "/assets/study/unity_csharp/003_unity-apac-industry-summit-2023/title.png"
+  - index: 2
+    link: "/study/unity_csharp/002_unity_dev_weeks_2023"
+    title: Unity Dev Weeks 2023
+    image: "/assets/study/unity_csharp/002_unity_dev_weeks_2023/title.jpg"
+  - index: 1
+    link: "/study/unity_csharp/001_lazy_asynclazy"
+    title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
+    image: "/assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png"
+  - index: 0
+    link: "/study/unity_csharp/000_in_out_ref"
+    title: in, out, ref
+    image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
 flutter:
   name: flutter
   studies:
@@ -121,84 +199,6 @@ graphics:
     link: "/study/graphics/000_renderhell_overview_0"
     title: Render Hell – Book I
     image: "/assets/study/graphics/000_renderhell_overview_0/banner_book_01.jpg"
-llm:
-  name: llm
-  studies:
-  - index: 8
-    link: "/study/llm/008_langchain_custom_tools"
-    title: LangChain - Custom tools
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 7
-    link: "/study/llm/007_langchain_agents"
-    title: LangChain - Agents
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 6
-    link: "/study/llm/006_langchain_conversational_rag"
-    title: LangChain - Conversational RAG
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 5
-    link: "/study/llm/005_langchain_rag"
-    title: LangChain - Retrieval Augmented Generation (RAG)
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 4
-    link: "/study/llm/004_langchain_vector_stores_and_retrievers"
-    title: LangChain - Vector stores and retrievers
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 3
-    link: "/study/llm/003_langchain_chatbot"
-    title: LangChain - Chatbot
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 2
-    link: "/study/llm/002_langchain_ch01_lcel_runnable"
-    title: LangChain ch01 - LCEL & Runnable
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 1
-    link: "/study/llm/001_langchain_ch01_langsmith"
-    title: LangChain ch01 - LangSmith
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-  - index: 0
-    link: "/study/llm/000_langchain_ch01"
-    title: LangChain ch01 - 시작하기
-    image: "/assets/study/llm/default/langchain_logo.jpg"
-unity_csharp:
-  name: unity_csharp
-  studies:
-  - index: 8
-    link: "/study/unity_csharp/008_unity6_preview"
-    title: Unity 6 Preview 주요 하이라이트
-    image: "/assets/study/unity_csharp/008_unity6_preview/title.avif"
-  - index: 7
-    link: "/study/unity_csharp/007_uday_seoul_industry_2024"
-    title: 'U/Day Seoul: Industry (2024)'
-    image: "/assets/study/unity_csharp/007_uday_seoul_industry_2024/unity-1-2048x883.png"
-  - index: 6
-    link: "/study/unity_csharp/006_monthly_tech_talk_2024_07"
-    title: Unity Monthly Tech Talk 7월
-    image: "/assets/study/unity_csharp/006_monthly_tech_talk_2024_07/title.png"
-  - index: 5
-    link: "/study/unity_csharp/005_uday_seoul_2024"
-    title: UDay Seoul 2024
-    image: "/assets/study/unity_csharp/005_uday_seoul_2024/title.jpg"
-  - index: 4
-    link: "/study/unity_csharp/004_sentis"
-    title: Sentis
-    image: "/assets/study/unity_csharp/004_sentis/title.jpg"
-  - index: 3
-    link: "/study/unity_csharp/003_unity-apac-industry-summit-2023"
-    title: Unity APAC Industry Summit 2023
-    image: "/assets/study/unity_csharp/003_unity-apac-industry-summit-2023/title.png"
-  - index: 2
-    link: "/study/unity_csharp/002_unity_dev_weeks_2023"
-    title: Unity Dev Weeks 2023
-    image: "/assets/study/unity_csharp/002_unity_dev_weeks_2023/title.jpg"
-  - index: 1
-    link: "/study/unity_csharp/001_lazy_asynclazy"
-    title: Lazy&lt;T&gt;, AsyncLazy&lt;T&gt;
-    image: "/assets/study/unity_csharp/001_lazy_asynclazy/lazy_asynclazy.png"
-  - index: 0
-    link: "/study/unity_csharp/000_in_out_ref"
-    title: in, out, ref
-    image: "/assets/study/unity_csharp/000_in_out_ref/in_out_ref.png"
 unreal:
   name: unreal
   studies:
