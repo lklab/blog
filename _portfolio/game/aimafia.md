@@ -92,6 +92,10 @@ summary:
 
 ## 출시
 
+[Google Play](https://play.google.com/store/apps/details?id=com.ninewands.aimafia)
+
+[App Store](https://apps.apple.com/app/ai-mafia-game/id6741802923)
+
 ![Screenshot]({{site.baseurl}}/assets/portfolio/aimafia/screenshot01.png){: width="240"}
 ![Screenshot]({{site.baseurl}}/assets/portfolio/aimafia/screenshot00.png){: width="240"}
 ![Screenshot]({{site.baseurl}}/assets/portfolio/aimafia/screenshot02.png){: width="240"}
