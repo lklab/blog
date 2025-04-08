@@ -684,9 +684,9 @@
 - tag: 대학원
   projects:
   - *2
-  - *24
   - *25
   - *3
+  - *24
   - &28
     link: "/portfolio/others/genetic-algorithm"
     title: Genetic algorithm을 이용한 automatic rule acquisition 알고리즘 구현
@@ -743,12 +743,6 @@
   - *2
   - *3
   - *26
-- tag: PM
-  projects:
-  - *24
-- tag: FoE
-  projects:
-  - *24
 - tag: Beaglebone black
   projects:
   - *25
@@ -780,6 +774,12 @@
 - tag: Automatic programming
   projects:
   - *3
+- tag: PM
+  projects:
+  - *24
+- tag: FoE
+  projects:
+  - *24
 - tag: R
   projects:
   - *28
